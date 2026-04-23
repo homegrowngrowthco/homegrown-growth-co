@@ -60,10 +60,67 @@
   }
 
   /* ----------------------------------------------------------
+     SERVICES DROPDOWN
+  ---------------------------------------------------------- */
+  const servicePages = [
+    'fractional-revops', 'crm-implementation', 'process-automation',
+    'reporting-analytics', 'tech-stack-audit', 'sales-comp-enablement'
+  ];
+
+  const dropdownWrap = document.querySelector('.nav__dropdown-wrap');
+  const dropdownTrigger = dropdownWrap && dropdownWrap.querySelector('.nav__link--has-dropdown');
+  const dropdownMenu = dropdownWrap && dropdownWrap.querySelector('.nav__dropdown');
+
+  if (dropdownWrap && dropdownTrigger && dropdownMenu) {
+    const openDrop = () => {
+      dropdownWrap.classList.add('open');
+      dropdownTrigger.setAttribute('aria-expanded', 'true');
+    };
+    const closeDrop = () => {
+      dropdownWrap.classList.remove('open');
+      dropdownTrigger.setAttribute('aria-expanded', 'false');
+    };
+
+    // Keyboard: Enter/Space opens, Escape closes, Tab closes
+    dropdownTrigger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrop(); dropdownMenu.querySelector('a').focus(); }
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrop(); });
+
+    // Click outside closes
+    document.addEventListener('click', e => {
+      if (!dropdownWrap.contains(e.target)) closeDrop();
+    });
+
+    // Arrow-key nav within dropdown
+    dropdownMenu.addEventListener('keydown', e => {
+      const items = [...dropdownMenu.querySelectorAll('a, button')];
+      const idx = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); items[Math.min(idx + 1, items.length - 1)].focus(); }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); items[Math.max(idx - 1, 0)].focus(); }
+    });
+  }
+
+  /* ----------------------------------------------------------
+     MOBILE SERVICES ACCORDION
+  ---------------------------------------------------------- */
+  const mobileGroupToggle = document.querySelector('.nav__mobile-group-toggle');
+  const mobileSub = document.querySelector('.nav__mobile-sub');
+
+  if (mobileGroupToggle && mobileSub) {
+    mobileGroupToggle.addEventListener('click', () => {
+      const isOpen = mobileGroupToggle.getAttribute('aria-expanded') === 'true';
+      mobileGroupToggle.setAttribute('aria-expanded', String(!isOpen));
+      isOpen ? mobileSub.setAttribute('hidden', '') : mobileSub.removeAttribute('hidden');
+    });
+  }
+
+  /* ----------------------------------------------------------
      ACTIVE NAV LINK
   ---------------------------------------------------------- */
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav__link');
+  const currentSlug = currentPath.replace(/\.html$/, '');
+  const navLinks = document.querySelectorAll('.nav__link, .nav__link--has-dropdown');
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href') || '';
@@ -71,6 +128,11 @@
       link.classList.add('active');
     }
   });
+
+  // Mark Services as active when on any service sub-page
+  if (servicePages.includes(currentSlug) && dropdownTrigger) {
+    dropdownTrigger.classList.add('active');
+  }
 
   /* ----------------------------------------------------------
      SCROLL ANIMATIONS — Intersection Observer

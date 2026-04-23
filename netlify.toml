@@ -80,6 +80,42 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/fractional-revops"
+  to = "/fractional-revops.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/crm-implementation"
+  to = "/crm-implementation.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/process-automation"
+  to = "/process-automation.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/reporting-analytics"
+  to = "/reporting-analytics.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/tech-stack-audit"
+  to = "/tech-stack-audit.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sales-comp-enablement"
+  to = "/sales-comp-enablement.html"
+  status = 200
+  force = true
+
 # 404 — must be last
 [[redirects]]
   from = "/*"
