@@ -364,6 +364,17 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
+/* Invisible bridge that covers the gap between button and dropdown,
+   keeping hover state alive while the mouse travels down to the menu */
+.nav__dropdown-wrap::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px;
+}
+
 .nav__link--has-dropdown {
   display: flex;
   align-items: center;
