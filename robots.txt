@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# resources.html uses noindex+redirect and is excluded from sitemap
+Disallow: /resources
+
+Sitemap: https://homegrowngrowth.co/sitemap.xml
