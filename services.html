@@ -11,9 +11,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
   <script>
@@ -105,6 +106,7 @@
   }
   </script>
 
+  <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -151,7 +153,7 @@
     <div>
 
       <!-- 1. Fractional RevOps -->
-      <div style="background: var(--color-surface);">
+      <div id="fractional-revops" style="background: var(--color-surface);">
         <div class="container">
           <div class="service-row fade-up">
             <div class="service-row__left">
@@ -184,7 +186,7 @@
       </div>
 
       <!-- 2. CRM Implementation -->
-      <div style="background: var(--color-bg);">
+      <div id="crm-implementation" style="background: var(--color-bg);">
         <div class="container">
           <div class="service-row fade-up">
             <div class="service-row__left">
@@ -217,7 +219,7 @@
       </div>
 
       <!-- 3. Process Automation -->
-      <div style="background: var(--color-surface);">
+      <div id="process-automation" style="background: var(--color-surface);">
         <div class="container">
           <div class="service-row fade-up">
             <div class="service-row__left">
@@ -250,7 +252,7 @@
       </div>
 
       <!-- 4. Reporting & Analytics -->
-      <div style="background: var(--color-bg);">
+      <div id="reporting-analytics" style="background: var(--color-bg);">
         <div class="container">
           <div class="service-row fade-up">
             <div class="service-row__left">
@@ -283,7 +285,7 @@
       </div>
 
       <!-- 5. Tech Stack Audit -->
-      <div style="background: var(--color-surface);">
+      <div id="tech-stack-audit" style="background: var(--color-surface);">
         <div class="container">
           <div class="service-row fade-up">
             <div class="service-row__left">
@@ -316,7 +318,7 @@
       </div>
 
       <!-- 6. Sales Comp & Enablement -->
-      <div style="background: var(--color-bg);">
+      <div id="sales-comp" style="background: var(--color-bg);">
         <div class="container">
           <div class="service-row fade-up" style="border-bottom: none;">
             <div class="service-row__left">
@@ -410,18 +412,17 @@
         <div>
           <p class="footer__col-title">Services</p>
           <nav class="footer__links" aria-label="Services links">
-            <a href="services.html" class="footer__link">Fractional RevOps</a>
-            <a href="services.html" class="footer__link">CRM Implementation</a>
-            <a href="services.html" class="footer__link">Process Automation</a>
+            <a href="services.html#fractional-revops" class="footer__link">Fractional RevOps</a>
+            <a href="services.html#crm-implementation" class="footer__link">CRM Implementation</a>
+            <a href="services.html#process-automation" class="footer__link">Process Automation</a>
             <a href="services.html" class="footer__link">Reporting & Analytics</a>
-            <a href="services.html" class="footer__link">Tech Stack Audit</a>
+            <a href="services.html#tech-stack-audit" class="footer__link">Tech Stack Audit</a>
           </nav>
         </div>
         <div>
           <p class="footer__col-title">Company</p>
           <nav class="footer__links" aria-label="Company links">
             <a href="case-studies.html" class="footer__link">Case Studies</a>
-            <a href="resources.html" class="footer__link">Resources</a>
             <a href="about.html" class="footer__link">About</a>
             <a href="mailto:ian@homegrowngrowth.co" class="footer__link">Contact</a>
             <a href="https://www.linkedin.com/company/homegrown-growth-co" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>

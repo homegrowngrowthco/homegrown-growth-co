@@ -11,9 +11,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
   <script>
@@ -41,6 +42,7 @@
   <meta name="twitter:description" content="Real RevOps work with measurable results. CRM migrations, automation builds, reporting overhauls, and more." />
   <meta name="twitter:image" content="https://homegrowngrowth.co/og-image.png" />
 
+  <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -146,18 +148,17 @@
         <div>
           <p class="footer__col-title">Services</p>
           <nav class="footer__links" aria-label="Services links">
-            <a href="services.html" class="footer__link">Fractional RevOps</a>
-            <a href="services.html" class="footer__link">CRM Implementation</a>
-            <a href="services.html" class="footer__link">Process Automation</a>
+            <a href="services.html#fractional-revops" class="footer__link">Fractional RevOps</a>
+            <a href="services.html#crm-implementation" class="footer__link">CRM Implementation</a>
+            <a href="services.html#process-automation" class="footer__link">Process Automation</a>
             <a href="services.html" class="footer__link">Reporting & Analytics</a>
-            <a href="services.html" class="footer__link">Tech Stack Audit</a>
+            <a href="services.html#tech-stack-audit" class="footer__link">Tech Stack Audit</a>
           </nav>
         </div>
         <div>
           <p class="footer__col-title">Company</p>
           <nav class="footer__links" aria-label="Company links">
             <a href="case-studies.html" class="footer__link">Case Studies</a>
-            <a href="resources.html" class="footer__link">Resources</a>
             <a href="about.html" class="footer__link">About</a>
             <a href="mailto:ian@homegrowngrowth.co" class="footer__link">Contact</a>
           </nav>
