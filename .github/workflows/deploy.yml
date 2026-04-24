@@ -19,3 +19,27 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Ping IndexNow (prod only)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "homegrowngrowth.co",
+              "key": "9ca65fb52b8ccbac961ff671bbbfa5cd",
+              "keyLocation": "https://homegrowngrowth.co/9ca65fb52b8ccbac961ff671bbbfa5cd.txt",
+              "urlList": [
+                "https://homegrowngrowth.co/",
+                "https://homegrowngrowth.co/services",
+                "https://homegrowngrowth.co/fractional-revops",
+                "https://homegrowngrowth.co/crm-implementation",
+                "https://homegrowngrowth.co/process-automation",
+                "https://homegrowngrowth.co/reporting-analytics",
+                "https://homegrowngrowth.co/tech-stack-audit",
+                "https://homegrowngrowth.co/sales-comp-enablement",
+                "https://homegrowngrowth.co/for-saas",
+                "https://homegrowngrowth.co/about",
+                "https://homegrowngrowth.co/roi-call"
+              ]
+            }'
