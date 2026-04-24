@@ -1,5 +1,5 @@
 # Homegrown Growth Co. — Site Status
-_Last updated: 2026-04-24_
+_Last updated: 2026-04-24 (evening)_
 
 ---
 
@@ -67,7 +67,7 @@ Each standalone service page includes: breadcrumb nav, intro + bullet list + "go
 ### I Can Handle These (no input needed from you)
 | # | Task | Notes |
 |---|------|-------|
-| 1 | **Microsoft Clarity** — heatmaps + session recording | Need your Clarity tracking ID first |
+| 1 | ~~**Microsoft Clarity**~~ | ✅ Done — ID `wgqsqcvysb`, live on all pages |
 | 2 | **og-image.png** — OG image for link previews on LinkedIn/Slack | Need you to provide or approve a design; I can generate the HTML/meta once the file exists |
 
 ### Needs You — Content
