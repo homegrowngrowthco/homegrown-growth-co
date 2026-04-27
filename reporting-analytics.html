@@ -17,12 +17,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4QR1JQK9QL');
-  </script>
+  <script src="analytics.js" defer></script>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://homegrowngrowth.co/reporting-analytics" />
@@ -64,6 +59,43 @@
           {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://homegrowngrowth.co/services"},
           {"@type": "ListItem", "position": 3, "name": "Reporting & Analytics", "item": "https://homegrowngrowth.co/reporting-analytics"}
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What tools do you build dashboards in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Primarily Salesforce reports and dashboards, HubSpot analytics, and BI tools like Looker, Metabase, or Google Looker Studio. The right tool depends on where your data lives and how your team works. We recommend based on your stack, not our preferences."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Our data is messy — do we need to clean it up first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In most cases, data cleanup and reporting are done together as part of the same engagement. We identify the data issues that affect the specific metrics you need, fix those, and build the reporting on the clean foundation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you build a forecast model we can maintain ourselves?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every forecast model is built with documentation and a training session. The goal is something your team can run independently — not something that requires a consultant every quarter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does reporting and analytics work cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Reporting work runs as a retainer engagement, starting at $3,000/month for 5 hours/week and scaling to $10,000/month for 20 hours/week. One-off dashboard or forecast model builds can be project-priced. See https://homegrowngrowth.co/pricing for the full breakdown."
+            }
+          }
+        ]
       }
     ]
   }
@@ -71,16 +103,9 @@
 
   <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wgqsqcvysb");
-  </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
@@ -139,7 +164,7 @@
     <a href="roi-call.html" class="nav__mobile-cta btn btn--primary btn--lg">Book Your Free ROI Call</a>
   </div>
 
-  <main class="page-content">
+  <main id="main" class="page-content">
 
     <!-- HERO -->
     <section class="page-hero">
@@ -213,6 +238,10 @@
               <div class="faq-item fade-up">
                 <h3 class="faq-item__q">Can you build a forecast model we can maintain ourselves?</h3>
                 <p class="faq-item__a">Yes. Every forecast model is built with documentation and a training session. The goal is something your team can run independently — not something that requires a consultant every quarter.</p>
+              </div>
+              <div class="faq-item fade-up">
+                <h3 class="faq-item__q">How much does reporting and analytics work cost?</h3>
+                <p class="faq-item__a">Reporting work runs as a retainer engagement, starting at $3,000/month for 5 hours/week and scaling to $10,000/month for 20 hours/week. One-off dashboard or forecast model builds can be project-priced. See the <a href="pricing.html" style="color: var(--color-teal); font-weight: 600;">full pricing breakdown</a> or book a call to scope your needs.</p>
               </div>
         </div>
       </div>

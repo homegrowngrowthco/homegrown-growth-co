@@ -205,20 +205,4 @@
     }
   }
 
-  /* ----------------------------------------------------------
-     RESOURCES — Email capture (mailto fallback)
-  ---------------------------------------------------------- */
-  const notifyForm = document.getElementById('notify-form');
-
-  if (notifyForm) {
-    notifyForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const emailInput = notifyForm.querySelector('input[type="email"]');
-      const email = emailInput ? emailInput.value.trim() : '';
-      if (email) {
-        window.location.href = `mailto:ian@homegrowngrowth.co?subject=Notify%20me%20about%20new%20resources&body=Please%20add%20me%20to%20your%20resources%20notification%20list.%0A%0AEmail%3A%20${encodeURIComponent(email)}`;
-      }
-    });
-  }
-
 })();

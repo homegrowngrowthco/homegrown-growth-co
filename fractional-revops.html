@@ -17,12 +17,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4QR1JQK9QL');
-  </script>
+  <script src="analytics.js" defer></script>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://homegrowngrowth.co/fractional-revops" />
@@ -64,6 +59,43 @@
           {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://homegrowngrowth.co/services"},
           {"@type": "ListItem", "position": 3, "name": "Fractional RevOps", "item": "https://homegrowngrowth.co/fractional-revops"}
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What's the difference between fractional RevOps and a full-time hire?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A full-time VP of RevOps costs $150–200K+ base, takes 3–6 months to hire, and is typically overkill until you're well past $10M ARR. Fractional gives you the same senior thinking and execution at 20–30% of the cost, with a clear exit when you're ready to bring it in-house."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much time does fractional RevOps actually require from me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Minimal. The point is to take work off your plate, not add to it. Expect a 30-minute weekly sync and occasional async questions. Everything else is handled."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a typical engagement look like month to month?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Month one is a structured discovery and roadmap. From there: weekly standups, async execution on the ops backlog, regular reporting health checks, and a monthly review of priorities. Everything is documented so nothing is a black box."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does fractional RevOps cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pricing is structured as monthly or quarterly retainers based on hours per week, starting at $3,000/month for 5 hours/week, $5,500/month for 10 hours/week, and $10,000/month for 20 hours/week. See the full pricing breakdown at https://homegrowngrowth.co/pricing or book a call to talk through which tier fits your situation."
+            }
+          }
+        ]
       }
     ]
   }
@@ -71,16 +103,9 @@
 
   <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wgqsqcvysb");
-  </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
@@ -139,7 +164,7 @@
     <a href="roi-call.html" class="nav__mobile-cta btn btn--primary btn--lg">Book Your Free ROI Call</a>
   </div>
 
-  <main class="page-content">
+  <main id="main" class="page-content">
 
     <!-- HERO -->
     <section class="page-hero">
@@ -213,6 +238,10 @@
               <div class="faq-item fade-up">
                 <h3 class="faq-item__q">What does a typical engagement look like month to month?</h3>
                 <p class="faq-item__a">Month one is a structured discovery and roadmap. From there: weekly standups, async execution on the ops backlog, regular reporting health checks, and a monthly review of priorities. Everything is documented so nothing is a black box.</p>
+              </div>
+              <div class="faq-item fade-up">
+                <h3 class="faq-item__q">How much does fractional RevOps cost?</h3>
+                <p class="faq-item__a">Retainer pricing starts at $3,000/month for 5 hours/week, scaling to $10,000/month for 20 hours/week. Monthly or quarterly billing, no long-term commitment. See the <a href="pricing.html" style="color: var(--color-teal); font-weight: 600;">full pricing breakdown</a> or book a call to talk through which tier fits your situation.</p>
               </div>
         </div>
       </div>

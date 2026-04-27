@@ -19,12 +19,7 @@
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4QR1JQK9QL');
-  </script>
+  <script src="analytics.js" defer></script>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://homegrowngrowth.co/" />
@@ -104,18 +99,69 @@
   }
   </script>
 
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "I don't know if I need fractional or a full-time hire",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most businesses at $2–10M in revenue don't need (or can afford) a full-time RevOps leader. Fractional gives you senior expertise at 20–30% of the cost, with the flexibility to scale up or exit cleanly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know you'll understand my business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every engagement starts with a structured discovery. No systems get touched until there's a clear picture of your sales motion, your team, and where the actual friction is."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "We already have a CRM, we just need someone to manage it",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That's fine. But in practice, 'just needs management' usually means it was set up wrong and nobody wants to say it. The assessment will be direct about what's actually there."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you work with our existing team?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This is an embedded engagement — we do not disappear between deliverables. Work happens inside your tools with clear communication and supporting documentation so your internal teams are aligned on next steps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if we only need help for a short period?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Project-based engagements are available for defined scopes: a CRM migration, a dashboard buildout, a comp plan design. Not everything needs to be ongoing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you measure success?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Metrics get agreed on before the engagement starts. Usually: time saved on manual work, data accuracy improvement, pipeline visibility, and whether your team is actually using what was built."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wgqsqcvysb");
-  </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- ============================================================
        NAVIGATION
@@ -183,7 +229,7 @@
     <a href="roi-call.html" class="nav__mobile-cta btn btn--primary btn--lg">Book Your Free ROI Call</a>
   </div>
 
-  <main class="page-content">
+  <main id="main" class="page-content">
 
     <!-- ============================================================
          HERO

@@ -17,12 +17,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4QR1JQK9QL');
-  </script>
+  <script src="analytics.js" defer></script>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://homegrowngrowth.co/roi-call" />
@@ -59,16 +54,9 @@
 
   <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wgqsqcvysb");
-  </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Simplified nav — logo only -->
   <header class="roi-nav" role="banner">
@@ -78,7 +66,7 @@
     </a>
   </header>
 
-  <main>
+  <main id="main">
 
     <!-- ROI CALL CONTENT -->
     <section class="roi-page" aria-label="Book your free ROI call">
@@ -184,6 +172,12 @@
     </section>
 
   </main>
+
+  <footer class="roi-footer" role="contentinfo">
+    <div class="container">
+      <a href="index.html" class="roi-footer__back">← Back to home</a>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
