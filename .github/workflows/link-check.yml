@@ -15,6 +15,7 @@ jobs:
       - name: Run lychee against live site
         uses: lycheeverse/lychee-action@v2
         with:
+          lycheeVersion: v0.18.1
           # Skip linkedin.com (returns 999 to bots) and calendly.com (JS-rendered).
           args: >-
             --verbose
