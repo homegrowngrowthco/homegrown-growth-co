@@ -1,37 +1,29 @@
 name: Link Check
 
+# Scans the live production site (so clean-URL redirects in netlify.toml resolve
+# correctly and we test what real visitors see). Runs weekly + on demand.
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
   schedule:
-    # Run weekly on Monday at 09:00 UTC to catch external links that have rotted
-    - cron: '0 9 * * 1'
+    - cron: '0 9 * * 1'  # Mondays at 09:00 UTC
 
 jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Run lychee link checker
+      - name: Run lychee against live site
         uses: lycheeverse/lychee-action@v2
         with:
-          # Scan all HTML and Markdown in the repo. Skip:
-          #   - mailto: links (no DNS to check)
-          #   - LinkedIn URLs (often 999/403 to bots; not actually broken)
-          #   - calendly.com (requires JS-rendered content)
+          # Crawl from the sitemap (covers every indexed page).
+          # Skip linkedin.com (returns 999 to bots) and calendly.com (JS-rendered).
           args: >-
             --verbose
             --no-progress
-            --max-concurrency 8
-            --timeout 20
-            --root-dir ${{ github.workspace }}
+            --max-concurrency 6
+            --timeout 30
             --exclude "linkedin\\.com"
             --exclude "calendly\\.com"
             --accept 200,206,301,302,403,429
-            './**/*.html'
-            './**/*.md'
+            https://homegrowngrowth.co/sitemap.xml
           fail: true
           jobSummary: true
