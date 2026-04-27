@@ -20,8 +20,10 @@ jobs:
           args: >-
             --verbose
             --no-progress
-            --max-concurrency 6
+            --max-concurrency 2
             --timeout 30
+            --max-retries 3
+            --retry-wait-time 10
             --exclude "linkedin\\.com"
             --exclude "calendly\\.com"
             --accept 200,206,301,302,403,429
