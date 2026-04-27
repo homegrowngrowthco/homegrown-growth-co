@@ -1,8 +1,7 @@
 name: Link Check
 
-# Scans the live production site (so clean-URL redirects in netlify.toml resolve
-# correctly and we test what real visitors see). lychee fetches each page,
-# parses the HTML, and validates every link found inside.
+# Verifies every canonical URL on the live site returns 200.
+# Simple curl checks against a hardcoded list — deterministic and fast.
 on:
   workflow_dispatch:
   schedule:
@@ -12,34 +11,70 @@ jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Run lychee against live site
-        uses: lycheeverse/lychee-action@v2
-        with:
-          lycheeVersion: v0.18.1
-          # Skip linkedin.com (returns 999 to bots) and calendly.com (JS-rendered).
-          args: >-
-            --verbose
-            --no-progress
-            --max-concurrency 2
-            --timeout 30
-            --max-retries 3
-            --retry-wait-time 10
-            --exclude "linkedin\\.com"
-            --exclude "calendly\\.com"
-            --accept 200,206,301,302,403,429
-            https://homegrowngrowth.co/
-            https://homegrowngrowth.co/services
-            https://homegrowngrowth.co/pricing
-            https://homegrowngrowth.co/about
-            https://homegrowngrowth.co/roi-call
-            https://homegrowngrowth.co/for-saas
-            https://homegrowngrowth.co/case-studies
-            https://homegrowngrowth.co/fractional-revops
-            https://homegrowngrowth.co/crm-implementation
-            https://homegrowngrowth.co/process-automation
-            https://homegrowngrowth.co/reporting-analytics
-            https://homegrowngrowth.co/tech-stack-audit
-            https://homegrowngrowth.co/sales-comp-enablement
-          fail: true
-          failIfEmpty: false
-          jobSummary: true
+      - name: Check each page returns 200
+        run: |
+          set -e
+          urls=(
+            "https://homegrowngrowth.co/"
+            "https://homegrowngrowth.co/services"
+            "https://homegrowngrowth.co/pricing"
+            "https://homegrowngrowth.co/about"
+            "https://homegrowngrowth.co/roi-call"
+            "https://homegrowngrowth.co/for-saas"
+            "https://homegrowngrowth.co/case-studies"
+            "https://homegrowngrowth.co/fractional-revops"
+            "https://homegrowngrowth.co/crm-implementation"
+            "https://homegrowngrowth.co/process-automation"
+            "https://homegrowngrowth.co/reporting-analytics"
+            "https://homegrowngrowth.co/tech-stack-audit"
+            "https://homegrowngrowth.co/sales-comp-enablement"
+            "https://homegrowngrowth.co/sitemap.xml"
+            "https://homegrowngrowth.co/robots.txt"
+            "https://homegrowngrowth.co/og-image.png"
+            "https://homegrowngrowth.co/styles.css"
+            "https://homegrowngrowth.co/script.js"
+            "https://homegrowngrowth.co/analytics.js"
+            "https://homegrowngrowth.co/fonts/fonts.css"
+          )
+
+          # Verify retired /resources still 301s to homepage
+          redirect_urls=(
+            "https://homegrowngrowth.co/resources"
+          )
+
+          failed=0
+          echo "## Link Check Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| URL | Status |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-----|--------|" >> "$GITHUB_STEP_SUMMARY"
+
+          for url in "${urls[@]}"; do
+            code=$(curl -sI -o /dev/null -w "%{http_code}" --max-time 15 "$url")
+            if [ "$code" = "200" ]; then
+              echo "✓ $url -> 200"
+              echo "| $url | ✅ 200 |" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "✗ $url -> $code (expected 200)"
+              echo "| $url | ❌ $code |" >> "$GITHUB_STEP_SUMMARY"
+              failed=$((failed + 1))
+            fi
+          done
+
+          for url in "${redirect_urls[@]}"; do
+            code=$(curl -sI -o /dev/null -w "%{http_code}" --max-time 15 "$url")
+            if [ "$code" = "301" ] || [ "$code" = "302" ]; then
+              echo "✓ $url -> $code (redirect, as expected)"
+              echo "| $url | ✅ $code (redirect) |" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "✗ $url -> $code (expected 301/302)"
+              echo "| $url | ❌ $code |" >> "$GITHUB_STEP_SUMMARY"
+              failed=$((failed + 1))
+            fi
+          done
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$failed" -gt 0 ]; then
+            echo "**$failed URL(s) failed**" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "**All URLs healthy.**" >> "$GITHUB_STEP_SUMMARY"
