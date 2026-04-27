@@ -1,7 +1,8 @@
 name: Link Check
 
 # Scans the live production site (so clean-URL redirects in netlify.toml resolve
-# correctly and we test what real visitors see). Runs weekly + on demand.
+# correctly and we test what real visitors see). lychee fetches each page,
+# parses the HTML, and validates every link found inside.
 on:
   workflow_dispatch:
   schedule:
@@ -14,7 +15,6 @@ jobs:
       - name: Run lychee against live site
         uses: lycheeverse/lychee-action@v2
         with:
-          # Crawl from the sitemap (covers every indexed page).
           # Skip linkedin.com (returns 999 to bots) and calendly.com (JS-rendered).
           args: >-
             --verbose
@@ -24,6 +24,19 @@ jobs:
             --exclude "linkedin\\.com"
             --exclude "calendly\\.com"
             --accept 200,206,301,302,403,429
-            https://homegrowngrowth.co/sitemap.xml
+            https://homegrowngrowth.co/
+            https://homegrowngrowth.co/services
+            https://homegrowngrowth.co/pricing
+            https://homegrowngrowth.co/about
+            https://homegrowngrowth.co/roi-call
+            https://homegrowngrowth.co/for-saas
+            https://homegrowngrowth.co/case-studies
+            https://homegrowngrowth.co/fractional-revops
+            https://homegrowngrowth.co/crm-implementation
+            https://homegrowngrowth.co/process-automation
+            https://homegrowngrowth.co/reporting-analytics
+            https://homegrowngrowth.co/tech-stack-audit
+            https://homegrowngrowth.co/sales-comp-enablement
           fail: true
+          failIfEmpty: false
           jobSummary: true
