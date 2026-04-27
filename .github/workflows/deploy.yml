@@ -41,6 +41,8 @@ jobs:
                 "https://homegrowngrowth.co/for-saas",
                 "https://homegrowngrowth.co/about",
                 "https://homegrowngrowth.co/pricing",
-                "https://homegrowngrowth.co/roi-call"
+                "https://homegrowngrowth.co/roi-call",
+                "https://homegrowngrowth.co/privacy-policy",
+                "https://homegrowngrowth.co/terms"
               ]
             }'

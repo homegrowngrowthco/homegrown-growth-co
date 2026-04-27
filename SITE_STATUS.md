@@ -1,5 +1,5 @@
 # Homegrown Growth Co. — Site Status
-_Last updated: 2026-04-27 (end of day)_
+_Last updated: 2026-04-27 (privacy + terms pages added for Twilio A2P registration)_
 
 ---
 
@@ -20,7 +20,7 @@ _Last updated: 2026-04-27 (end of day)_
 - [x] `netlify.toml` — security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy), immutable caching for static assets, clean URL redirects, `/resources` 301 → `/`
 - [x] `404.html` — branded, real 404 status, GA-tracked
 - [x] **IndexNow auto-ping** on every prod deploy. URL list includes all 12 indexed pages: `/`, `/services`, `/pricing`, `/about`, `/roi-call`, `/for-saas`, `/case-studies`, and 6 service pages
-- [x] **CI link-checker** (`.github/workflows/link-check.yml`) — curl-based, runs weekly + on-demand against the live site. Verifies all 13 canonical URLs return 200 and `/resources` still 301s. Runs in ~11s.
+- [x] **CI link-checker** (`.github/workflows/link-check.yml`) — curl-based, runs weekly + on-demand against the live site. Verifies all 15 canonical URLs (incl. `/privacy-policy` and `/terms`) return 200 and `/resources` still 301s. Runs in ~11s.
 - [x] **`analytics.js`** — consolidated GA4 + Microsoft Clarity bootstrap, loaded with `defer`. Replaces the inline scripts that were on every page.
 
 ### SEO & GEO
@@ -58,6 +58,8 @@ _Last updated: 2026-04-27 (end of day)_
 - [x] `for-saas.html` — SaaS-specific landing page with FAQ schema; uses its own embedded design system (see Known Caveats)
 - [x] 6 standalone service pages (each: breadcrumb, intro + bullets + "good fit if" sidebar, 4-question FAQ, related services, CTA, full schema)
 - [x] `404.html` — branded, GA-tracked
+- [x] `privacy-policy.html` — Privacy Policy with Twilio A2P–compliant SMS consent section (no third-party sharing of mobile info, STOP/HELP opt-out, message frequency/data rates disclosure). Linked in footer Company column site-wide.
+- [x] `terms.html` — Terms & Conditions covering site use, services, payment, IP, confidentiality, liability, governing law (Massachusetts), SMS terms reference. Linked in footer Company column site-wide.
 
 ### Search Console & Indexing
 - [x] Google Search Console — ownership verified
@@ -136,6 +138,8 @@ homegrowngrowth.co/for-saas             ← SaaS landing page
 homegrowngrowth.co/about                ← About
 homegrowngrowth.co/roi-call             ← Book a call (Calendly)
 homegrowngrowth.co/case-studies         ← Placeholder (noindex)
+homegrowngrowth.co/privacy-policy       ← Privacy Policy (incl. SMS / A2P)
+homegrowngrowth.co/terms                ← Terms & Conditions
 homegrowngrowth.co/404                  ← Custom 404
 homegrowngrowth.co/resources            ← 301 → /
 ```

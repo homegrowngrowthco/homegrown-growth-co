@@ -122,6 +122,18 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+  force = true
+
 # /resources — page retired; permanent redirect to homepage
 [[redirects]]
   from = "/resources"
