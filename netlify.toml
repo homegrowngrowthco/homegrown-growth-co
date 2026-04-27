@@ -57,6 +57,12 @@
   force = true
 
 [[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/about"
   to = "/about.html"
   status = 200
@@ -114,6 +120,19 @@
   from = "/sales-comp-enablement"
   to = "/sales-comp-enablement.html"
   status = 200
+  force = true
+
+# /resources — page retired; permanent redirect to homepage
+[[redirects]]
+  from = "/resources"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources.html"
+  to = "/"
+  status = 301
   force = true
 
 # 404 — must be last

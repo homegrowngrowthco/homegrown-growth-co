@@ -23,8 +23,15 @@
   </url>
 
   <url>
+    <loc>https://homegrowngrowth.co/pricing</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
     <loc>https://homegrowngrowth.co/about</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -78,6 +85,6 @@
     <priority>0.85</priority>
   </url>
 
-  <!-- case-studies.html and resources.html excluded until content is live -->
+  <!-- case-studies.html excluded until content is live; /resources retired (301 -> /) -->
 
 </urlset>
