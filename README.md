@@ -37,7 +37,7 @@ Two workflows run in `.github/workflows/`:
 ## Project structure
 
 ```
-2026.04.20/hgc_v8/        ← repo root (this folder is what gets deployed)
+homegrown-growthco/        ← repo root (this folder is what gets deployed; locally at claude_projects/homegrown-growthco/)
 ├── *.html                 — every page is its own static file
 ├── styles.css             — single shared stylesheet (~46KB)
 ├── script.js              — UI logic: nav, dropdown, mobile menu, scroll animations, Calendly
