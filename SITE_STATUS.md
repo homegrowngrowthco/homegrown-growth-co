@@ -1,5 +1,5 @@
 # Homegrown Growth Co. — Site Status
-_Last updated: 2026-04-27 (privacy + terms pages added for Twilio A2P registration)_
+_Last updated: 2026-05-14 (SMS opt-in page added for Twilio TFV / A2P registration)_
 
 ---
 
@@ -19,8 +19,8 @@ _Last updated: 2026-04-27 (privacy + terms pages added for Twilio A2P registrati
 - [x] Custom domain live (`homegrowngrowth.co`) with Netlify SSL
 - [x] `netlify.toml` — security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy), immutable caching for static assets, clean URL redirects, `/resources` 301 → `/`
 - [x] `404.html` — branded, real 404 status, GA-tracked
-- [x] **IndexNow auto-ping** on every prod deploy. URL list includes all 12 indexed pages: `/`, `/services`, `/pricing`, `/about`, `/roi-call`, `/for-saas`, `/case-studies`, and 6 service pages
-- [x] **CI link-checker** (`.github/workflows/link-check.yml`) — curl-based, runs weekly + on-demand against the live site. Verifies all 15 canonical URLs (incl. `/privacy-policy` and `/terms`) return 200 and `/resources` still 301s. Runs in ~11s.
+- [x] **IndexNow auto-ping** on every prod deploy. URL list covers every indexed page (homepage, services overview, 6 service pages, /for-saas, /about, /pricing, /roi-call, /privacy-policy, /terms, /sms-opt-in)
+- [x] **CI link-checker** (`.github/workflows/link-check.yml`) — curl-based, runs weekly + on-demand against the live site. Verifies all canonical URLs (incl. `/privacy-policy`, `/terms`, `/sms-opt-in`) return 200 and `/resources` still 301s. Runs in ~11s.
 - [x] **`analytics.js`** — consolidated GA4 + Microsoft Clarity bootstrap, loaded with `defer`. Replaces the inline scripts that were on every page.
 
 ### SEO & GEO
@@ -58,8 +58,9 @@ _Last updated: 2026-04-27 (privacy + terms pages added for Twilio A2P registrati
 - [x] `for-saas.html` — SaaS-specific landing page with FAQ schema; uses its own embedded design system (see Known Caveats)
 - [x] 6 standalone service pages (each: breadcrumb, intro + bullets + "good fit if" sidebar, 4-question FAQ, related services, CTA, full schema)
 - [x] `404.html` — branded, GA-tracked
-- [x] `privacy-policy.html` — Privacy Policy with Twilio A2P–compliant SMS consent section (no third-party sharing of mobile info, STOP/HELP opt-out, message frequency/data rates disclosure). Linked in footer Company column site-wide.
-- [x] `terms.html` — Terms & Conditions covering site use, services, payment, IP, confidentiality, liability, governing law (Massachusetts), SMS terms reference. Linked in footer Company column site-wide.
+- [x] `privacy-policy.html` — Privacy Policy with Twilio A2P–compliant SMS consent section (no third-party sharing of mobile info, STOP/HELP opt-out, message frequency/data rates disclosure). Linked in footer Company column site-wide. Section 7 has `id="sms-terms"` anchor for deep-linking from the opt-in page.
+- [x] `terms.html` — Terms & Conditions covering site use, services, payment, IP, confidentiality, liability, governing law (Massachusetts), SMS terms reference. Linked in footer Company column site-wide. Section 8 has `id="sms"` anchor.
+- [x] `sms-opt-in.html` — Dedicated SMS opt-in page for Twilio TFV / A2P registration review. Name + email + U.S. phone fields with an unchecked-by-default consent checkbox containing the full TCPA disclosure (brand name, message types, frequency, STOP/HELP, message and data rates). Privacy Policy and Terms linked from the consent text and a "What to expect" panel restates the SMS section verbatim. Submissions captured via Netlify Forms (form name `sms-opt-in`) with honeypot anti-spam; inline AJAX submit with a "You're opted in" success state. Linked in footer Company column site-wide.
 
 ### Search Console & Indexing
 - [x] Google Search Console — ownership verified
@@ -140,6 +141,7 @@ homegrowngrowth.co/roi-call             ← Book a call (Calendly)
 homegrowngrowth.co/case-studies         ← Placeholder (noindex)
 homegrowngrowth.co/privacy-policy       ← Privacy Policy (incl. SMS / A2P)
 homegrowngrowth.co/terms                ← Terms & Conditions
+homegrowngrowth.co/sms-opt-in           ← SMS opt-in form (Twilio TFV / A2P)
 homegrowngrowth.co/404                  ← Custom 404
 homegrowngrowth.co/resources            ← 301 → /
 ```

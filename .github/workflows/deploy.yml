@@ -43,6 +43,7 @@ jobs:
                 "https://homegrowngrowth.co/pricing",
                 "https://homegrowngrowth.co/roi-call",
                 "https://homegrowngrowth.co/privacy-policy",
-                "https://homegrowngrowth.co/terms"
+                "https://homegrowngrowth.co/terms",
+                "https://homegrowngrowth.co/sms-opt-in"
               ]
             }'
