@@ -11,3 +11,22 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+.next/
+
+# Deploy CLIs
+.vercel/
+
+# Claude Code (commit settings.json; ignore local overrides + history)
+.claude/settings.local.json
+.claude/file-history/
