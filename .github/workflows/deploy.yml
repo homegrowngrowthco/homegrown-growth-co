@@ -12,10 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+      - uses: actions/setup-node@v4
         with:
-          args: deploy --dir=. ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
+          node-version: 20
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli@22
+
+      - name: Deploy to Netlify
+        run: netlify deploy --dir=. ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
