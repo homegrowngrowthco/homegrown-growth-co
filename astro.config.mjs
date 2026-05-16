@@ -8,7 +8,10 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   build: {
-    format: 'directory',
+    // 'file' produces dist/<slug>.html (not dist/<slug>/index.html), so Netlify
+    // serves /<slug> directly without a trailing-slash 301. Matches the URL
+    // shape the prod site has always had.
+    format: 'file',
   },
   integrations: [
     sitemap({
