@@ -1,5 +1,5 @@
 # Homegrown Growth Co. — Site Status
-_Last updated: 2026-05-16 (Astro 5 migration shipped + Claude Code optimization + SECURITY.md + LICENSE — Phases B/C/D of the reorganization plan all complete; site is now on Astro 5)_
+_Last updated: 2026-05-16 (later same day) — tech-debt cleanup: /for-saas unified onto shared design system, 8 unused font files dropped, inline-style refactor 93→25, CSP fix that unblocks Microsoft Clarity in prod (silently broken since the CSP went up). All deferred items from the reorganization plan are now resolved or explicitly declined with documented rationale._
 
 ---
 
@@ -111,14 +111,17 @@ _Last updated: 2026-05-16 (Astro 5 migration shipped + Claude Code optimization 
 | **One real case study** | Replaces placeholder cards on `/case-studies`. |
 | **Blog/Resources content** | Long-term SEO play. `/resources` is currently retired (301 → `/`); when you publish, build a fresh page. |
 
-### Tech debt — defer until it actually hurts
-| Task | Effort | Notes |
+### Tech debt — all resolved or explicitly declined (2026-05-16)
+| Task | Status | Notes |
 |------|--------|-------|
-| ~~Move to a build system (Eleventy / Astro / Hugo)~~ | ✅ | **Done 2026-05-16** — migrated to Astro 5. Shared BaseLayout + Nav + Footer; global changes are now one-file edits. |
-| `/for-saas` design unification | 2–4 hrs | Kept its embedded design system through the Astro migration as a static `.html` in `src/pages/`. Swap to a `.astro` page using BaseLayout + global.css when the visual identity is next revisited. |
-| Inline `style="..."` → CSS classes | 1–2 hrs | ~93 inline styles, unchanged through the migration. Pure code-quality. |
-| Drop unused fonts (Plus Jakarta Sans, DM Sans) | 5 min | Blocked by `/for-saas` unification — they're only used there. |
-| CSP: remove `'unsafe-inline'` from `script-src` | ~2 hrs | Future path is nonce-based CSP via an Astro integration that stamps a per-build nonce. NOT SHA-hashing every JSON-LD block (brittle). |
+| ~~Move to a build system (Eleventy / Astro / Hugo)~~ | ✅ Done | Migrated to Astro 5 in the morning Phase B session. Shared BaseLayout + Nav + Footer + ServicePage components; global changes are now one-file edits. |
+| ~~`/for-saas` design unification~~ | ✅ Done | Replaced static .html (embedded design system) with `.astro` using BaseLayout + standard Nav/Footer + global.css. Page-specific section classes (.proof-strip, .pain-card, .saas-service-card, .stat-card, .fit-cols) added to global.css. SaaS content preserved verbatim. |
+| ~~Inline `style="..."` → CSS classes~~ | ✅ Done | 93 → 25 (73% reduction) via utility classes in global.css (.link-teal, .legal-prose, .legal-h2, .legal-list, .title--on-dark, .mb-X, .inline-cta). Remaining 25 are bespoke one-offs, not repeated patterns. |
+| ~~Drop unused fonts (Plus Jakarta Sans, DM Sans)~~ | ✅ Done | 8 woff2 files deleted (~80 KB). `fonts.css` trimmed to Inter + DM Mono only. |
+| **CSP fix — `scripts.clarity.ms` blocked, Clarity broken in prod** | ✅ Fixed | Lighthouse audit caught it: Clarity bootstrap loaded from `clarity.ms` (allowed) but the SDK from `scripts.clarity.ms` was blocked by script-src. Session capture was silently failing. Fix in this session. |
+| **CSP hardening — `frame-ancestors 'none'` + `upgrade-insecure-requests`** | ✅ Done | Added both directives; defensive and free. |
+| CSP: remove `'unsafe-inline'` from `script-src` | ⏸️ Explicitly declined | Requires per-build SHA-256 hashing of inline JSON-LD + Astro bundled scripts with a custom build step injecting hashes into the netlify.toml CSP header. ~2-4 hours of work; doesn't unblock a real user-facing threat on a static marketing site (no UGC, no auth surface). Astro 5's `experimental.csp` doesn't help (SSR-only, meta-tag delivery, won't work with our static output). Revisit when there's a specific compliance/audit driver. |
+| Branch protection on `main` | ⏸️ Explicitly declined | Skipped while solo. Friction cost is real, security benefit is near-zero on a static marketing site with no secrets in the repo. Revisit if a collaborator joins. |
 
 ### When the time comes
 | Task | Trigger |
@@ -134,10 +137,10 @@ _Last updated: 2026-05-16 (Astro 5 migration shipped + Claude Code optimization 
 
 ## Known Caveats
 
-- **`src/pages/for-saas.html` is detached from the global design system.** Lives as a static `.html` in `src/pages/` (Astro serves it as-is, doesn't process it). Has its own embedded CSS, custom nav, and custom footer using `.footer-inner`/`.footer-logo`/`.footer-links` classes instead of the global `.footer__grid`. Site-wide nav or design changes in `Nav.astro` / `Footer.astro` / `global.css` do NOT propagate to `/for-saas` automatically.
-- **CSP retains `'unsafe-inline'` in `script-src`.** Required for inline JSON-LD blocks emitted by `JsonLd.astro` (`set:html={JSON.stringify(...)}`) and for Astro's bundled inline `<script type="module">` tags. Tightening path (when prioritized): nonce-based CSP via an Astro integration that stamps a per-build nonce on inline scripts. NOT SHA-256-hashing every JSON-LD block (brittle — every schema edit invalidates the hash). Acceptable trade-off for a static site with no user-generated content.
+- **CSP retains `'unsafe-inline'` in `script-src` and `style-src`.** Required for inline JSON-LD blocks emitted by `JsonLd.astro` (`set:html={JSON.stringify(...)}`), Astro's bundled inline `<script type="module">` tags, and the ~25 remaining inline `style="..."` attributes. Tightening path (when prioritized): per-build SHA-256 hash extraction injected into the CSP header via a custom build step. ~2-4 hours of work; on a static marketing site with no UGC or auth surface, the security benefit is near-zero. Decision documented in `CLAUDE.md`.
+- **Microsoft Clarity uses third-party cookies.** Lighthouse `third-party-cookies` audit (weight 5) flags 8 cookies from `clarity.ms` / `c.clarity.ms` / `c.bing.com`. Unfixable without removing Clarity. Acceptable trade-off for session-replay analytics.
 - **Branch protection on `main`: deliberately skipped while solo.** The friction cost of forcing every change through a PR for a single-developer marketing site outweighs the near-zero security benefit (no secrets in the repo). Revisit when a collaborator joins. Documented in `CLAUDE.md`.
-- **Lighthouse Best Practices score sits at 0.73 across all pages.** Captured in `_baseline/lighthouse-2026-05-14/` as pre-migration baseline; the Astro migration didn't change it. Most likely cause is the CSP `'unsafe-inline'` flagging — fixing that (via nonce-based CSP, above) should lift the score.
+- **Lighthouse Best Practices baseline was 0.73.** Captured in `_baseline/lighthouse-2026-05-14/`. The main deductions came from `errors-in-console` + `inspector-issues` (the blocked-Clarity-SDK CSP violation, FIXED in this session) and `third-party-cookies` (Clarity, unfixable). Post-fix re-run should land at ~0.95. Run `/audit-seo https://homegrowngrowth.co/` to measure.
 
 ---
 
