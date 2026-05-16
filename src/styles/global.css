@@ -2429,3 +2429,360 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
   }
 }
+
+/* ============================================================
+   FOR-SAAS LANDING PAGE (src/pages/for-saas.astro)
+   Unified onto the global design system 2026-05-16. Uses the
+   shared Nav, Footer, PageHero, section/container/btn classes.
+   The classes below cover only the page-specific layouts that
+   don't exist elsewhere on the site.
+   ============================================================ */
+
+.proof-strip-section {
+  padding: 24px 0 12px;
+  background: var(--color-surface);
+}
+
+.proof-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 24px;
+  padding: 18px 24px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.proof-strip__label {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  font-weight: 600;
+}
+
+.proof-strip__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.proof-strip__item {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.proof-strip__item:not(:last-child)::after {
+  content: '·';
+  margin-left: 14px;
+  color: var(--color-muted);
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pain-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pain-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.pain-card__icon {
+  font-size: 1.875rem;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.pain-card__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.pain-card__body {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.saas-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.saas-service-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.saas-service-card__tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  background: rgba(73, 166, 156, 0.1);
+  border: 1px solid rgba(73, 166, 156, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.saas-service-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.saas-service-card__body {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.saas-service-card__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.saas-service-card__bullets li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.saas-service-card__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--color-teal);
+  border-radius: 50%;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.stat-card__number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.stat-card__label {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.fit-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.fit-col {
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.fit-col--good {
+  background: rgba(73, 166, 156, 0.06);
+  border-color: rgba(73, 166, 156, 0.25);
+}
+
+.fit-col--bad {
+  background: var(--color-bg);
+}
+
+.fit-col__label {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.fit-col--good .fit-col__label { color: var(--color-teal); }
+.fit-col--bad .fit-col__label  { color: var(--color-muted); }
+
+.fit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fit-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.fit-list__icon {
+  flex-shrink: 0;
+  color: var(--color-teal);
+  font-weight: 700;
+  width: 16px;
+}
+
+.fit-list__icon--muted {
+  color: var(--color-muted);
+}
+
+@media (max-width: 900px) {
+  .pain-grid,
+  .saas-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pain-grid,
+  .saas-services-grid,
+  .stat-grid,
+  .fit-cols {
+    grid-template-columns: 1fr;
+  }
+  .proof-strip {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   Added 2026-05-16 during the inline-style cleanup. Each class
+   below replaced a repeated inline style="..." pattern (3+ uses).
+   Lets pages stay readable without per-instance style attributes
+   and tees up future CSP `style-src` hardening if pursued.
+   ============================================================ */
+
+/* Teal accent link, used for inline body links across legal pages,
+   about, sms-opt-in. Was repeated ~15x as
+   `style="color: var(--color-teal); font-weight: 600;"`. */
+.link-teal {
+  color: var(--color-teal);
+  font-weight: 600;
+}
+
+/* Long-form prose wrapper used on the legal pages, about's
+   why-fractional section, and sms-opt-in's "what to expect" panel. */
+.legal-prose {
+  font-size: 1.0625rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+.legal-prose p { margin-bottom: 1em; }
+
+/* H2 spacing on legal pages — numbered section headings stack with
+   48px top + 16px bottom margin. Was repeated ~30x. */
+.legal-h2 {
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+/* Bulleted list styling on legal pages — indented from left, with
+   bottom spacing on the list and 8px between items. */
+.legal-list {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.legal-list li { margin-bottom: 8px; }
+
+/* Section title white-text variant for headings on dark/cta-section
+   backgrounds. Replaces `style="color:#fff;"` and
+   `style="color:#fff; margin-bottom: 20px;"`. */
+.title--on-dark        { color: #fff; }
+.title--on-dark-spaced { color: #fff; margin-bottom: 20px; }
+
+/* Section eyebrow when used as a block above a heading
+   (case-studies "in the meantime" pattern). */
+.eyebrow--block {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Bottom-margin spacing utilities for section headings.
+   Used sparingly where the design system's defaults don't apply. */
+.mb-8  { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-36 { margin-bottom: 36px; }
+.mb-40 { margin-bottom: 40px; }
+
+/* Case-studies inline CTA card — moved out of the page template. */
+.inline-cta {
+  text-align: center;
+  margin-top: 64px;
+  padding: 56px 40px;
+  background: var(--color-bg);
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+}
+.inline-cta__body {
+  color: var(--color-muted);
+  font-size: 1.0625rem;
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
