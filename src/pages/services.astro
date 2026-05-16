@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Services — Homegrown Growth Co.';
+const description = 'Fractional RevOps, CRM implementation, process automation, reporting, tech stack audits, and sales comp. Scoped project work or ongoing embedded support.';
+const canonical = 'https://homegrowngrowth.co/services';
+
+const provider = { '@type': 'Organization', name: 'Homegrown Growth Co.', url: 'https://homegrowngrowth.co' };
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: 'Fractional RevOps, CRM implementation, process automation, reporting, tech stack audits, and sales comp.',
+  url: canonical,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: canonical },
+    ],
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: [
+      { '@type': 'Service', position: 1, name: 'Fractional RevOps', description: 'Dedicated ops roadmap, weekly standup attendance, cross-functional coordination, and ongoing CRM and reporting ownership — your part-time VP of RevOps.', provider },
+      { '@type': 'Service', position: 2, name: 'CRM Implementation & Cleanup', description: 'Salesforce or HubSpot built right — or rescued from tech debt. Full audit, structured implementation, data cleaning, migration, and team training.', provider },
+      { '@type': 'Service', position: 3, name: 'Process Automation', description: 'End-to-end automation design using n8n, Zapier, and Clay. Lead routing, cross-tool data sync, error handling, and documentation included.', provider },
+      { '@type': 'Service', position: 4, name: 'Reporting & Analytics', description: 'Pipeline analytics, revenue attribution, forecast modeling, and exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice.', provider },
+      { '@type': 'Service', position: 5, name: 'Tech Stack Audit', description: 'Complete GTM tool inventory, gap analysis, consolidation recommendations with estimated cost savings, and a prioritized tooling roadmap.', provider },
+      { '@type': 'Service', position: 6, name: 'Sales Comp & Enablement', description: 'Comp plan design, commission modeling, scenario analysis, sales onboarding frameworks, and ramp structure — with documentation for ongoing administration.', provider },
+    ],
+  },
+};
+
+const rows = [
+  {
+    id: 'fractional-revops',
+    name: 'Fractional RevOps',
+    hook: 'Your part-time VP of RevOps — without the full-time price tag or the hiring process.',
+    bullets: [
+      'Dedicated ops roadmap aligned to your revenue goals and quarterly priorities',
+      'Weekly standup attendance and async availability throughout the month',
+      'Cross-functional coordination between sales, marketing, and finance operations',
+      'Ongoing CRM management, reporting health, and process iteration',
+    ],
+    fit: [
+      "You're scaling past $2M ARR and ops is becoming a bottleneck, not a tailwind",
+      'Your founder or head of sales is doing too much ops work themselves',
+      'You want senior ownership, not task execution, on your revenue stack',
+    ],
+    bg: 'var(--color-surface)',
+  },
+  {
+    id: 'crm-implementation',
+    name: 'CRM Implementation & Cleanup',
+    hook: 'Salesforce or HubSpot built right the first time — or rescued from years of accumulated tech debt.',
+    bullets: [
+      'Full audit of existing setup: data model, field logic, automation conflicts, and user adoption gaps',
+      'Structured implementation scoped to how your team actually sells — not a template',
+      'Data cleaning, deduplication, and migration with zero data loss protocols',
+      'Handoff documentation and team training so adoption sticks after the engagement closes.',
+    ],
+    fit: [
+      'Your CRM is a graveyard — reps log minimally, data is stale, reports are useless',
+      "You're migrating from one CRM to another and can't afford to get it wrong",
+      "You've grown past your original CRM setup and need it rebuilt for where you are now",
+    ],
+    bg: 'var(--color-bg)',
+  },
+  {
+    id: 'process-automation',
+    name: 'Process Automation',
+    hook: 'Replace manual handoffs and tribal knowledge with systems that work the same way every time.',
+    bullets: [
+      'End-to-end automation design using n8n, Zapier, and Clay — scoped, documented, tested',
+      "Lead routing and assignment logic that lives in a system, not someone's head",
+      'Cross-tool data sync between CRM, marketing platform, billing, and finance systems',
+      'Monitoring, error handling, and maintenance documentation included',
+    ],
+    fit: [
+      'Your team is spending hours per week on work that should be automatic',
+      "Leads fall through the cracks because handoff processes aren't systematic",
+      "You have tools that don't talk to each other, creating data gaps",
+    ],
+    bg: 'var(--color-surface)',
+  },
+  {
+    id: 'reporting-analytics',
+    name: 'Reporting & Analytics',
+    hook: 'Dashboards that support real decisions — not vanity metrics and pipeline snapshots nobody reads.',
+    bullets: [
+      'Pipeline analytics: stage velocity, conversion rates, deal quality scoring',
+      'Revenue attribution across channels, campaigns, and sourcing motions',
+      'Forecast modeling with variance tracking and rep-level visibility',
+      'Exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice',
+    ],
+    fit: [
+      'Your weekly forecast is a gut call, not a data-backed number',
+      "You can't tell which channels, reps, or segments are actually driving revenue",
+      "Board reporting takes days to assemble because the data isn't structured",
+    ],
+    bg: 'var(--color-bg)',
+  },
+  {
+    id: 'tech-stack-audit',
+    name: 'Tech Stack Audit',
+    hook: "A full-system look at what you're running, what it's costing you, and whether it's actually working.",
+    bullets: [
+      'Complete inventory of GTM tools — usage, cost, overlap, and integration health',
+      'Gap analysis against what your current stage and motion actually requires',
+      'Consolidation recommendations with estimated cost savings',
+      'Prioritized roadmap for tooling changes with rollout sequencing',
+    ],
+    fit: [
+      "You're paying for tools that nobody's sure are being used",
+      'Your stack grew organically and nobody owns the map',
+      "You're pre-fundraise and want clean, defensible ops infrastructure",
+    ],
+    bg: 'var(--color-surface)',
+  },
+  {
+    id: 'sales-comp',
+    name: 'Sales Comp & Enablement',
+    hook: 'Commission plans that drive the right behavior, and onboarding systems that get reps productive faster.',
+    bullets: [
+      'Comp plan design: quota-setting, OTE structure, accelerators, and SPIFFs',
+      'Commission modeling and scenario analysis to stress-test plan economics',
+      'Sales onboarding frameworks: ramp structure, enablement content, and certification milestones',
+      'Handoff to your team with templates and documentation for ongoing administration',
+    ],
+    fit: [
+      "Your comp plan is a spreadsheet that hasn't been revisited since you hired your first rep",
+      "You're scaling the sales team and need a repeatable ramp program",
+      'Reps are hitting quota but not driving the margin or segment mix you need',
+    ],
+    bg: 'var(--color-bg)',
+    isLast: true,
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
+>
+  <main id="main" class="page-content">
+
+    <PageHero
+      tag="Services"
+      headline="RevOps done end-to-end, or just the piece you need."
+      subtitle="From ongoing fractional support to scoped project work, we work across the entire revenue operations stack. We'll meet you where you are."
+    />
+
+    <div>
+      {rows.map((row) => (
+        <div id={row.id} style={`background: ${row.bg};`}>
+          <div class="container">
+            <div class="service-row fade-up" style={row.isLast ? 'border-bottom: none;' : undefined}>
+              <div class="service-row__left">
+                <h2 class="service-row__name">{row.name}</h2>
+                <p class="service-row__hook">{row.hook}</p>
+                <ul class="service-row__bullets" aria-label="What's included">
+                  {row.bullets.map((b) => <li class="service-row__bullet">{b}</li>)}
+                </ul>
+              </div>
+              <div class="service-row__fit">
+                <p class="service-row__fit-title">Good fit if...</p>
+                {row.fit.map((f) => (
+                  <div class="service-row__fit-item">
+                    <span class="fit-check" aria-hidden="true"></span>
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <section class="section section--surface" aria-labelledby="engagement-heading">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <span class="section-eyebrow">How We Work</span>
+          <h2 class="display-lg section-title" id="engagement-heading">Two ways to engage.</h2>
+        </div>
+
+        <div class="engagement-grid">
+
+          <div class="engagement-card fade-up fade-up-delay-1">
+            <p class="engagement-card__type">Fractional / Ongoing</p>
+            <h3 class="engagement-card__title">Monthly Retainer</h3>
+            <p class="engagement-card__desc">Embedded support with an ongoing roadmap. Attending your standups, owning the ops backlog, and executing across your full revenue system month over month. Minimum 3-month commitment. Best for teams who need a consistent ops partner, not a one-time fix.</p>
+            <a href="/roi-call" class="engagement-card__cta">
+              Let's talk about what fits
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="engagement-card fade-up fade-up-delay-2">
+            <p class="engagement-card__type">Project-Based</p>
+            <h3 class="engagement-card__title">Defined Scope</h3>
+            <p class="engagement-card__desc">A clear deliverable, timeline, and exit point. Best for CRM migrations, reporting buildouts, automation projects, or comp plan design. Priced fixed or time-and-materials depending on scope. No ongoing commitment required.</p>
+            <a href="/roi-call" class="engagement-card__cta">
+              Let's talk about what fits
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Not sure where to start?<br />Book a free ROI call.</h2>
+          <p class="cta-body">No pitch, no proposal — just an honest conversation about where your ops are costing you money and what would actually move the needle.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
