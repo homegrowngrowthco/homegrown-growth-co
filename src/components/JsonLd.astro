@@ -1,0 +1,14 @@
+---
+// Renders a JSON-LD <script> block.
+// XSS-safe: escapes embedded </script> sequences in case schema fields
+// ever come from user-derived content (testimonials, case studies).
+type SchemaInput = Record<string, unknown> | Record<string, unknown>[];
+
+interface Props {
+  schema: SchemaInput;
+}
+
+const { schema } = Astro.props;
+const json = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+<script type="application/ld+json" is:inline set:html={json}></script>

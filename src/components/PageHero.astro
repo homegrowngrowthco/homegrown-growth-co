@@ -1,0 +1,24 @@
+---
+interface Props {
+  tag: string;
+  headline: string;
+  subtitle?: string | undefined;
+  headlineMaxWidth?: string | undefined;
+}
+
+const { tag, headline, subtitle, headlineMaxWidth } = Astro.props;
+---
+<section class="page-hero">
+  <div class="container">
+    <span class="page-hero__tag fade-up">{tag}</span>
+    <h1
+      class="page-hero__headline fade-up fade-up-delay-1"
+      style={headlineMaxWidth ? `max-width: ${headlineMaxWidth};` : undefined}
+    >
+      {headline}
+    </h1>
+    {subtitle && (
+      <p class="page-hero__sub fade-up fade-up-delay-2" set:html={subtitle}></p>
+    )}
+  </div>
+</section>
