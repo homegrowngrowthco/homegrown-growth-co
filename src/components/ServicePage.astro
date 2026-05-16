@@ -1,0 +1,198 @@
+---
+// Shared template for the 6 service detail pages. Each page passes its
+// own content via props; this component renders the consistent structure
+// (hero + breadcrumb, overview row with hook/included/good-fit-if, FAQ,
+// related services, CTA) and builds the @graph JSON-LD (Service +
+// BreadcrumbList + FAQPage) from the same data.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Faq {
+  q: string;
+  /** Plain text used in JSON-LD acceptedAnswer.text */
+  schemaA: string;
+  /** HTML used in the visible FAQ (can include inline <a>) */
+  htmlA: string;
+}
+
+interface RelatedService {
+  slug: string;
+  title: string;
+  sub: string;
+}
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  serviceName: string;
+  serviceTag: string;
+  serviceSchemaDescription: string;
+  headlineParts: string[];
+  subtitle: string;
+  hook: string;
+  whatsIncluded: string[];
+  goodFitIf: string[];
+  faqs: Faq[];
+  relatedServices: RelatedService[];
+  ctaHeadline: string;
+  ctaBody: string;
+}
+
+const {
+  slug,
+  title,
+  description,
+  serviceName,
+  serviceTag,
+  serviceSchemaDescription,
+  headlineParts,
+  subtitle,
+  hook,
+  whatsIncluded,
+  goodFitIf,
+  faqs,
+  relatedServices,
+  ctaHeadline,
+  ctaBody,
+} = Astro.props;
+
+const canonical = `https://homegrowngrowth.co/${slug}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: serviceName,
+      description: serviceSchemaDescription,
+      url: canonical,
+      provider: {
+        '@type': 'Organization',
+        name: 'Homegrown Growth Co.',
+        url: 'https://homegrowngrowth.co',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://homegrowngrowth.co/services' },
+        { '@type': 'ListItem', position: 3, name: serviceName, item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.schemaA },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
+>
+  <main id="main" class="page-content">
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb fade-up" aria-label="Breadcrumb">
+          <a href="/" class="breadcrumb__link">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="/services" class="breadcrumb__link">Services</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="breadcrumb__current">{serviceName}</span>
+        </nav>
+        <span class="page-hero__tag fade-up">{serviceTag}</span>
+        <h1 class="page-hero__headline fade-up fade-up-delay-1">
+          {headlineParts.map((part, i) => (
+            <>
+              {part}{i < headlineParts.length - 1 && <br />}
+            </>
+          ))}
+        </h1>
+        <p class="page-hero__sub fade-up fade-up-delay-2">{subtitle}</p>
+        <div class="btn-group fade-up fade-up-delay-3">
+          <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
+          <a href="/services" class="btn btn--outline btn--lg">View All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-label="Service overview">
+      <div class="container">
+        <div class="service-row fade-up" style="border-bottom:none;">
+          <div class="service-row__left">
+            <p class="service-row__hook" style="font-size:1.125rem; color:var(--color-text); font-weight:400; line-height:1.75; margin-bottom:28px;">{hook}</p>
+            <p class="service-row__fit-title" style="margin-bottom:16px;">What's included</p>
+            <ul class="service-row__bullets" aria-label="What's included">
+              {whatsIncluded.map((item) => (
+                <li class="service-row__bullet">{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="service-row__fit">
+            <p class="service-row__fit-title">Good fit if...</p>
+            {goodFitIf.map((item) => (
+              <div class="service-row__fit-item">
+                <span class="fit-check" aria-hidden="true"></span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg" aria-labelledby="faq-heading">
+      <div class="container container--narrow">
+        <div class="section-header fade-up" style="margin-bottom:48px;">
+          <span class="section-eyebrow">Common Questions</span>
+          <h2 class="display-md section-title" id="faq-heading">Frequently asked.</h2>
+        </div>
+        <div class="faq-stack">
+          {faqs.map((f) => (
+            <div class="faq-item fade-up">
+              <h3 class="faq-item__q">{f.q}</h3>
+              <p class="faq-item__a" set:html={f.htmlA}></p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="related-heading">
+      <div class="container">
+        <div class="section-header section-header--center fade-up" style="margin-bottom:40px;">
+          <span class="section-eyebrow">Related Services</span>
+          <h2 class="display-md section-title" id="related-heading">Often paired with this.</h2>
+        </div>
+        <div class="related-grid">
+          {relatedServices.map((r) => (
+            <a href={`/${r.slug}`} class="related-card fade-up">
+              <p class="related-card__title">{r.title}</p>
+              <p class="related-card__sub">{r.sub}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">{ctaHeadline}</h2>
+          <p class="cta-body">{ctaBody}</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
