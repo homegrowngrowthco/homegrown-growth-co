@@ -1,0 +1,78 @@
+---
+// Global top nav. Uses Astro.url.pathname to set the active class
+// server-side — no client-side logic needed (was previously in script.js).
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const servicePages = [
+  '/fractional-revops',
+  '/crm-implementation',
+  '/process-automation',
+  '/reporting-analytics',
+  '/tech-stack-audit',
+  '/sales-comp-enablement',
+];
+
+const isActive = (href: string) => path === href.replace(/\/$/, '');
+const isServicesActive = servicePages.includes(path);
+---
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Homegrown Growth Co. home">
+        <span class="logo-mark"><span class="hg">HG</span><span class="c">C</span></span>
+        <span class="logo-name">Homegrown Growth Co.</span>
+      </a>
+      <div class="nav__links" role="list">
+        <div class="nav__dropdown-wrap" role="listitem">
+          <button
+            class:list={['nav__link', 'nav__link--has-dropdown', { active: isServicesActive }]}
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Services
+            <svg class="nav__dropdown-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__dropdown" role="menu" aria-label="Services menu">
+            <a href="/fractional-revops" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Fractional RevOps</span><span class="nav__dropdown-sub">Embedded senior ops leadership</span></a>
+            <a href="/crm-implementation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">CRM Implementation &amp; Cleanup</span><span class="nav__dropdown-sub">Salesforce &amp; HubSpot</span></a>
+            <a href="/process-automation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Process Automation</span><span class="nav__dropdown-sub">n8n, Zapier, Clay</span></a>
+            <a href="/reporting-analytics" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Reporting &amp; Analytics</span><span class="nav__dropdown-sub">Dashboards that drive decisions</span></a>
+            <a href="/tech-stack-audit" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Tech Stack Audit</span><span class="nav__dropdown-sub">Inventory, gaps, cost savings</span></a>
+            <a href="/sales-comp-enablement" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Sales Comp &amp; Enablement</span><span class="nav__dropdown-sub">Comp plans and ramp programs</span></a>
+            <a href="/services" class="nav__dropdown-all" role="menuitem">View all services →</a>
+          </div>
+        </div>
+        <a href="/case-studies" class:list={['nav__link', { active: isActive('/case-studies') }]} role="listitem">Case Studies</a>
+        <a href="/pricing" class:list={['nav__link', { active: isActive('/pricing') }]} role="listitem">Pricing</a>
+        <a href="/about" class:list={['nav__link', { active: isActive('/about') }]} role="listitem">About</a>
+      </div>
+      <a href="/roi-call" class="btn-nav-cta">Book Your Free ROI Call</a>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav__mobile" role="dialog" aria-label="Mobile navigation">
+  <div class="nav__mobile-group">
+    <button class="nav__mobile-group-toggle" aria-expanded="false">
+      Services
+      <svg class="nav__dropdown-chevron" width="18" height="18" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="nav__mobile-sub" hidden>
+      <a href="/fractional-revops" class="nav__mobile-sub-link">Fractional RevOps</a>
+      <a href="/crm-implementation" class="nav__mobile-sub-link">CRM Implementation</a>
+      <a href="/process-automation" class="nav__mobile-sub-link">Process Automation</a>
+      <a href="/reporting-analytics" class="nav__mobile-sub-link">Reporting &amp; Analytics</a>
+      <a href="/tech-stack-audit" class="nav__mobile-sub-link">Tech Stack Audit</a>
+      <a href="/sales-comp-enablement" class="nav__mobile-sub-link">Sales Comp &amp; Enablement</a>
+      <a href="/services" class="nav__mobile-sub-link nav__mobile-sub-link--all">All services →</a>
+    </div>
+  </div>
+  <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
+  <a href="/pricing" class="nav__mobile-link">Pricing</a>
+  <a href="/about" class="nav__mobile-link">About</a>
+  <a href="/roi-call" class="nav__mobile-cta btn btn--primary btn--lg">Book Your Free ROI Call</a>
+</div>

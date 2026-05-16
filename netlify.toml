@@ -1,5 +1,9 @@
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
 
 [[headers]]
   for = "/*"
@@ -37,108 +41,11 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Clean URL redirects
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/services"
-  to = "/services.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/pricing"
-  to = "/pricing.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/about"
-  to = "/about.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/roi-call"
-  to = "/roi-call.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/case-studies"
-  to = "/case-studies.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/for-saas"
-  to = "/for-saas.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/fractional-revops"
-  to = "/fractional-revops.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/crm-implementation"
-  to = "/crm-implementation.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/process-automation"
-  to = "/process-automation.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/reporting-analytics"
-  to = "/reporting-analytics.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/tech-stack-audit"
-  to = "/tech-stack-audit.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/sales-comp-enablement"
-  to = "/sales-comp-enablement.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/privacy-policy"
-  to = "/privacy-policy.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/terms"
-  to = "/terms.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/sms-opt-in"
-  to = "/sms-opt-in.html"
-  status = 200
-  force = true
+# Clean URLs are served natively by Astro's directory-format output
+# (dist/<slug>/index.html), so no per-page rewrites are needed —
+# Netlify resolves /services to /services/index.html automatically.
+# The /resources retirement redirect and the trailing 404 fallback
+# below are the only redirects this site needs.
 
 # /resources — page retired; permanent redirect to homepage
 [[redirects]]

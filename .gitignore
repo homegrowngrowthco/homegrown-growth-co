@@ -23,6 +23,7 @@ node_modules/
 # Build artifacts
 dist/
 .next/
+.astro/
 
 # Deploy CLIs
 .vercel/

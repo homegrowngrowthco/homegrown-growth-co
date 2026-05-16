@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Case Studies — Homegrown Growth Co.';
+const description = 'Real RevOps work with measurable results. CRM migrations, automation builds, reporting overhauls, and more — case studies coming soon.';
+const canonical = 'https://homegrowngrowth.co/case-studies';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  noindex={true}
+>
+  <main id="main" class="page-content">
+
+    <PageHero
+      tag="Case Studies"
+      headline="Real work. Measurable results."
+      subtitle="Case studies coming soon. In the meantime, book a call to hear specific examples relevant to your situation."
+    />
+
+    <section class="section section--surface" aria-label="Case study placeholders">
+      <div class="container">
+
+        <div class="placeholder-grid">
+          <article class="placeholder-card fade-up fade-up-delay-1" aria-label="Case study coming soon: CRM Migration">
+            <span class="placeholder-card__tag">CRM Migration</span>
+            <h2 class="placeholder-card__title">Case study in progress...</h2>
+            <p class="placeholder-card__body">Results being documented. Check back soon.</p>
+          </article>
+
+          <article class="placeholder-card fade-up fade-up-delay-2" aria-label="Case study coming soon: Automation Build">
+            <span class="placeholder-card__tag">Automation Build</span>
+            <h2 class="placeholder-card__title">Case study in progress...</h2>
+            <p class="placeholder-card__body">Results being documented. Check back soon.</p>
+          </article>
+
+          <article class="placeholder-card fade-up fade-up-delay-3" aria-label="Case study coming soon: Reporting Overhaul">
+            <span class="placeholder-card__tag">Reporting Overhaul</span>
+            <h2 class="placeholder-card__title">Case study in progress...</h2>
+            <p class="placeholder-card__body">Results being documented. Check back soon.</p>
+          </article>
+        </div>
+
+        <div class="fade-up" style="text-align:center; margin-top: 64px; padding: 56px 40px; background: var(--color-bg); border-radius: 20px; border: 1px solid var(--color-border);">
+          <span class="section-eyebrow" style="display:block; margin-bottom:12px;">In the meantime</span>
+          <h2 class="display-md" style="margin-bottom: 16px;">Want to hear specific examples on a call?</h2>
+          <p style="color: var(--color-muted); font-size: 1.0625rem; max-width: 480px; margin: 0 auto 32px; line-height: 1.65;">I'll share work that's relevant to your specific situation — industry, stack, and stage.</p>
+          <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Not sure where to start?<br />Book a free ROI call.</h2>
+          <p class="cta-body">No pitch, no proposal — just an honest conversation about where your ops are costing you money and what would actually move the needle.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

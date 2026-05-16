@@ -1,0 +1,113 @@
+---
+// SMS opt-in form for Twilio TFV / A2P compliance.
+// Real form (visible). AJAX submit to / (Netlify Forms intercepts).
+// The hidden duplicate at <NetlifyFormStubs /> in BaseLayout handles
+// build-time form detection regardless of what attributes survive
+// Astro's render pipeline.
+---
+<form
+  name="sms-opt-in"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="sms-form"
+  novalidate
+>
+  <input type="hidden" name="form-name" value="sms-opt-in" />
+  <p class="sms-form__hp" hidden aria-hidden="true">
+    <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
+
+  <div class="form-field">
+    <label for="sms-name">Your name</label>
+    <input id="sms-name" name="name" type="text" required autocomplete="name" />
+  </div>
+
+  <div class="form-field">
+    <label for="sms-email">Email address</label>
+    <input id="sms-email" name="email" type="email" required autocomplete="email" />
+  </div>
+
+  <div class="form-field">
+    <label for="sms-phone">Mobile phone (U.S.)</label>
+    <input
+      id="sms-phone"
+      name="phone"
+      type="tel"
+      required
+      autocomplete="tel"
+      inputmode="tel"
+      pattern="^[\d\s\-\(\)\+\.]{10,20}$"
+      placeholder="(555) 123-4567"
+    />
+    <p class="form-field__help">U.S. mobile number. We'll send a confirmation text after you opt in.</p>
+  </div>
+
+  <label class="form-consent">
+    <input type="checkbox" name="consent" required />
+    <span>
+      I agree to receive SMS/text messages from Homegrown Growth Co. about
+      scheduling, appointment reminders, project status, customer support,
+      and service-related communications. Message frequency varies. Message
+      and data rates may apply. Reply <strong>STOP</strong> to opt out and
+      <strong>HELP</strong> for help. By opting in I acknowledge the
+      <a href="/privacy-policy#sms-terms">SMS section of the Privacy Policy</a>
+      and the <a href="/terms#sms">Terms &amp; Conditions</a>.
+    </span>
+  </label>
+
+  <p class="sms-form__error" role="alert" hidden>
+    Something went wrong submitting the form. Please try again, or email
+    <a href="mailto:ian@homegrowngrowth.co">ian@homegrowngrowth.co</a>.
+  </p>
+
+  <button type="submit" class="btn btn--primary btn--lg sms-form__submit">Opt in to SMS updates</button>
+</form>
+
+<div class="sms-form__success" hidden role="status" aria-live="polite">
+  <h2 class="display-md section-title" style="margin-bottom: 12px;">You're opted in.</h2>
+  <p style="color: var(--color-muted);">Thanks. We'll text a confirmation to the number you provided shortly. Reply <strong>STOP</strong> at any time to opt out, or <strong>HELP</strong> for assistance. You can also email <a href="mailto:ian@homegrowngrowth.co" style="color: var(--color-teal); font-weight: 600;">ian@homegrowngrowth.co</a>.</p>
+</div>
+
+<script>
+  (() => {
+    const form = document.querySelector<HTMLFormElement>('form[name="sms-opt-in"]:not([hidden])');
+    if (!form) return;
+    const successEl = document.querySelector<HTMLElement>('.sms-form__success');
+    const errorEl = form.querySelector<HTMLElement>('.sms-form__error');
+    const submitBtn = form.querySelector<HTMLButtonElement>('.sms-form__submit');
+    if (!successEl || !errorEl || !submitBtn) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          form.hidden = true;
+          successEl.hidden = false;
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(() => {
+          errorEl.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Opt in to SMS updates';
+        });
+    });
+  })();
+</script>

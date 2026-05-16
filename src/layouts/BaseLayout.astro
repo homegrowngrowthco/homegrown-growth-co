@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import NetlifyFormStubs from '../components/NetlifyFormStubs.astro';
+import JsonLd from '../components/JsonLd.astro';
+
+type SchemaInput = Record<string, unknown> | Record<string, unknown>[];
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogType?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: SchemaInput;
+  /** When true, BaseLayout omits the default <Footer /> entirely.
+   *  Used by /roi-call which renders its own minimal footer. */
+  bareFooter?: boolean;
+  /** When true, BaseLayout omits the global <Nav /> + mobile menu.
+   *  Used by /roi-call which renders a minimal nav. */
+  bareNav?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType = 'website',
+  ogImage = 'https://homegrowngrowth.co/og-image.png',
+  noindex = false,
+  schema,
+  bareFooter = false,
+  bareNav = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index,follow'} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+
+  <!-- Analytics: gtag must load first (defines window.gtag for analytics.js to use) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
+  <script src="/analytics.js" defer></script>
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="Homegrown Growth Co." />
+  <meta property="og:image" content={ogImage} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  {schema && <JsonLd schema={schema} />}
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  {!bareNav && <Nav />}
+
+  <slot />
+
+  {!bareFooter && <Footer />}
+
+  <NetlifyFormStubs />
+
+  <script>
+    import '../scripts/nav.ts';
+  </script>
+</body>
+</html>

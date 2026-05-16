@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Homegrown Growth Co. — Fractional RevOps for Growing Businesses';
+const description = 'Fractional RevOps consulting for $2–10M businesses. CRM implementation, process automation, reporting, and embedded ops strategy — without the cost of a full-time VP.';
+const canonical = 'https://homegrowngrowth.co/';
+
+const faqs = [
+  { q: "I don't know if I need fractional or a full-time hire", a: "Most businesses at $2–10M in revenue don't need (or can afford) a full-time RevOps leader. Fractional gives you senior expertise at 20–30% of the cost, with the flexibility to scale up or exit cleanly." },
+  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured discovery. No systems get touched until there's a clear picture of your sales motion, your team, and where the actual friction is." },
+  { q: 'We already have a CRM, we just need someone to manage it', a: 'That\'s fine. But in practice, "just needs management" usually means it was set up wrong and nobody wants to say it. The assessment will be direct about what\'s actually there.' },
+  { q: 'Can you work with our existing team?', a: 'Yes. This is an embedded engagement — we do not disappear between deliverables. Work happens inside your tools with clear communication and supporting documentation so your internal teams are aligned on next steps.' },
+  { q: 'What if we only need help for a short period?', a: 'Project-based engagements are available for defined scopes: a CRM migration, a dashboard buildout, a comp plan design. Not everything needs to be ongoing.' },
+  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Usually: time saved on manual work, data accuracy improvement, pipeline visibility, and whether your team is actually using what was built.' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      name: 'Homegrown Growth Co.',
+      description: 'Fractional Revenue Operations (RevOps) consulting for growing businesses. CRM implementation, process automation, reporting and analytics, tech stack audits, and sales compensation — delivered as embedded senior-level ops support.',
+      url: 'https://homegrowngrowth.co',
+      email: 'ian@homegrowngrowth.co',
+      image: 'https://homegrowngrowth.co/og-image.png',
+      priceRange: '$$',
+      founder: {
+        '@type': 'Person',
+        name: 'Ian Chamberland',
+        jobTitle: 'Founder & Fractional RevOps Consultant',
+        knowsAbout: ['Revenue Operations', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'GTM Strategy', 'Process Automation'],
+        hasCredential: '8+ years Revenue Operations experience, including Head of Global Revenue Operations',
+      },
+      address: { '@type': 'PostalAddress', addressLocality: 'Massachusetts', addressRegion: 'MA', addressCountry: 'US' },
+      areaServed: ['Massachusetts', 'New England', 'United States'],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'RevOps Services',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fractional RevOps' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CRM Implementation & Cleanup' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Process Automation' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reporting & Analytics' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tech Stack Audit' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sales Comp & Enablement' } },
+        ],
+      },
+      knowsAbout: ['Salesforce', 'HubSpot', 'Revenue Operations', 'CRM Implementation', 'Sales Compensation', 'GTM Strategy', 'n8n', 'Zapier', 'Clay', 'Pipeline Analytics', 'Sales Forecasting'],
+      sameAs: ['https://www.linkedin.com/company/homegrown-growth-co', 'https://www.linkedin.com/in/ianchamberland/'],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+
+const services = [
+  { title: 'Fractional RevOps', desc: 'Ongoing embedded ops support. Acting as a part-time VP of RevOps — owning the roadmap and execution across your full revenue cycle.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
+  { title: 'Process Automation', desc: 'Manual handoffs, repetitive data entry, lead routing that lives in someone\'s head — replaced with reliable, documented automations using n8n, Zapier, and Clay.', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
+  { title: 'Reporting & Analytics', desc: 'Dashboards that tell you what\'s actually happening in your pipeline, not just what\'s in it. Forecasting, attribution, and the metrics that map to decisions.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
+  { title: 'CRM Implementation & Cleanup', desc: 'Whether you\'re building your CRM for the first time or recovering from tech debt. Clean data and logical processes your team actually uses.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
+  { title: 'Tech Stack Audit', desc: 'Too many tools that cost too much. Identify duplication across your tech stack and find cost-saving measures that yield more ROI from your GTM tools.', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
+  { title: 'Sales Comp & Enablement', desc: 'Commission structures that incentivize the right behaviors. Analytics that restores confidence in commissions with clear alignment across your sales teams.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+];
+
+const scenarios = [
+  { num: '01', title: 'Growing Business Without Growing Costs', desc: 'Revenue is growing, but the systems and processes can\'t keep up. Reporting is manual, the CRM is a mess, and the sales team is operating on instinct. Growth is happening, but it\'s tough to scale with so many workarounds.' },
+  { num: '02', title: 'Strategic Ownership, Not Task Execution', desc: 'Admins and VAs handle what\'s in front of them. Consultants handle the technology. But nobody is owning the underlying strategy or the roadmap driving the GTM engine and connecting the CRM to the forecast to the comp plan for end-to-end efficiency.' },
+  { num: '03', title: 'High-Stakes Project', desc: 'Whether you\'re releasing a new AI tool, rolling out a new sales compensation plan, or overhauling your reporting — don\'t let a slow start or lack of oversight push your critical project off track. Rely on expertise to drive flawless execution.' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
+>
+  <main id="main" class="page-content">
+
+    <section class="hero" aria-label="Hero">
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__pretag">Fractional RevOps</div>
+
+          <h1 class="hero__headline fade-up">
+            Revenue operations expertise,<br />without the VP price tag.
+          </h1>
+
+          <p class="hero__sub fade-up fade-up-delay-1">
+            From pre-sales to post-order. Scale your business without scaling your costs.
+          </p>
+
+          <div class="btn-group fade-up fade-up-delay-2">
+            <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
+            <a href="/services" class="btn btn--outline btn--lg">See What We Do</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="section-eyebrow">What We Do</span>
+          <h2 class="display-lg section-title" id="services-heading">One partner. Every layer of your revenue ops.</h2>
+        </div>
+
+        <div class="services-grid">
+          {services.map((s, i) => (
+            <div class:list={['service-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+              </div>
+              <h3 class="service-card__title">{s.title}</h3>
+              <p class="service-card__desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" aria-labelledby="when-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="section-eyebrow section-eyebrow--light">When It Fits</span>
+          <h2 class="display-lg section-title" id="when-heading" style="color:#fff;">The right engagement at the right stage.</h2>
+        </div>
+
+        <div class="scenario-grid">
+          {scenarios.map((s, i) => (
+            <div class:list={['scenario-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <span class="scenario-card__num">{s.num}</span>
+              <h3 class="scenario-card__title">{s.title}</h3>
+              <p class="scenario-card__desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="concerns-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="section-eyebrow">Frequently Asked Questions</span>
+          <h2 class="display-lg section-title" id="concerns-heading">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="concerns-grid">
+          {faqs.map((f, i) => (
+            <div class:list={['concern-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <p class="concern-card__q">{f.q}</p>
+              <p class="concern-card__a">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Not sure where to start?<br />Book a free ROI call.</h2>
+          <p class="cta-body">No pitch, no proposal — just an honest conversation about where your ops are costing you money and what would actually move the needle.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

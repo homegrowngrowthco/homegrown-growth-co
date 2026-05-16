@@ -1,0 +1,51 @@
+---
+// Global footer, used on every page that uses BaseLayout.
+// (roi-call previously had a minimal footer — under Astro that page
+// can opt out of BaseLayout's footer via a prop if needed.)
+---
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="/" class="footer__logo">
+          <span class="logo-mark"><span class="hg">HG</span><span class="c">C</span></span>
+          <span class="logo-name">Homegrown Growth Co.</span>
+        </a>
+        <p class="footer__descriptor">Fractional RevOps for growing businesses.</p>
+      </div>
+      <div>
+        <p class="footer__col-title">Services</p>
+        <nav class="footer__links" aria-label="Services links">
+          <a href="/fractional-revops" class="footer__link">Fractional RevOps</a>
+          <a href="/crm-implementation" class="footer__link">CRM Implementation</a>
+          <a href="/process-automation" class="footer__link">Process Automation</a>
+          <a href="/reporting-analytics" class="footer__link">Reporting &amp; Analytics</a>
+          <a href="/tech-stack-audit" class="footer__link">Tech Stack Audit</a>
+          <a href="/sales-comp-enablement" class="footer__link">Sales Comp &amp; Enablement</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Company</p>
+        <nav class="footer__links" aria-label="Company links">
+          <a href="/case-studies" class="footer__link">Case Studies</a>
+          <a href="/pricing" class="footer__link">Pricing</a>
+          <a href="/about" class="footer__link">About</a>
+          <a href="mailto:ian@homegrowngrowth.co" class="footer__link">Contact</a>
+          <a href="https://www.linkedin.com/company/homegrown-growth-co" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/sms-opt-in" class="footer__link">SMS Updates</a>
+          <a href="/privacy-policy" class="footer__link">Privacy Policy</a>
+          <a href="/terms" class="footer__link">Terms &amp; Conditions</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Book a Call</p>
+        <p class="footer__descriptor" style="margin-bottom:20px;">A focused conversation to find out exactly where your ops are costing you.</p>
+        <a href="/roi-call" class="btn btn--primary">Book Your Free ROI Call</a>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <p class="footer__copy">© 2026 Homegrown Growth Co. All rights reserved.</p>
+      <a href="mailto:ian@homegrowngrowth.co" class="footer__email">ian@homegrowngrowth.co</a>
+    </div>
+  </div>
+</footer>
