@@ -4,9 +4,12 @@
 Static marketing site for Homegrown Growth Co., Ian's fractional RevOps consulting practice. Heavy SEO/structured-data focus — every page has JSON-LD (Service / FAQPage / BreadcrumbList / Person / Organization). See `SITE_STATUS.md` for the running punch list.
 
 ## Tech Stack
-- Static HTML5 + vanilla CSS + vanilla JS (no framework, no build step)
-- Self-hosted webfonts (Inter, DM Mono, DM Sans, Plus Jakarta Sans)
-- Netlify hosting + GitHub Actions deploy
+- **Astro 5** + **TypeScript strict** + **vanilla CSS** (no Tailwind; the existing design system in `src/styles/global.css` is the canonical source)
+- `output: 'static'` + `build.format: 'file'` (produces flat `dist/<slug>.html`, served at `/<slug>` natively by Netlify without trailing-slash 301s)
+- `@astrojs/sitemap` integration autogenerates sitemap at build time (filters out `/404` and `/case-studies`)
+- Self-hosted webfonts (Inter, DM Mono, DM Sans, Plus Jakarta Sans) in `public/fonts/`
+- Netlify hosting + GitHub Actions deploy (`npm ci && npm run build && netlify deploy --dir=dist`)
+- `NODE_VERSION="24"` pinned in `netlify.toml` (matches local)
 - GA4 + Microsoft Clarity analytics
 - IndexNow auto-ping on every prod deploy
 - Curl-based weekly link-check workflow
@@ -18,14 +21,22 @@ Static marketing site for Homegrown Growth Co., Ian's fractional RevOps consulti
 - Netlify Site ID: `35530ce7-21f4-4734-92ae-12758607e79e`
 
 ## Key Files & Folders
-- `*.html` — every page is its own static file (14 pages live + indexed; `case-studies.html` is noindex placeholder)
-- `styles.css` — single shared stylesheet (~46KB)
-- `script.js` — UI logic (nav, dropdown, mobile menu, scroll, Calendly)
-- `analytics.js` — GA4 + Clarity bootstrap, defer-loaded (replaced inline scripts on every page)
-- `netlify.toml` — security headers, cache rules, clean-URL redirects (`/about` → `/about.html`), `/resources` 301 → `/`
-- `fonts/` — self-hosted woff2 files
-- `.github/workflows/deploy.yml` — Netlify deploy + IndexNow ping (URL list inside)
+- `src/pages/*.astro` — 16 routes, 1:1 to URLs (file maps directly to `/slug`). Plus `src/pages/for-saas.html` (static page that kept its embedded design system; served as-is by Astro).
+- `src/layouts/BaseLayout.astro` — full `<head>` (meta, fonts, gtag-then-analytics, canonical, OG/Twitter, optional JSON-LD via `JsonLd` component); body with skip-link, `<Nav />`, `<slot />`, `<Footer />`, `<NetlifyFormStubs />`, bundled `nav.ts`. Props: `title`, `description`, `canonical`, `ogType?`, `ogImage?`, `noindex?`, `schema?`, `bareNav?`, `bareFooter?`.
+- `src/components/` — `Nav.astro`, `Footer.astro`, `JsonLd.astro` (with `</script>` XSS-escape), `PageHero.astro`, `SmsOptInForm.astro`, `NetlifyFormStubs.astro` (hidden duplicate form so Netlify Forms detects sms-opt-in regardless of attribute stripping), `ServicePage.astro` (shared template for the 6 service detail pages — schema built from same data as visible content so they can't drift).
+- `src/styles/global.css` — single shared stylesheet (was `styles.css` pre-migration). Imported once in `BaseLayout.astro`; Vite bundles, hashes, and emits to `/_astro/*.css`.
+- `src/scripts/nav.ts` — sticky nav, mobile menu, services dropdown, scroll fade-up animations, Calendly init. TypeScript strict.
+- `public/` — served at site root as-is: `analytics.js`, `fonts/`, favicons, `og-image.png`, `robots.txt`, IndexNow verification file.
+- `_baseline/lighthouse-2026-05-14/*.json` — pre-migration Lighthouse reports (10 JSONs) kept as the performance budget reference. Astro doesn't process this folder (only `src/`).
+- `_assets/` — source brand assets (PNG logos, pricing.jpg) — kept in repo but not deployed (outside `src/` and not in `public/`).
+- `netlify.toml` — security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy, cache rules), `NODE_VERSION="24"`, `/resources` 301 → `/`, trailing 404 fallback. No per-page rewrites (Astro's flat `dist/<slug>.html` maps natively).
+- `astro.config.mjs` — `site`, `output: 'static'`, `trailingSlash: 'never'`, `build.format: 'file'`, sitemap integration with the `/404` + `/case-studies` filter.
+- `tsconfig.json` — extends `astro/tsconfigs/strict`; excludes `dist`, `node_modules`, `_baseline`, `_assets`.
+- `.github/workflows/deploy.yml` — `npm ci` + `npm run build` + Netlify deploy + IndexNow ping (URL list inside)
 - `.github/workflows/link-check.yml` — weekly curl-based link check (~11s)
+- `.claude/settings.json` (committed) — shared project allowlist for safe-default commands (git, npm, gh, netlify, curl, lighthouse). Anyone with this repo gets the same Claude Code shortcuts.
+- `.claude/settings.local.json` (gitignored) — per-machine overrides (more sensitive entries: `git reset`, `gh secret`, `netlify token`, etc.).
+- `.claude/commands/` — slash commands (`/preview`, `/build-check`, `/add-page`, `/audit-seo`).
 - `README.md` — deploy flow + when-you-add-a-new-page checklist (authoritative)
 - `SITE_STATUS.md` — running checklist of completed/remaining work (authoritative)
 
@@ -43,9 +54,17 @@ None for build. Deploy uses GitHub Actions secrets:
 - `NETLIFY_SITE_ID`
 
 ## Deployment
-Push to `main` → GitHub Actions runs `netlify deploy --prod` then pings IndexNow with the URL list. ~30s end-to-end.
+Push to `main` → GitHub Actions runs `npm ci && npm run build && netlify deploy --dir=dist --prod` then pings IndexNow with the URL list. End-to-end ~1 minute (the build step adds ~30s vs. the prior raw-HTML deploy).
 
-**When adding a new page**, update: `sitemap.xml`, `netlify.toml` (clean-URL redirect), `.github/workflows/deploy.yml` (IndexNow URL list), `.github/workflows/link-check.yml`, `SITE_STATUS.md`, nav + footer links across all pages.
+**When adding a new page**, use the `/add-page <slug>` slash command — it scaffolds `src/pages/<slug>.astro` from the BaseLayout template and appends the URL to the IndexNow list in `deploy.yml` in one shot. The sitemap is autogenerated by `@astrojs/sitemap` and the nav/footer are shared components, so no longer-list-of-files-to-update like the pre-Astro era.
+
+If you skip the slash command, the manual checklist is:
+- Create `src/pages/<slug>.astro` (use any existing simple page as a template).
+- Append the URL to the IndexNow `urlList` in `.github/workflows/deploy.yml`.
+- (Optional) Update `link-check.yml` if you want CI to verify the new route.
+- (Optional) Update `SITE_STATUS.md` page inventory.
+
+No need to update sitemap.xml (autogenerated), netlify.toml (no per-page rewrite needed), or nav/footer links across all pages (the Nav and Footer components handle it once).
 
 ## Data Sources
 Hand-authored content. No data files.
@@ -53,7 +72,12 @@ Hand-authored content. No data files.
 ## Open Questions / TODO
 See `SITE_STATUS.md`. Major remaining: Google Business Profile, Clutch profile, testimonials, headshot for `/about`, real case study to replace placeholder.
 
-Long-term tech debt: unify `for-saas.html` into the shared design system (currently has its own embedded CSS); consider Eleventy/Astro/Hugo to template the duplicated nav/footer across 14 pages.
+Long-term tech debt now resolved by the 2026-05-16 Astro 5 migration: the per-page nav/footer/`<head>` duplication is gone (shared via BaseLayout + Nav + Footer components). The previously-flagged "consider Eleventy/Astro/Hugo to template the duplicated nav/footer across 14 pages" is done. Still on the deferred list:
+
+- **`/for-saas` design-system unification** — kept its embedded CSS for now (ported as a static `.html` in `src/pages/`). When the visual identity decisions for `/for-saas` are next revisited, swap it to a `.astro` page using BaseLayout + the global design system.
+- **CSP tightening — remove `'unsafe-inline'` from `script-src`** — the May-2026-and-later approach (Astro 5+) is nonce-based CSP via integration plugins that stamp a per-build nonce on inline scripts (JSON-LD blocks, the bundled nav script tag). NOT SHA-256-hashing every JSON-LD block as we'd considered pre-migration — that path is brittle (every schema edit invalidates the hash). Out of scope for the migration; next step when CSP hardening becomes a priority.
+- **Inline `style="..."` → CSS classes** — ~93 inline styles across pages, unchanged through the migration. Pure code quality.
+- **Branch protection on `main`** — explicitly skipped while solo (friction cost is real, security benefit is near-zero on a static marketing site with no secrets in the repo). Revisit if a collaborator joins.
 
 ## Recovery Notes
 This project survived the **2026-05-04** complete machine wipe.
@@ -102,3 +126,30 @@ This project survived the **2026-05-04** complete machine wipe.
 - Commit `905b3b1` pushed to `main`. Verified live: `gh run list` shows deploy run `25916169568` returned `conclusion: success` at 11:47:53Z. `curl -sI https://homegrowngrowth.co/` returns 200. IndexNow ping step downstream is unchanged and fired as part of the same deploy job.
 - Two unrelated VS Code Problems entries triaged at the same time (in sibling repos, not here): TheAutomationsGuide's `tsconfig.json` "baseUrl deprecated" warning got `ignoreDeprecations: "6.0"` added; TheAutomationsGuide's `qa-content-pr.yml` `SLACK_WEBHOOK_URL` "Context access might be invalid" lint is a known VS Code-extension false-positive (the secret IS configured and used), left as-is.
 - Revert path for this session: `git revert 905b3b1 && git push origin main`. If reverted, the next push would re-break with the original archived-action error — would need to swap to a different replacement (e.g. `nwtgck/actions-netlify@v3`) before pushing again.
+
+### Session 5 — 2026-05-16
+**Phases B + C + D of the reorganization plan, all shipped today.** Site is now on Astro 5; Claude Code workflows formalized; basic security/compliance docs in place. Live-site behavior is byte-for-byte unchanged from the prior vanilla-HTML version (same content, same design system, same URLs).
+
+**Phase B — Astro 5 migration** (merge commit `17980b5`):
+- 8 commits on a feature branch (`astro-migration`), `--no-ff` merge to main. Branch-preview verified before merge (Netlify deploy `6a088938a10c9bcba7e89661`): all 17 routes 200, Netlify Forms detection succeeded (verified by AJAX POST returning Netlify's "Thank you!" page), JSON-LD inline, bundled CSS at `/_astro/*.css`, analytics order preserved, sitemap autogenerated.
+- Architecture: 16 `.astro` pages under `src/pages/` + 1 static `.html` (for-saas, kept its embedded design system). Single `BaseLayout.astro` renders head/nav/footer/analytics for every page. Shared `ServicePage.astro` drives the 6 service detail pages from data props. `JsonLd.astro` uses the `</script>` XSS-escape pattern preemptively. `NetlifyFormStubs.astro` renders a hidden duplicate form on every page so Netlify Forms parser detects sms-opt-in regardless of attribute stripping.
+- Infra: `NODE_VERSION="24"` pinned in netlify.toml (matches local); `deploy.yml` runs `npm ci && npm run build && netlify deploy --dir=dist`; `netlify.toml` dropped all 14 per-page `.html` rewrites (Astro's flat `dist/<slug>.html` maps natively); hand-maintained `sitemap.xml` deleted (autogenerated by `@astrojs/sitemap` with `/404` + `/case-studies` filter).
+- **Trailing-slash 301 footgun caught and fixed** during branch preview: `build.format: 'directory'` (Astro default) produces `dist/<slug>/index.html` which Netlify redirects from `/<slug>` to `/<slug>/`. Flipped to `build.format: 'file'` (commit `9a87eae`), which produces `dist/<slug>.html` served at `/<slug>` directly — preserves the prod URL shape (no trailing slash) and avoids 301-chain SEO penalties.
+- **`data-netlify` stripped from rendered HTML by Netlify processing — this is expected**, not a regression. Netlify strips that attribute after registering the form server-side; it's the signal the form was detected.
+- Bundle stats: `_astro/*.css` chunk shared across all `.astro` pages (35KB hashed); inline `<script type="module">` for bundled nav.ts (under the size threshold for separate emission).
+- Revert path: Netlify dashboard → previous prod deploy → "Publish deploy" (instant), THEN `git revert -m 1 17980b5` + revert `netlify.toml` build config in the same commit to keep repo state in sync with rolled-back deploy.
+
+**Phase C — Claude Code optimization**:
+- `.claude/settings.json` committed at the repo root with the audited shared allowlist (git/npm/gh/netlify/curl/lighthouse — safe-default commands any contributor would want). `.claude/settings.local.json` slimmed to per-machine-only entries (`git reset`, `gh secret`, `netlify token`, etc.) and stays gitignored.
+- `.claude/commands/` slash commands authored: `/preview` (npm run dev in background), `/build-check` (npm run build + npm run preview + curl smoke), `/add-page <slug>` (scaffold src/pages/<slug>.astro from template + append URL to deploy.yml IndexNow list), `/audit-seo <url>` (re-run Lighthouse against the URL and diff against `_baseline/lighthouse-2026-05-14/*.json`).
+- CLAUDE.md (this file) updated for the new architecture: Tech Stack, Key Files & Folders, Deployment, Open Questions / TODO sections all rewritten. The "when you add a new page" checklist now points at `/add-page`.
+
+**Phase D — Security / compliance polish**:
+- `SECURITY.md` added — single-paragraph vulnerability reporting policy.
+- `LICENSE` added — proprietary, all rights reserved (clarifies status for anyone who finds the repo).
+- Branch protection on `main` explicitly skipped while solo (friction cost vs. near-zero security benefit on a static marketing site with no secrets in the repo). Decision documented above.
+- `.gitignore` audit pass: confirms `node_modules/`, `dist/`, `.astro/`, `.env*`, `.netlify/`, `.DS_Store`, `Thumbs.db`, `.claude/settings.local.json`, `.claude/file-history/` all gitignored; `_baseline/` intentionally NOT gitignored (kept tracked for the performance budget reference).
+
+**Manual steps still open** (independent of this session's code work):
+- Twilio TFV / A2P submission with `https://homegrowngrowth.co/sms-opt-in` — pending user. (Netlify Forms email notification is live ✅.)
+- Google Business Profile setup, Clutch profile, testimonials — pre-existing items, see SITE_STATUS.md.

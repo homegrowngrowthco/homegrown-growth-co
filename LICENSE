@@ -1,0 +1,19 @@
+Proprietary — All Rights Reserved
+
+Copyright (c) 2026 Homegrown Growth Co.
+
+The source code, design, copy, and brand assets in this repository are the
+proprietary work of Homegrown Growth Co. and its owner. No part of this
+repository may be reproduced, distributed, modified, or used to create
+derivative works without prior written permission from the copyright holder.
+
+This includes (but is not limited to):
+- The HTML, CSS, TypeScript, and Astro components under src/
+- The brand assets under _assets/ (HGC logo variants, etc.) and public/og-image.png
+- The copy and content authored across src/pages/ and the legal pages
+
+Public-facing rendering of this content on https://homegrowngrowth.co is
+intended for visitors of that site only.
+
+If you'd like to use, fork, license, or republish any part of this work,
+contact ian@homegrowngrowth.co.
