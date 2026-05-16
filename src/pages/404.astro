@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — Homegrown Growth Co."
+  description="The page you're looking for doesn't exist or has moved. Head back to the homepage or book a free ROI call."
+  canonical="https://homegrowngrowth.co/404"
+  noindex={true}
+  bareFooter={true}
+>
+  <main id="main">
+    <div class="not-found">
+      <div class="not-found__inner">
+        <p class="not-found__code">404 — Page not found</p>
+        <h1 class="not-found__headline">This page doesn't exist.</h1>
+        <p class="not-found__body">The link may be broken, or the page may have moved. Try heading back to the homepage or booking a call directly.</p>
+        <div class="not-found__links">
+          <a href="/" class="btn btn--primary btn--lg">Back to Home</a>
+          <a href="/roi-call" class="btn btn--outline btn--lg">Book a Free ROI Call</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .not-found {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+  }
+  .not-found__inner {
+    text-align: center;
+    max-width: 520px;
+  }
+  .not-found__code {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .not-found__headline {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .not-found__body {
+    font-size: 1.0625rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+  .not-found__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>
