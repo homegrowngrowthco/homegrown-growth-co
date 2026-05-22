@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://homegrowngrowth.co/sitemap.xml
+Sitemap: https://homegrowngrowth.co/sitemap-index.xml
