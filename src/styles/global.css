@@ -510,6 +510,39 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-teal-dark);
 }
 
+.nav__dropdown--mega {
+  min-width: 320px;
+}
+
+.nav__dropdown-pillar {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin: 12px 12px 4px;
+}
+
+.nav__dropdown--mega > .nav__dropdown-pillar:first-child {
+  margin-top: 4px;
+}
+
+.nav__mobile-pillar {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin: 14px 0 4px;
+  text-align: center;
+}
+
+.nav__mobile-pillar:first-child {
+  margin-top: 4px;
+}
+
 /* ---- Mobile: services sub-menu ---- */
 .nav__mobile-group {
   display: flex;
@@ -860,6 +893,56 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.65;
 }
 
+.service-card--link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card--link:hover .service-card__title {
+  color: var(--color-teal);
+}
+
+.pillar-group {
+  margin-top: 56px;
+}
+
+.pillar-group:first-of-type {
+  margin-top: 0;
+}
+
+.pillar-group__header {
+  margin-bottom: 24px;
+}
+
+.pillar-group__eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: 6px;
+}
+
+.pillar-group__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .pillar-group {
+    margin-top: 40px;
+  }
+  .pillar-group__title {
+    font-size: 1.25rem;
+  }
+}
+
 /* ============================================================
    WHEN TO HIRE (dark section)
    ============================================================ */
@@ -1187,6 +1270,51 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.6rem;
   color: var(--color-teal);
   font-weight: 700;
+}
+
+/* Services page — pillar section headers */
+.services-pillar-section {
+  padding-top: 0;
+}
+
+.services-pillar-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 0 24px;
+}
+
+.services-pillar-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: 12px;
+}
+
+.services-pillar-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0 0 12px;
+}
+
+.services-pillar-intro {
+  font-size: 1.0625rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .services-pillar-header {
+    padding: 56px 0 16px;
+  }
 }
 
 /* Services page — alternating row bg */
@@ -2010,6 +2138,167 @@ h1, h2, h3, h4, h5, h6 {
 .pricing-table__highlight {
   font-weight: 700;
   color: var(--color-text) !important;
+}
+
+/* Engagement-model package cards */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  margin-top: 48px;
+}
+
+.package-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.package-card:hover {
+  border-color: rgba(73,166,156,0.4);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.package-card--featured {
+  border-color: var(--color-teal);
+  box-shadow: 0 4px 24px rgba(73,166,156,0.15);
+}
+
+.package-card--featured:hover {
+  border-color: var(--color-teal-dark);
+  box-shadow: 0 8px 32px rgba(73,166,156,0.22);
+}
+
+.package-card__tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  background: rgba(73,166,156,0.1);
+  color: var(--color-teal);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.package-card--featured .package-card__tag {
+  background: var(--color-teal);
+  color: #fff;
+}
+
+.package-card__header {
+  margin-bottom: 20px;
+}
+
+.package-card__type {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+}
+
+.package-card__name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.package-card__hook {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  font-weight: 500;
+  margin: 0;
+}
+
+.package-card__section {
+  margin-top: 18px;
+}
+
+.package-card__section-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin: 0 0 6px;
+}
+
+.package-card__body {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.package-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.package-card__list li {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+
+.package-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-teal);
+}
+
+.package-card__cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 0;
+}
+
+/* Push CTA to bottom by separating it from sections */
+.package-card > .package-card__cta {
+  margin-top: 28px;
+}
+
+@media (max-width: 1100px) {
+  .packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* What's included grid */

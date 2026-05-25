@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Homegrown Growth Co. — Fractional RevOps for Growing Businesses';
-const description = 'Fractional RevOps consulting for $2–10M businesses. CRM implementation, process automation, reporting, and embedded ops strategy — without the cost of a full-time VP.';
+const title = 'Homegrown Growth Co. — Fractional Growth Operations';
+const description = 'Fractional Growth Operations for $2-10M businesses. RevOps, GTM strategy, demand gen, SEO, and workflow automation, without the cost of a full-time VP.';
 const canonical = 'https://homegrowngrowth.co/';
 
 const faqs = [
-  { q: "I don't know if I need fractional or a full-time hire", a: "Most businesses at $2–10M in revenue don't need (or can afford) a full-time RevOps leader. Fractional gives you senior expertise at 20–30% of the cost, with the flexibility to scale up or exit cleanly." },
-  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured discovery. No systems get touched until there's a clear picture of your sales motion, your team, and where the actual friction is." },
+  { q: "I don't know if I need fractional or a full-time hire", a: "Most businesses at $2-10M in revenue don't need (or can afford) a full-time Head of Growth Operations. Fractional gives you senior expertise at 20-30% of the cost, with the flexibility to scale up or exit cleanly." },
+  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured discovery. No systems get touched until there's a clear picture of your motion, your team, and where the actual friction is." },
   { q: 'We already have a CRM, we just need someone to manage it', a: 'That\'s fine. But in practice, "just needs management" usually means it was set up wrong and nobody wants to say it. The assessment will be direct about what\'s actually there.' },
-  { q: 'Can you work with our existing team?', a: 'Yes. This is an embedded engagement — we do not disappear between deliverables. Work happens inside your tools with clear communication and supporting documentation so your internal teams are aligned on next steps.' },
-  { q: 'What if we only need help for a short period?', a: 'Project-based engagements are available for defined scopes: a CRM migration, a dashboard buildout, a comp plan design. Not everything needs to be ongoing.' },
-  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Usually: time saved on manual work, data accuracy improvement, pipeline visibility, and whether your team is actually using what was built.' },
+  { q: 'Can you work with our existing team?', a: 'Yes. This is an embedded engagement. We do not disappear between deliverables. Work happens inside your tools with clear communication and supporting documentation so your internal teams are aligned on next steps.' },
+  { q: 'What if we only need help for a short period?', a: 'Project-based engagements are available for defined scopes: a CRM rebuild, a comp plan design, a demand gen audit, an SEO migration, a dashboard buildout. Not everything needs to be ongoing.' },
+  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Usually: time saved on manual work, pipeline visibility, acquisition efficiency, data accuracy, and whether your team is actually using what was built.' },
 ];
 
 const schema = {
@@ -20,7 +20,7 @@ const schema = {
     {
       '@type': 'ProfessionalService',
       name: 'Homegrown Growth Co.',
-      description: 'Fractional Revenue Operations (RevOps) consulting for growing businesses. CRM implementation, process automation, reporting and analytics, tech stack audits, and sales compensation — delivered as embedded senior-level ops support.',
+      description: 'Fractional Growth Operations for growing businesses. GTM strategy, revenue operations, CRM implementation, reporting and analytics, demand generation, website SEO and GEO, workflows and automation, tech stack audits, and sales compensation. Delivered as embedded senior-level support.',
       url: 'https://homegrowngrowth.co',
       email: 'ian@homegrowngrowth.co',
       image: 'https://homegrowngrowth.co/og-image.png',
@@ -28,25 +28,28 @@ const schema = {
       founder: {
         '@type': 'Person',
         name: 'Ian Chamberland',
-        jobTitle: 'Founder & Fractional RevOps Consultant',
-        knowsAbout: ['Revenue Operations', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'GTM Strategy', 'Process Automation'],
+        jobTitle: 'Founder & Fractional Growth Operations Consultant',
+        knowsAbout: ['Revenue Operations', 'GTM Strategy', 'Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'Process Automation', 'Workflow Automation'],
         hasCredential: '8+ years Revenue Operations experience, including Head of Global Revenue Operations',
       },
       address: { '@type': 'PostalAddress', addressLocality: 'Massachusetts', addressRegion: 'MA', addressCountry: 'US' },
       areaServed: ['Massachusetts', 'New England', 'United States'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'RevOps Services',
+        name: 'Growth Operations Services',
         itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GTM Strategy' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fractional RevOps' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CRM Implementation & Cleanup' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Process Automation' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reporting & Analytics' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tech Stack Audit' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CRM Implementation & Cleanup' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reporting & Analytics' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workflows & Automation' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Demand Generation' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website SEO & GEO' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sales Comp & Enablement' } },
         ],
       },
-      knowsAbout: ['Salesforce', 'HubSpot', 'Revenue Operations', 'CRM Implementation', 'Sales Compensation', 'GTM Strategy', 'n8n', 'Zapier', 'Clay', 'Pipeline Analytics', 'Sales Forecasting'],
+      knowsAbout: ['Salesforce', 'HubSpot', 'Revenue Operations', 'GTM Strategy', 'Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'CRM Implementation', 'Sales Compensation', 'n8n', 'Zapier', 'Clay', 'Pipeline Analytics', 'Sales Forecasting'],
       sameAs: ['https://www.linkedin.com/company/homegrown-growth-co', 'https://www.linkedin.com/in/ianchamberland/'],
     },
     {
@@ -60,19 +63,40 @@ const schema = {
   ],
 };
 
-const services = [
-  { title: 'Fractional RevOps', desc: 'Ongoing embedded ops support. Acting as a part-time VP of RevOps — owning the roadmap and execution across your full revenue cycle.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
-  { title: 'Process Automation', desc: 'Manual handoffs, repetitive data entry, lead routing that lives in someone\'s head — replaced with reliable, documented automations using n8n, Zapier, and Clay.', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
-  { title: 'Reporting & Analytics', desc: 'Dashboards that tell you what\'s actually happening in your pipeline, not just what\'s in it. Forecasting, attribution, and the metrics that map to decisions.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
-  { title: 'CRM Implementation & Cleanup', desc: 'Whether you\'re building your CRM for the first time or recovering from tech debt. Clean data and logical processes your team actually uses.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
-  { title: 'Tech Stack Audit', desc: 'Too many tools that cost too much. Identify duplication across your tech stack and find cost-saving measures that yield more ROI from your GTM tools.', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
-  { title: 'Sales Comp & Enablement', desc: 'Commission structures that incentivize the right behaviors. Analytics that restores confidence in commissions with clear alignment across your sales teams.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+const pillars = [
+  {
+    name: 'Strategy & Operations',
+    eyebrow: 'Pillar 01',
+    services: [
+      { title: 'GTM Strategy', href: '/gtm-strategy', desc: 'ICP definition, positioning, channel mix, and sales motion design. The strategy work that has to happen before systems and acquisition can pay off.', svg: '<circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/><circle cx="22" cy="22" r="2.5" fill="currentColor"/>' },
+      { title: 'Fractional RevOps', href: '/fractional-revops', desc: 'Embedded senior ops leadership across your full revenue cycle. Acting as a part-time VP, owning the roadmap and execution.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
+      { title: 'Tech Stack Audit', href: '/tech-stack-audit', desc: 'A full-system look at what you\'re running, what it\'s costing you, and what to consolidate. Cost savings and a prioritized tooling roadmap.', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
+    ],
+  },
+  {
+    name: 'Systems & Data',
+    eyebrow: 'Pillar 02',
+    services: [
+      { title: 'CRM Implementation & Cleanup', href: '/crm-implementation', desc: 'Whether you\'re building your CRM for the first time or recovering from tech debt. Clean data and logical processes your team actually uses.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
+      { title: 'Reporting & Analytics', href: '/reporting-analytics', desc: 'Dashboards that tell you what\'s actually happening in your pipeline, not just what\'s in it. Forecasting, attribution, and metrics that map to decisions.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { title: 'Workflows & Automation', href: '/process-automation', desc: 'Manual handoffs and tribal knowledge replaced with reliable, documented automations using n8n, Zapier, and Clay.', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
+    ],
+  },
+  {
+    name: 'Growth & Acquisition',
+    eyebrow: 'Pillar 03',
+    services: [
+      { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid and organic acquisition, lifecycle marketing, and attribution. Demand that compounds because the measurement and motion are connected.', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
+      { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Technical and content SEO, plus Generative Engine Optimization for AI search (ChatGPT, Perplexity, Google AI Overviews). Visibility on the surfaces buyers use today.', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
+      { title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Commission structures that incentivize the right behaviors. Analytics that restore confidence in commissions with clear alignment across your sales team.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+    ],
+  },
 ];
 
 const scenarios = [
-  { num: '01', title: 'Growing Business Without Growing Costs', desc: 'Revenue is growing, but the systems and processes can\'t keep up. Reporting is manual, the CRM is a mess, and the sales team is operating on instinct. Growth is happening, but it\'s tough to scale with so many workarounds.' },
-  { num: '02', title: 'Strategic Ownership, Not Task Execution', desc: 'Admins and VAs handle what\'s in front of them. Consultants handle the technology. But nobody is owning the underlying strategy or the roadmap driving the GTM engine and connecting the CRM to the forecast to the comp plan for end-to-end efficiency.' },
-  { num: '03', title: 'High-Stakes Project', desc: 'Whether you\'re releasing a new AI tool, rolling out a new sales compensation plan, or overhauling your reporting — don\'t let a slow start or lack of oversight push your critical project off track. Rely on expertise to drive flawless execution.' },
+  { num: '01', title: 'Growing Business Without Growing Costs', desc: 'Revenue is growing, but the systems and processes can\'t keep up. Reporting is manual, the CRM is a mess, and acquisition is running on instinct. Growth is happening, but it\'s tough to scale with so many workarounds.' },
+  { num: '02', title: 'Strategic Ownership, Not Task Execution', desc: 'Admins handle what\'s in front of them. Consultants own one piece at a time. But nobody is connecting strategy to systems to acquisition into a single growth engine with end-to-end visibility.' },
+  { num: '03', title: 'High-Stakes Project', desc: 'A new comp plan, an SEO migration, a CRM rebuild, a demand gen relaunch. Don\'t let a slow start or lack of oversight push your critical project off track. Rely on expertise to drive flawless execution.' },
 ];
 ---
 
@@ -87,14 +111,14 @@ const scenarios = [
     <section class="hero" aria-label="Hero">
       <div class="container">
         <div class="hero__inner">
-          <div class="hero__pretag">Fractional RevOps</div>
+          <div class="hero__pretag">Fractional Growth Operations</div>
 
           <h1 class="hero__headline fade-up">
-            Revenue operations expertise,<br />without the VP price tag.
+            Growth operations expertise,<br />without the VP price tag.
           </h1>
 
           <p class="hero__sub fade-up fade-up-delay-1">
-            From pre-sales to post-order. Scale your business without scaling your costs.
+            Strategy to systems, acquisition to ops. Scale your business without scaling your costs.
           </p>
 
           <div class="btn-group fade-up fade-up-delay-2">
@@ -109,20 +133,28 @@ const scenarios = [
       <div class="container">
         <div class="section-header fade-up">
           <span class="section-eyebrow">What We Do</span>
-          <h2 class="display-lg section-title" id="services-heading">One partner. Every layer of your revenue ops.</h2>
+          <h2 class="display-lg section-title" id="services-heading">One partner. Every layer of your growth engine.</h2>
         </div>
 
-        <div class="services-grid">
-          {services.map((s, i) => (
-            <div class:list={['service-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
-              <div class="service-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
-              </div>
-              <h3 class="service-card__title">{s.title}</h3>
-              <p class="service-card__desc">{s.desc}</p>
+        {pillars.map((pillar) => (
+          <div class="pillar-group fade-up">
+            <div class="pillar-group__header">
+              <span class="pillar-group__eyebrow">{pillar.eyebrow}</span>
+              <h3 class="pillar-group__title">{pillar.name}</h3>
             </div>
-          ))}
-        </div>
+            <div class="services-grid">
+              {pillar.services.map((s, i) => (
+                <a href={s.href} class:list={['service-card', 'service-card--link', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+                  <div class="service-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+                  </div>
+                  <h4 class="service-card__title">{s.title}</h4>
+                  <p class="service-card__desc">{s.desc}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -167,7 +199,7 @@ const scenarios = [
       <div class="container container--narrow text-center">
         <div class="fade-up">
           <h2 class="display-lg section-title title--on-dark-spaced">Not sure where to start?<br />Book a free ROI call.</h2>
-          <p class="cta-body">No pitch, no proposal — just an honest conversation about where your ops are costing you money and what would actually move the needle.</p>
+          <p class="cta-body">No pitch, no proposal. An honest conversation about where your growth engine is leaking and what would actually move the needle.</p>
           <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
         </div>
       </div>

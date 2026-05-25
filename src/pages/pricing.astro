@@ -2,17 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
-const title = 'Pricing — Homegrown Growth Co.';
-const description = 'Transparent fractional RevOps pricing. Monthly retainers from $3,000/month for 5 hours/week up to $10,000/month for 20 hours/week. No long-term lock-in.';
+const title = 'Pricing & Engagement Models — Homegrown Growth Co.';
+const description = 'Four ways to engage Fractional Growth Operations: ongoing retainer, fixed-scope project, outcome-based, or one-time assessment. Pricing tailored to scope on the discovery call.';
 const canonical = 'https://homegrowngrowth.co/pricing';
 
 const faqs = [
-  { q: 'Is there a long-term contract?', a: "No. Monthly retainers are month-to-month. Quarterly retainers lock in three months at the stated quarterly price. Either way, there's no multi-year commitment." },
-  { q: 'Can I change tiers after we start?', a: 'Yes. If your needs grow or change, we can adjust the engagement level at the start of the next billing period.' },
-  { q: "What's the difference between Rate and Effective Hourly?", a: 'Rate is the hourly rate for the tier. Effective Hourly reflects the blended cost per hour across a full month at that commitment level — the monthly retainer divided by the total hours in the month.' },
-  { q: 'Do unused hours roll over?', a: "Retainers don't roll over — they're sized to ensure consistent, ongoing availability. If a given month runs light, that headroom typically gets recaptured in deeper work the following month." },
-  { q: 'What if I need more hours in a given month?', a: "Occasional overages can be handled at the tier's stated rate. If you consistently need more than your tier covers, we'll revisit the engagement level together." },
-  { q: "Where do I start if I'm not sure which tier is right?", a: "Book the free ROI call. We'll talk through where your ops are today, what needs to move, and what level of engagement will actually get you there." },
+  { q: 'Why don\'t you list specific prices?', a: 'Because the right scope depends on where your business actually is and what needs to move. Two companies asking for "demand gen help" can have wildly different needs. The free ROI call is a 30-minute conversation to scope what you actually need, after which a clear proposal follows. No surprises on the call itself.' },
+  { q: 'How long do engagements typically run?', a: 'Retainers are month-to-month or quarterly, no multi-year lock-in. Projects run on a defined timeline, typically 2-12 weeks. Outcome-based engagements run until the agreed metric is hit. Assessments are 2-3 weeks.' },
+  { q: 'Can engagement models flex over time?', a: 'Yes. It\'s common to start with an Assessment, move into a Project for the most urgent fix, then transition to a Retainer once the broader roadmap is clear. Or stay at any single model indefinitely. The structure follows the work.' },
+  { q: 'Is there a minimum commitment?', a: 'Retainers have a 3-month minimum to give the work time to compound. Projects, Outcome-based, and Assessments are scoped one-shot and end when the deliverable is met.' },
+  { q: 'How do you handle scope changes mid-engagement?', a: 'Retainers absorb scope shifts naturally because the hours are pooled. For Projects, a change order documents the additional scope and timeline impact before any new work starts. No surprise invoices.' },
+  { q: 'Where do I start if I\'m not sure which model fits?', a: 'Book the free ROI call. We\'ll talk through where your business is today, what needs to move, and which engagement model fits the situation. If the answer is "you don\'t need us yet," you\'ll hear that too.' },
 ];
 
 const schema = {
@@ -21,7 +21,7 @@ const schema = {
     {
       '@type': 'WebPage',
       name: title,
-      description: 'Transparent fractional RevOps pricing. Monthly retainers from $3,000/month.',
+      description: 'Four engagement models for Fractional Growth Operations: retainer, project-based, outcome-based, and one-time assessment.',
       url: canonical,
     },
     {
@@ -42,39 +42,66 @@ const schema = {
   ],
 };
 
-const tiers = [
+const packages = [
   {
-    name: 'Essential',
-    hours: '5 hrs',
-    amount: '$3,000',
-    quarterly: '$9,000 / quarter',
-    rate: '$150 / hr',
-    effective: '$138 / hr',
-    features: ['Strategic ops advisory & oversight', 'Light ongoing CRM & reporting support', 'Async Slack & email access', 'Monthly ops review'],
-    cta: 'btn--outline',
-    featured: false,
-  },
-  {
-    name: 'Growth',
-    hours: '10 hrs',
-    amount: '$5,500',
-    quarterly: '$16,500 / quarter',
-    rate: '$135 / hr',
-    effective: '$127 / hr',
-    features: ['Active CRM & process build-out', 'Reporting stack & pipeline analytics', 'Cross-functional coordination', 'Weekly sync & async access'],
-    cta: 'btn--primary',
+    name: 'Retainer',
+    type: 'Ongoing engagement',
+    tag: 'Most common',
     featured: true,
+    hook: 'Embedded fractional ownership across your full growth engine.',
+    bestFor: 'Teams that need a consistent senior ops partner, not a one-time fix.',
+    includes: [
+      'Dedicated ops roadmap aligned to your goals',
+      'Weekly cadence and async access between syncs',
+      'Scope flexes across any HGC service',
+      'Monthly or quarterly billing, month-to-month after a 3-month minimum',
+    ],
+    howStarts: 'Free ROI call → structured discovery → scoped retainer proposal.',
   },
   {
-    name: 'Embedded',
-    hours: '20 hrs',
-    amount: '$10,000',
-    quarterly: '$30,000 / quarter',
-    rate: '$120 / hr',
-    effective: '$115 / hr',
-    features: ['Near full-time fractional ops lead', 'End-to-end GTM build & optimization', 'Attending team standups & meetings', 'Full weekly engagement & reporting'],
-    cta: 'btn--outline',
+    name: 'Project-Based',
+    type: 'Fixed scope',
+    tag: 'Defined deliverable',
     featured: false,
+    hook: 'A scoped initiative with a clear deliverable and exit.',
+    bestFor: 'A single defined initiative: CRM migration, comp plan design, demand gen audit, SEO migration, dashboard buildout, automation rollout.',
+    includes: [
+      'Statement of work with deliverables and timeline',
+      'Fixed fee or time-and-materials depending on scope',
+      'Documented handoff so your team owns it after',
+      'Typical duration 2-12 weeks',
+    ],
+    howStarts: 'Free ROI call → scoping conversation → fixed-scope proposal.',
+  },
+  {
+    name: 'Outcome-Based',
+    type: 'Performance-tied',
+    tag: 'Skin in the game',
+    featured: false,
+    hook: 'Compensation tied to a measurable business outcome.',
+    bestFor: 'Engagements where the metric is clean and the levers are agreed on: CPL targets, MQL volume, pipeline lift, comp accuracy, attribution clarity.',
+    includes: [
+      'Baseline measurement before work starts',
+      'Agreed metric, time window, and performance bands',
+      'Lower base + outcome-tied upside',
+      'Quarterly review and recalibration',
+    ],
+    howStarts: 'Free ROI call → baseline assessment → outcome contract.',
+  },
+  {
+    name: 'Assessment',
+    type: 'One-time audit',
+    tag: 'Diagnostic',
+    featured: false,
+    hook: 'A senior diagnostic before you commit to the larger work.',
+    bestFor: 'Teams who aren\'t sure what they need or want a structured outside read before signing on for an ongoing engagement.',
+    includes: [
+      '2-3 week structured audit',
+      'Systems, data, motion, and acquisition reviewed',
+      'Prioritized recommendations with sizing and sequencing',
+      'Findings doc you keep regardless of next step',
+    ],
+    howStarts: 'Free ROI call → scoped audit proposal.',
   },
 ];
 ---
@@ -88,102 +115,54 @@ const tiers = [
   <main id="main" class="page-content">
 
     <PageHero
-      tag="Pricing"
-      headline="Transparent retainer pricing. No surprises, no lock-in."
-      subtitle="Monthly and quarterly retainers built around your level of ops need. The more hours you commit, the lower your effective rate — and scope can flex across any service HGC offers."
-      headlineMaxWidth="780px"
+      tag="Pricing & Engagement Models"
+      headline="Four ways to engage. Scope first, price second."
+      subtitle="Pricing depends on what actually needs to move in your business. The structure follows the work, not the other way around. The free ROI call is where we figure out which model fits."
+      headlineMaxWidth="820px"
     />
 
-    <section class="section section--surface" aria-labelledby="pricing-heading">
+    <section class="section section--surface" aria-labelledby="packages-heading">
       <div class="container">
         <div class="section-header section-header--center fade-up">
-          <span class="section-eyebrow">Retainer Tiers</span>
-          <h2 class="display-md section-title" id="pricing-heading">Choose your engagement level</h2>
-          <p class="section-subtitle mx-auto">All tiers include direct access to Ian, full access to every service HGC offers, and flexible scope within your weekly hour budget.</p>
+          <span class="section-eyebrow">Engagement Models</span>
+          <h2 class="display-md section-title" id="packages-heading">Choose the model that fits the work.</h2>
+          <p class="section-subtitle mx-auto">Retainer for ongoing ownership. Project for a defined deliverable. Outcome-based when the metric is clean. Assessment for a senior diagnostic before committing.</p>
         </div>
 
-        <div class="pricing-grid fade-up">
-          {tiers.map((t) => (
-            <div class:list={['pricing-card', { 'pricing-card--featured': t.featured }]}>
-              {t.featured && <div class="pricing-card__badge">Most Popular</div>}
-              <div class="pricing-card__header">
-                <span class="pricing-card__tier">{t.name}</span>
-                <p class="pricing-card__hours">{t.hours} <span>/ week</span></p>
+        <div class="packages-grid fade-up">
+          {packages.map((p) => (
+            <div class:list={['package-card', { 'package-card--featured': p.featured }]}>
+              {p.tag && <div class="package-card__tag">{p.tag}</div>}
+              <div class="package-card__header">
+                <p class="package-card__type">{p.type}</p>
+                <h3 class="package-card__name">{p.name}</h3>
+                <p class="package-card__hook">{p.hook}</p>
               </div>
-              <div class="pricing-card__price">
-                <span class="pricing-card__amount">{t.amount}</span>
-                <span class="pricing-card__period">/ month</span>
+              <div class="package-card__section">
+                <p class="package-card__section-title">Best for</p>
+                <p class="package-card__body">{p.bestFor}</p>
               </div>
-              <p class="pricing-card__quarterly">{t.quarterly}</p>
-              <div class="pricing-card__rates">
-                <div class="pricing-card__rate-row">
-                  <span class="pricing-card__rate-label">Rate</span>
-                  <span class="pricing-card__rate-value">{t.rate}</span>
-                </div>
-                <div class="pricing-card__rate-row">
-                  <span class="pricing-card__rate-label">Effective hourly</span>
-                  <span class="pricing-card__rate-value">{t.effective}</span>
-                </div>
+              <div class="package-card__section">
+                <p class="package-card__section-title">What's included</p>
+                <ul class="package-card__list">
+                  {p.includes.map((item) => <li>{item}</li>)}
+                </ul>
               </div>
-              <ul class="pricing-card__features" aria-label={`${t.name} tier features`}>
-                {t.features.map((f) => <li>{f}</li>)}
-              </ul>
-              <a href="/roi-call" class:list={['btn', t.cta, 'pricing-card__cta']}>Book a Call</a>
+              <div class="package-card__section">
+                <p class="package-card__section-title">How it starts</p>
+                <p class="package-card__body">{p.howStarts}</p>
+              </div>
+              <a href="/roi-call" class:list={['btn', p.featured ? 'btn--primary' : 'btn--outline', 'package-card__cta']}>Book a Call</a>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="section section--bg" aria-labelledby="pricing-table-heading">
+    <section class="section section--bg" aria-labelledby="included-heading">
       <div class="container container--narrow">
         <div class="fade-up">
-          <span class="section-eyebrow">Full Breakdown</span>
-          <h2 class="display-md section-title" id="pricing-table-heading" class="mb-32">At a glance</h2>
-          <div class="pricing-table-wrap">
-            <table class="pricing-table" aria-label="Pricing comparison table">
-              <thead>
-                <tr>
-                  <th scope="col">Hours / Week</th>
-                  <th scope="col">Rate</th>
-                  <th scope="col">Monthly</th>
-                  <th scope="col">Quarterly</th>
-                  <th scope="col">Effective Hourly</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>5 hrs</td>
-                  <td>$150 / hr</td>
-                  <td class="pricing-table__highlight">$3,000</td>
-                  <td>$9,000</td>
-                  <td>$138 / hr</td>
-                </tr>
-                <tr class="pricing-table__row--featured">
-                  <td>10 hrs</td>
-                  <td>$135 / hr</td>
-                  <td class="pricing-table__highlight">$5,500</td>
-                  <td>$16,500</td>
-                  <td>$127 / hr</td>
-                </tr>
-                <tr>
-                  <td>20 hrs</td>
-                  <td>$120 / hr</td>
-                  <td class="pricing-table__highlight">$10,000</td>
-                  <td>$30,000</td>
-                  <td>$115 / hr</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="included-heading">
-      <div class="container container--narrow">
-        <div class="fade-up">
-          <span class="section-eyebrow">Every Tier</span>
+          <span class="section-eyebrow">Every Engagement</span>
           <h2 class="display-md section-title" id="included-heading" class="mb-36">What's always included</h2>
         </div>
         <div class="pricing-includes-grid fade-up">
@@ -202,7 +181,7 @@ const tiers = [
             </div>
             <div>
               <p class="pricing-include-title">Full service catalog</p>
-              <p class="pricing-include-desc">Scope flexes across all HGC services — CRM, automation, reporting, tech stack, comp, and more.</p>
+              <p class="pricing-include-desc">Scope flexes across all HGC services: GTM strategy, RevOps, CRM, reporting, automation, demand gen, SEO, comp, and audits.</p>
             </div>
           </div>
           <div class="pricing-include-item">
@@ -210,8 +189,8 @@ const tiers = [
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
             <div>
-              <p class="pricing-include-title">Ops roadmap & reporting</p>
-              <p class="pricing-include-desc">A living ops roadmap plus regular updates on what's moving, what's next, and what the ROI looks like.</p>
+              <p class="pricing-include-title">Roadmap & ROI reporting</p>
+              <p class="pricing-include-desc">A living roadmap plus regular updates on what's moving, what's next, and what the ROI looks like.</p>
             </div>
           </div>
           <div class="pricing-include-item">
@@ -220,14 +199,14 @@ const tiers = [
             </div>
             <div>
               <p class="pricing-include-title">Async Slack & email support</p>
-              <p class="pricing-include-desc">Questions and blockers don't wait for scheduled meetings. Async access is included in every tier.</p>
+              <p class="pricing-include-desc">Questions and blockers don't wait for scheduled meetings. Async access is included in every engagement.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--bg" aria-labelledby="faq-heading">
+    <section class="section section--surface" aria-labelledby="faq-heading">
       <div class="container container--narrow">
         <div class="fade-up">
           <span class="section-eyebrow">FAQ</span>
@@ -248,7 +227,7 @@ const tiers = [
       <div class="container container--narrow text-center">
         <div class="fade-up">
           <h2 class="display-lg section-title title--on-dark-spaced">Not sure where to start?<br />Book a free ROI call.</h2>
-          <p class="cta-body">No pitch, no proposal — just an honest conversation about where your ops are costing you money and what would actually move the needle.</p>
+          <p class="cta-body">No pitch, no proposal. An honest conversation about where your growth engine is leaking and which engagement model would actually move the needle.</p>
           <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
         </div>
       </div>
