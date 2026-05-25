@@ -129,13 +129,20 @@ const schema = {
       <div class="container">
         <div class="service-row fade-up" style="border-bottom:none;">
           <div class="service-row__left">
-            <p class="service-row__hook" style="font-size:1.125rem; color:var(--color-text); font-weight:400; line-height:1.75; margin-bottom:28px;">{hook}</p>
-            <p class="service-row__fit-title" style="margin-bottom:16px;">What's included</p>
-            <ul class="service-row__bullets" aria-label="What's included">
-              {whatsIncluded.map((item) => (
-                <li class="service-row__bullet">{item}</li>
-              ))}
-            </ul>
+            <p class="service-row__hook service-row__hook--prominent">{hook}</p>
+            <div class="included-block">
+              <p class="included-block__title">What's included</p>
+              <div class="included-grid" aria-label="What's included">
+                {whatsIncluded.map((item) => (
+                  <div class="included-card">
+                    <span class="included-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <span class="included-card__body">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           <div class="service-row__fit">
             <p class="service-row__fit-title">Good fit if...</p>
