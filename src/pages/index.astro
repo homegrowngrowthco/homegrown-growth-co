@@ -1,17 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Homegrown Growth Co. — Fractional Growth Operations';
-const description = 'Fractional Growth Operations for $2-10M businesses. RevOps, GTM strategy, demand gen, SEO, and workflow automation, without the cost of a full-time VP.';
+const title = 'Homegrown Growth Co. | Fractional Growth Operations';
+const description = 'Senior growth ops for $2-10M businesses at roughly 30% of what a full-time VP costs. RevOps, GTM, demand gen, SEO, and workflow automation, owned by one partner.';
 const canonical = 'https://homegrowngrowth.co/';
 
 const faqs = [
-  { q: "I don't know if I need fractional or a full-time hire", a: "Most businesses at $2-10M in revenue don't need (or can afford) a full-time Head of Growth Operations. Fractional gives you senior expertise at 20-30% of the cost, with the flexibility to scale up or exit cleanly." },
-  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured discovery. No systems get touched until there's a clear picture of your motion, your team, and where the actual friction is." },
-  { q: 'We already have a CRM, we just need someone to manage it', a: 'That\'s fine. But in practice, "just needs management" usually means it was set up wrong and nobody wants to say it. The assessment will be direct about what\'s actually there.' },
-  { q: 'Can you work with our existing team?', a: 'Yes. This is an embedded engagement. We do not disappear between deliverables. Work happens inside your tools with clear communication and supporting documentation so your internal teams are aligned on next steps.' },
-  { q: 'What if we only need help for a short period?', a: 'Project-based engagements are available for defined scopes: a CRM rebuild, a comp plan design, a demand gen audit, an SEO migration, a dashboard buildout. Not everything needs to be ongoing.' },
-  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Usually: time saved on manual work, pipeline visibility, acquisition efficiency, data accuracy, and whether your team is actually using what was built.' },
+  { q: 'Why fractional instead of a full-time hire?', a: 'A senior growth ops leader fully loaded runs $200K+ before benefits. Most $2-10M businesses get more value from one senior partner at 30% of that cost with the option to scale up or step out without severance and recruiter fees.' },
+  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured diagnostic. Nothing gets built until there's a clear picture of your motion, your team, and where the actual friction is." },
+  { q: 'Can you work with our existing team?', a: 'Yes. This is embedded work, not advisory. Everything happens inside your tools with weekly cadence and documentation, so the team is aligned and nothing lives in my head.' },
+  { q: 'What if we only need help for a short period?', a: "Project-based engagements cover defined scopes: a CRM rebuild, a comp plan design, a demand gen audit, an SEO migration. Not everything needs to be ongoing." },
 ];
 
 const schema = {
@@ -20,7 +18,7 @@ const schema = {
     {
       '@type': 'ProfessionalService',
       name: 'Homegrown Growth Co.',
-      description: 'Fractional Growth Operations for growing businesses. GTM strategy, revenue operations, CRM implementation, reporting and analytics, demand generation, website SEO and GEO, workflows and automation, tech stack audits, and sales compensation. Delivered as embedded senior-level support.',
+      description: 'Fractional Growth Operations for $2-10M businesses. GTM strategy, revenue operations, CRM implementation, reporting and analytics, demand generation, website SEO and GEO, workflows and automation, tech stack audits, and sales compensation. Delivered as embedded senior-level support.',
       url: 'https://homegrowngrowth.co',
       email: 'ian@homegrowngrowth.co',
       image: 'https://homegrowngrowth.co/og-image.png',
@@ -63,40 +61,48 @@ const schema = {
   ],
 };
 
+const stats = [
+  { value: '$150K+', label: 'Saved vs. a full-time VP', svg: '<path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>' },
+  { value: '8 yrs', label: 'RevOps, including Head of Global Revenue Ops', svg: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' },
+  { value: '2 wks', label: 'Most engagements start within', svg: '<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>' },
+  { value: '90 days', label: 'Minimum, then month-to-month', svg: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>' },
+];
+
 const pillars = [
   {
     name: 'Strategy & Operations',
     eyebrow: 'Pillar 01',
     services: [
-      { title: 'GTM Strategy', href: '/gtm-strategy', desc: 'ICP definition, positioning, channel mix, and sales motion design. The strategy work that has to happen before systems and acquisition can pay off.', svg: '<circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/><circle cx="22" cy="22" r="2.5" fill="currentColor"/>' },
-      { title: 'Fractional RevOps', href: '/fractional-revops', desc: 'Embedded senior ops leadership across your full revenue cycle. Acting as a part-time VP, owning the roadmap and execution.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
-      { title: 'Tech Stack Audit', href: '/tech-stack-audit', desc: 'A full-system look at what you\'re running, what it\'s costing you, and what to consolidate. Cost savings and a prioritized tooling roadmap.', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
+      { title: 'GTM Strategy', href: '/gtm-strategy', desc: 'ICP, positioning, motion design.', svg: '<circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/><circle cx="22" cy="22" r="2.5" fill="currentColor"/>' },
+      { title: 'Fractional RevOps', href: '/fractional-revops', desc: 'Embedded senior ownership of the revenue cycle.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
+      { title: 'Tech Stack Audit', href: '/tech-stack-audit', desc: "What you're paying for, what to consolidate.", svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
     ],
   },
   {
     name: 'Systems & Data',
     eyebrow: 'Pillar 02',
     services: [
-      { title: 'CRM Implementation & Cleanup', href: '/crm-implementation', desc: 'Whether you\'re building your CRM for the first time or recovering from tech debt. Clean data and logical processes your team actually uses.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
-      { title: 'Reporting & Analytics', href: '/reporting-analytics', desc: 'Dashboards that tell you what\'s actually happening in your pipeline, not just what\'s in it. Forecasting, attribution, and metrics that map to decisions.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
-      { title: 'Workflows & Automation', href: '/process-automation', desc: 'Manual handoffs and tribal knowledge replaced with reliable, documented automations using n8n, Zapier, and Clay.', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
+      { title: 'CRM Implementation', href: '/crm-implementation', desc: 'Salesforce or HubSpot, built for how you sell.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
+      { title: 'Reporting & Analytics', href: '/reporting-analytics', desc: 'Dashboards that drive decisions, not just describe them.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { title: 'Workflows & Automation', href: '/process-automation', desc: "n8n, Zapier, Clay. Logic in systems, not in your head.", svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
     ],
   },
   {
     name: 'Growth & Acquisition',
     eyebrow: 'Pillar 03',
     services: [
-      { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid and organic acquisition, lifecycle marketing, and attribution. Demand that compounds because the measurement and motion are connected.', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
-      { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Technical and content SEO, plus Generative Engine Optimization for AI search (ChatGPT, Perplexity, Google AI Overviews). Visibility on the surfaces buyers use today.', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
-      { title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Commission structures that incentivize the right behaviors. Analytics that restore confidence in commissions with clear alignment across your sales team.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+      { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid, organic, lifecycle. Tied to closed-won.', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
+      { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Visibility on Google and on ChatGPT.', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
+      { title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Plans your reps understand and finance can run.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
     ],
   },
 ];
 
-const scenarios = [
-  { num: '01', title: 'Growing Business Without Growing Costs', desc: 'Revenue is growing, but the systems and processes can\'t keep up. Reporting is manual, the CRM is a mess, and acquisition is running on instinct. Growth is happening, but it\'s tough to scale with so many workarounds.' },
-  { num: '02', title: 'Strategic Ownership, Not Task Execution', desc: 'Admins handle what\'s in front of them. Consultants own one piece at a time. But nobody is connecting strategy to systems to acquisition into a single growth engine with end-to-end visibility.' },
-  { num: '03', title: 'High-Stakes Project', desc: 'A new comp plan, an SEO migration, a CRM rebuild, a demand gen relaunch. Don\'t let a slow start or lack of oversight push your critical project off track. Rely on expertise to drive flawless execution.' },
+const steps = [
+  { num: '01', title: 'Diagnostic call', body: 'Free 30 minutes. We talk about where the money is leaking. You leave with at least one thing to act on either way.', svg: '<path d="M20 2v6M14 5l3 3 3-3M3 12a17 17 0 0017 17 3 3 0 003-3v-2.5a1.5 1.5 0 00-1.2-1.5l-3-.6a1.5 1.5 0 00-1.6.7l-1 1.7a13 13 0 01-6-6l1.7-1a1.5 1.5 0 00.7-1.6l-.6-3A1.5 1.5 0 008.5 12H6a3 3 0 00-3 3z"/>' },
+  { num: '02', title: 'Scoped proposal', body: 'Inside the week. Engagement model that fits the work (retainer, project, outcome-based, or audit). No bloat.', svg: '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/>' },
+  { num: '03', title: 'Embedded execution', body: 'Weekly cadence, async access between syncs, work happens in your tools. Same week start, typically.', svg: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>' },
+  { num: '04', title: 'Measurable ROI', body: 'Monthly review against agreed metrics. If the work is not paying off in dollars or hours saved, you hear about it first.', svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
 ];
 ---
 
@@ -114,17 +120,33 @@ const scenarios = [
           <div class="hero__pretag">Fractional Growth Operations</div>
 
           <h1 class="hero__headline fade-up">
-            Growth operations expertise,<br />without the VP price tag.
+            Senior growth ops,<br />fractional cost.
           </h1>
 
           <p class="hero__sub fade-up fade-up-delay-1">
-            Strategy to systems, acquisition to ops. Scale your business without scaling your costs.
+            For $2-10M businesses that need a senior owner of the growth engine but can't justify a full-time VP. One partner. One number. Real ROI.
           </p>
 
           <div class="btn-group fade-up fade-up-delay-2">
-            <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
-            <a href="/services" class="btn btn--outline btn--lg">See What We Do</a>
+            <a href="/roi-call" class="btn btn--primary btn--lg">Book a free 30-min call</a>
+            <a href="/services" class="btn btn--outline btn--lg">See what I do</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stat-strip-section" aria-label="Quick facts">
+      <div class="container">
+        <div class="stat-strip">
+          {stats.map((s, i) => (
+            <div class:list={['stat-strip__item', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <div class="stat-strip__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+              </div>
+              <div class="stat-strip__value">{s.value}</div>
+              <div class="stat-strip__label">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -132,8 +154,9 @@ const scenarios = [
     <section class="section section--bg" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-header fade-up">
-          <span class="section-eyebrow">What We Do</span>
-          <h2 class="display-lg section-title" id="services-heading">One partner. Every layer of your growth engine.</h2>
+          <span class="section-eyebrow">What I Do</span>
+          <h2 class="display-lg section-title" id="services-heading">Nine capabilities. One partner.</h2>
+          <p class="section-subtitle mx-auto">Across three pillars. Pick the ones that fit, leave the rest.</p>
         </div>
 
         {pillars.map((pillar) => (
@@ -158,19 +181,24 @@ const scenarios = [
       </div>
     </section>
 
-    <section class="dark-section" aria-labelledby="when-heading">
+    <section class="dark-section" aria-labelledby="how-heading">
       <div class="container">
         <div class="section-header fade-up">
-          <span class="section-eyebrow section-eyebrow--light">When It Fits</span>
-          <h2 class="display-lg section-title" id="when-heading" class="title--on-dark">The right engagement at the right stage.</h2>
+          <span class="section-eyebrow section-eyebrow--light">How It Works</span>
+          <h2 class="display-lg section-title title--on-dark" id="how-heading">Four steps. No theatre.</h2>
         </div>
 
-        <div class="scenario-grid">
-          {scenarios.map((s, i) => (
-            <div class:list={['scenario-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
-              <span class="scenario-card__num">{s.num}</span>
-              <h3 class="scenario-card__title">{s.title}</h3>
-              <p class="scenario-card__desc">{s.desc}</p>
+        <div class="process-grid">
+          {steps.map((s, i) => (
+            <div class:list={['process-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <div class="process-card__top">
+                <span class="process-card__num">{s.num}</span>
+                <div class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+                </div>
+              </div>
+              <h3 class="process-card__title">{s.title}</h3>
+              <p class="process-card__body">{s.body}</p>
             </div>
           ))}
         </div>
@@ -180,8 +208,8 @@ const scenarios = [
     <section class="section section--surface" aria-labelledby="concerns-heading">
       <div class="container">
         <div class="section-header fade-up">
-          <span class="section-eyebrow">Frequently Asked Questions</span>
-          <h2 class="display-lg section-title" id="concerns-heading">Frequently Asked Questions</h2>
+          <span class="section-eyebrow">Questions</span>
+          <h2 class="display-lg section-title" id="concerns-heading">Common ones.</h2>
         </div>
 
         <div class="concerns-grid">
@@ -198,9 +226,9 @@ const scenarios = [
     <section class="cta-section" aria-label="Call to action">
       <div class="container container--narrow text-center">
         <div class="fade-up">
-          <h2 class="display-lg section-title title--on-dark-spaced">Not sure where to start?<br />Book a free ROI call.</h2>
-          <p class="cta-body">No pitch, no proposal. An honest conversation about where your growth engine is leaking and what would actually move the needle.</p>
-          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+          <h2 class="display-lg section-title title--on-dark-spaced">Book a free 30-minute call.</h2>
+          <p class="cta-body">A structured diagnostic. No pitch, no proposal on the call. You leave with at least one concrete thing to act on.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book a free 30-min call</a>
         </div>
       </div>
     </section>
