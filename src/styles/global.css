@@ -648,11 +648,13 @@ h1, h2, h3, h4, h5, h6 {
 .btn--primary {
   background: var(--color-teal);
   color: #fff;
+  border: 2px solid var(--color-teal);
   box-shadow: 0 2px 8px rgba(73,166,156,0.25);
 }
 
 .btn--primary:hover {
   background: var(--color-teal-dark);
+  border-color: var(--color-teal-dark);
   box-shadow: 0 4px 16px rgba(73,166,156,0.35);
 }
 
@@ -670,6 +672,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn--white {
   background: #fff;
   color: var(--color-dark);
+  border: 2px solid #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
@@ -1151,36 +1154,61 @@ h1, h2, h3, h4, h5, h6 {
 .stat-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px 32px;
+  gap: 14px;
 }
 
 .stat-strip__item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 0 4px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  row-gap: 2px;
+  align-items: center;
+  padding: 16px 18px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .stat-strip__icon {
-  width: 26px;
-  height: 26px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 38px;
+  height: 38px;
+  background: rgba(73,166,156,0.10);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   color: var(--color-teal);
-  margin-bottom: 4px;
+  margin: 0;
+}
+
+.stat-strip__icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 .stat-strip__value {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
   font-weight: 800;
   color: var(--color-text);
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .stat-strip__label {
-  font-size: 0.8125rem;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  font-size: 0.75rem;
   color: var(--color-muted);
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 @media (max-width: 900px) {
@@ -1320,9 +1348,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .tools-strip__logos {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 24px 28px;
-  max-width: 1040px;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 24px 24px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: end;
 }
@@ -3077,8 +3105,8 @@ h1, h2, h3, h4, h5, h6 {
 .packages-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto 1fr auto auto;
   gap: 20px;
-  align-items: stretch;
   margin-top: 48px;
 }
 
@@ -3088,8 +3116,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-lg);
   padding: 32px 28px;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
