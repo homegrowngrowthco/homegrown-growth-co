@@ -241,3 +241,68 @@ This project survived the **2026-05-04** complete machine wipe.
 - Distribution items unchanged from prior sessions: GBP, Clutch, testimonials.
 
 **Manual followup unchanged**: Twilio TFV / A2P submission with https://homegrowngrowth.co/sms-opt-in (Netlify Forms email is live).
+
+### Session 9 — 2026-05-26 (continuation)
+**Session 8 preview branch reviewed, polished across 6 commits, then merged to main as `ba56414` via `--no-ff`.** Production deploy verified green. Mobile QA via Playwright caught + fixed a subgrid bug surfacing only at small viewports. Branch closed.
+
+**Sub-session A — preview URL fix + per-service heroes + 2-col What's Included** (commit `88525bf`):
+- User reported preview link wasn't working. Diagnosis: CLAUDE.md Session 8 recorded the wrong URL pattern (`deploy-preview-3--zesty-cranachan-42c3b7.netlify.app` — only exists when Netlify's GitHub App is installed; this site deploys via GHA CLI which produces deploy-ID URLs `<deploy-id>--zesty-cranachan-42c3b7.netlify.app`). Pushed empty re-trigger commit `776cb12` to rebuild a fresh preview after the previous 3 commits' webhooks had silently dropped. Memory saved at `~/.claude/.../reference_homegrown_growthco_preview_url_pattern.md` so future sessions don't propagate the wrong pattern.
+- **`ServicePage.astro` "What's Included" → 2-col layout**: hook text + "The approach" eyebrow on the left (sticky on long pages), included card stack on the right. Collapses to single column below 880px. Reverses Session 6's full-width promotion at user request.
+- **9 distinct service detail hero images** sourced from Unsplash CDN (used WebFetch to extract canonical `images.unsplash.com/photo-<UUID>` URLs since direct `/photos/<slug>/download` redirects return 404 HTML; agent's first sourcing pass returned 4 mismatches — re-sourced 3 of those via WebFetch on Unsplash search pages, reassigned Speedcurve dashboard photo from `tech-stack-audit` → `reporting-analytics` after visual QA). Final mapping:
+  - `/gtm-strategy` — woman at whiteboard with sticky notes
+  - `/fractional-revops` — multi-monitor Mac desk setup
+  - `/tech-stack-audit` — grid of SaaS tool icons (cPanel-style)
+  - `/crm-implementation` — team of 3 around monitors
+  - `/reporting-analytics` — Speedcurve performance dashboard
+  - `/process-automation` — hands on MacBook in workflow rule editor
+  - `/demand-generation` — team brainstorm at chalkboard
+  - `/website-seo-geo` — laptop with AI search bar ("What can I help with?")
+  - `/sales-comp-enablement` — presenter with "SALES VALUE" dashboard
+- **Homepage hero photo → inline SVG**: 8-node mesh with central teal hub + dashed orbital connection lines; replaced `hero-analytics.jpg` dashboard photo (user disliked "it kind of stinks, clearly AI"). Audited via `msedge --headless --screenshot` before commit.
+
+**Sub-session B — brand positioning + hero copy + visual overhaul** (commit `a7b64a1`):
+- **Drop "Fractional Growth Operations" tagline across site** (keep "Fractional RevOps" as a service product name). New brand category: "Senior Growth Operations". New tagline: "Growth operations, owned end-to-end." Sweep covers Footer descriptor, index meta + schema description + jobTitle, hero pretag + H1 + subhead, about jobTitle + "Why Fractional" eyebrow + prose, for-saas + for-local-businesses descriptions + subtitles, pricing + services + terms + privacy descriptions.
+- **Homepage hero copy rewritten as brand strategist** for a senior practice attracting new clients. New H1: "Growth operations, owned end-to-end." New subhead: "Most growing companies don't lose to bigger competitors. They lose to half-true CRMs, gut-feel forecasts, and manual work that owns the week. Get one senior partner to own the operational layer behind your revenue, and prove it pays for itself in 90 days."
+- **Hero SVG redesign** (user reported the 8-node mesh "kind of stinks, clearly AI"): replaced with a 4-step process diagram ("Diagnose → Build → Scale → Compound") + step numbers (01-04) above each circle + bold labels + 1-line descriptions below + the 4th node filled teal as the visual destination + dashed connecting line + title at top "How an engagement compounds." (later changed in Session 9 sub-session C to "How an engagement drives growth."). Audited via Edge headless screenshot before commit.
+- **Pricing card alignment fix**: CSS Grid subgrid (`grid-template-rows: subgrid`) so tag / header / Best-for / Included / How-it-starts / CTA align across all 4 engagement-model cards. Added transparent border to `.btn--primary` and `.btn--white` so all three button variants (`--primary` / `--outline` / `--white`) have identical height.
+- **Stat strip restructured**: vertical cards (icon-on-top, separate row) → compact horizontal boxes (icon-left, value+label stacked on right) inside surface-bordered cards. Cuts homepage vertical bloat ~40%.
+- **Tech stack 9th option "Your stack"** added so prospects whose tools aren't in the 8-logo strip don't bounce. Custom inline SVG (3 tool tiles + "+" badge) at [`public/logos/custom-stack.svg`](public/logos/custom-stack.svg).
+- **"Growth engine" sweep**: replaced across services/pricing/ROI-call/about/case-studies in favor of "where revenue is leaking / what's possible if it's rebuilt" — user feedback that small non-SaaS businesses don't understand the "growth engine" metaphor.
+- **ROI Call page H1 + subhead reworked**: new H1 "Find out where revenue is leaking, and the upside if it's rebuilt." New subhead drops "growth engine" + adds "thirty structured minutes" framing.
+
+**Sub-session C — polish round** (commit `fb01804`):
+- **Pricing "Book a Call" button vertical centering fix**: dropped `padding-top: 0` from `.package-card__cta`. The override was making the button asymmetric (top 0px, bottom 14px), top-skewing the text.
+- **Homepage hero SVG title** "How an engagement compounds." → "How an engagement drives growth." Subtitle "Four phases. One senior partner, end to end." → "Four phases. One goal: grow the business." (drop "senior partner" framing per user request).
+- **Removed "Avg. ROI in 30-90 days" badge** from hero SVG (no surrounding content backed up the number; user found it confusing).
+- **`$150K+ saved` stat replaced with `$1M+` pipeline added** in year one from a rebuilt motion. Defensive framing → aspirational framing showing what's possible.
+- **FAQ heading** "Common ones." → "Common questions from new clients." Widened FAQ + bottom CTA containers from `container--narrow` → `container` to match the "How It Works" section width.
+- **Homepage CTA body rewritten**: "Thirty minutes to map current process and discuss potential ideas and improvements. No pitch, no proposal on the call. You leave with concrete next steps to grow your business, regardless of fit."
+
+**Sub-session D — defensive mobile CSS** (commit `a44a019`):
+- Added `min-width: 0` to `.hero__content` + `.hero__visual` + `.page-hero__content` + `.page-hero__visual`, and switched their parent grids to `grid-template-columns: minmax(0, Xfr) minmax(0, Yfr)`. Grid items default to `min-width: auto` which can't shrink below the intrinsic content size; the homepage SVG (`viewBox="0 0 500 400"` with no explicit width attr) has a 500px intrinsic content size that could force the single-column mobile grid wider than viewport. Defensive even if not currently triggering. Also added explicit `width="100%" height="100%" preserveAspectRatio="xMidYMid meet"` to the homepage hero SVG.
+
+**Sub-session E — mobile/tablet QA via Playwright + subgrid bug surface + fix** (commit `2a46a19`):
+- Edge headless `--window-size` ignores the requested viewport and renders at ~476px regardless; switched to **Playwright** (installed via npm install playwright; ~250MB Chromium bundle) for accurate 390 (mobile) + 768 (tablet) screenshots. Captured 16 screenshots across 8 priority pages (home, services, pricing, roi-call, fractional-revops, for-saas, for-local-businesses, about).
+- **Caught: pricing cards rendered blank at <=1100px**. Root cause: `.packages-grid` declares 6 explicit `grid-template-rows` to drive subgrid alignment across the 4 cards in desktop 4-col layout. At <=1100px the breakpoint switches columns to 2 (or 1 at <=600px) but keeps the 6-row template; cards 2-4 land in implicit rows where subgrid doesn't apply, so they render as zero-height. Fix: at <=1100px, drop `grid-template-rows` on `.packages-grid` and switch `.package-card` back to `display: flex; flex-direction: column; grid-row: auto`. Subgrid stays on for the 4-col desktop layout where it provides the alignment benefit.
+- All 7 other pages QA'd: hero renders cleanly, accordion FAQs work, stat strips collapse correctly, service detail page 2-col What's Included collapses to single column below 880px as designed.
+
+**Sub-session F — PR #3 merge to main** (merge commit `ba56414`):
+- `gh pr merge 3 --merge` ($mode: `--no-ff` equivalent, matching this repo's convention from Session 5 + 6 merges). Pre-flight: PR mergeable=`MERGEABLE`, state=`OPEN`, deploy check=`SUCCESS`.
+- Production GH Actions deploy `26466548113` returned `conclusion: success`. Smoke-tested `curl -sI` against `/`, `/pricing`, `/roi-call`, `/for-local-businesses`, `/gtm-strategy` — all 200.
+- Branch closed (Netlify auto-cleans the preview deploys).
+
+**Status at session close:**
+- **Production live**: https://homegrowngrowth.co/ — Fractional Growth Operations umbrella pivot + Phase B Local hub + brand polish + mobile QA fixes all shipped.
+- 6 commits on `umbrella-pivot-phase-a` post-Session-8 (`776cb12` re-trigger, `88525bf` heroes+SVG+2-col, `a7b64a1` brand+UI, `fb01804` polish, `a44a019` defensive mobile, `2a46a19` subgrid fix), `--no-ff` merge `ba56414` on main.
+- 21 pages still build in ~2s.
+- Memories saved this session: `reference_homegrown_growthco_preview_url_pattern.md` (deploy-ID URL pattern, not deploy-preview-PR# — Netlify GH App isn't installed for this site).
+
+**Open follow-ups carried forward (unchanged from Session 8 close except where checked):**
+- ~~Per-service hero images for the 9 service detail pages~~ ✅ Done this session.
+- ~~Phase C `/for-saas` content refresh~~ ⏸️ Still references pre-pivot service set; needs GTM Strategy / Demand Gen / SEO mentions added. Deferred.
+- Real case studies to replace `/case-studies` placeholder. Deferred.
+- `/about` headshot to replace photo-coming-soon placeholder. Deferred.
+- Distribution items: GBP, Clutch, testimonials. Deferred (user actions).
+- Twilio TFV / A2P submission with https://homegrowngrowth.co/sms-opt-in. Manual, unchanged.
+
+**Revert path** (in order of impact): instant Netlify rollback → previous prod deploy via dashboard. Then `git revert -m 1 ba56414 && git push origin main` to keep git history in sync with the rolled-back deploy.
