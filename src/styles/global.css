@@ -723,7 +723,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero__inner--split {
   max-width: none;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 56px;
   align-items: center;
 }
@@ -731,6 +731,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero__content {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .hero__visual {
@@ -738,6 +739,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 5/4;
+  min-width: 0;
   box-shadow: 0 16px 48px rgba(33, 33, 33, 0.10), 0 2px 8px rgba(33, 33, 33, 0.04);
 }
 
@@ -2533,7 +2535,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-hero__inner--split {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 56px;
   align-items: center;
 }
@@ -2541,6 +2543,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-hero__content {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .page-hero__visual {
@@ -2548,6 +2551,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 5/4;
+  min-width: 0;
   box-shadow: 0 16px 48px rgba(33, 33, 33, 0.10), 0 2px 8px rgba(33, 33, 33, 0.04);
 }
 
