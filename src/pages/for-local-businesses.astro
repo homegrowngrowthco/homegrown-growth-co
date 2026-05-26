@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const title = 'Growth Operations for Local & Multi-Location Businesses | Homegrown Growth Co.';
+const description = "Fractional growth operations for local and multi-location service businesses. Local SEO and GEO, demand gen, workflow automation, and CRM, owned by one senior partner.";
+const canonical = 'https://homegrowngrowth.co/for-local-businesses';
+
+const faqs = [
+  { q: "I'm just one location. Do I need this?", a: "Yes, if you're spending on marketing without knowing what's actually driving customers. The work scales down. A single-location business gets the same systems thinking: local pack visibility, lead capture, booking flow, review pipeline. Just at the scope that fits the business." },
+  { q: 'How is this different from hiring a marketing agency?', a: "Most agencies run a channel. They manage your Google Ads or your social or your SEO. Growth ops connects the full chain: from ad click to landing page to form to CRM to booking to review request. One owner end-to-end, not five vendors with different definitions of success." },
+  { q: "We have multiple locations with inconsistent operations. Where do we start?", a: "With a 2-3 week audit that maps what's actually happening at each location. Most multi-location chaos compounds because nobody owns the standard. The audit produces a sequenced fix list and decides what's centralized vs local autonomy." },
+  { q: 'Can you work with our existing marketing person or agency?', a: "Yes. Often the in-house marketing person is great at execution but doesn't have the ops layer underneath them. Same with agencies. I work as the connective tissue so the channels they run actually drive measurable customer outcomes." },
+  { q: "How do you charge?", a: "Engagement models are on the pricing page: retainer (ongoing), project (fixed scope), outcome-based (tied to a metric like ranking or CPL), or assessment (one-time audit). Scope and number get set on the free ROI call once we know what's actually broken." },
+  { q: 'How quickly will we see results?', a: 'Ads and on-site conversion improvements show in 2-4 weeks. Local SEO and GEO take 4-8 weeks for measurable ranking shifts. Review pipeline and brand consistency take a quarter. We agree on what gets measured before any work starts.' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: canonical,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+      { '@type': 'ListItem', position: 2, name: 'For Local & Multi-Location Businesses', item: canonical },
+    ],
+  },
+  mainEntity: {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+};
+
+const painPoints = [
+  { icon: '📍', title: 'Invisible in the local pack', body: "Competitors show up in the three-pack and on the map. You don't. 'Near me' searches own local intent and you're losing them before the click." },
+  { icon: '📞', title: 'Leads go cold by Tuesday', body: 'Calls, web forms, and DMs land in different places. Follow-up depends on whoever sees it first. The fast businesses convert, the slow ones lose to whoever called back faster.' },
+  { icon: '⭐', title: 'Reviews are sporadic and reactive', body: "Happy customers don't think to leave a review. The unhappy ones do. Your 4.2 average is costing you more than you think on click-through." },
+  { icon: '📅', title: 'Booking lives in someone\'s head', body: 'Double-bookings, missed confirmations, no-show rates climbing. The booking tool exists but nobody trusts it to handle reminders, deposits, or rescheduling cleanly.' },
+  { icon: '💸', title: 'Ads work, but you can\'t prove it', body: "You're spending on Google or Meta. Which campaign drove that customer who walked in last Tuesday? Nobody can say. The attribution stops at the form submit." },
+  { icon: '🏢', title: 'Multi-location consistency is theoretical', body: 'Two locations, three Google Business profiles with different hours, conflicting review responses, separate quote forms. Brand consistency exists in the brand book, not in reality.' },
+];
+
+const localServices = [
+  { tag: 'Project / Ongoing', title: 'Local SEO & GEO', body: 'Local pack visibility, Google Business Profile optimization, citations, and AI search (ChatGPT, Perplexity, Google AI Overviews) so buyers find you on every surface they search.', bullets: ['Local pack, citations, and GBP optimization per location', 'Technical SEO: schema, indexation, Core Web Vitals', 'GEO: entity structuring for AI search visibility', 'Multi-location SEO architecture and content templates'] },
+  { tag: 'Project / Ongoing', title: 'Demand Generation', body: "Paid Google and Meta tied to actual customer outcomes, not just clicks or form fills. Attribution that reaches all the way to booked appointments and revenue.", bullets: ['Google Ads, Meta, and emerging channels by vertical', 'Landing pages and conversion design per offer', 'Call tracking and form attribution to channel', 'Budget reallocation based on real customer ROI'] },
+  { tag: 'Project', title: 'Workflows & Automation', body: 'Booking flow, lead routing, review collection, follow-up sequences. The systems that catch leads before they go cold and bring reviews in without anyone remembering.', bullets: ['Lead routing across phone, web, DMs into one inbox', 'Automated booking confirmations, reminders, follow-ups', 'Review request automation triggered after every visit', 'No-show reduction sequences and recovery flows'] },
+  { tag: 'Project / Ongoing', title: 'Reporting & Analytics', body: 'Dashboards that connect ad spend to walk-ins, calls to closed jobs, and visits to repeat customers. Real attribution, not channel-level estimates.', bullets: ['Call tracking with full source attribution', 'Customer lifecycle from first touch to repeat visit', 'Per-location and per-service-line performance', 'Spend efficiency by channel, ad set, and campaign'] },
+  { tag: 'Project', title: 'CRM Implementation', body: 'A CRM that fits a service business. Customer history, visit notes, recurring service intervals, marketing segmentation, and clean handoff between front-of-house and follow-up.', bullets: ['HubSpot or simpler stack scoped to how you actually operate', 'Customer history, visit notes, and service intervals', 'Marketing list segmentation by behavior, not just contact info', 'Documented for the next person who picks it up'] },
+  { tag: 'Assessment', title: 'Multi-Location Operations Audit', body: "A structured look at how each location operates, where standards are drifting, and what needs to be centralized vs left to local autonomy. Sequenced fix list.", bullets: ['Per-location ops, marketing, and customer-experience baseline', 'Brand and operational consistency gap analysis', 'Centralization vs autonomy framework per function', 'Prioritized fix list with rollout sequencing across locations'] },
+];
+
+const processSteps = [
+  { num: '01', title: 'Free Discovery Call', body: '30 minutes. Honest conversation about where customers are leaking out of your funnel. No pitch until there\'s something concrete to fix.' },
+  { num: '02', title: 'Structured Audit', body: 'We document your current channels, conversion flow, booking system, and review pipeline before anything gets built. Findings drive the scope.' },
+  { num: '03', title: 'Scoped Proposal', body: 'Clear deliverables, timeline, and engagement model. Retainer, project, outcome-based, or one-time audit. No vague retainers.' },
+  { num: '04', title: 'Embedded Execution', body: 'Work happens inside your tools. Weekly cadence, async access between syncs, full documentation so your team owns it after.' },
+];
+
+const stats = [
+  { number: 'Top 3', label: 'Local pack ranking achieved by most clients within 90 days' },
+  { number: '3-5x', label: 'Reviews collected per month after automation goes live' },
+  { number: '8-15%', label: 'Inbound conversion rate after CRM and booking improvements' },
+  { number: '$30K+', label: 'Annual ad waste eliminated through real attribution clarity' },
+];
+
+const fitGood = [
+  'Independent business or 2-15 location group',
+  'Already running marketing without clear customer attribution',
+  'Owner, COO, or marketing lead doing too much operations work',
+  'Have an existing customer base and want to grow it',
+  'Reviews and local SEO matter to acquisition',
+  'Investing in Google Ads or Meta and want better ROI',
+];
+
+const fitBad = [
+  'Pre-launch with no customers or marketing yet',
+  'Looking only for ad management with no ops involvement',
+  'Need a full-time, on-site marketing manager',
+  'No interest in measurement, attribution, or systems',
+  'Looking for a quick fix without changing how the business operates',
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
+>
+  <main id="main" class="page-content">
+
+    <PageHero
+      tag="For Local & Multi-Location Businesses"
+      headline="Get found. Get booked. Get repeat business."
+      subtitle="Fractional growth operations for local and multi-location service businesses. Local SEO and GEO, demand gen, workflow automation, and CRM, owned end-to-end so leads stop falling through the cracks."
+      headlineMaxWidth="820px"
+    />
+
+    <div class="container" style="margin-top: -32px; margin-bottom: 24px;">
+      <div class="btn-group fade-up fade-up-delay-3" style="justify-content: center;">
+        <a href="/roi-call" class="btn btn--primary btn--lg">Book a Free Strategy Call</a>
+        <a href="/services" class="btn btn--outline btn--lg">See what's included</a>
+      </div>
+    </div>
+
+    <section class="proof-strip-section" aria-label="Who this is for">
+      <div class="container">
+        <div class="proof-strip fade-up">
+          <span class="proof-strip__label">Built for businesses that are</span>
+          <div class="proof-strip__items">
+            <span class="proof-strip__item">Independent or 2-15 location</span>
+            <span class="proof-strip__item">Investing in Google or Meta</span>
+            <span class="proof-strip__item">Generating leads, losing handoff</span>
+            <span class="proof-strip__item">Booking by phone, web, or DM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg" aria-labelledby="pain-heading">
+      <div class="container">
+        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+          <span class="section-eyebrow">Sound familiar?</span>
+          <h2 class="display-md section-title" id="pain-heading">Where local businesses leak customers.</h2>
+          <p class="section-subtitle mx-auto">These are the patterns that show up across restaurants, healthcare practices, home services, and multi-location franchises.</p>
+        </div>
+
+        <div class="pain-grid">
+          {painPoints.map((p, i) => (
+            <div class:list={['pain-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <div class="pain-card__icon" aria-hidden="true">{p.icon}</div>
+              <h3 class="pain-card__title">{p.title}</h3>
+              <p class="pain-card__body">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="local-services-heading">
+      <div class="container">
+        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+          <span class="section-eyebrow">What We Build</span>
+          <h2 class="display-md section-title" id="local-services-heading">The full stack, or just the piece you need.</h2>
+          <p class="section-subtitle mx-auto">Every engagement starts with a structured discovery. Nothing gets built until there's a clear picture of where customers are coming from and where they're dropping off.</p>
+        </div>
+
+        <div class="saas-services-grid">
+          {localServices.map((s, i) => (
+            <div class:list={['saas-service-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <span class="saas-service-card__tag">{s.tag}</span>
+              <h3 class="saas-service-card__title">{s.title}</h3>
+              <p class="saas-service-card__body">{s.body}</p>
+              <ul class="saas-service-card__bullets">
+                {s.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="section-eyebrow section-eyebrow--light">How It Works</span>
+          <h2 class="display-lg section-title" id="process-heading" style="color:#fff;">From first call to first measurable win in weeks.</h2>
+        </div>
+        <p style="color: rgba(255,255,255,0.7); max-width: 640px; margin: -16px 0 40px; font-size: 1.0625rem; line-height: 1.7;" class="fade-up">No 90-day "strategy phase" before anything ships. We move fast on the highest-leverage fix and build from there.</p>
+
+        <div class="scenario-grid">
+          {processSteps.map((s, i) => (
+            <div class:list={['scenario-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <span class="scenario-card__num">{s.num}</span>
+              <h3 class="scenario-card__title">{s.title}</h3>
+              <p class="scenario-card__desc">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="stats-heading">
+      <div class="container">
+        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+          <span class="section-eyebrow">What This Looks Like</span>
+          <h2 class="display-md section-title" id="stats-heading">Outcomes, not activity.</h2>
+          <p class="section-subtitle mx-auto">Every engagement ties deliverables to measurable improvements. These are the benchmarks we track for local clients.</p>
+        </div>
+
+        <div class="stat-grid">
+          {stats.map((s, i) => (
+            <div class:list={['stat-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <div class="stat-card__number">{s.number}</div>
+              <div class="stat-card__label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg" aria-labelledby="fit-heading">
+      <div class="container container--narrow">
+        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+          <span class="section-eyebrow">Who This Is For</span>
+          <h2 class="display-md section-title" id="fit-heading">Good fit vs. not.</h2>
+          <p class="section-subtitle mx-auto">This works best in specific conditions. If you're not in that zone, I'll tell you on the first call.</p>
+        </div>
+
+        <div class="fit-cols">
+          <div class="fit-col fit-col--good fade-up">
+            <div class="fit-col__label">✓ Strong Fit</div>
+            <ul class="fit-list">
+              {fitGood.map((f) => (
+                <li class="fit-list__item"><span class="fit-list__icon" aria-hidden="true">✓</span><span>{f}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div class="fit-col fit-col--bad fade-up fade-up-delay-1">
+            <div class="fit-col__label">Not the Right Fit</div>
+            <ul class="fit-list">
+              {fitBad.map((f) => (
+                <li class="fit-list__item"><span class="fit-list__icon fit-list__icon--muted" aria-hidden="true">✗</span><span>{f}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="local-faq-heading">
+      <div class="container container--narrow">
+        <div class="section-header fade-up" style="margin-bottom: 40px;">
+          <span class="section-eyebrow">FAQ</span>
+          <h2 class="display-md section-title" id="local-faq-heading">Common questions.</h2>
+        </div>
+        <div class="faq-stack">
+          {faqs.map((f) => (
+            <div class="faq-item fade-up">
+              <h3 class="faq-item__q">{f.q}</h3>
+              <p class="faq-item__a">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Ready to be found, booked, and reviewed?</h2>
+          <p class="cta-body">A free 30-minute call to find out exactly where customers are leaking out of your funnel, and whether this is the right fit. No pitch, no proposal. An honest conversation.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free Strategy Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
