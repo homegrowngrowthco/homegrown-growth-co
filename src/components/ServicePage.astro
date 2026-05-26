@@ -100,7 +100,7 @@ const schema = {
 >
   <main id="main" class="page-content">
 
-    <section class="page-hero">
+    <section class="page-hero page-hero--compact">
       <div class="container">
         <nav class="breadcrumb fade-up" aria-label="Breadcrumb">
           <a href="/" class="breadcrumb__link">Home</a>
@@ -125,31 +125,40 @@ const schema = {
       </div>
     </section>
 
-    <section class="section section--surface" aria-label="Service overview">
+    <section class="good-fit-strip fade-up" aria-label="Good fit if">
       <div class="container">
-        <div class="service-row fade-up" style="border-bottom:none;">
-          <div class="service-row__left">
-            <p class="service-row__hook service-row__hook--prominent">{hook}</p>
-            <div class="included-block">
-              <p class="included-block__title">What's included</p>
-              <div class="included-grid" aria-label="What's included">
-                {whatsIncluded.map((item) => (
-                  <div class="included-card">
-                    <span class="included-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    </span>
-                    <span class="included-card__body">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div class="service-row__fit">
-            <p class="service-row__fit-title">Good fit if...</p>
+        <div class="good-fit-strip__inner">
+          <p class="good-fit-strip__title">Good fit if</p>
+          <ul class="good-fit-strip__items">
             {goodFitIf.map((item) => (
-              <div class="service-row__fit-item">
-                <span class="fit-check" aria-hidden="true"></span>
+              <li class="good-fit-strip__item">
+                <span class="good-fit-strip__check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
                 <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface section--included" aria-label="What's included">
+      <div class="container container--narrow">
+        <p class="service-hook fade-up">{hook}</p>
+        <div class="included-block included-block--full fade-up">
+          <div class="included-block__header">
+            <span class="included-block__title">What's included</span>
+            <span class="included-block__count">{whatsIncluded.length} deliverables</span>
+          </div>
+          <div class="included-grid included-grid--full" aria-label="What's included">
+            {whatsIncluded.map((item, i) => (
+              <div class="included-card included-card--full">
+                <span class="included-card__num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="included-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="included-card__body">{item}</span>
               </div>
             ))}
           </div>
