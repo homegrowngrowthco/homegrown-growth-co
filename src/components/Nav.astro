@@ -4,11 +4,14 @@
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const servicePages = [
+  '/gtm-strategy',
   '/fractional-revops',
-  '/crm-implementation',
-  '/process-automation',
-  '/reporting-analytics',
   '/tech-stack-audit',
+  '/crm-implementation',
+  '/reporting-analytics',
+  '/process-automation',
+  '/demand-generation',
+  '/website-seo-geo',
   '/sales-comp-enablement',
 ];
 
@@ -33,13 +36,28 @@ const isServicesActive = servicePages.includes(path);
             Services
             <svg class="nav__dropdown-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="nav__dropdown" role="menu" aria-label="Services menu">
-            <a href="/fractional-revops" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Fractional RevOps</span><span class="nav__dropdown-sub">Embedded senior ops leadership</span></a>
-            <a href="/crm-implementation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">CRM Implementation &amp; Cleanup</span><span class="nav__dropdown-sub">Salesforce &amp; HubSpot</span></a>
-            <a href="/process-automation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Process Automation</span><span class="nav__dropdown-sub">n8n, Zapier, Clay</span></a>
-            <a href="/reporting-analytics" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Reporting &amp; Analytics</span><span class="nav__dropdown-sub">Dashboards that drive decisions</span></a>
-            <a href="/tech-stack-audit" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Tech Stack Audit</span><span class="nav__dropdown-sub">Inventory, gaps, cost savings</span></a>
-            <a href="/sales-comp-enablement" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Sales Comp &amp; Enablement</span><span class="nav__dropdown-sub">Comp plans and ramp programs</span></a>
+          <div class="nav__dropdown nav__dropdown--mega" role="menu" aria-label="Services menu">
+            <div class="nav__dropdown-col">
+              <p class="nav__dropdown-pillar">Strategy &amp; Operations</p>
+              <a href="/gtm-strategy" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">GTM Strategy</span><span class="nav__dropdown-sub">ICP, positioning, motion design</span></a>
+              <a href="/fractional-revops" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Fractional RevOps</span><span class="nav__dropdown-sub">Embedded senior ops leadership</span></a>
+              <a href="/tech-stack-audit" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Tech Stack Audit</span><span class="nav__dropdown-sub">Inventory, gaps, cost savings</span></a>
+            </div>
+
+            <div class="nav__dropdown-col">
+              <p class="nav__dropdown-pillar">Systems &amp; Data</p>
+              <a href="/crm-implementation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">CRM Implementation</span><span class="nav__dropdown-sub">Salesforce &amp; HubSpot</span></a>
+              <a href="/reporting-analytics" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Reporting &amp; Analytics</span><span class="nav__dropdown-sub">Dashboards that drive decisions</span></a>
+              <a href="/process-automation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Workflows &amp; Automation</span><span class="nav__dropdown-sub">n8n, Zapier, Clay</span></a>
+            </div>
+
+            <div class="nav__dropdown-col">
+              <p class="nav__dropdown-pillar">Growth &amp; Acquisition</p>
+              <a href="/demand-generation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Demand Generation</span><span class="nav__dropdown-sub">Paid, organic, lifecycle</span></a>
+              <a href="/website-seo-geo" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Website SEO &amp; GEO</span><span class="nav__dropdown-sub">Search + AI search visibility</span></a>
+              <a href="/sales-comp-enablement" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Sales Comp &amp; Enablement</span><span class="nav__dropdown-sub">Comp plans and ramp programs</span></a>
+            </div>
+
             <a href="/services" class="nav__dropdown-all" role="menuitem">View all services →</a>
           </div>
         </div>
@@ -62,12 +80,21 @@ const isServicesActive = servicePages.includes(path);
       <svg class="nav__dropdown-chevron" width="18" height="18" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="nav__mobile-sub" hidden>
+      <p class="nav__mobile-pillar">Strategy &amp; Operations</p>
+      <a href="/gtm-strategy" class="nav__mobile-sub-link">GTM Strategy</a>
       <a href="/fractional-revops" class="nav__mobile-sub-link">Fractional RevOps</a>
-      <a href="/crm-implementation" class="nav__mobile-sub-link">CRM Implementation</a>
-      <a href="/process-automation" class="nav__mobile-sub-link">Process Automation</a>
-      <a href="/reporting-analytics" class="nav__mobile-sub-link">Reporting &amp; Analytics</a>
       <a href="/tech-stack-audit" class="nav__mobile-sub-link">Tech Stack Audit</a>
+
+      <p class="nav__mobile-pillar">Systems &amp; Data</p>
+      <a href="/crm-implementation" class="nav__mobile-sub-link">CRM Implementation</a>
+      <a href="/reporting-analytics" class="nav__mobile-sub-link">Reporting &amp; Analytics</a>
+      <a href="/process-automation" class="nav__mobile-sub-link">Workflows &amp; Automation</a>
+
+      <p class="nav__mobile-pillar">Growth &amp; Acquisition</p>
+      <a href="/demand-generation" class="nav__mobile-sub-link">Demand Generation</a>
+      <a href="/website-seo-geo" class="nav__mobile-sub-link">Website SEO &amp; GEO</a>
       <a href="/sales-comp-enablement" class="nav__mobile-sub-link">Sales Comp &amp; Enablement</a>
+
       <a href="/services" class="nav__mobile-sub-link nav__mobile-sub-link--all">All services →</a>
     </div>
   </div>

@@ -1,17 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Homegrown Growth Co. — Fractional RevOps for Growing Businesses';
-const description = 'Fractional RevOps consulting for $2–10M businesses. CRM implementation, process automation, reporting, and embedded ops strategy — without the cost of a full-time VP.';
+const title = 'Homegrown Growth Co. | Senior Growth Operations';
+const description = 'Growth operations, owned end-to-end. Senior-level RevOps, GTM, demand gen, SEO, and workflow automation, delivered as embedded execution by one senior partner.';
 const canonical = 'https://homegrowngrowth.co/';
 
 const faqs = [
-  { q: "I don't know if I need fractional or a full-time hire", a: "Most businesses at $2–10M in revenue don't need (or can afford) a full-time RevOps leader. Fractional gives you senior expertise at 20–30% of the cost, with the flexibility to scale up or exit cleanly." },
-  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured discovery. No systems get touched until there's a clear picture of your sales motion, your team, and where the actual friction is." },
-  { q: 'We already have a CRM, we just need someone to manage it', a: 'That\'s fine. But in practice, "just needs management" usually means it was set up wrong and nobody wants to say it. The assessment will be direct about what\'s actually there.' },
-  { q: 'Can you work with our existing team?', a: 'Yes. This is an embedded engagement — we do not disappear between deliverables. Work happens inside your tools with clear communication and supporting documentation so your internal teams are aligned on next steps.' },
-  { q: 'What if we only need help for a short period?', a: 'Project-based engagements are available for defined scopes: a CRM migration, a dashboard buildout, a comp plan design. Not everything needs to be ongoing.' },
-  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Usually: time saved on manual work, data accuracy improvement, pipeline visibility, and whether your team is actually using what was built.' },
+  { q: 'Why this model instead of a full-time hire?', a: 'A senior growth ops leader fully loaded runs $200K+ before benefits, plus a three-to-six month hiring runway. Most growing businesses get more value from one senior partner at 30% of that cost, with the option to scale up or step out cleanly. No severance, no recruiter fees, no learning curve.' },
+  { q: "How do I know you'll understand my business?", a: "Every engagement starts with a structured diagnostic. Nothing gets built until there's a clear picture of your motion, your team, and where the actual friction is." },
+  { q: 'Can you work with our existing team?', a: 'Yes. This is embedded work, not advisory. Everything happens inside your tools with weekly cadence and documentation, so the team is aligned and nothing lives in my head.' },
+  { q: 'What if we only need help for a short period?', a: "Project-based engagements cover defined scopes: a CRM rebuild, a comp plan design, a demand gen audit, an SEO migration. Not everything needs to be ongoing." },
 ];
 
 const schema = {
@@ -20,7 +18,7 @@ const schema = {
     {
       '@type': 'ProfessionalService',
       name: 'Homegrown Growth Co.',
-      description: 'Fractional Revenue Operations (RevOps) consulting for growing businesses. CRM implementation, process automation, reporting and analytics, tech stack audits, and sales compensation — delivered as embedded senior-level ops support.',
+      description: 'Senior growth operations delivered as embedded execution. GTM strategy, revenue operations, CRM implementation, reporting and analytics, demand generation, website SEO and GEO, workflows and automation, tech stack audits, and sales compensation, all owned end-to-end by one senior partner.',
       url: 'https://homegrowngrowth.co',
       email: 'ian@homegrowngrowth.co',
       image: 'https://homegrowngrowth.co/og-image.png',
@@ -28,25 +26,28 @@ const schema = {
       founder: {
         '@type': 'Person',
         name: 'Ian Chamberland',
-        jobTitle: 'Founder & Fractional RevOps Consultant',
-        knowsAbout: ['Revenue Operations', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'GTM Strategy', 'Process Automation'],
+        jobTitle: 'Founder & Senior Growth Operations Consultant',
+        knowsAbout: ['Revenue Operations', 'GTM Strategy', 'Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'Process Automation', 'Workflow Automation'],
         hasCredential: '8+ years Revenue Operations experience, including Head of Global Revenue Operations',
       },
       address: { '@type': 'PostalAddress', addressLocality: 'Massachusetts', addressRegion: 'MA', addressCountry: 'US' },
       areaServed: ['Massachusetts', 'New England', 'United States'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'RevOps Services',
+        name: 'Growth Operations Services',
         itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GTM Strategy' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fractional RevOps' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CRM Implementation & Cleanup' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Process Automation' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reporting & Analytics' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tech Stack Audit' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CRM Implementation & Cleanup' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reporting & Analytics' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workflows & Automation' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Demand Generation' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website SEO & GEO' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sales Comp & Enablement' } },
         ],
       },
-      knowsAbout: ['Salesforce', 'HubSpot', 'Revenue Operations', 'CRM Implementation', 'Sales Compensation', 'GTM Strategy', 'n8n', 'Zapier', 'Clay', 'Pipeline Analytics', 'Sales Forecasting'],
+      knowsAbout: ['Salesforce', 'HubSpot', 'Revenue Operations', 'GTM Strategy', 'Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'CRM Implementation', 'Sales Compensation', 'n8n', 'Zapier', 'Clay', 'Pipeline Analytics', 'Sales Forecasting'],
       sameAs: ['https://www.linkedin.com/company/homegrown-growth-co', 'https://www.linkedin.com/in/ianchamberland/'],
     },
     {
@@ -60,19 +61,44 @@ const schema = {
   ],
 };
 
-const services = [
-  { title: 'Fractional RevOps', desc: 'Ongoing embedded ops support. Acting as a part-time VP of RevOps — owning the roadmap and execution across your full revenue cycle.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
-  { title: 'Process Automation', desc: 'Manual handoffs, repetitive data entry, lead routing that lives in someone\'s head — replaced with reliable, documented automations using n8n, Zapier, and Clay.', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
-  { title: 'Reporting & Analytics', desc: 'Dashboards that tell you what\'s actually happening in your pipeline, not just what\'s in it. Forecasting, attribution, and the metrics that map to decisions.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
-  { title: 'CRM Implementation & Cleanup', desc: 'Whether you\'re building your CRM for the first time or recovering from tech debt. Clean data and logical processes your team actually uses.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
-  { title: 'Tech Stack Audit', desc: 'Too many tools that cost too much. Identify duplication across your tech stack and find cost-saving measures that yield more ROI from your GTM tools.', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
-  { title: 'Sales Comp & Enablement', desc: 'Commission structures that incentivize the right behaviors. Analytics that restores confidence in commissions with clear alignment across your sales teams.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+const stats = [
+  { value: '$1M+', label: 'Pipeline added in year one from a rebuilt motion', svg: '<path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>' },
+  { value: '$30K+', label: 'Annual ad waste eliminated via real attribution', svg: '<path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>' },
+  { value: '$50K+', label: 'Tech stack savings from a typical audit', svg: '<circle cx="20" cy="20" r="8" transform="translate(-8 -8)"/><path d="M12 12v3l2 2"/><path d="M19 16l5 5"/>' },
+  { value: '10+ hrs', label: 'Reclaimed weekly after automation goes live', svg: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' },
+  { value: '2-4x', label: 'Forecast accuracy: gut feel to data-backed', svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
+  { value: '30-90', label: 'Days to first measurable ROI on average', svg: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>' },
 ];
 
-const scenarios = [
-  { num: '01', title: 'Growing Business Without Growing Costs', desc: 'Revenue is growing, but the systems and processes can\'t keep up. Reporting is manual, the CRM is a mess, and the sales team is operating on instinct. Growth is happening, but it\'s tough to scale with so many workarounds.' },
-  { num: '02', title: 'Strategic Ownership, Not Task Execution', desc: 'Admins and VAs handle what\'s in front of them. Consultants handle the technology. But nobody is owning the underlying strategy or the roadmap driving the GTM engine and connecting the CRM to the forecast to the comp plan for end-to-end efficiency.' },
-  { num: '03', title: 'High-Stakes Project', desc: 'Whether you\'re releasing a new AI tool, rolling out a new sales compensation plan, or overhauling your reporting — don\'t let a slow start or lack of oversight push your critical project off track. Rely on expertise to drive flawless execution.' },
+const capabilities = [
+  { title: 'GTM Strategy', href: '/gtm-strategy', desc: 'ICP, positioning, motion.', tag: 'Strategy', svg: '<circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/><circle cx="22" cy="22" r="2.5" fill="currentColor"/>' },
+  { title: 'Fractional RevOps', href: '/fractional-revops', desc: 'Senior ownership of revenue ops.', tag: 'Strategy', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
+  { title: 'Tech Stack Audit', href: '/tech-stack-audit', desc: 'What to keep, what to cut.', tag: 'Strategy', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
+  { title: 'CRM Implementation', href: '/crm-implementation', desc: 'Salesforce or HubSpot, done right.', tag: 'Systems', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
+  { title: 'Reporting & Analytics', href: '/reporting-analytics', desc: 'Dashboards that drive decisions.', tag: 'Systems', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
+  { title: 'Workflows & Automation', href: '/process-automation', desc: 'Logic in systems, not heads.', tag: 'Systems', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
+  { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid, organic, tied to revenue.', tag: 'Growth', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
+  { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Visible on Google and on AI.', tag: 'Growth', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
+  { title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Plans reps and finance trust.', tag: 'Growth', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+];
+
+const tools = [
+  { name: 'HubSpot', logo: '/logos/hubspot.svg' },
+  { name: 'Salesforce', logo: '/logos/salesforce.svg' },
+  { name: 'Clay', logo: '/logos/clay.png' },
+  { name: 'n8n', logo: '/logos/n8n.svg' },
+  { name: 'Zapier', logo: '/logos/zapier.svg' },
+  { name: 'Stripe', logo: '/logos/stripe.svg' },
+  { name: 'Slack', logo: '/logos/slack.svg' },
+  { name: 'Notion', logo: '/logos/notion.svg' },
+  { name: 'Your stack', logo: '/logos/custom-stack.svg' },
+];
+
+const steps = [
+  { num: '01', title: 'Diagnostic call', body: 'Free 30 minutes. We talk about where the money is leaking. You leave with at least one thing to act on either way.', svg: '<path d="M20 2v6M14 5l3 3 3-3M3 12a17 17 0 0017 17 3 3 0 003-3v-2.5a1.5 1.5 0 00-1.2-1.5l-3-.6a1.5 1.5 0 00-1.6.7l-1 1.7a13 13 0 01-6-6l1.7-1a1.5 1.5 0 00.7-1.6l-.6-3A1.5 1.5 0 008.5 12H6a3 3 0 00-3 3z"/>' },
+  { num: '02', title: 'Scoped proposal', body: 'Inside the week. Engagement model that fits the work (retainer, project, outcome-based, or audit). No bloat.', svg: '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/>' },
+  { num: '03', title: 'Embedded execution', body: 'Weekly cadence, async access between syncs, work happens in your tools. Same week start, typically.', svg: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>' },
+  { num: '04', title: 'Measurable ROI', body: 'Monthly review against agreed metrics. If the work is not paying off in dollars or hours saved, you hear about it first.', svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
 ];
 ---
 
@@ -86,89 +112,238 @@ const scenarios = [
 
     <section class="hero" aria-label="Hero">
       <div class="container">
-        <div class="hero__inner">
-          <div class="hero__pretag">Fractional RevOps</div>
+        <div class="hero__inner hero__inner--split">
+          <div class="hero__content">
+            <div class="hero__pretag">Senior Growth Operations</div>
 
-          <h1 class="hero__headline fade-up">
-            Revenue operations expertise,<br />without the VP price tag.
-          </h1>
+            <h1 class="hero__headline fade-up">
+              Growth operations,<br />owned end-to-end.
+            </h1>
 
-          <p class="hero__sub fade-up fade-up-delay-1">
-            From pre-sales to post-order. Scale your business without scaling your costs.
-          </p>
+            <p class="hero__sub fade-up fade-up-delay-1">
+              Most growing companies don't lose to bigger competitors. They lose to half-true CRMs, gut-feel forecasts, and manual work that owns the week. Get one senior partner to own the operational layer behind your revenue, and prove it pays for itself in 90 days.
+            </p>
 
-          <div class="btn-group fade-up fade-up-delay-2">
-            <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
-            <a href="/services" class="btn btn--outline btn--lg">See What We Do</a>
+            <div class="btn-group fade-up fade-up-delay-2">
+              <a href="/roi-call" class="btn btn--primary btn--lg">Book a free 30-min call</a>
+              <a href="/services" class="btn btn--outline btn--lg">See what I do</a>
+            </div>
+          </div>
+          <div class="hero__visual hero__visual--mesh fade-up fade-up-delay-1" aria-hidden="true">
+            <svg class="hero__mesh" viewBox="0 0 500 400" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How an engagement compounds: diagnose, build, scale, compound">
+              <defs>
+                <linearGradient id="hero-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="100%" stop-color="#EEF6F4"/>
+                </linearGradient>
+                <filter id="hero-node-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                  <feOffset dx="0" dy="3"/>
+                  <feComponentTransfer><feFuncA type="linear" slope="0.14"/></feComponentTransfer>
+                  <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <rect width="500" height="400" fill="url(#hero-bg-grad)"/>
+
+              <!-- Top eyebrow + title -->
+              <text x="40" y="44" font-family="'DM Mono', ui-monospace, monospace" font-size="9" letter-spacing="2.5" fill="#49A69C" font-weight="500">— HOW WE WORK</text>
+              <text x="40" y="78" font-family="'Inter', -apple-system, sans-serif" font-size="22" font-weight="700" fill="#1A1D23" letter-spacing="-0.5">How an engagement drives growth.</text>
+              <text x="40" y="102" font-family="'Inter', -apple-system, sans-serif" font-size="13" font-weight="400" fill="#6B7280">Four phases. One goal: grow the business.</text>
+
+              <!-- Subtle divider -->
+              <line x1="40" y1="128" x2="460" y2="128" stroke="#E5E7EB" stroke-width="1"/>
+
+              <!-- Connecting line between circles -->
+              <line x1="80" y1="218" x2="420" y2="218" stroke="rgba(73,166,156,0.30)" stroke-width="1.5" stroke-dasharray="2 5"/>
+
+              <!-- 4 process circles -->
+              <g fill="none" stroke="#49A69C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                <!-- 01 Diagnose -->
+                <g transform="translate(80 218)" filter="url(#hero-node-shadow)">
+                  <circle r="34" fill="#FFFFFF" stroke="rgba(73,166,156,0.22)" stroke-width="1.3"/>
+                  <g transform="translate(-13 -13) scale(0.59)">
+                    <circle cx="20" cy="20" r="10"/>
+                    <path d="M28.5 28.5L36 36"/>
+                  </g>
+                </g>
+
+                <!-- 02 Build -->
+                <g transform="translate(193 218)" filter="url(#hero-node-shadow)">
+                  <circle r="34" fill="#FFFFFF" stroke="rgba(73,166,156,0.22)" stroke-width="1.3"/>
+                  <g transform="translate(-13 -13) scale(0.59)">
+                    <rect x="8" y="8" width="10" height="10" rx="2"/>
+                    <rect x="26" y="8" width="10" height="10" rx="2"/>
+                    <rect x="17" y="26" width="10" height="10" rx="2"/>
+                    <path d="M18 13h8M22 18v8"/>
+                  </g>
+                </g>
+
+                <!-- 03 Scale -->
+                <g transform="translate(307 218)" filter="url(#hero-node-shadow)">
+                  <circle r="34" fill="#FFFFFF" stroke="rgba(73,166,156,0.22)" stroke-width="1.3"/>
+                  <g transform="translate(-13 -13) scale(0.59)">
+                    <polyline points="6 32 16 22 22 28 38 12"/>
+                    <polyline points="32 12 38 12 38 18"/>
+                  </g>
+                </g>
+
+                <!-- 04 Compound -->
+                <g transform="translate(420 218)" filter="url(#hero-node-shadow)">
+                  <circle r="34" fill="#49A69C" stroke="#49A69C" stroke-width="1.3"/>
+                  <g transform="translate(-13 -13) scale(0.59)" stroke="#FFFFFF">
+                    <path d="M22 8v28M22 8l-7 7M22 8l7 7"/>
+                    <path d="M8 28h28"/>
+                  </g>
+                </g>
+              </g>
+
+              <!-- Step numbers (above each circle) -->
+              <g font-family="'DM Mono', ui-monospace, monospace" font-size="9" letter-spacing="1.5" fill="#49A69C" font-weight="500">
+                <text x="80" y="172" text-anchor="middle">01</text>
+                <text x="193" y="172" text-anchor="middle">02</text>
+                <text x="307" y="172" text-anchor="middle">03</text>
+                <text x="420" y="172" text-anchor="middle">04</text>
+              </g>
+
+              <!-- Labels (below each circle) -->
+              <g font-family="'Inter', -apple-system, sans-serif" font-weight="700" fill="#1A1D23" font-size="13" letter-spacing="-0.1">
+                <text x="80" y="285" text-anchor="middle">Diagnose</text>
+                <text x="193" y="285" text-anchor="middle">Build</text>
+                <text x="307" y="285" text-anchor="middle">Scale</text>
+                <text x="420" y="285" text-anchor="middle">Compound</text>
+              </g>
+
+              <!-- Descriptions -->
+              <g font-family="'Inter', -apple-system, sans-serif" font-weight="400" fill="#6B7280" font-size="11">
+                <text x="80" y="305" text-anchor="middle">Find the gaps</text>
+                <text x="193" y="305" text-anchor="middle">Fix the systems</text>
+                <text x="307" y="305" text-anchor="middle">Multiply output</text>
+                <text x="420" y="305" text-anchor="middle">ROI that lasts</text>
+              </g>
+
+            </svg>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--bg" aria-labelledby="services-heading">
+    <section class="stat-strip-section" aria-label="Quick facts">
       <div class="container">
-        <div class="section-header fade-up">
-          <span class="section-eyebrow">What We Do</span>
-          <h2 class="display-lg section-title" id="services-heading">One partner. Every layer of your revenue ops.</h2>
+        <div class="stat-strip">
+          {stats.map((s, i) => (
+            <div class:list={['stat-strip__item', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <div class="stat-strip__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+              </div>
+              <div class="stat-strip__value">{s.value}</div>
+              <div class="stat-strip__label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="tools-strip" aria-label="Tools and platforms">
+      <div class="container">
+        <p class="tools-strip__label">Built on the stack you already use</p>
+        <div class="tools-strip__logos">
+          {tools.map((t) => (
+            <div class="tool-logo">
+              {t.logo ? (
+                <img src={t.logo} alt={`${t.name} logo`} class="tool-logo__img" loading="lazy" />
+              ) : (
+                <span class="tool-logo__mark" aria-hidden="true"></span>
+              )}
+              <span class="tool-logo__name">{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg section--compact" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header section-header--compact fade-up">
+          <span class="section-eyebrow">Capabilities</span>
+          <h2 class="display-md section-title" id="services-heading">Nine ways to move the number.</h2>
         </div>
 
-        <div class="services-grid">
-          {services.map((s, i) => (
-            <div class:list={['service-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
-              <div class="service-card__icon" aria-hidden="true">
+        <div class="capability-grid">
+          {capabilities.map((s, i) => (
+            <a href={s.href} class:list={['capability-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <div class="capability-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
               </div>
-              <h3 class="service-card__title">{s.title}</h3>
-              <p class="service-card__desc">{s.desc}</p>
+              <div class="capability-card__body">
+                <span class="capability-card__tag">{s.tag}</span>
+                <h3 class="capability-card__title">{s.title}</h3>
+                <p class="capability-card__desc">{s.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="capability-grid__footer fade-up">
+          <a href="/services" class="capability-grid__link">See full service detail
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="section-eyebrow section-eyebrow--light">How It Works</span>
+          <h2 class="display-lg section-title title--on-dark" id="how-heading">Four steps. No theatre.</h2>
+        </div>
+
+        <div class="process-grid">
+          {steps.map((s, i) => (
+            <div class:list={['process-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <div class="process-card__top">
+                <span class="process-card__num">{s.num}</span>
+                <div class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+                </div>
+              </div>
+              <h3 class="process-card__title">{s.title}</h3>
+              <p class="process-card__body">{s.body}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="dark-section" aria-labelledby="when-heading">
+    <section class="section section--surface section--compact" aria-labelledby="concerns-heading">
       <div class="container">
-        <div class="section-header fade-up">
-          <span class="section-eyebrow section-eyebrow--light">When It Fits</span>
-          <h2 class="display-lg section-title" id="when-heading" class="title--on-dark">The right engagement at the right stage.</h2>
+        <div class="section-header section-header--compact fade-up">
+          <span class="section-eyebrow">Questions</span>
+          <h2 class="display-md section-title" id="concerns-heading">Common questions from new clients.</h2>
         </div>
 
-        <div class="scenario-grid">
-          {scenarios.map((s, i) => (
-            <div class:list={['scenario-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
-              <span class="scenario-card__num">{s.num}</span>
-              <h3 class="scenario-card__title">{s.title}</h3>
-              <p class="scenario-card__desc">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="concerns-heading">
-      <div class="container">
-        <div class="section-header fade-up">
-          <span class="section-eyebrow">Frequently Asked Questions</span>
-          <h2 class="display-lg section-title" id="concerns-heading">Frequently Asked Questions</h2>
-        </div>
-
-        <div class="concerns-grid">
+        <div class="faq-stack">
           {faqs.map((f, i) => (
-            <div class:list={['concern-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
-              <p class="concern-card__q">{f.q}</p>
-              <p class="concern-card__a">{f.a}</p>
-            </div>
+            <details class:list={['faq-item', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <summary class="faq-item__q">
+                <span>{f.q}</span>
+                <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
+              <p class="faq-item__a">{f.a}</p>
+            </details>
           ))}
         </div>
       </div>
     </section>
 
     <section class="cta-section" aria-label="Call to action">
-      <div class="container container--narrow text-center">
+      <div class="container text-center">
         <div class="fade-up">
-          <h2 class="display-lg section-title title--on-dark-spaced">Not sure where to start?<br />Book a free ROI call.</h2>
-          <p class="cta-body">No pitch, no proposal — just an honest conversation about where your ops are costing you money and what would actually move the needle.</p>
-          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+          <h2 class="display-lg section-title title--on-dark-spaced">Book a free 30-minute call.</h2>
+          <p class="cta-body">Thirty minutes to map current process and discuss potential ideas and improvements. No pitch, no proposal on the call. You leave with concrete next steps to grow your business, regardless of fit.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book a free 30-min call</a>
         </div>
       </div>
     </section>

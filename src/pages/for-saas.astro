@@ -2,16 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
-const title = 'Growth Operations for Early-Stage SaaS — Homegrown Growth Co.';
-const description = "Fractional growth operations for seed to Series B SaaS teams. CRM, automation, pipeline analytics, and GTM strategy — without the full-time ops hire.";
+const title = 'Growth Operations for Early-Stage SaaS | Homegrown Growth Co.';
+const description = "Senior growth operations for seed to Series B SaaS teams. CRM, automation, pipeline analytics, and GTM strategy without the full-time ops hire.";
 const canonical = 'https://homegrowngrowth.co/for-saas';
 
 const faqs = [
-  { q: 'Do I need fractional ops or a full-time hire?', a: "Most teams between $500K–$5M ARR don't need (or can't justify) a full-time RevOps hire. Fractional gives you senior ownership at 20–30% of the cost, with the ability to scale up or exit cleanly as the company matures." },
-  { q: 'How quickly can work actually start?', a: 'Discovery typically takes 1–2 weeks. Depending on scope, the first deliverables are usually in production within 3–4 weeks of the initial call. No months-long "assessment phase" before anything is built.' },
-  { q: 'We already have a CRM — do we need this?', a: 'Usually. "We already have a CRM" frequently means it was set up for a different motion and nobody wants to say it\'s not working. The discovery is direct about what\'s actually there, not what it was supposed to be.' },
-  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts — typically: manual time saved, data accuracy improvement, pipeline visibility, and adoption. Not activity metrics like "hours logged" or "tasks completed."' },
-  { q: 'Can you work alongside our existing team?', a: 'Yes — this is embedded, not advisory. Work happens inside your tools. Clear async communication, documentation that outlasts the engagement, and no disappearing act between deliverables.' },
+  { q: 'Do I need an embedded senior partner or a full-time hire?', a: "Most teams between $500K-$5M ARR don't need (or can't justify) a full-time RevOps hire. An embedded senior partner gives you the same ownership at 20-30% of the cost, with the ability to scale up or exit cleanly as the company matures." },
+  { q: 'How quickly can work actually start?', a: 'Discovery typically takes 1-2 weeks. Depending on scope, the first deliverables are usually in production within 3-4 weeks of the initial call. No months-long "assessment phase" before anything is built.' },
+  { q: 'We already have a CRM. Do we need this?', a: 'Usually. "We already have a CRM" frequently means it was set up for a different motion and nobody wants to say it\'s not working. The discovery is direct about what\'s actually there, not what it was supposed to be.' },
+  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Typically: manual time saved, data accuracy improvement, pipeline visibility, and adoption. Not activity metrics like "hours logged" or "tasks completed."' },
+  { q: 'Can you work alongside our existing team?', a: 'Yes. This is embedded, not advisory. Work happens inside your tools. Clear async communication, documentation that outlasts the engagement, and no disappearing act between deliverables.' },
   { q: 'What does a project engagement look like?', a: 'Fixed deliverable, clear timeline, defined exit point. Best for CRM migrations, reporting buildouts, automation design, or comp plan overhauls. Priced fixed or T&M depending on scope. No ongoing commitment required.' },
 ];
 
@@ -42,36 +42,36 @@ const painPoints = [
   { icon: '📊', title: 'Your pipeline data is a guess', body: 'Weekly forecast is whatever the rep said in standup. Nobody knows conversion rates. Board prep takes two days of manual spreadsheet work.' },
   { icon: '🔁', title: "Manual work that shouldn't exist", body: "Lead handoffs live in Slack. Data entry nobody trusts. Sequences that break when a rep leaves. Everything works until it doesn't." },
   { icon: '🏗️', title: 'CRM built for what you were, not what you are', body: "Set up when you had two reps and a simple motion. Now you have segments, channels, and a product line the original setup can't model." },
-  { icon: '💸', title: 'Comp plan nobody fully understands', body: "Reps dispute numbers monthly. Finance reconciles quarterly. The plan made sense in year one — it doesn't reflect how you sell anymore." },
+  { icon: '💸', title: 'Comp plan nobody fully understands', body: "Reps dispute numbers monthly. Finance reconciles quarterly. The plan made sense in year one. It doesn't reflect how you sell anymore." },
   { icon: '🧰', title: 'Too many tools, unclear ROI', body: "Stack grew one integration at a time. Now you're paying for five tools with overlapping features and nobody owns the map of what connects to what." },
-  { icon: '⏳', title: 'Your founder is still doing ops work', body: 'RevOps fell to the CEO or head of sales because nobody else owned it. The work is getting done — just by the wrong person at the wrong cost.' },
+  { icon: '⏳', title: 'Your founder is still doing ops work', body: 'RevOps fell to the CEO or head of sales because nobody else owned it. The work is getting done, just by the wrong person at the wrong cost.' },
 ];
 
 const saasServices = [
-  { tag: 'Fractional / Ongoing', title: 'Embedded Growth Ops', body: 'Acting as your part-time VP of RevOps — owning the roadmap and executing across your full GTM system month to month.', bullets: ['Dedicated ops roadmap tied to your revenue goals', 'Weekly standup + async availability', 'Cross-functional coordination: sales, marketing, finance', 'Ongoing CRM health, reporting, and process iteration'] },
-  { tag: 'Project', title: 'CRM Implementation & Rebuild', body: 'HubSpot or Salesforce — built right the first time, or rescued from accumulated tech debt before it gets worse.', bullets: ['Full audit: data model, field logic, automation conflicts', 'Implementation scoped to how your team actually sells', 'Data cleaning, deduplication, migration', 'Handoff docs and team training included'] },
+  { tag: 'Embedded / Ongoing', title: 'Embedded Growth Ops', body: 'Acting as your part-time VP of RevOps. Owning the roadmap and executing across your full GTM system month to month.', bullets: ['Dedicated ops roadmap tied to your revenue goals', 'Weekly standup + async availability', 'Cross-functional coordination: sales, marketing, finance', 'Ongoing CRM health, reporting, and process iteration'] },
+  { tag: 'Project', title: 'CRM Implementation & Rebuild', body: 'HubSpot or Salesforce, built right the first time, or rescued from accumulated tech debt before it gets worse.', bullets: ['Full audit: data model, field logic, automation conflicts', 'Implementation scoped to how your team actually sells', 'Data cleaning, deduplication, migration', 'Handoff docs and team training included'] },
   { tag: 'Project', title: 'Automation & Workflow Design', body: 'Manual handoffs and tribal knowledge replaced with documented systems using n8n, Zapier, and Clay.', bullets: ['Lead routing and assignment logic in a system, not Slack', 'Cross-tool data sync between CRM, MAP, billing, finance', 'Error handling and maintenance documentation', 'AI-augmented workflows where they actually add value'] },
-  { tag: 'Project / Ongoing', title: 'Pipeline Analytics & Forecasting', body: 'Dashboards that support real decisions — stage velocity, attribution, forecast confidence, and board-ready reporting.', bullets: ['Pipeline analytics: velocity, conversion, deal quality', 'Revenue attribution across channels and sourcing motions', 'Forecast modeling with rep-level visibility', 'Delivered in Salesforce, HubSpot, or your BI tool'] },
-  { tag: 'Project', title: 'Sales Comp & Enablement', body: 'Commission plans that incentivize the right behaviors — with the modeling to stress-test before you roll out.', bullets: ['Quota-setting, OTE structure, accelerators, SPIFFs', 'Scenario modeling to test plan economics', 'Rep onboarding frameworks and ramp structure', 'Templates for ongoing administration'] },
+  { tag: 'Project / Ongoing', title: 'Pipeline Analytics & Forecasting', body: 'Dashboards that support real decisions: stage velocity, attribution, forecast confidence, and board-ready reporting.', bullets: ['Pipeline analytics: velocity, conversion, deal quality', 'Revenue attribution across channels and sourcing motions', 'Forecast modeling with rep-level visibility', 'Delivered in Salesforce, HubSpot, or your BI tool'] },
+  { tag: 'Project', title: 'Sales Comp & Enablement', body: 'Commission plans that incentivize the right behaviors, with the modeling to stress-test before you roll out.', bullets: ['Quota-setting, OTE structure, accelerators, SPIFFs', 'Scenario modeling to test plan economics', 'Rep onboarding frameworks and ramp structure', 'Templates for ongoing administration'] },
   { tag: 'Assessment', title: 'GTM Tech Stack Audit', body: "A full system look at what you're running, what it's costing, and whether it's returning anything close to what you're paying.", bullets: ['Complete inventory: usage, cost, overlap, integration health', 'Gap analysis against your actual stage and motion', 'Consolidation recommendations with estimated savings', 'Prioritized roadmap for changes with rollout sequencing'] },
 ];
 
 const processSteps = [
   { num: '01', title: 'Free Strategy Call', body: '30 minutes. Honest conversation about where your ops are costing you time and money. No pitch until there\'s a real problem to solve.' },
   { num: '02', title: 'Structured Discovery', body: 'We document your current motion, stack, data model, and friction points before anything gets built. This shapes the scope and the sequencing.' },
-  { num: '03', title: 'Scoped Proposal', body: 'Clear deliverables, timeline, and pricing — either as a monthly retainer or a fixed-scope project. No open-ended retainers with vague outputs.' },
+  { num: '03', title: 'Scoped Proposal', body: 'Clear deliverables, timeline, and pricing, either as a monthly retainer or a fixed-scope project. No open-ended retainers with vague outputs.' },
   { num: '04', title: 'Embedded Execution', body: 'Work happens inside your tools. Async updates, weekly standups, and full documentation so nothing is a black box when the engagement ends.' },
 ];
 
 const stats = [
-  { number: '20–30%', label: 'Typical cost vs. a full-time RevOps hire at equivalent seniority' },
-  { number: '2–4 wks', label: 'From first call to active roadmap and first deliverable in production' },
+  { number: '20-30%', label: 'Typical cost vs. a full-time RevOps hire at equivalent seniority' },
+  { number: '2-4 wks', label: 'From first call to active roadmap and first deliverable in production' },
   { number: 'Hours/week', label: 'Average manual time reclaimed per engagement through automation' },
   { number: '8+ yrs', label: 'RevOps experience across SaaS, healthcare, and high-growth teams' },
 ];
 
 const fitGood = [
-  'Seed to Series B SaaS, $500K–$10M ARR',
+  'Seed to Series B SaaS, $500K-$10M ARR',
   'Growing sales team without a dedicated ops owner',
   'Founder or head of sales is doing too much ops themselves',
   'HubSpot or Salesforce is in-place but underleveraged',
@@ -99,8 +99,10 @@ const fitBad = [
     <PageHero
       tag="For Early-Stage SaaS Teams"
       headline="Your GTM is outgrowing your current systems."
-      subtitle="Fractional growth operations for seed to Series B teams — pipeline analytics, CRM, automation, and comp — built for the speed you're moving at."
+      subtitle="Senior growth operations for seed to Series B teams. Pipeline analytics, CRM, automation, and comp, built for the speed you're moving at."
       headlineMaxWidth="820px"
+      heroImage="/images/hero-saas.jpg"
+      heroImageAlt="Modern SaaS team workspace"
     />
 
     <div class="container" style="margin-top: -32px; margin-bottom: 24px;">
@@ -224,7 +226,7 @@ const fitBad = [
             </ul>
           </div>
           <div class="fit-col fit-col--bad fade-up fade-up-delay-1">
-            <div class="fit-col__label">— Not the Right Fit</div>
+            <div class="fit-col__label">Not the Right Fit</div>
             <ul class="fit-list">
               {fitBad.map((f) => (
                 <li class="fit-list__item"><span class="fit-list__icon fit-list__icon--muted" aria-hidden="true">✗</span><span>{f}</span></li>
@@ -243,10 +245,13 @@ const fitBad = [
         </div>
         <div class="faq-stack">
           {faqs.map((f) => (
-            <div class="faq-item fade-up">
-              <h3 class="faq-item__q">{f.q}</h3>
+            <details class="faq-item fade-up">
+              <summary class="faq-item__q">
+                <span>{f.q}</span>
+                <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
               <p class="faq-item__a">{f.a}</p>
-            </div>
+            </details>
           ))}
         </div>
       </div>
@@ -256,7 +261,7 @@ const fitBad = [
       <div class="container container--narrow text-center">
         <div class="fade-up">
           <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Ready to stop doing ops work yourself?</h2>
-          <p class="cta-body">A free 30-minute call to find out exactly where your GTM is costing you time and money — and whether this is the right fit. No pitch, no proposal — just an honest conversation.</p>
+          <p class="cta-body">A free thirty-minute call to map where your GTM is leaking, what's possible if it's rebuilt, and whether this is a fit. No pitch, no proposal. An honest conversation.</p>
           <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free Strategy Call</a>
         </div>
       </div>

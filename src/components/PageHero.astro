@@ -4,21 +4,35 @@ interface Props {
   headline: string;
   subtitle?: string | undefined;
   headlineMaxWidth?: string | undefined;
+  heroImage?: string | undefined;
+  heroImageAlt?: string | undefined;
 }
 
-const { tag, headline, subtitle, headlineMaxWidth } = Astro.props;
+const { tag, headline, subtitle, headlineMaxWidth, heroImage, heroImageAlt } = Astro.props;
+const hasImage = Boolean(heroImage);
 ---
-<section class="page-hero">
+<section class:list={['page-hero', { 'page-hero--split': hasImage }]}>
   <div class="container">
-    <span class="page-hero__tag fade-up">{tag}</span>
-    <h1
-      class="page-hero__headline fade-up fade-up-delay-1"
-      style={headlineMaxWidth ? `max-width: ${headlineMaxWidth};` : undefined}
-    >
-      {headline}
-    </h1>
-    {subtitle && (
-      <p class="page-hero__sub fade-up fade-up-delay-2" set:html={subtitle}></p>
-    )}
+    <div class:list={['page-hero__inner', { 'page-hero__inner--split': hasImage }]}>
+      <div class="page-hero__content">
+        <span class="page-hero__tag fade-up">{tag}</span>
+        <h1
+          class="page-hero__headline fade-up fade-up-delay-1"
+          style={headlineMaxWidth ? `max-width: ${headlineMaxWidth};` : undefined}
+        >
+          {headline}
+        </h1>
+        {subtitle && (
+          <p class="page-hero__sub fade-up fade-up-delay-2" set:html={subtitle}></p>
+        )}
+        <slot />
+      </div>
+      {hasImage && (
+        <div class="page-hero__visual fade-up fade-up-delay-1" aria-hidden="true">
+          <img src={heroImage} alt={heroImageAlt || ''} class="page-hero__image" loading="eager" />
+          <div class="page-hero__visual-overlay"></div>
+        </div>
+      )}
+    </div>
   </div>
 </section>
