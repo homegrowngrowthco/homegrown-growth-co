@@ -31,3 +31,9 @@ dist/
 # Claude Code (commit settings.json; ignore local overrides + history)
 .claude/settings.local.json
 .claude/file-history/
+
+# Reference screenshots + raw brand asset sources kept at repo root
+# (processed copies live in public/ where applicable)
+*_whitespace.jpg
+whitespace.jpg
+68dd418739aadd6263219522_clay-logo.png

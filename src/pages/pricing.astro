@@ -119,6 +119,8 @@ const packages = [
       headline="Four ways to engage. Scope first, price second."
       subtitle="Pricing depends on what actually needs to move in your business. The structure follows the work, not the other way around. The free ROI call is where we figure out which model fits."
       headlineMaxWidth="820px"
+      heroImage="/images/hero-strategy.jpg"
+      heroImageAlt="Engagement model planning"
     />
 
     <section class="section section--surface" aria-labelledby="packages-heading">
@@ -214,10 +216,13 @@ const packages = [
         </div>
         <div class="faq-stack fade-up">
           {faqs.map((f) => (
-            <div class="faq-item">
-              <p class="faq-item__q">{f.q}</p>
+            <details class="faq-item">
+              <summary class="faq-item__q">
+                <span>{f.q}</span>
+                <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
               <p class="faq-item__a">{f.a}</p>
-            </div>
+            </details>
           ))}
         </div>
       </div>

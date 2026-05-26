@@ -101,6 +101,8 @@ const fitBad = [
       headline="Get found. Get booked. Get repeat business."
       subtitle="Fractional growth operations for local and multi-location service businesses. Local SEO and GEO, demand gen, workflow automation, and CRM, owned end-to-end so leads stop falling through the cracks."
       headlineMaxWidth="820px"
+      heroImage="/images/hero-local.jpg"
+      heroImageAlt="Local business storefront"
     />
 
     <div class="container" style="margin-top: -32px; margin-bottom: 24px;">
@@ -243,10 +245,13 @@ const fitBad = [
         </div>
         <div class="faq-stack">
           {faqs.map((f) => (
-            <div class="faq-item fade-up">
-              <h3 class="faq-item__q">{f.q}</h3>
+            <details class="faq-item fade-up">
+              <summary class="faq-item__q">
+                <span>{f.q}</span>
+                <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
               <p class="faq-item__a">{f.a}</p>
-            </div>
+            </details>
           ))}
         </div>
       </div>

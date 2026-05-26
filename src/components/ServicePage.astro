@@ -36,6 +36,7 @@ interface Props {
   relatedServices: RelatedService[];
   ctaHeadline: string;
   ctaBody: string;
+  heroImage?: string | undefined;
 }
 
 const {
@@ -54,6 +55,7 @@ const {
   relatedServices,
   ctaHeadline,
   ctaBody,
+  heroImage = '/images/hero-strategy.jpg',
 } = Astro.props;
 
 const canonical = `https://homegrowngrowth.co/${slug}`;
@@ -100,7 +102,7 @@ const schema = {
 >
   <main id="main" class="page-content">
 
-    <section class="page-hero page-hero--compact">
+    <section class="page-hero page-hero--compact page-hero--split">
       <div class="container">
         <nav class="breadcrumb fade-up" aria-label="Breadcrumb">
           <a href="/" class="breadcrumb__link">Home</a>
@@ -109,18 +111,26 @@ const schema = {
           <span class="breadcrumb__sep" aria-hidden="true">/</span>
           <span class="breadcrumb__current">{serviceName}</span>
         </nav>
-        <span class="page-hero__tag fade-up">{serviceTag}</span>
-        <h1 class="page-hero__headline fade-up fade-up-delay-1">
-          {headlineParts.map((part, i) => (
-            <>
-              {part}{i < headlineParts.length - 1 && <br />}
-            </>
-          ))}
-        </h1>
-        <p class="page-hero__sub fade-up fade-up-delay-2">{subtitle}</p>
-        <div class="btn-group fade-up fade-up-delay-3">
-          <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
-          <a href="/services" class="btn btn--outline btn--lg">View All Services</a>
+        <div class="page-hero__inner page-hero__inner--split">
+          <div class="page-hero__content">
+            <span class="page-hero__tag fade-up">{serviceTag}</span>
+            <h1 class="page-hero__headline fade-up fade-up-delay-1">
+              {headlineParts.map((part, i) => (
+                <>
+                  {part}{i < headlineParts.length - 1 && <br />}
+                </>
+              ))}
+            </h1>
+            <p class="page-hero__sub fade-up fade-up-delay-2">{subtitle}</p>
+            <div class="btn-group fade-up fade-up-delay-3">
+              <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
+              <a href="/services" class="btn btn--outline btn--lg">View All Services</a>
+            </div>
+          </div>
+          <div class="page-hero__visual fade-up fade-up-delay-1" aria-hidden="true">
+            <img src={heroImage} alt="" class="page-hero__image" loading="eager" />
+            <div class="page-hero__visual-overlay"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -174,10 +184,13 @@ const schema = {
         </div>
         <div class="faq-stack">
           {faqs.map((f) => (
-            <div class="faq-item fade-up">
-              <h3 class="faq-item__q">{f.q}</h3>
+            <details class="faq-item fade-up">
+              <summary class="faq-item__q">
+                <span>{f.q}</span>
+                <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
               <p class="faq-item__a" set:html={f.htmlA}></p>
-            </div>
+            </details>
           ))}
         </div>
       </div>

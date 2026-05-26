@@ -62,8 +62,10 @@ const schema = {
 };
 
 const stats = [
-  { value: '$150K+', label: 'Saved vs. hiring a full-time VP, year one', svg: '<path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>' },
-  { value: '10+ hrs', label: 'Reclaimed per week, per team, after automation', svg: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' },
+  { value: '$150K+', label: 'Saved vs hiring a full-time VP, year one', svg: '<path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>' },
+  { value: '$30K+', label: 'Annual ad waste eliminated via real attribution', svg: '<path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>' },
+  { value: '$50K+', label: 'Tech stack savings from a typical audit', svg: '<circle cx="20" cy="20" r="8" transform="translate(-8 -8)"/><path d="M12 12v3l2 2"/><path d="M19 16l5 5"/>' },
+  { value: '10+ hrs', label: 'Reclaimed weekly after automation goes live', svg: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' },
   { value: '2-4x', label: 'Forecast accuracy: gut feel to data-backed', svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
   { value: '30-90', label: 'Days to first measurable ROI on average', svg: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>' },
 ];
@@ -80,25 +82,15 @@ const capabilities = [
   { title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Plans reps and finance trust.', tag: 'Growth', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
 ];
 
-// 7 of 8 logo SVGs live in /public/logos/ (HubSpot, Zapier, Stripe, Notion,
-// n8n from simpleicons.org [CC0]; Salesforce, Slack from Wikipedia Commons).
-// Clay has no public-domain SVG asset; renders as text wordmark only.
 const tools = [
   { name: 'HubSpot', logo: '/logos/hubspot.svg' },
   { name: 'Salesforce', logo: '/logos/salesforce.svg' },
-  { name: 'Clay', logo: null },
+  { name: 'Clay', logo: '/logos/clay.png' },
   { name: 'n8n', logo: '/logos/n8n.svg' },
   { name: 'Zapier', logo: '/logos/zapier.svg' },
   { name: 'Stripe', logo: '/logos/stripe.svg' },
   { name: 'Slack', logo: '/logos/slack.svg' },
   { name: 'Notion', logo: '/logos/notion.svg' },
-];
-
-const outcomes = [
-  { label: 'Manual ops hours per week', before: { value: '12 hrs', bar: 100 }, after: { value: '2 hrs', bar: 17 } },
-  { label: 'Forecast variance to plan', before: { value: '±35%', bar: 100 }, after: { value: '±8%', bar: 23 } },
-  { label: 'Pipeline conversion (rep avg)', before: { value: '18%', bar: 56 }, after: { value: '32%', bar: 100 }, direction: 'up' },
-  { label: 'Tech stack annual waste', before: { value: '$48K', bar: 100 }, after: { value: '$14K', bar: 29 } },
 ];
 
 const steps = [
@@ -119,20 +111,26 @@ const steps = [
 
     <section class="hero" aria-label="Hero">
       <div class="container">
-        <div class="hero__inner">
-          <div class="hero__pretag">Fractional Growth Operations</div>
+        <div class="hero__inner hero__inner--split">
+          <div class="hero__content">
+            <div class="hero__pretag">Fractional Growth Operations</div>
 
-          <h1 class="hero__headline fade-up">
-            Senior growth ops,<br />fractional cost.
-          </h1>
+            <h1 class="hero__headline fade-up">
+              Senior growth ops,<br />fractional cost.
+            </h1>
 
-          <p class="hero__sub fade-up fade-up-delay-1">
-            Your pipeline forecast is a gut call. Manual work owns the week. The founder is still routing leads and fixing CRM fields. Hire one senior growth ops partner instead of three.
-          </p>
+            <p class="hero__sub fade-up fade-up-delay-1">
+              Your pipeline forecast is a gut call. Manual work owns the week. The founder is still routing leads and fixing CRM fields. Hire one senior growth ops partner instead of three.
+            </p>
 
-          <div class="btn-group fade-up fade-up-delay-2">
-            <a href="/roi-call" class="btn btn--primary btn--lg">Book a free 30-min call</a>
-            <a href="/services" class="btn btn--outline btn--lg">See what I do</a>
+            <div class="btn-group fade-up fade-up-delay-2">
+              <a href="/roi-call" class="btn btn--primary btn--lg">Book a free 30-min call</a>
+              <a href="/services" class="btn btn--outline btn--lg">See what I do</a>
+            </div>
+          </div>
+          <div class="hero__visual fade-up fade-up-delay-1" aria-hidden="true">
+            <img src="/images/hero-analytics.jpg" alt="" class="hero__image" loading="eager" />
+            <div class="hero__visual-overlay"></div>
           </div>
         </div>
       </div>
@@ -202,41 +200,6 @@ const steps = [
       </div>
     </section>
 
-    <section class="section section--surface section--compact" aria-labelledby="outcomes-heading">
-      <div class="container container--narrow">
-        <div class="section-header section-header--compact fade-up">
-          <span class="section-eyebrow">Typical Outcomes</span>
-          <h2 class="display-md section-title" id="outcomes-heading">What measurably changes after we ship.</h2>
-        </div>
-
-        <div class="outcomes-list">
-          {outcomes.map((o, i) => (
-            <div class:list={['outcome-row', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
-              <p class="outcome-row__label">{o.label}</p>
-              <div class="outcome-row__bars">
-                <div class="outcome-bar outcome-bar--before">
-                  <span class="outcome-bar__tag">Before</span>
-                  <div class="outcome-bar__track">
-                    <div class="outcome-bar__fill outcome-bar__fill--before" style={`width:${o.before.bar}%`}></div>
-                  </div>
-                  <span class="outcome-bar__value">{o.before.value}</span>
-                </div>
-                <div class="outcome-bar outcome-bar--after">
-                  <span class="outcome-bar__tag">After</span>
-                  <div class="outcome-bar__track">
-                    <div class="outcome-bar__fill outcome-bar__fill--after" style={`width:${o.after.bar}%`}></div>
-                  </div>
-                  <span class="outcome-bar__value">{o.after.value}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <p class="outcomes-footnote fade-up">Ranges reflect typical engagement outcomes over the first 90 days. Your numbers vary by stage, motion, and starting state.</p>
-      </div>
-    </section>
-
     <section class="dark-section" aria-labelledby="how-heading">
       <div class="container">
         <div class="section-header fade-up">
@@ -261,19 +224,22 @@ const steps = [
       </div>
     </section>
 
-    <section class="section section--surface" aria-labelledby="concerns-heading">
-      <div class="container">
-        <div class="section-header fade-up">
+    <section class="section section--surface section--compact" aria-labelledby="concerns-heading">
+      <div class="container container--narrow">
+        <div class="section-header section-header--compact fade-up">
           <span class="section-eyebrow">Questions</span>
-          <h2 class="display-lg section-title" id="concerns-heading">Common ones.</h2>
+          <h2 class="display-md section-title" id="concerns-heading">Common ones.</h2>
         </div>
 
-        <div class="concerns-grid">
+        <div class="faq-stack">
           {faqs.map((f, i) => (
-            <div class:list={['concern-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
-              <p class="concern-card__q">{f.q}</p>
-              <p class="concern-card__a">{f.a}</p>
-            </div>
+            <details class:list={['faq-item', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+              <summary class="faq-item__q">
+                <span>{f.q}</span>
+                <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
+              <p class="faq-item__a">{f.a}</p>
+            </details>
           ))}
         </div>
       </div>
