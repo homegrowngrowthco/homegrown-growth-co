@@ -752,6 +752,17 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+.hero__visual--mesh {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+}
+
+.hero__mesh {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 @media (max-width: 960px) {
   .hero__inner--split {
     grid-template-columns: 1fr;
@@ -1843,12 +1854,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Hook paragraph — standalone above What's Included */
+/* Hook paragraph — sits in the left column of .included-row */
 .service-hook {
   font-size: 1.0625rem;
   color: var(--color-text);
   line-height: 1.7;
-  margin: 0 0 36px;
+  margin: 0;
   font-weight: 400;
 }
 
@@ -1858,9 +1869,43 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 72px;
 }
 
-/* Expanded What's Included grid (replaces 2-col side layout on detail pages) */
-.included-block--full {
-  margin-top: 8px;
+/* 2-col row: intro/hook on the left, deliverables list on the right */
+.included-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.included-row__intro {
+  position: sticky;
+  top: 100px;
+}
+
+.included-row__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.included-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 880px) {
+  .included-row {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .included-row__intro {
+    position: static;
+  }
 }
 
 .included-block__header {
@@ -1872,7 +1917,7 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid var(--color-border);
 }
 
-.included-block--full .included-block__title {
+.included-block__header .included-block__title {
   margin-bottom: 0;
   font-size: 0.75rem;
 }
@@ -1883,11 +1928,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
-}
-
-.included-grid--full {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
 }
 
 .included-card--full {
@@ -1922,12 +1962,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   line-height: 1.55;
   padding-right: 30px;
-}
-
-@media (max-width: 760px) {
-  .included-grid--full {
-    grid-template-columns: 1fr;
-  }
 }
 
 .service-row__bullets {

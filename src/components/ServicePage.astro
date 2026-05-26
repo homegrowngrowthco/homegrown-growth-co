@@ -154,23 +154,28 @@ const schema = {
     </section>
 
     <section class="section section--surface section--included" aria-label="What's included">
-      <div class="container container--narrow">
-        <p class="service-hook fade-up">{hook}</p>
-        <div class="included-block included-block--full fade-up">
-          <div class="included-block__header">
-            <span class="included-block__title">What's included</span>
-            <span class="included-block__count">{whatsIncluded.length} deliverables</span>
+      <div class="container">
+        <div class="included-row fade-up">
+          <div class="included-row__intro">
+            <span class="included-row__eyebrow">The approach</span>
+            <p class="service-hook">{hook}</p>
           </div>
-          <div class="included-grid included-grid--full" aria-label="What's included">
-            {whatsIncluded.map((item, i) => (
-              <div class="included-card included-card--full">
-                <span class="included-card__num">{String(i + 1).padStart(2, '0')}</span>
-                <span class="included-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                <span class="included-card__body">{item}</span>
-              </div>
-            ))}
+          <div class="included-row__list">
+            <div class="included-block__header">
+              <span class="included-block__title">What's included</span>
+              <span class="included-block__count">{whatsIncluded.length} deliverables</span>
+            </div>
+            <div class="included-stack" aria-label="What's included">
+              {whatsIncluded.map((item, i) => (
+                <div class="included-card included-card--full">
+                  <span class="included-card__num">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="included-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="included-card__body">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
