@@ -3243,7 +3243,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   justify-content: center;
   margin-top: auto;
-  padding-top: 0;
 }
 
 /* Push CTA to bottom by separating it from sections */
