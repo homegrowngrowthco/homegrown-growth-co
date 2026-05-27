@@ -306,3 +306,28 @@ This project survived the **2026-05-04** complete machine wipe.
 - Twilio TFV / A2P submission with https://homegrowngrowth.co/sms-opt-in. Manual, unchanged.
 
 **Revert path** (in order of impact): instant Netlify rollback → previous prod deploy via dashboard. Then `git revert -m 1 ba56414 && git push origin main` to keep git history in sync with the rolled-back deploy.
+
+### Session 10 — 2026-05-27
+**Phase C: `/for-saas` content refresh + GBP marked live.** Single commit on `main`, deploy verified green. Closes the umbrella pivot punch list — the SaaS vertical hub now reflects the same 9-capability framing as `/services` and `/for-local-businesses`.
+
+- **Service cards expanded 6 → 9** in [`src/pages/for-saas.astro`](src/pages/for-saas.astro), reordered by pillar to mirror `/services`:
+  - **Strategy & Ops:** GTM Strategy (new), Fractional RevOps (renamed from "Embedded Growth Ops"), Tech Stack Audit (renamed from "GTM Tech Stack Audit").
+  - **Systems & Data:** CRM Implementation & Cleanup, Reporting & Analytics (renamed from "Pipeline Analytics & Forecasting"), Workflows & Automation (renamed from "Automation & Workflow Design").
+  - **Growth & Acquisition:** Demand Generation (new), Website SEO & GEO (new), Sales Comp & Enablement.
+  - Card body + bullets for the 3 new entries pulled from the canonical service definitions in [`src/pages/services.astro`](src/pages/services.astro) so the SaaS hub can't drift from the services overview.
+- **Pain points reweighted (still 6).** Swapped out "Comp plan nobody fully understands" + the prior "Manual work" framing for new entries that cover GTM motion ("GTM motion isn't repeatable yet") and demand+SEO ("Acquisition stalled and AI search is invisible"). 6 pains now span Reporting / GTM Strategy / CRM / Workflows / Demand Gen+SEO / Fractional RevOps.
+- **New FAQ added (6 → 7):** "Do I need the whole umbrella, or just one piece?" answers the highest-frequency shopper question after the pivot (i.e. "is this an all-or-nothing engagement?"). Existing FAQs lightly refreshed to drop the narrow "RevOps" framing for the broader "growth ops" umbrella.
+- **Stats trimmed of pre-umbrella language.** "Hours/week" → concrete "10+ hrs / week reclaimed once automation and routing are live"; "RevOps experience" → "Senior growth ops experience"; "full-time RevOps hire" → "full-time senior growth ops hire".
+- **Hero subtitle + meta description rewritten** to enumerate the umbrella: "GTM strategy, RevOps, demand gen, SEO and GEO, and the systems behind them. Owned end-to-end so your founder isn't."
+- **Pain section heading** "Your ops are holding your growth back." → "Where SaaS growth typically leaks." (ties to the brand "leaking / rebuilt" framing established in Session 9).
+- **CTA H2** "Ready to stop doing ops work yourself?" → "Ready to own growth operations end-to-end?" (mirrors the brand line "Growth operations, owned end-to-end.").
+- **Grid layout pre-flighted via local preview** — `.saas-services-grid` is `repeat(3, 1fr)` desktop / `repeat(2, 1fr)` tablet / 1fr mobile. 9 cards = 3 clean desktop rows, 4 tablet rows + 1 orphan card on the last row (acceptable; same grid renders fine with the 6-card `/for-local-businesses`). Validated via curl-against-`npm run preview`: 9 cards rendered in expected pillar order, all new copy strings present.
+- **GBP marked live in SITE_STATUS.md** — user reports Google Business Profile is published at https://share.google/pjlSd3uuV2CDQqxLD. Moved from "Distribution & marketing — your action" → new "Distribution presences (external)" subsection under Completed. Updated "Highest-Impact Next Action" from GBP → Clutch profile.
+- Build clean: 21 pages in 2.10s. No layout/structural changes, content-only.
+- Revert path: `git revert <Session-10-commit-sha> && git push origin main`. If `/for-saas` copy needs to be tuned after Ian's review, copy edits are isolated to the frontmatter `saasServices` / `painPoints` / `faqs` / `stats` arrays — small, surgical follow-up commits are fine.
+
+**Open follow-ups carried forward:**
+- Real case studies to replace `/case-studies` placeholder. Deferred.
+- `/about` headshot to replace photo-coming-soon placeholder. Deferred (no headshot yet per user 2026-05-27).
+- Distribution items now: Clutch profile, G2 / HubSpot Solutions Directory, Calendly intake questions, testimonials (single biggest conversion gap).
+- Twilio TFV / A2P submission with https://homegrowngrowth.co/sms-opt-in. Manual, unchanged.

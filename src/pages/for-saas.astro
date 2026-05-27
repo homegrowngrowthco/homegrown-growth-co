@@ -3,16 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const title = 'Growth Operations for Early-Stage SaaS | Homegrown Growth Co.';
-const description = "Senior growth operations for seed to Series B SaaS teams. CRM, automation, pipeline analytics, and GTM strategy without the full-time ops hire.";
+const description = "Senior growth operations for seed to Series B SaaS teams. GTM strategy, RevOps, demand gen, SEO and GEO, CRM, and automation, owned end-to-end without the full-time ops hire.";
 const canonical = 'https://homegrowngrowth.co/for-saas';
 
 const faqs = [
-  { q: 'Do I need an embedded senior partner or a full-time hire?', a: "Most teams between $500K-$5M ARR don't need (or can't justify) a full-time RevOps hire. An embedded senior partner gives you the same ownership at 20-30% of the cost, with the ability to scale up or exit cleanly as the company matures." },
+  { q: 'Do I need an embedded senior partner or a full-time hire?', a: "Most teams between $500K-$5M ARR don't need (or can't justify) a full-time growth ops hire. An embedded senior partner gives you the same ownership at 20-30% of the cost, with the ability to scale up or exit cleanly as the company matures." },
+  { q: 'Do I need the whole umbrella, or just one piece?', a: "Most engagements start with one or two capabilities, not all nine. The discovery surfaces which one moves the needle first. CRM rebuild, GTM motion reset, or paid channel restructure are common starting points. The reason the umbrella matters is that one senior partner owns the connections between them, not that every engagement covers all of it." },
   { q: 'How quickly can work actually start?', a: 'Discovery typically takes 1-2 weeks. Depending on scope, the first deliverables are usually in production within 3-4 weeks of the initial call. No months-long "assessment phase" before anything is built.' },
   { q: 'We already have a CRM. Do we need this?', a: 'Usually. "We already have a CRM" frequently means it was set up for a different motion and nobody wants to say it\'s not working. The discovery is direct about what\'s actually there, not what it was supposed to be.' },
-  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Typically: manual time saved, data accuracy improvement, pipeline visibility, and adoption. Not activity metrics like "hours logged" or "tasks completed."' },
+  { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Typically: pipeline forecast accuracy, CAC or CPL movement, manual time saved, data accuracy improvement, and adoption. Not activity metrics like "hours logged" or "tasks completed."' },
   { q: 'Can you work alongside our existing team?', a: 'Yes. This is embedded, not advisory. Work happens inside your tools. Clear async communication, documentation that outlasts the engagement, and no disappearing act between deliverables.' },
-  { q: 'What does a project engagement look like?', a: 'Fixed deliverable, clear timeline, defined exit point. Best for CRM migrations, reporting buildouts, automation design, or comp plan overhauls. Priced fixed or T&M depending on scope. No ongoing commitment required.' },
+  { q: 'What does a project engagement look like?', a: 'Fixed deliverable, clear timeline, defined exit point. Best for CRM migrations, reporting buildouts, demand gen restructures, SEO and GEO overhauls, automation design, or comp plan rebuilds. Priced fixed or T&M depending on scope. No ongoing commitment required.' },
 ];
 
 const schema = {
@@ -40,20 +41,23 @@ const schema = {
 
 const painPoints = [
   { icon: '📊', title: 'Your pipeline data is a guess', body: 'Weekly forecast is whatever the rep said in standup. Nobody knows conversion rates. Board prep takes two days of manual spreadsheet work.' },
-  { icon: '🔁', title: "Manual work that shouldn't exist", body: "Lead handoffs live in Slack. Data entry nobody trusts. Sequences that break when a rep leaves. Everything works until it doesn't." },
+  { icon: '🎯', title: "GTM motion isn't repeatable yet", body: "You're closing customers, but the pattern isn't predictable. CAC climbs each quarter, the playbook lives in someone's head, and every new rep relearns it from scratch." },
   { icon: '🏗️', title: 'CRM built for what you were, not what you are', body: "Set up when you had two reps and a simple motion. Now you have segments, channels, and a product line the original setup can't model." },
-  { icon: '💸', title: 'Comp plan nobody fully understands', body: "Reps dispute numbers monthly. Finance reconciles quarterly. The plan made sense in year one. It doesn't reflect how you sell anymore." },
-  { icon: '🧰', title: 'Too many tools, unclear ROI', body: "Stack grew one integration at a time. Now you're paying for five tools with overlapping features and nobody owns the map of what connects to what." },
-  { icon: '⏳', title: 'Your founder is still doing ops work', body: 'RevOps fell to the CEO or head of sales because nobody else owned it. The work is getting done, just by the wrong person at the wrong cost.' },
+  { icon: '🔁', title: "Manual handoffs that shouldn't exist", body: "Lead routing lives in Slack. Data entry nobody trusts. Sequences that break when a rep leaves. Everything works until it doesn't." },
+  { icon: '📡', title: 'Acquisition stalled and AI search is invisible', body: 'Paid channels plateaued. Organic traffic flat. ChatGPT, Perplexity, and Google AI Overviews are starting to send buyers, but you are not on those surfaces. The next dollar of spend is not clearly the right one.' },
+  { icon: '⏳', title: 'Your founder is still doing ops work', body: 'Growth ops fell to the CEO or head of sales because nobody else owned it. The work is getting done, just by the wrong person at the wrong cost.' },
 ];
 
 const saasServices = [
-  { tag: 'Embedded / Ongoing', title: 'Embedded Growth Ops', body: 'Acting as your part-time VP of RevOps. Owning the roadmap and executing across your full GTM system month to month.', bullets: ['Dedicated ops roadmap tied to your revenue goals', 'Weekly standup + async availability', 'Cross-functional coordination: sales, marketing, finance', 'Ongoing CRM health, reporting, and process iteration'] },
-  { tag: 'Project', title: 'CRM Implementation & Rebuild', body: 'HubSpot or Salesforce, built right the first time, or rescued from accumulated tech debt before it gets worse.', bullets: ['Full audit: data model, field logic, automation conflicts', 'Implementation scoped to how your team actually sells', 'Data cleaning, deduplication, migration', 'Handoff docs and team training included'] },
-  { tag: 'Project', title: 'Automation & Workflow Design', body: 'Manual handoffs and tribal knowledge replaced with documented systems using n8n, Zapier, and Clay.', bullets: ['Lead routing and assignment logic in a system, not Slack', 'Cross-tool data sync between CRM, MAP, billing, finance', 'Error handling and maintenance documentation', 'AI-augmented workflows where they actually add value'] },
-  { tag: 'Project / Ongoing', title: 'Pipeline Analytics & Forecasting', body: 'Dashboards that support real decisions: stage velocity, attribution, forecast confidence, and board-ready reporting.', bullets: ['Pipeline analytics: velocity, conversion, deal quality', 'Revenue attribution across channels and sourcing motions', 'Forecast modeling with rep-level visibility', 'Delivered in Salesforce, HubSpot, or your BI tool'] },
-  { tag: 'Project', title: 'Sales Comp & Enablement', body: 'Commission plans that incentivize the right behaviors, with the modeling to stress-test before you roll out.', bullets: ['Quota-setting, OTE structure, accelerators, SPIFFs', 'Scenario modeling to test plan economics', 'Rep onboarding frameworks and ramp structure', 'Templates for ongoing administration'] },
-  { tag: 'Assessment', title: 'GTM Tech Stack Audit', body: "A full system look at what you're running, what it's costing, and whether it's returning anything close to what you're paying.", bullets: ['Complete inventory: usage, cost, overlap, integration health', 'Gap analysis against your actual stage and motion', 'Consolidation recommendations with estimated savings', 'Prioritized roadmap for changes with rollout sequencing'] },
+  { tag: 'Project / Ongoing', title: 'GTM Strategy', body: 'ICP, positioning, channel mix, and motion design. The thinking that has to happen before pipeline and ops can pay off.', bullets: ['Ideal Customer Profile definition and tiering, based on real customer data', 'Positioning and messaging frameworks for each persona and channel', 'Channel mix and motion design: PLG, SLG, hybrid, or partner-led', 'Operating cadence and metrics that connect strategy to weekly execution'] },
+  { tag: 'Embedded / Ongoing', title: 'Fractional RevOps', body: 'Your part-time VP of RevOps. Owning the roadmap and executing across your full revenue stack month to month.', bullets: ['Dedicated ops roadmap tied to your revenue goals and quarterly priorities', 'Weekly standup attendance and async availability throughout the month', 'Cross-functional coordination across sales, marketing, and finance ops', 'Ongoing CRM health, reporting, and process iteration'] },
+  { tag: 'Assessment', title: 'Tech Stack Audit', body: "A full-system look at what you're running, what it's costing, and whether it's returning anything close to what you're paying.", bullets: ['Complete inventory of GTM tools: usage, cost, overlap, integration health', 'Gap analysis against your actual stage and motion', 'Consolidation recommendations with estimated cost savings', 'Prioritized roadmap for tooling changes with rollout sequencing'] },
+  { tag: 'Project', title: 'CRM Implementation & Cleanup', body: 'HubSpot or Salesforce, built right the first time, or rescued from accumulated tech debt before it gets worse.', bullets: ['Full audit: data model, field logic, automation conflicts, adoption gaps', 'Implementation scoped to how your team actually sells', 'Data cleaning, deduplication, and migration with zero data loss protocols', 'Handoff docs and team training included'] },
+  { tag: 'Project / Ongoing', title: 'Reporting & Analytics', body: 'Dashboards that support real decisions: stage velocity, attribution, forecast confidence, and board-ready reporting.', bullets: ['Pipeline analytics: velocity, conversion, deal quality scoring', 'Revenue attribution across channels, campaigns, and sourcing motions', 'Forecast modeling with variance tracking and rep-level visibility', 'Delivered in Salesforce, HubSpot, or your BI tool of choice'] },
+  { tag: 'Project', title: 'Workflows & Automation', body: 'Manual handoffs and tribal knowledge replaced with documented systems using n8n, Zapier, and Clay.', bullets: ['Lead routing and assignment logic in a system, not Slack', 'Cross-tool data sync between CRM, MAP, billing, and finance', 'Monitoring, error handling, and maintenance documentation included', 'AI-augmented workflows where they actually add value'] },
+  { tag: 'Project / Ongoing', title: 'Demand Generation', body: 'Paid and organic acquisition tied to closed-won revenue. Demand that compounds because the measurement and the motion are connected.', bullets: ['Channel strategy across paid search, paid social, organic content, lifecycle', 'Campaign briefing, launch, and iteration with clear CPL and pipeline targets', 'Attribution from spend through to closed-won revenue', 'Lifecycle nurture, reactivation, and customer marketing motions'] },
+  { tag: 'Project / Ongoing', title: 'Website SEO & GEO', body: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces your buyers actually use.', bullets: ['Technical SEO audit: site architecture, indexation, schema, Core Web Vitals', 'Content strategy and on-page optimization for the queries your buyers run', 'GEO: entity structuring for ChatGPT, Perplexity, and Google AI Overviews', 'Topical authority planning aligned to your ICP and motion'] },
+  { tag: 'Project', title: 'Sales Comp & Enablement', body: 'Commission plans that incentivize the right behaviors, with the modeling to stress-test before you roll out.', bullets: ['Comp plan design: quota-setting, OTE structure, accelerators, SPIFFs', 'Scenario modeling and commission analysis to stress-test plan economics', 'Rep onboarding frameworks and ramp structure with certification milestones', 'Templates and documentation for ongoing administration'] },
 ];
 
 const processSteps = [
@@ -64,10 +68,10 @@ const processSteps = [
 ];
 
 const stats = [
-  { number: '20-30%', label: 'Typical cost vs. a full-time RevOps hire at equivalent seniority' },
+  { number: '20-30%', label: 'Typical cost vs. a full-time senior growth ops hire at equivalent seniority' },
   { number: '2-4 wks', label: 'From first call to active roadmap and first deliverable in production' },
-  { number: 'Hours/week', label: 'Average manual time reclaimed per engagement through automation' },
-  { number: '8+ yrs', label: 'RevOps experience across SaaS, healthcare, and high-growth teams' },
+  { number: '10+ hrs', label: 'Per week reclaimed once automation and routing are live' },
+  { number: '8+ yrs', label: 'Senior growth ops experience across SaaS, healthcare, and high-growth teams' },
 ];
 
 const fitGood = [
@@ -99,7 +103,7 @@ const fitBad = [
     <PageHero
       tag="For Early-Stage SaaS Teams"
       headline="Your GTM is outgrowing your current systems."
-      subtitle="Senior growth operations for seed to Series B teams. Pipeline analytics, CRM, automation, and comp, built for the speed you're moving at."
+      subtitle="Senior growth operations for seed to Series B teams. GTM strategy, RevOps, demand gen, SEO and GEO, and the systems behind them. Owned end-to-end so your founder isn't."
       headlineMaxWidth="820px"
       heroImage="/images/hero-saas.jpg"
       heroImageAlt="Modern SaaS team workspace"
@@ -130,8 +134,8 @@ const fitBad = [
       <div class="container">
         <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
           <span class="section-eyebrow">Sound familiar?</span>
-          <h2 class="display-md section-title" id="pain-heading">Your ops are holding your growth back.</h2>
-          <p class="section-subtitle mx-auto">These are the patterns that show up at every SaaS company between $500K and $5M ARR.</p>
+          <h2 class="display-md section-title" id="pain-heading">Where SaaS growth typically leaks.</h2>
+          <p class="section-subtitle mx-auto">These patterns show up across every SaaS company between $500K and $5M ARR, regardless of vertical.</p>
         </div>
 
         <div class="pain-grid">
@@ -260,7 +264,7 @@ const fitBad = [
     <section class="cta-section" aria-label="Call to action">
       <div class="container container--narrow text-center">
         <div class="fade-up">
-          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Ready to stop doing ops work yourself?</h2>
+          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Ready to own growth operations end-to-end?</h2>
           <p class="cta-body">A free thirty-minute call to map where your GTM is leaking, what's possible if it's rebuilt, and whether this is a fit. No pitch, no proposal. An honest conversation.</p>
           <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free Strategy Call</a>
         </div>

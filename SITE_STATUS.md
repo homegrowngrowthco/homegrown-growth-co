@@ -1,5 +1,5 @@
 # Homegrown Growth Co. — Site Status
-_Last updated: 2026-05-26 — Sessions 8 + 9 shipped the **Fractional Growth Operations umbrella pivot** + Phase B Local Businesses vertical hub + visual overhaul + brand-positioning rewrite, merged via PR #3 → main as `ba56414`. New service routes live: `/gtm-strategy`, `/demand-generation`, `/website-seo-geo`, `/for-local-businesses`. Brand tagline shifted: "Growth operations, owned end-to-end." (drop "fractional" positioning, keep "Fractional RevOps" as a service product name). Homepage hero is now a custom on-brand SVG process diagram ("Diagnose → Build → Scale → Compound"); 9 distinct Unsplash hero photos on the 9 service detail pages; pricing page rebuilt around 4 engagement models (Retainer / Project / Outcome / Assessment). "Growth engine" jargon swept across services/pricing/ROI-call/about/case-studies in favor of "where revenue is leaking / what's possible if it's rebuilt". Mobile QA caught + fixed a subgrid issue where pricing cards rendered blank below 1100px viewport. Production verified green._
+_Last updated: 2026-05-27 — Session 10 shipped **Phase C: `/for-saas` content refresh** to align the SaaS vertical hub with the 9-service umbrella from Sessions 8-9. Service cards expanded 6 → 9 (added GTM Strategy, Demand Generation, Website SEO & GEO; renamed Pipeline Analytics → Reporting & Analytics, Automation & Workflow Design → Workflows & Automation, GTM Tech Stack Audit → Tech Stack Audit). Pain points reweighted to surface GTM motion + AI-search-invisibility hooks. New FAQ "Do I need the whole umbrella, or just one piece?" answers the most common post-pivot shopper question. CTA H2 aligned to brand line ("own growth operations end-to-end"). **Google Business Profile is live** (link below) — knocked the highest-impact distribution item off the list._
 
 ---
 
@@ -83,6 +83,9 @@ _Last updated: 2026-05-26 — Sessions 8 + 9 shipped the **Fractional Growth Ope
 - [x] **Sitemap resubmitted to Google Search Console** (2026-04-27, after `/pricing` was added)
 - [x] **URL Inspection / Request Indexing** done in GSC for `/pricing` and `/about` (the two pages with substantive new content)
 
+### Distribution presences (external)
+- [x] **Google Business Profile — live** (2026-05-27). [Public profile link](https://share.google/pjlSd3uuV2CDQqxLD). Knocks out the highest-impact local SEO distribution item; helps with "RevOps consultant Massachusetts" / "growth ops consultant near me" queries.
+
 ### Retired
 - [x] `/resources` page deleted; 301 redirect to `/` in `netlify.toml`; `Disallow: /resources` removed from `robots.txt`
 
@@ -98,10 +101,9 @@ _Last updated: 2026-05-26 — Sessions 8 + 9 shipped the **Fractional Growth Ope
 ### Distribution & marketing — your action, mostly forms
 | Priority | Task | Effort | Notes |
 |----------|------|--------|-------|
-| HIGH | **Google Business Profile** | ~15 min | Free local SEO; helps with "RevOps consultant Massachusetts/Boston" queries. Claim at business.google.com. |
 | HIGH | **Clutch profile** | ~30 min | Top B2B services directory. Backlink + referral traffic. |
 | MED | **G2 / HubSpot Solutions Directory** | ~30 min each | Same logic. HubSpot's directory is especially relevant given the HubSpot work you do. |
-| MED | **Calendly intake questions** | ~10 min | Add 2–3 qualifying questions (current ARR, current CRM, biggest ops pain) to the ROI call event in the Calendly UI. Filters tire-kickers. |
+| MED | **Calendly intake questions** | ~10 min | Add 2-3 qualifying questions (current ARR, current CRM, biggest ops pain) to the ROI call event in the Calendly UI. Filters tire-kickers. |
 
 ### Content — defer (separate batch)
 | Task | Why it matters |
@@ -171,4 +173,4 @@ homegrowngrowth.co/resources            ← 301 → /
 
 ## Highest-Impact Next Action
 
-**Google Business Profile** (15 minutes). Single biggest distribution lever still available without writing content.
+**Clutch profile** (~30 min). Single biggest distribution lever left without writing content. After that: a real testimonial or two (single biggest conversion gap on the site) and a headshot for `/about`.
