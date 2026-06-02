@@ -331,3 +331,9 @@ This project survived the **2026-05-04** complete machine wipe.
 - `/about` headshot to replace photo-coming-soon placeholder. Deferred (no headshot yet per user 2026-05-27).
 - Distribution items now: Clutch profile, G2 / HubSpot Solutions Directory, Calendly intake questions, testimonials (single biggest conversion gap).
 - Twilio TFV / A2P submission with https://homegrowngrowth.co/sms-opt-in. Manual, unchanged.
+
+### Session 11 — 2026-06-02
+**Footer email JS-obfuscation + git-push-post-recovery verification.** Single commit `590afce` on main; GH Actions deploy green; verified live.
+- **Footer email obfuscated (`src/components/Footer.astro`).** Both footer `mailto:ian@homegrowngrowth.co` links (the Company-column "Contact" link + the display email in the footer bar) now carry the address in `data-eu`/`data-ed` attributes and are assembled into a real `mailto:` at runtime by a small inlined module script, so bots scraping the static HTML never see a plain address. The visible link keeps a human-readable `ian [at] homegrowngrowth [dot] co` no-JS fallback that JS upgrades to the clean address. Built clean (21 pages); `dist/` confirmed to have no plaintext footer mailto. The in-body `mailto:` on `/privacy-policy`, `/terms`, `/sms-opt-in` is left readable on purpose (legal/contact prose, out of scope for "footer mailto").
+- **git push verified** post-recovery via `git push --dry-run origin HEAD` → reached origin, authenticated, "Everything up-to-date" (closes the Recovery-Notes "verify git push works" follow-up).
+- **Revert path:** `git revert 590afce && git push origin main` (Footer.astro + SITE_STATUS.md). Obfuscation is purely additive; reverting restores the plain mailto links.
