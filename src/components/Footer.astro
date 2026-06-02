@@ -38,7 +38,7 @@
           <a href="/case-studies" class="footer__link">Case Studies</a>
           <a href="/pricing" class="footer__link">Pricing</a>
           <a href="/about" class="footer__link">About</a>
-          <a href="mailto:ian@homegrowngrowth.co" class="footer__link">Contact</a>
+          <a class="footer__link" data-obf-email data-eu="ian" data-ed="homegrowngrowth.co">Contact</a>
           <a href="https://www.linkedin.com/company/homegrown-growth-co" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
           <a href="/sms-opt-in" class="footer__link">SMS Updates</a>
           <a href="/privacy-policy" class="footer__link">Privacy Policy</a>
@@ -53,7 +53,24 @@
     </div>
     <div class="footer__bar">
       <p class="footer__copy">© 2026 Homegrown Growth Co. All rights reserved.</p>
-      <a href="mailto:ian@homegrowngrowth.co" class="footer__email">ian@homegrowngrowth.co</a>
+      <a class="footer__email" data-obf-email data-eu="ian" data-ed="homegrowngrowth.co">ian [at] homegrowngrowth [dot] co</a>
     </div>
   </div>
 </footer>
+
+<script>
+  // Assemble the footer email links at runtime so bots scraping the static
+  // HTML never see a plain mailto: address. The address parts live in
+  // data-eu / data-ed; the visible link keeps a human-readable "[at]/[dot]"
+  // fallback for the no-JS case, which JS upgrades to the clean address.
+  document.querySelectorAll('a[data-obf-email]').forEach((el) => {
+    const user = el.getAttribute('data-eu');
+    const domain = el.getAttribute('data-ed');
+    if (!user || !domain) return;
+    const addr = user + '@' + domain;
+    el.setAttribute('href', 'mailto:' + addr);
+    if (el.textContent && el.textContent.indexOf('[at]') !== -1) {
+      el.textContent = addr;
+    }
+  });
+</script>
