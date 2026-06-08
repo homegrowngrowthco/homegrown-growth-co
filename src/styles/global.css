@@ -3650,6 +3650,16 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-teal-dark);
 }
 
+/* Privacy Policy + Terms links shown separately, outside the SMS consent
+   statement (Twilio TFV requires consent to stand alone). Pulled up tight
+   under the consent box so they read as related, not a new field. */
+.form-consent__legal {
+  margin: -10px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
 .sms-form__submit {
   align-self: flex-start;
   margin-top: 4px;
@@ -3985,6 +3995,13 @@ h1, h2, h3, h4, h5, h6 {
 .link-teal {
   color: var(--color-teal);
   font-weight: 600;
+}
+
+/* About-page inline CTA surfacing the visibility audit. Slightly larger
+   than body links so it reads as a call to action, not just a link. */
+.about-bio__cta {
+  display: inline-block;
+  font-size: 1.0625rem;
 }
 
 /* Long-form prose wrapper used on the legal pages, about's
