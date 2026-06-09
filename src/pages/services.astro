@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const title = 'Services | Homegrown Growth Co.';
-const description = 'Senior growth operations across nine capabilities: GTM strategy, RevOps, CRM, reporting, demand gen, SEO/GEO, workflows, tech stack audits, and sales comp.';
+const description = 'A fractional growth partner across twelve capabilities, grouped by outcome: more customers (SEO/GEO, demand gen, conversion, GTM), more revenue (CRM, retention, reporting, sales comp), and more time back (automation, data, RevOps, tech audits).';
 const canonical = 'https://homegrowngrowth.co/services';
 
 const provider = { '@type': 'Organization', name: 'Homegrown Growth Co.', url: 'https://homegrowngrowth.co' };
@@ -12,7 +12,7 @@ const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: title,
-  description: 'Nine capabilities across three pillars: Strategy & Operations, Systems & Data, Growth & Acquisition.',
+  description: 'Twelve capabilities across three outcomes: More Customers, More Revenue, and More Time Back.',
   url: canonical,
   breadcrumb: {
     '@type': 'BreadcrumbList',
@@ -24,25 +24,76 @@ const schema = {
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: [
-      { '@type': 'Service', position: 1, name: 'GTM Strategy', description: 'ICP definition, positioning, channel mix, and sales motion design. The strategy work that has to happen before systems and acquisition can pay off.', provider },
-      { '@type': 'Service', position: 2, name: 'Fractional RevOps', description: 'Dedicated ops roadmap, weekly standup attendance, cross-functional coordination, and ongoing CRM and reporting ownership. Your part-time VP of RevOps.', provider },
-      { '@type': 'Service', position: 3, name: 'Tech Stack Audit', description: 'Complete GTM tool inventory, gap analysis, consolidation recommendations with estimated cost savings, and a prioritized tooling roadmap.', provider },
-      { '@type': 'Service', position: 4, name: 'CRM Implementation & Cleanup', description: 'Salesforce or HubSpot built right, or rescued from tech debt. Full audit, structured implementation, data cleaning, migration, and team training.', provider },
-      { '@type': 'Service', position: 5, name: 'Reporting & Analytics', description: 'Pipeline analytics, revenue attribution, forecast modeling, and exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice.', provider },
-      { '@type': 'Service', position: 6, name: 'Workflows & Automation', description: 'End-to-end automation design using n8n, Zapier, and Clay. Lead routing, cross-tool data sync, error handling, and documentation included.', provider },
-      { '@type': 'Service', position: 7, name: 'Demand Generation', description: 'Paid and organic acquisition, lifecycle marketing, and attribution. Demand that compounds because the measurement and motion are connected.', provider },
-      { '@type': 'Service', position: 8, name: 'Website SEO & GEO', description: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces buyers use today.', provider },
-      { '@type': 'Service', position: 9, name: 'Sales Comp & Enablement', description: 'Comp plan design, commission modeling, scenario analysis, sales onboarding frameworks, and ramp structure, with documentation for ongoing administration.', provider },
+      { '@type': 'Service', position: 1, name: 'Website SEO & GEO', description: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces buyers use today.', provider },
+      { '@type': 'Service', position: 2, name: 'Demand Generation', description: 'Paid and organic acquisition, lifecycle marketing, and attribution. Demand that compounds because the measurement and motion are connected.', provider },
+      { '@type': 'Service', position: 3, name: 'Conversion & Landing Pages', description: 'Landing pages and conversion optimization that turn existing website and ad traffic into customers, bookings, and qualified leads.', provider },
+      { '@type': 'Service', position: 4, name: 'GTM Strategy', description: 'ICP definition, positioning, channel mix, and sales motion design. The strategy work that has to happen before systems and acquisition can pay off.', provider },
+      { '@type': 'Service', position: 5, name: 'CRM Implementation & Cleanup', description: 'Salesforce or HubSpot built right, or rescued from tech debt. Full audit, structured implementation, data cleaning, migration, and team training.', provider },
+      { '@type': 'Service', position: 6, name: 'Retention & Expansion', description: 'Lifecycle, renewals, churn and health scoring for SaaS; repeat business, reviews, and reactivation for local. Grow revenue from customers you already have.', provider },
+      { '@type': 'Service', position: 7, name: 'Reporting & Analytics', description: 'Pipeline analytics, revenue attribution, forecast modeling, and exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice.', provider },
+      { '@type': 'Service', position: 8, name: 'Sales Comp & Enablement', description: 'Comp plan design, commission modeling, scenario analysis, sales onboarding frameworks, and ramp structure, with documentation for ongoing administration.', provider },
+      { '@type': 'Service', position: 9, name: 'Workflows & Automation', description: 'End-to-end automation design using n8n, Zapier, and Clay. Lead routing, cross-tool data sync, error handling, and documentation included.', provider },
+      { '@type': 'Service', position: 10, name: 'Data Enrichment & Hygiene', description: 'CRM deduplication, enrichment, validation, and compliance, maintained with automated hygiene workflows so records stay clean over time.', provider },
+      { '@type': 'Service', position: 11, name: 'Fractional RevOps', description: 'Dedicated ops roadmap, weekly standup attendance, cross-functional coordination, and ongoing CRM and reporting ownership. Your part-time VP of RevOps.', provider },
+      { '@type': 'Service', position: 12, name: 'Tech Stack Audit', description: 'Complete GTM tool inventory, gap analysis, consolidation recommendations with estimated cost savings, and a prioritized tooling roadmap.', provider },
     ],
   },
 };
 
 const pillars = [
   {
-    name: 'Strategy & Operations',
+    name: 'More Customers',
     eyebrow: 'Pillar 01',
-    intro: 'The strategy work and the embedded ownership that have to be in place before systems and acquisition can pay off.',
+    intro: 'Get found, bring the right people in, and turn them into customers.',
     services: [
+      {
+        id: 'website-seo-geo',
+        name: 'Website SEO & GEO',
+        hook: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces buyers actually use.',
+        bullets: [
+          'Technical SEO audit: site architecture, indexation, schema, Core Web Vitals',
+          'Content strategy and on-page optimization for the queries your buyers run',
+          'GEO: schema, content patterns, and entity structuring for ChatGPT, Perplexity, and Google AI Overviews',
+          'Local SEO and multi-location optimization where applicable',
+        ],
+        fit: [
+          'You\'re investing in content but it doesn\'t rank',
+          'AI search is starting to send (or steal) traffic and you don\'t have a strategy',
+          'You\'re a local or multi-location business and the local pack is the channel',
+        ],
+      },
+      {
+        id: 'demand-generation',
+        name: 'Demand Generation',
+        hook: 'Paid and organic acquisition that compounds because the measurement and motion are connected.',
+        bullets: [
+          'Channel strategy across paid social, paid search, organic content, and lifecycle',
+          'Campaign briefing, launch, and iteration with clear CPL and pipeline targets',
+          'Attribution and reporting that ties spend to closed-won revenue',
+          'Lifecycle marketing: nurture, reactivation, and customer marketing motions',
+        ],
+        fit: [
+          'You\'re spending on demand gen but can\'t tell what\'s working',
+          'Your CAC is climbing and the channel mix hasn\'t been revisited in a year',
+          'You have an audience but no system for converting them to pipeline',
+        ],
+      },
+      {
+        id: 'conversion-landing-pages',
+        name: 'Conversion & Landing Pages',
+        hook: 'Turn the traffic you already have into customers and bookings, not bounces.',
+        bullets: [
+          'High-intent landing pages built for a single action: book, buy, or request a quote',
+          'Conversion review of your key pages: offer, headline, proof, and call to action',
+          'A clear path to action, with the booking or lead form that actually gets completed',
+          'Conversion tracking wired in, so you can see what is working instead of guessing',
+        ],
+        fit: [
+          'You have traffic but very few of those visitors turn into customers',
+          'You\'re running ads straight to a homepage instead of a page built to convert',
+          'Your site looks fine but the phone isn\'t ringing and the form is quiet',
+        ],
+      },
       {
         id: 'gtm-strategy',
         name: 'GTM Strategy',
@@ -59,6 +110,116 @@ const pillars = [
           'Your team is doing the right activities, but the strategy underneath is implicit',
         ],
       },
+    ],
+  },
+  {
+    name: 'More Revenue',
+    eyebrow: 'Pillar 02',
+    intro: 'Work every lead and grow the customers you already have.',
+    services: [
+      {
+        id: 'crm-implementation',
+        name: 'CRM Implementation & Cleanup',
+        hook: 'Salesforce or HubSpot built right the first time, or rescued from years of accumulated tech debt.',
+        bullets: [
+          'Full audit of existing setup: data model, field logic, automation conflicts, and user adoption gaps',
+          'Structured implementation scoped to how your team actually sells, not a template',
+          'Data cleaning, deduplication, and migration with zero data loss protocols',
+          'Handoff documentation and team training so adoption sticks after the engagement closes',
+        ],
+        fit: [
+          'Your CRM is a graveyard: reps log minimally, data is stale, reports are useless',
+          'You\'re migrating from one CRM to another and can\'t afford to get it wrong',
+          'You\'ve grown past your original CRM setup and need it rebuilt for where you are now',
+        ],
+      },
+      {
+        id: 'retention-expansion',
+        name: 'Retention & Expansion',
+        hook: 'The cheapest revenue you will ever earn comes from customers you already have. Keep them and grow them.',
+        bullets: [
+          'Lifecycle and follow-up campaigns that bring customers back without manual effort',
+          'For SaaS: health scoring and churn signals so at-risk accounts surface before they cancel',
+          'For local: repeat-business, review, and win-back flows that drive return visits and referrals',
+          'Expansion and renewal playbooks so growing an account is a process, not a hope',
+        ],
+        fit: [
+          'You win customers but too many quietly disappear after the first purchase',
+          'Renewals and follow-up are manual, ad hoc, or simply not happening',
+          'You have a base of past customers you\'ve never systematically brought back',
+        ],
+      },
+      {
+        id: 'reporting-analytics',
+        name: 'Reporting & Analytics',
+        hook: 'Dashboards that support real decisions, not vanity metrics and pipeline snapshots nobody reads.',
+        bullets: [
+          'Pipeline analytics: stage velocity, conversion rates, deal quality scoring',
+          'Revenue attribution across channels, campaigns, and sourcing motions',
+          'Forecast modeling with variance tracking and rep-level visibility',
+          'Exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice',
+        ],
+        fit: [
+          'Your weekly forecast is a gut call, not a data-backed number',
+          'You can\'t tell which channels, reps, or segments are actually driving revenue',
+          'Board reporting takes days to assemble because the data isn\'t structured',
+        ],
+      },
+      {
+        id: 'sales-comp',
+        name: 'Sales Comp & Enablement',
+        hook: 'Commission plans that drive the right behavior, and onboarding that gets reps productive faster.',
+        bullets: [
+          'Comp plan design: quota-setting, OTE structure, accelerators, and SPIFFs',
+          'Commission modeling and scenario analysis to stress-test plan economics',
+          'Sales onboarding frameworks: ramp structure, enablement content, and certification milestones',
+          'Handoff to your team with templates and documentation for ongoing administration',
+        ],
+        fit: [
+          'Your comp plan is a spreadsheet that hasn\'t been revisited since you hired your first rep',
+          'You\'re scaling the sales team and need a repeatable ramp program',
+          'Reps are hitting quota but not driving the margin or segment mix you need',
+        ],
+      },
+    ],
+  },
+  {
+    name: 'More Time Back',
+    eyebrow: 'Pillar 03',
+    intro: 'Put the busywork on autopilot and get senior ownership without the bottleneck.',
+    services: [
+      {
+        id: 'process-automation',
+        name: 'Workflows & Automation',
+        hook: 'Replace manual handoffs and tribal knowledge with workflows that run the same way every time.',
+        bullets: [
+          'End-to-end automation design using n8n, Zapier, and Clay. Scoped, documented, tested.',
+          'Lead routing and assignment logic that lives in a system, not someone\'s head',
+          'Cross-tool data sync between CRM, marketing platform, billing, and finance systems',
+          'Monitoring, error handling, and maintenance documentation included',
+        ],
+        fit: [
+          'Your team is spending hours per week on work that should be automatic',
+          'Leads fall through the cracks because handoff processes aren\'t systematic',
+          'You have tools that don\'t talk to each other, creating data gaps',
+        ],
+      },
+      {
+        id: 'data-enrichment-hygiene',
+        name: 'Data Enrichment & Hygiene',
+        hook: 'Clean, deduped, enriched, compliant data, maintained automatically, so nobody loses hours to manual cleanup.',
+        bullets: [
+          'Deduplication: merge rules that collapse split records without losing history',
+          'Enrichment: fill in the firmographic and contact data your team and routing need',
+          'Validation and normalization so filters, reports, and workflows hold',
+          'Automated hygiene plus compliance: ongoing cleanup, consent, and suppression handling',
+        ],
+        fit: [
+          'Your CRM is full of duplicates and half-empty records nobody trusts',
+          'Reps and reporting work around the data instead of relying on it',
+          'Someone is spending hours on manual cleanup, or you\'re worried about compliance',
+        ],
+      },
       {
         id: 'fractional-revops',
         name: 'Fractional RevOps',
@@ -70,7 +231,7 @@ const pillars = [
           'Ongoing CRM management, reporting health, and process iteration',
         ],
         fit: [
-          'You\'re scaling past $2M ARR and ops is becoming a bottleneck, not a tailwind',
+          'Ops is becoming a bottleneck, not a tailwind, as you scale',
           'Your founder or head of sales is doing too much ops work themselves',
           'You want senior ownership, not task execution, on your revenue stack',
         ],
@@ -93,116 +254,6 @@ const pillars = [
       },
     ],
   },
-  {
-    name: 'Systems & Data',
-    eyebrow: 'Pillar 02',
-    intro: 'The CRM, the reporting layer, and the automation that make the rest of the business measurable and operable.',
-    services: [
-      {
-        id: 'crm-implementation',
-        name: 'CRM Implementation & Cleanup',
-        hook: 'Salesforce or HubSpot built right the first time, or rescued from years of accumulated tech debt.',
-        bullets: [
-          'Full audit of existing setup: data model, field logic, automation conflicts, and user adoption gaps',
-          'Structured implementation scoped to how your team actually sells, not a template',
-          'Data cleaning, deduplication, and migration with zero data loss protocols',
-          'Handoff documentation and team training so adoption sticks after the engagement closes',
-        ],
-        fit: [
-          'Your CRM is a graveyard: reps log minimally, data is stale, reports are useless',
-          'You\'re migrating from one CRM to another and can\'t afford to get it wrong',
-          'You\'ve grown past your original CRM setup and need it rebuilt for where you are now',
-        ],
-      },
-      {
-        id: 'reporting-analytics',
-        name: 'Reporting & Analytics',
-        hook: 'Dashboards that support real decisions, not vanity metrics and pipeline snapshots nobody reads.',
-        bullets: [
-          'Pipeline analytics: stage velocity, conversion rates, deal quality scoring',
-          'Revenue attribution across channels, campaigns, and sourcing motions',
-          'Forecast modeling with variance tracking and rep-level visibility',
-          'Exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice',
-        ],
-        fit: [
-          'Your weekly forecast is a gut call, not a data-backed number',
-          'You can\'t tell which channels, reps, or segments are actually driving revenue',
-          'Board reporting takes days to assemble because the data isn\'t structured',
-        ],
-      },
-      {
-        id: 'process-automation',
-        name: 'Workflows & Automation',
-        hook: 'Replace manual handoffs and tribal knowledge with workflows that run the same way every time.',
-        bullets: [
-          'End-to-end automation design using n8n, Zapier, and Clay. Scoped, documented, tested.',
-          'Lead routing and assignment logic that lives in a system, not someone\'s head',
-          'Cross-tool data sync between CRM, marketing platform, billing, and finance systems',
-          'Monitoring, error handling, and maintenance documentation included',
-        ],
-        fit: [
-          'Your team is spending hours per week on work that should be automatic',
-          'Leads fall through the cracks because handoff processes aren\'t systematic',
-          'You have tools that don\'t talk to each other, creating data gaps',
-        ],
-      },
-    ],
-  },
-  {
-    name: 'Growth & Acquisition',
-    eyebrow: 'Pillar 03',
-    intro: 'The motion that brings new pipeline in, the visibility that gets you found, and the comp structure that aligns the team.',
-    services: [
-      {
-        id: 'demand-generation',
-        name: 'Demand Generation',
-        hook: 'Paid and organic acquisition that compounds because the measurement and motion are connected.',
-        bullets: [
-          'Channel strategy across paid social, paid search, organic content, and lifecycle',
-          'Campaign briefing, launch, and iteration with clear CPL and pipeline targets',
-          'Attribution and reporting that ties spend to closed-won revenue',
-          'Lifecycle marketing: nurture, reactivation, and customer marketing motions',
-        ],
-        fit: [
-          'You\'re spending on demand gen but can\'t tell what\'s working',
-          'Your CAC is climbing and the channel mix hasn\'t been revisited in a year',
-          'You have an audience but no system for converting them to pipeline',
-        ],
-      },
-      {
-        id: 'website-seo-geo',
-        name: 'Website SEO & GEO',
-        hook: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces buyers actually use.',
-        bullets: [
-          'Technical SEO audit: site architecture, indexation, schema, Core Web Vitals',
-          'Content strategy and on-page optimization for the queries your buyers run',
-          'GEO: schema, content patterns, and entity structuring for ChatGPT, Perplexity, and Google AI Overviews',
-          'Local SEO and multi-location optimization where applicable',
-        ],
-        fit: [
-          'You\'re investing in content but it doesn\'t rank',
-          'AI search is starting to send (or steal) traffic and you don\'t have a strategy',
-          'You\'re a local or multi-location business and the local pack is the channel',
-        ],
-      },
-      {
-        id: 'sales-comp',
-        name: 'Sales Comp & Enablement',
-        hook: 'Commission plans that drive the right behavior, and onboarding that gets reps productive faster.',
-        bullets: [
-          'Comp plan design: quota-setting, OTE structure, accelerators, and SPIFFs',
-          'Commission modeling and scenario analysis to stress-test plan economics',
-          'Sales onboarding frameworks: ramp structure, enablement content, and certification milestones',
-          'Handoff to your team with templates and documentation for ongoing administration',
-        ],
-        fit: [
-          'Your comp plan is a spreadsheet that hasn\'t been revisited since you hired your first rep',
-          'You\'re scaling the sales team and need a repeatable ramp program',
-          'Reps are hitting quota but not driving the margin or segment mix you need',
-        ],
-      },
-    ],
-  },
 ];
 
 // Alternate row backgrounds across the flattened service list
@@ -220,8 +271,8 @@ const bgFor = (idx: number) => (idx % 2 === 0 ? 'var(--color-surface)' : 'var(--
 
     <PageHero
       tag="Services"
-      headline="Growth operations done end-to-end, or just the piece you need."
-      subtitle="Nine capabilities across three pillars. From scoped projects to ongoing embedded support, we work across the entire operations stack. We'll meet you where you are."
+      headline="Everything you need to grow, or just the piece you're missing."
+      subtitle="Twelve capabilities across three outcomes: more customers, more revenue, more time back. From scoped projects to ongoing embedded support, owned end-to-end. I'll meet you where you are."
       heroImage="/images/hero-strategy.jpg"
       heroImageAlt="Strategy planning workspace"
     />
