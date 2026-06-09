@@ -95,9 +95,12 @@ const pillars = [
 ];
 
 const proofStats = [
-  { value: '30-90 days', label: 'to first measurable ROI' },
-  { value: '10+ hrs/wk', label: 'reclaimed once automation is live' },
-  { value: '$30K+', label: 'annual ad waste cut with real attribution' },
+  { value: '$1M+', label: 'Pipeline added, year one' },
+  { value: '$30K+', label: 'Ad waste eliminated' },
+  { value: '$50K+', label: 'Tech stack saved' },
+  { value: '10+ hrs', label: 'Reclaimed weekly' },
+  { value: '2-4x', label: 'Forecast accuracy' },
+  { value: '30-90', label: 'Days to ROI' },
 ];
 
 const verticals = [
@@ -151,13 +154,9 @@ const steps = [
             </div>
           </div>
 
-          <aside class="hero__proof fade-up fade-up-delay-1" aria-label="Credentials and outcomes">
-            <div class="hero__proof-cred">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-              HubSpot Revenue Operations Certified
-            </div>
-            <p class="hero__proof-sub">8+ years in growth &amp; revenue ops, ex-Head of Global RevOps.</p>
-            <ul class="hero__proof-stats">
+          <aside class="hero__proof fade-up fade-up-delay-1" aria-label="Outcomes by the numbers">
+            <p class="hero__proof-eyebrow">By the numbers</p>
+            <ul class="hero__proof-grid">
               {proofStats.map((s) => (
                 <li>
                   <span class="hero__proof-value">{s.value}</span>

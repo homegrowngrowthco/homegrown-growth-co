@@ -42,7 +42,6 @@ const isServicesActive = servicePages.includes(path);
               <a href="/website-seo-geo" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Website SEO &amp; GEO</span><span class="nav__dropdown-sub">Search + AI search visibility</span></a>
               <a href="/demand-generation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Demand Generation</span><span class="nav__dropdown-sub">Paid, organic, lifecycle</span></a>
               <a href="/conversion-landing-pages" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Conversion &amp; Landing Pages</span><span class="nav__dropdown-sub">Turn visitors into customers</span></a>
-              <a href="/gtm-strategy" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">GTM Strategy</span><span class="nav__dropdown-sub">ICP, positioning, motion</span></a>
             </div>
 
             <div class="nav__dropdown-col">
@@ -50,7 +49,6 @@ const isServicesActive = servicePages.includes(path);
               <a href="/crm-implementation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">CRM Implementation</span><span class="nav__dropdown-sub">Salesforce &amp; HubSpot</span></a>
               <a href="/retention-expansion" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Retention &amp; Expansion</span><span class="nav__dropdown-sub">Keep and grow customers</span></a>
               <a href="/reporting-analytics" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Reporting &amp; Analytics</span><span class="nav__dropdown-sub">Dashboards that drive decisions</span></a>
-              <a href="/sales-comp-enablement" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Sales Comp &amp; Enablement</span><span class="nav__dropdown-sub">Comp plans and ramp programs</span></a>
             </div>
 
             <div class="nav__dropdown-col">
@@ -58,16 +56,18 @@ const isServicesActive = servicePages.includes(path);
               <a href="/process-automation" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Workflows &amp; Automation</span><span class="nav__dropdown-sub">n8n, Zapier, Clay</span></a>
               <a href="/data-enrichment-hygiene" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Data Enrichment &amp; Hygiene</span><span class="nav__dropdown-sub">Clean, deduped, compliant data</span></a>
               <a href="/fractional-revops" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Fractional RevOps</span><span class="nav__dropdown-sub">Embedded senior ops leadership</span></a>
-              <a href="/tech-stack-audit" class="nav__dropdown-item" role="menuitem"><span class="nav__dropdown-label">Tech Stack Audit</span><span class="nav__dropdown-sub">Inventory, gaps, cost savings</span></a>
             </div>
 
-            <a href="/services" class="nav__dropdown-all" role="menuitem">View all services →</a>
+            <a href="/services" class="nav__dropdown-all" role="menuitem">See all services, including specialized →</a>
           </div>
         </div>
         <a href="/case-studies" class:list={['nav__link', { active: isActive('/case-studies') }]} role="listitem">Case Studies</a>
         <a href="/pricing" class:list={['nav__link', { active: isActive('/pricing') }]} role="listitem">Pricing</a>
         <a href="/about" class:list={['nav__link', { active: isActive('/about') }]} role="listitem">About</a>
       </div>
+      <a href="https://www.linkedin.com/company/homegrown-growth-co/" class="nav__social" target="_blank" rel="noopener" aria-label="Homegrown Growth Co. on LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.51C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.74C24 .78 23.2 0 22.22 0z"/></svg>
+      </a>
       <a href="/roi-call" class="btn-nav-cta">Book Your Free ROI Call</a>
       <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -87,25 +87,23 @@ const isServicesActive = servicePages.includes(path);
       <a href="/website-seo-geo" class="nav__mobile-sub-link">Website SEO &amp; GEO</a>
       <a href="/demand-generation" class="nav__mobile-sub-link">Demand Generation</a>
       <a href="/conversion-landing-pages" class="nav__mobile-sub-link">Conversion &amp; Landing Pages</a>
-      <a href="/gtm-strategy" class="nav__mobile-sub-link">GTM Strategy</a>
 
       <p class="nav__mobile-pillar">More Revenue</p>
       <a href="/crm-implementation" class="nav__mobile-sub-link">CRM Implementation</a>
       <a href="/retention-expansion" class="nav__mobile-sub-link">Retention &amp; Expansion</a>
       <a href="/reporting-analytics" class="nav__mobile-sub-link">Reporting &amp; Analytics</a>
-      <a href="/sales-comp-enablement" class="nav__mobile-sub-link">Sales Comp &amp; Enablement</a>
 
       <p class="nav__mobile-pillar">More Time Back</p>
       <a href="/process-automation" class="nav__mobile-sub-link">Workflows &amp; Automation</a>
       <a href="/data-enrichment-hygiene" class="nav__mobile-sub-link">Data Enrichment &amp; Hygiene</a>
       <a href="/fractional-revops" class="nav__mobile-sub-link">Fractional RevOps</a>
-      <a href="/tech-stack-audit" class="nav__mobile-sub-link">Tech Stack Audit</a>
 
-      <a href="/services" class="nav__mobile-sub-link nav__mobile-sub-link--all">All services →</a>
+      <a href="/services" class="nav__mobile-sub-link nav__mobile-sub-link--all">See all services, including specialized →</a>
     </div>
   </div>
   <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
   <a href="/pricing" class="nav__mobile-link">Pricing</a>
   <a href="/about" class="nav__mobile-link">About</a>
+  <a href="https://www.linkedin.com/company/homegrown-growth-co/" class="nav__mobile-link" target="_blank" rel="noopener">LinkedIn</a>
   <a href="/roi-call" class="nav__mobile-cta btn btn--primary btn--lg">Book Your Free ROI Call</a>
 </div>
