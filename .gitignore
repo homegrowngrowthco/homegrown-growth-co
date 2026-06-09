@@ -37,3 +37,9 @@ dist/
 *_whitespace.jpg
 whitespace.jpg
 68dd418739aadd6263219522_clay-logo.png
+
+# GSC tooling secrets (canonical location is ~/.gsc/, outside the repo —
+# these lines are a defensive net in case creds ever land in the tree)
+client_secret*.json
+token.json
+*.gsc.json

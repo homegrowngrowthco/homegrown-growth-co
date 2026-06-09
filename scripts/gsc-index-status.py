@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""GSC index-status checker for homegrowngrowth.co.
+
+Pulls the live Google index verdict for every URL in the sitemap via the
+Search Console URL Inspection API, and prints a one-line-per-URL table.
+
+Auth: OAuth *user* credentials (no service-account key — the org policy
+`iam.disableServiceAccountKeyCreation` blocks SA keys, and Google recommends
+user OAuth as the more secure alternative anyway). You authenticate as the
+Google account that owns the GSC property; nothing downloadable persists in
+the repo.
+
+Credential files live OUTSIDE the repo at ~/.gsc/ :
+  ~/.gsc/client_secret.json   <- OAuth "Desktop app" client, downloaded from
+                                 Google Cloud Console (allowed under the policy)
+  ~/.gsc/token.json           <- created on first run, caches the refresh token
+
+First run opens a browser for one-time consent. Subsequent runs reuse the token.
+
+Setup + deps: see scripts/README.md
+"""
+import os
+import sys
+import urllib.request
+import xml.etree.ElementTree as ET
+
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+
+GSC_DIR = os.path.expanduser("~/.gsc")
+CLIENT = os.path.join(GSC_DIR, "client_secret.json")
+TOKEN = os.path.join(GSC_DIR, "token.json")
+SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
+SITEMAP = "https://homegrowngrowth.co/sitemap-0.xml"
+HOST = "https://homegrowngrowth.co"
+
+
+def get_creds():
+    creds = None
+    if os.path.exists(TOKEN):
+        creds = Credentials.from_authorized_user_file(TOKEN, SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            if not os.path.exists(CLIENT):
+                sys.exit(f"Missing {CLIENT}. Download an OAuth 'Desktop app' "
+                         f"client JSON from Google Cloud Console and save it there.")
+            flow = InstalledAppFlow.from_client_secrets_file(CLIENT, SCOPES)
+            creds = flow.run_local_server(port=0)
+        os.makedirs(GSC_DIR, exist_ok=True)
+        with open(TOKEN, "w", encoding="utf-8") as f:
+            f.write(creds.to_json())
+    return creds
+
+
+def resolve_site_url(svc):
+    """Pick the right siteUrl: prefer the domain property, else the https prefix."""
+    sites = svc.sites().list().execute().get("siteEntry", [])
+    owned = [s["siteUrl"] for s in sites]
+    for candidate in (f"sc-domain:homegrowngrowth.co", f"{HOST}/"):
+        if candidate in owned:
+            return candidate
+    # Fall back to anything matching the host
+    for s in owned:
+        if "homegrowngrowth.co" in s:
+            return s
+    sys.exit(f"No homegrowngrowth.co property found for this account. "
+             f"Properties visible: {owned}")
+
+
+def urls_from_sitemap():
+    with urllib.request.urlopen(SITEMAP, timeout=20) as r:
+        root = ET.fromstring(r.read())
+    ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    return [loc.text.strip() for loc in root.findall(".//s:loc", ns)]
+
+
+def main():
+    svc = build("searchconsole", "v1", credentials=get_creds())
+    site = resolve_site_url(svc)
+    urls = urls_from_sitemap()
+    print(f"Property: {site}   URLs: {len(urls)}\n")
+    print(f"{'PATH':40} {'VERDICT':9} {'COVERAGE STATE':34} LAST CRAWL")
+    print("-" * 110)
+    summary = {}
+    for u in urls:
+        path = u.replace(HOST, "") or "/"
+        try:
+            res = svc.urlInspection().index().inspect(
+                body={"inspectionUrl": u, "siteUrl": site}).execute()
+            r = res["inspectionResult"]["indexStatusResult"]
+            verdict = r.get("verdict", "?")
+            coverage = r.get("coverageState", "?")
+            crawl = (r.get("lastCrawlTime", "-") or "-")[:10]
+            summary[coverage] = summary.get(coverage, 0) + 1
+            print(f"{path:40} {verdict:9} {coverage:34} {crawl}")
+        except Exception as e:  # noqa: BLE001 - want the loop to continue
+            print(f"{path:40} ERROR     {e}")
+    print("\nSummary by coverage state:")
+    for k, v in sorted(summary.items(), key=lambda kv: -kv[1]):
+        print(f"  {v:3}  {k}")
+
+
+if __name__ == "__main__":
+    main()
