@@ -44,6 +44,9 @@ const schema = {
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workflows & Automation' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Demand Generation' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website SEO & GEO' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Conversion & Landing Pages' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Retention & Expansion' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Data Enrichment & Hygiene' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sales Comp & Enablement' } },
         ],
       },
@@ -80,12 +83,21 @@ const SVC = {
   demand:   { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid, organic, tied to revenue.', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
   seo:      { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Visible on Google and on AI search.', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
   salescomp:{ title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Plans reps and finance trust.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+  conversion:{ title: 'Conversion & Landing Pages', href: '/conversion-landing-pages', desc: 'Turn visitors into customers and bookings.', svg: '<path d="M14 14l18 7-7.5 2.5L22 31z"/><path d="M24.5 24.5L33 33"/>' },
+  retention:{ title: 'Retention & Expansion', href: '/retention-expansion', desc: 'Keep customers and grow their value.', svg: '<path d="M33 22a11 11 0 11-3.2-7.8"/><polyline points="30 7 30 15 22 15"/>' },
+  enrichment:{ title: 'Data Enrichment & Hygiene', href: '/data-enrichment-hygiene', desc: 'Clean, deduped, compliant data, automatically.', svg: '<ellipse cx="22" cy="12" rx="12" ry="5"/><path d="M10 12v18c0 2.8 5.4 5 12 5s12-2.2 12-5V12"/><path d="M16 23l4 4 8-8"/>' },
 };
 
 const pillars = [
-  { name: 'More customers', blurb: 'Get found and turn attention into demand.', services: [SVC.seo, SVC.demand, SVC.gtm] },
-  { name: 'More revenue', blurb: 'Convert and close with systems that fit.', services: [SVC.crm, SVC.salescomp, SVC.reporting] },
-  { name: 'More time back', blurb: 'Put the busywork on autopilot.', services: [SVC.workflows, SVC.revops, SVC.audit] },
+  { name: 'More customers', blurb: 'Get found, bring people in, and turn them into customers.', services: [SVC.seo, SVC.demand, SVC.conversion] },
+  { name: 'More revenue', blurb: 'Work every lead and grow what you already have.', services: [SVC.crm, SVC.retention, SVC.reporting] },
+  { name: 'More time back', blurb: 'Put the busywork on autopilot.', services: [SVC.workflows, SVC.enrichment, SVC.revops] },
+];
+
+const proofStats = [
+  { value: '30-90 days', label: 'to first measurable ROI' },
+  { value: '10+ hrs/wk', label: 'reclaimed once automation is live' },
+  { value: '$30K+', label: 'annual ad waste cut with real attribution' },
 ];
 
 const verticals = [
@@ -123,7 +135,7 @@ const steps = [
 
     <section class="hero" aria-label="Hero">
       <div class="container">
-        <div class="hero__inner">
+        <div class="hero__inner hero__inner--split">
           <div class="hero__content">
             <h1 class="hero__headline fade-up">
               Get found. <span class="hero__headline-accent">Win customers.</span> Keep them coming back.
@@ -137,46 +149,43 @@ const steps = [
               <a href="/roi-call" class="btn btn--primary btn--lg">Book a free 30-min call</a>
               <a href="#free-audit" class="btn btn--outline btn--lg">Get a free audit</a>
             </div>
-
-            <p class="hero__trust fade-up fade-up-delay-2">
-              <svg class="hero__trust-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-              HubSpot Revenue Operations Certified &nbsp;&middot;&nbsp; 8+ years, ex-Head of Global RevOps
-            </p>
           </div>
 
-          <div class="hero__logos fade-up fade-up-delay-2" aria-label="Platforms I work in">
-            <p class="hero__logos-label">The platforms I work in</p>
-            <div class="hero__logos-row">
-              {tools.map((t) => (
-                <div class="tool-logo">
-                  {t.logo ? (
-                    <img src={t.logo} alt={`${t.name} logo`} class="tool-logo__img" loading="eager" />
-                  ) : (
-                    <span class="tool-logo__mark" aria-hidden="true"></span>
-                  )}
-                  <span class="tool-logo__name">{t.name}</span>
-                </div>
-              ))}
+          <aside class="hero__proof fade-up fade-up-delay-1" aria-label="Credentials and outcomes">
+            <div class="hero__proof-cred">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              HubSpot Revenue Operations Certified
             </div>
-          </div>
+            <p class="hero__proof-sub">8+ years in growth &amp; revenue ops, ex-Head of Global RevOps.</p>
+            <ul class="hero__proof-stats">
+              {proofStats.map((s) => (
+                <li>
+                  <span class="hero__proof-value">{s.value}</span>
+                  <span class="hero__proof-label">{s.label}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="hero__proof-foot">Representative outcomes from recent engagements.</p>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section class="stat-strip-section" aria-label="Quick facts">
+    <section class="tools-strip" aria-label="Platforms I work in">
       <div class="container">
-        <div class="stat-strip">
-          {stats.map((s, i) => (
-            <div class:list={['stat-strip__item', 'fade-up', `fade-up-delay-${i + 1}`]}>
-              <div class="stat-strip__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
-              </div>
-              <div class="stat-strip__value">{s.value}</div>
-              <div class="stat-strip__label">{s.label}</div>
+        <p class="tools-strip__label">The platforms I work in</p>
+        <div class="tools-strip__logos">
+          {tools.map((t) => (
+            <div class="tool-logo">
+              {t.logo ? (
+                <img src={t.logo} alt={`${t.name} logo`} class="tool-logo__img" loading="lazy" />
+              ) : (
+                <span class="tool-logo__mark" aria-hidden="true"></span>
+              )}
+              <span class="tool-logo__name">{t.name}</span>
             </div>
           ))}
         </div>
-        <p class="stat-strip__caveat">Representative outcomes from recent engagements. Yours will depend on your starting point.</p>
       </div>
     </section>
 
@@ -250,7 +259,7 @@ const steps = [
           <div class="operator__body fade-up fade-up-delay-1">
             <span class="section-eyebrow">The operator</span>
             <h2 class="display-md section-title" id="operator-heading">You work with me, not a junior team.</h2>
-            <p class="operator__lead">I'm Ian Chamberland. I've spent 8+ years in growth and revenue operations, most recently as Head of Global Revenue Operations, before going independent to do this work hands-on for growing businesses. When you hire Homegrown Growth Co., I'm the one in your tools every week, not a salesperson who hands you off.</p>
+            <p class="operator__lead">I'm Ian Chamberland. I've spent 8+ years in growth and revenue operations, most recently as Head of Global Revenue Operations, before going independent to do this work hands-on for growing businesses. When you hire Homegrown Growth Co., I'm the one in your tools every week, not a salesperson who hands you off. I work across your marketing, sales, and service, and drive the adoption so the systems actually get used.</p>
             <div class="operator__badges">
               <span class="operator__badge">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
