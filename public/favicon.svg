@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#4A4F59"/>
-  <text x="3" y="22" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="15" fill="#F8F9FA">HG</text>
-  <text x="22.5" y="22" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="15" fill="#49A69C">C</text>
+  <rect width="32" height="32" rx="6" fill="#3D4755"/>
+  <text x="3" y="22" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="15" fill="#FAFAF8">HG</text>
+  <text x="22.5" y="22" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="15" fill="#4AADA8">C</text>
 </svg>

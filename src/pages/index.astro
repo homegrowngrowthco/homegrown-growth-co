@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Homegrown Growth Co. | Senior Growth Operations';
-const description = 'Growth operations, owned end-to-end. Senior-level RevOps, GTM, demand gen, SEO, and workflow automation, delivered as embedded execution by one senior partner.';
+const title = 'Homegrown Growth Co. | Fractional Growth, SEO & Demand Partner';
+const description = 'I help growing businesses get found, win more customers, and build the systems that keep them coming back. Website, SEO and AI search, demand gen, CRM, and automation, owned end-to-end by one senior partner.';
 const canonical = 'https://homegrowngrowth.co/';
 
 const faqs = [
@@ -18,7 +18,7 @@ const schema = {
     {
       '@type': 'ProfessionalService',
       name: 'Homegrown Growth Co.',
-      description: 'Senior growth operations delivered as embedded execution. GTM strategy, revenue operations, CRM implementation, reporting and analytics, demand generation, website SEO and GEO, workflows and automation, tech stack audits, and sales compensation, all owned end-to-end by one senior partner.',
+      description: 'A fractional growth partner for growing businesses. Get found on Google and AI search, win more customers through demand generation and a CRM that works, and reclaim time with automation, all owned end-to-end by one senior partner. Serving local and multi-location operators (restaurants, home services, medical, auto) and B2B and SaaS teams alike.',
       url: 'https://homegrowngrowth.co',
       email: 'ian@homegrowngrowth.co',
       image: 'https://homegrowngrowth.co/og-image.png',
@@ -26,9 +26,9 @@ const schema = {
       founder: {
         '@type': 'Person',
         name: 'Ian Chamberland',
-        jobTitle: 'Founder & Senior Growth Operations Consultant',
-        knowsAbout: ['Revenue Operations', 'GTM Strategy', 'Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'Process Automation', 'Workflow Automation'],
-        hasCredential: '8+ years Revenue Operations experience, including Head of Global Revenue Operations',
+        jobTitle: 'Founder & Fractional Growth Partner',
+        knowsAbout: ['Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'Local SEO', 'Google Business Profile Optimization', 'Lead Generation', 'Revenue Operations', 'GTM Strategy', 'CRM Implementation', 'Salesforce', 'HubSpot', 'Sales Compensation', 'Process Automation', 'Workflow Automation'],
+        hasCredential: ['HubSpot Revenue Operations Certified (2026)', '8+ years Revenue Operations experience, including Head of Global Revenue Operations'],
       },
       address: { '@type': 'PostalAddress', addressLocality: 'Massachusetts', addressRegion: 'MA', addressCountry: 'US' },
       areaServed: ['Massachusetts', 'New England', 'United States'],
@@ -70,16 +70,27 @@ const stats = [
   { value: '30-90', label: 'Days to first measurable ROI on average', svg: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>' },
 ];
 
-const capabilities = [
-  { title: 'GTM Strategy', href: '/gtm-strategy', desc: 'ICP, positioning, motion.', tag: 'Strategy', svg: '<circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/><circle cx="22" cy="22" r="2.5" fill="currentColor"/>' },
-  { title: 'Fractional RevOps', href: '/fractional-revops', desc: 'Senior ownership of revenue ops.', tag: 'Strategy', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
-  { title: 'Tech Stack Audit', href: '/tech-stack-audit', desc: 'What to keep, what to cut.', tag: 'Strategy', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
-  { title: 'CRM Implementation', href: '/crm-implementation', desc: 'Salesforce or HubSpot, done right.', tag: 'Systems', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
-  { title: 'Reporting & Analytics', href: '/reporting-analytics', desc: 'Dashboards that drive decisions.', tag: 'Systems', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
-  { title: 'Workflows & Automation', href: '/process-automation', desc: 'Logic in systems, not heads.', tag: 'Systems', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
-  { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid, organic, tied to revenue.', tag: 'Growth', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
-  { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Visible on Google and on AI.', tag: 'Growth', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
-  { title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Plans reps and finance trust.', tag: 'Growth', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+const SVC = {
+  gtm:      { title: 'GTM Strategy', href: '/gtm-strategy', desc: 'ICP, positioning, motion.', svg: '<circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/><circle cx="22" cy="22" r="2.5" fill="currentColor"/>' },
+  revops:   { title: 'Fractional RevOps', href: '/fractional-revops', desc: 'Senior ownership of revenue ops.', svg: '<circle cx="22" cy="22" r="4"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8"/>' },
+  audit:    { title: 'Tech Stack Audit', href: '/tech-stack-audit', desc: 'What to keep, what to cut.', svg: '<circle cx="20" cy="20" r="10"/><path d="M28.5 28.5L36 36"/><path d="M20 15v5l3 3"/>' },
+  crm:      { title: 'CRM Implementation', href: '/crm-implementation', desc: 'Salesforce or HubSpot, done right.', svg: '<ellipse cx="22" cy="13" rx="12" ry="5"/><path d="M10 13v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/><path d="M10 21v8c0 2.8 5.4 5 12 5s12-2.2 12-5v-8"/>' },
+  reporting:{ title: 'Reporting & Analytics', href: '/reporting-analytics', desc: 'Dashboards that drive decisions.', svg: '<rect x="8" y="8" width="28" height="20" rx="2"/><path d="M14 32h16M22 28v4"/><path d="M14 22l5-6 4 4 5-7 4 4" stroke-linecap="round" stroke-linejoin="round"/>' },
+  workflows:{ title: 'Workflows & Automation', href: '/process-automation', desc: 'Logic in systems, not heads.', svg: '<rect x="8" y="8" width="10" height="10" rx="2"/><rect x="26" y="8" width="10" height="10" rx="2"/><rect x="17" y="26" width="10" height="10" rx="2"/><path d="M18 13h8M22 18v8"/>' },
+  demand:   { title: 'Demand Generation', href: '/demand-generation', desc: 'Paid, organic, tied to revenue.', svg: '<path d="M8 10h28l-8 16v8l-12 4v-12L8 10z"/>' },
+  seo:      { title: 'Website SEO & GEO', href: '/website-seo-geo', desc: 'Visible on Google and on AI search.', svg: '<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c4 3.5 4 18 0 22M20 9c-4 3.5-4 18 0 22"/><path d="M28 28l8 8"/>' },
+  salescomp:{ title: 'Sales Comp & Enablement', href: '/sales-comp-enablement', desc: 'Plans reps and finance trust.', svg: '<circle cx="22" cy="22" r="14"/><path d="M22 13v2M22 29v2"/><path d="M18 17.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5c0 2-2 3-4 3.5-2 .5-4 1.5-4 3.5 0 1.9 1.8 3.5 4 3.5s4-1.6 4-3.5"/>' },
+};
+
+const pillars = [
+  { name: 'More customers', blurb: 'Get found and turn attention into demand.', services: [SVC.seo, SVC.demand, SVC.gtm] },
+  { name: 'More revenue', blurb: 'Convert and close with systems that fit.', services: [SVC.crm, SVC.salescomp, SVC.reporting] },
+  { name: 'More time back', blurb: 'Put the busywork on autopilot.', services: [SVC.workflows, SVC.revops, SVC.audit] },
+];
+
+const verticals = [
+  { name: 'Local & multi-location', desc: 'Restaurants, home services, medical and wellness, auto, and other local or multi-location businesses that need to get found and booked.', href: '/for-local-businesses', cta: 'Local businesses' },
+  { name: 'B2B & SaaS', desc: 'Software and B2B teams that need senior RevOps, GTM, and demand-gen firepower without a full-time hire.', href: '/for-saas', cta: 'B2B & SaaS' },
 ];
 
 const tools = [
@@ -114,19 +125,38 @@ const steps = [
       <div class="container">
         <div class="hero__inner">
           <div class="hero__content">
-            <div class="hero__pretag">Senior Growth Operations</div>
-
             <h1 class="hero__headline fade-up">
-              Growth operations,<br /><span class="hero__headline-accent">owned</span> end-to-end.
+              Get found. <span class="hero__headline-accent">Win customers.</span> Keep them coming back.
             </h1>
 
             <p class="hero__sub fade-up fade-up-delay-1">
-              Most growing companies don't lose to bigger competitors. They lose to half-true CRMs, gut-feel forecasts, and manual work that owns the week. Get one senior partner to own the operational layer behind your revenue, and prove it pays for itself in 90 days.
+              I'm a fractional growth partner for businesses that have outgrown doing it themselves. From getting found on Google and AI search to the demand gen, CRM, and automation behind the scenes, I own the work end-to-end, and prove it pays for itself.
             </p>
 
             <div class="btn-group fade-up fade-up-delay-2">
               <a href="/roi-call" class="btn btn--primary btn--lg">Book a free 30-min call</a>
-              <a href="/services" class="btn btn--outline btn--lg">See what I do</a>
+              <a href="#free-audit" class="btn btn--outline btn--lg">Get a free audit</a>
+            </div>
+
+            <p class="hero__trust fade-up fade-up-delay-2">
+              <svg class="hero__trust-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              HubSpot Revenue Operations Certified &nbsp;&middot;&nbsp; 8+ years, ex-Head of Global RevOps
+            </p>
+          </div>
+
+          <div class="hero__logos fade-up fade-up-delay-2" aria-label="Platforms I work in">
+            <p class="hero__logos-label">The platforms I work in</p>
+            <div class="hero__logos-row">
+              {tools.map((t) => (
+                <div class="tool-logo">
+                  {t.logo ? (
+                    <img src={t.logo} alt={`${t.name} logo`} class="tool-logo__img" loading="eager" />
+                  ) : (
+                    <span class="tool-logo__mark" aria-hidden="true"></span>
+                  )}
+                  <span class="tool-logo__name">{t.name}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -146,24 +176,7 @@ const steps = [
             </div>
           ))}
         </div>
-      </div>
-    </section>
-
-    <section class="tools-strip" aria-label="Tools and platforms">
-      <div class="container">
-        <p class="tools-strip__label">Built on the stack you already use</p>
-        <div class="tools-strip__logos">
-          {tools.map((t) => (
-            <div class="tool-logo">
-              {t.logo ? (
-                <img src={t.logo} alt={`${t.name} logo`} class="tool-logo__img" loading="lazy" />
-              ) : (
-                <span class="tool-logo__mark" aria-hidden="true"></span>
-              )}
-              <span class="tool-logo__name">{t.name}</span>
-            </div>
-          ))}
-        </div>
+        <p class="stat-strip__caveat">Representative outcomes from recent engagements. Yours will depend on your starting point.</p>
       </div>
     </section>
 
@@ -171,21 +184,31 @@ const steps = [
       <div class="container">
         <div class="section-header section-header--compact fade-up">
           <span class="section-eyebrow">Capabilities</span>
-          <h2 class="display-md section-title" id="services-heading">Nine ways to move the number.</h2>
+          <h2 class="display-md section-title" id="services-heading">Three outcomes. Nine ways to get there.</h2>
         </div>
 
-        <div class="capability-grid">
-          {capabilities.map((s, i) => (
-            <a href={s.href} class:list={['capability-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+        <div class="pillars">
+          {pillars.map((p, i) => (
+            <div class:list={['pillar', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <div class="pillar__head">
+                <h3 class="pillar__name">{p.name}</h3>
+                <p class="pillar__blurb">{p.blurb}</p>
               </div>
-              <div class="capability-card__body">
-                <span class="capability-card__tag">{s.tag}</span>
-                <h3 class="capability-card__title">{s.title}</h3>
-                <p class="capability-card__desc">{s.desc}</p>
+              <div class="pillar__list">
+                {p.services.map((s) => (
+                  <a href={s.href} class="pillar__svc">
+                    <span class="pillar__svc-icon" aria-hidden="true">
+                      <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.svg}></svg>
+                    </span>
+                    <span class="pillar__svc-body">
+                      <span class="pillar__svc-title">{s.title}</span>
+                      <span class="pillar__svc-desc">{s.desc}</span>
+                    </span>
+                    <svg class="pillar__svc-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                ))}
               </div>
-            </a>
+            </div>
           ))}
         </div>
 
@@ -193,6 +216,55 @@ const steps = [
           <a href="/services" class="capability-grid__link">See full service detail
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface section--compact" aria-labelledby="who-heading">
+      <div class="container">
+        <div class="section-header section-header--compact fade-up">
+          <span class="section-eyebrow">Who I help</span>
+          <h2 class="display-md section-title" id="who-heading">Built for growing businesses, not just one kind.</h2>
+        </div>
+
+        <div class="verticals">
+          {verticals.map((v, i) => (
+            <a href={v.href} class:list={['vertical-card', 'fade-up', `fade-up-delay-${i + 1}`]}>
+              <h3 class="vertical-card__name">{v.name}</h3>
+              <p class="vertical-card__desc">{v.desc}</p>
+              <span class="vertical-card__cta">{v.cta}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg section--compact" aria-labelledby="operator-heading">
+      <div class="container">
+        <div class="operator">
+          <div class="operator__photo fade-up">
+            <img src="/images/ian-headshot.jpg" alt="Ian Chamberland, founder of Homegrown Growth Co." width="320" height="380" loading="lazy" />
+          </div>
+          <div class="operator__body fade-up fade-up-delay-1">
+            <span class="section-eyebrow">The operator</span>
+            <h2 class="display-md section-title" id="operator-heading">You work with me, not a junior team.</h2>
+            <p class="operator__lead">I'm Ian Chamberland. I've spent 8+ years in growth and revenue operations, most recently as Head of Global Revenue Operations, before going independent to do this work hands-on for growing businesses. When you hire Homegrown Growth Co., I'm the one in your tools every week, not a salesperson who hands you off.</p>
+            <div class="operator__badges">
+              <span class="operator__badge">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                HubSpot Revenue Operations Certified
+              </span>
+              <span class="operator__badge">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                8+ years, ex-Head of Global RevOps
+              </span>
+            </div>
+            <a href="/about" class="capability-grid__link">More about how I work
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -238,6 +310,41 @@ const steps = [
               <p class="faq-item__a">{f.a}</p>
             </details>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="free-audit" class="section section--surface section--compact" aria-labelledby="audit-heading">
+      <div class="container">
+        <div class="audit">
+          <div class="audit__copy fade-up">
+            <span class="section-eyebrow">Free audit</span>
+            <h2 class="display-md section-title" id="audit-heading">Not ready for a call? Get a free growth audit.</h2>
+            <p class="audit__lead">Send your website and I'll send back a short, no-strings review: where you're losing customers, what's hurting your visibility on Google and AI search, and the two or three highest-leverage fixes. No pitch attached.</p>
+            <ul class="audit__points">
+              <li>Where your site and SEO are leaking customers</li>
+              <li>How you show up on Google and in AI answers</li>
+              <li>The highest-leverage fixes, prioritized</li>
+            </ul>
+          </div>
+          <form name="free-audit" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="audit__form fade-up fade-up-delay-1">
+            <input type="hidden" name="form-name" value="free-audit" />
+            <p class="audit__hp" hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
+            <div class="form-field">
+              <label for="audit-name">Name</label>
+              <input id="audit-name" type="text" name="name" autocomplete="name" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label for="audit-email">Email</label>
+              <input id="audit-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required />
+            </div>
+            <div class="form-field">
+              <label for="audit-url">Website URL</label>
+              <input id="audit-url" type="url" name="website" placeholder="https://" required />
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg audit__submit">Send my free audit</button>
+            <p class="audit__fineprint">I'll reply within two business days. No spam, no list.</p>
+          </form>
         </div>
       </div>
     </section>
