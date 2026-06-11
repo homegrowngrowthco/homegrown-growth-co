@@ -103,28 +103,13 @@ _Session 10 shipped **Phase C: `/for-saas` content refresh** to align the SaaS v
 
 ---
 
-## Remaining
+## Open tasks
 
-### Distribution & marketing — your action, mostly forms
-Paste-ready copy for every directory below is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md).
+**Open tasks and their priority live in [`TODO.md`](TODO.md)** — the single source of truth, ranked most-important-first and synced to Notion via todo-sync. This file no longer duplicates the open list (that duplication is exactly what caused the Clutch/Twilio status drift). Paste-ready copy for the directory listings is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md).
 
-| Priority | Task | Effort | Notes |
-|----------|------|--------|-------|
-| HIGH | **HubSpot Solutions Directory** | ~30 min | Highest value: relevant backlink + on-ramp to the Solutions Partner program, directly tied to your HubSpot work. Lead with the HubSpot RevOps cert. |
-| MED | **G2 listing** | ~30 min | Top B2B services directory. Backlink + referral traffic. |
-| MED | **Calendly intake questions** | ~10 min | Add 2-3 qualifying questions (current CRM, biggest ops pain, rough company size) to the ROI call event in the Calendly UI. Filters tire-kickers. Exact wording in `DIRECTORY_PROFILES.md`. |
-| MED | **Netlify form-notification email for `free-audit`** | ~2 min | One-time, same step done for `sms-opt-in`: Netlify dashboard → site → Forms → `free-audit` → add an email notification to ian@homegrowngrowth.co. The form (Session 14 `#free-audit`) is already registered in `NetlifyFormStubs.astro`. |
+_Awaiting external review (no action needed): **Twilio TFV** resubmitted 2026-06-09 for +18663694940 (consent unbundled per reviewer), approval pending._
 
-_Awaiting external review, no action: **Twilio TFV** resubmitted 2026-06-09 for +18663694940 (consent unbundled per reviewer), approval pending. **Clutch** done (see Distribution presences below)._
-
-### Content — defer (separate batch)
-| Task | Why it matters |
-|------|----------------|
-| **Testimonials** (1-3, even anonymized) | **Biggest remaining conversion gap.** |
-| **One real case study** | Replaces placeholder cards on `/case-studies`. |
-| **Blog/Resources content** | Long-term SEO play. `/resources` is currently retired (301 → `/`); when you publish, build a fresh page. |
-
-### Tech debt — all resolved or explicitly declined (2026-05-16)
+## Tech debt — all resolved or explicitly declined (2026-05-16)
 | Task | Status | Notes |
 |------|--------|-------|
 | ~~Move to a build system (Eleventy / Astro / Hugo)~~ | ✅ Done | Migrated to Astro 5 in the morning Phase B session. Shared BaseLayout + Nav + Footer + ServicePage components; global changes are now one-file edits. |
@@ -136,15 +121,14 @@ _Awaiting external review, no action: **Twilio TFV** resubmitted 2026-06-09 for 
 | CSP: remove `'unsafe-inline'` from `script-src` | ⏸️ Explicitly declined | Requires per-build SHA-256 hashing of inline JSON-LD + Astro bundled scripts with a custom build step injecting hashes into the netlify.toml CSP header. ~2-4 hours of work; doesn't unblock a real user-facing threat on a static marketing site (no UGC, no auth surface). Astro 5's `experimental.csp` doesn't help (SSR-only, meta-tag delivery, won't work with our static output). Revisit when there's a specific compliance/audit driver. |
 | Branch protection on `main` | ⏸️ Explicitly declined | Skipped while solo. Friction cost is real, security benefit is near-zero on a static marketing site with no secrets in the repo. Revisit if a collaborator joins. |
 
-### When the time comes
-| Task | Trigger |
+## Future (trigger-based references, not active tasks)
+These are not on the open list; they activate only when their trigger fires.
+
+| Item | Trigger |
 |------|---------|
 | LinkedIn Insight Tag | After ~3 months of steady traffic + paid-campaign plan within ~2 months. |
 | Meta Pixel | Probably never — B2C-leaning, low value for fractional RevOps. |
 | `Article` / `BlogPosting` schema | When `/resources` is revived with real content. |
-
-### Minor polish (low priority)
-- ~~**Email obfuscation** on footer `mailto:`~~ ✅ Done Session 11 (`Footer.astro` assembles the address at runtime from `data-eu`/`data-ed`; `[at]` no-JS fallback). No open minor-polish items.
 
 ---
 
@@ -200,4 +184,4 @@ _Note: GTM Strategy, Sales Comp & Enablement, and Tech Stack Audit are de-featur
 
 ## Highest-Impact Next Action
 
-**HubSpot Solutions Directory** (~30 min). Highest-value distribution lever left: a relevant backlink plus the on-ramp to the HubSpot Solutions Partner program, directly tied to the HubSpot work HGC does. Then **G2** + the **Calendly intake questions**. (Clutch is already live; Twilio TFV is resubmitted and awaiting Twilio's review.) Paste-ready copy for all directory listings is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md). The single biggest *conversion* gap remains a real testimonial or two (parked until source material exists).
+The current top lever is whatever sits at the top of [`TODO.md`](TODO.md) (ranked most-important-first, synced to Notion). At the last reconciliation that was the HubSpot Solutions Directory listing; paste-ready directory copy is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md).
