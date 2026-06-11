@@ -90,6 +90,7 @@ _Session 10 shipped **Phase C: `/for-saas` content refresh** to align the SaaS v
 
 ### Distribution presences (external)
 - [x] **Google Business Profile — live** (2026-05-27). [Public profile link](https://share.google/pjlSd3uuV2CDQqxLD). Knocks out the highest-impact local SEO distribution item; helps with "RevOps consultant Massachusetts" / "growth ops consultant near me" queries.
+- [x] **Clutch profile — live** (approved/published 2026-06-09, confirmed 2026-06-11). Top B2B services directory: backlink + referral traffic.
 - [x] **Reverse TAG → HGC backlink — live** (verified Session 16). The Automations Guide links to HGC sitewide (footer "Published by HGC" on every page) and per blog post (author-bio "Founder, Homegrown Growth Co" + "See HGC services", dofollow), plus contextual links on TAG's `/about` and author/publisher schema `sameAs`. This was the Session-14 "real ranking lever" follow-up; it is done.
 
 ### Retired
@@ -110,11 +111,11 @@ Paste-ready copy for every directory below is in [`DIRECTORY_PROFILES.md`](DIREC
 | Priority | Task | Effort | Notes |
 |----------|------|--------|-------|
 | HIGH | **HubSpot Solutions Directory** | ~30 min | Highest value: relevant backlink + on-ramp to the Solutions Partner program, directly tied to your HubSpot work. Lead with the HubSpot RevOps cert. |
-| HIGH | **Clutch profile** | ~30 min | Top B2B services directory. Backlink + referral traffic. |
-| HIGH | **Resubmit Twilio TFV for +18663694940** | ~15 min | Consent unbundling shipped (Session 12). Confirm the TFV business-name field exactly = "Homegrown Growth Co." and the sending number = +18663694940. Reviewer cautioned it is not a guaranteed approval (team re-checks). |
-| MED | **G2 listing** | ~30 min | Same logic as Clutch. |
+| MED | **G2 listing** | ~30 min | Top B2B services directory. Backlink + referral traffic. |
 | MED | **Calendly intake questions** | ~10 min | Add 2-3 qualifying questions (current CRM, biggest ops pain, rough company size) to the ROI call event in the Calendly UI. Filters tire-kickers. Exact wording in `DIRECTORY_PROFILES.md`. |
 | MED | **Netlify form-notification email for `free-audit`** | ~2 min | One-time, same step done for `sms-opt-in`: Netlify dashboard → site → Forms → `free-audit` → add an email notification to ian@homegrowngrowth.co. The form (Session 14 `#free-audit`) is already registered in `NetlifyFormStubs.astro`. |
+
+_Awaiting external review, no action: **Twilio TFV** resubmitted 2026-06-09 for +18663694940 (consent unbundled per reviewer), approval pending. **Clutch** done (see Distribution presences below)._
 
 ### Content — defer (separate batch)
 | Task | Why it matters |
@@ -199,4 +200,4 @@ _Note: GTM Strategy, Sales Comp & Enablement, and Tech Stack Audit are de-featur
 
 ## Highest-Impact Next Action
 
-**HubSpot Solutions Directory** (~30 min). Highest-value distribution lever left: a relevant backlink plus the on-ramp to the HubSpot Solutions Partner program, directly tied to the HubSpot work HGC does. Then **Clutch**, then **resubmit Twilio TFV** for +18663694940 (code shipped Session 12). Paste-ready copy for all directory listings is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md). The single biggest *conversion* gap remains a real testimonial or two (parked until source material exists).
+**HubSpot Solutions Directory** (~30 min). Highest-value distribution lever left: a relevant backlink plus the on-ramp to the HubSpot Solutions Partner program, directly tied to the HubSpot work HGC does. Then **G2** + the **Calendly intake questions**. (Clutch is already live; Twilio TFV is resubmitted and awaiting Twilio's review.) Paste-ready copy for all directory listings is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md). The single biggest *conversion* gap remains a real testimonial or two (parked until source material exists).
