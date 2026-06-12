@@ -22,6 +22,7 @@ const schema = {
       url: 'https://homegrowngrowth.co',
       email: 'ian@homegrowngrowth.co',
       image: 'https://homegrowngrowth.co/og-image.png',
+      logo: 'https://homegrowngrowth.co/apple-touch-icon.png',
       priceRange: '$$',
       founder: {
         '@type': 'Person',
@@ -51,7 +52,13 @@ const schema = {
         ],
       },
       knowsAbout: ['Salesforce', 'HubSpot', 'Revenue Operations', 'GTM Strategy', 'Demand Generation', 'Search Engine Optimization', 'Generative Engine Optimization', 'CRM Implementation', 'Sales Compensation', 'n8n', 'Zapier', 'Clay', 'Pipeline Analytics', 'Sales Forecasting'],
-      sameAs: ['https://www.linkedin.com/company/homegrown-growth-co', 'https://www.linkedin.com/in/ianchamberland/'],
+      sameAs: [
+        'https://www.linkedin.com/company/homegrown-growth-co',
+        'https://www.linkedin.com/in/ianchamberland/',
+        'https://share.google/pjlSd3uuV2CDQqxLD',
+        'https://clutch.co/profile/homegrown-growth-co',
+        'https://theautomationsguide.com',
+      ],
     },
     {
       '@type': 'FAQPage',
@@ -350,9 +357,18 @@ const steps = [
               <label for="audit-url">Website URL</label>
               <input id="audit-url" type="url" name="website" placeholder="https://" required />
             </div>
+            <p class="audit__error" role="alert" hidden>
+              Something went wrong submitting the form. Please try again, or email
+              <a href="mailto:ian@homegrowngrowth.co">ian@homegrowngrowth.co</a>.
+            </p>
             <button type="submit" class="btn btn--primary btn--lg audit__submit">Send my free audit</button>
             <p class="audit__fineprint">I'll reply within two business days. No spam, no list.</p>
           </form>
+          <div class="audit__form audit__success" hidden role="status" aria-live="polite">
+            <h3 class="audit__success-title">Got it. Your audit is on the way.</h3>
+            <p class="audit__success-body">I'll review your site and send the audit to your inbox within two business days. Want to talk it through sooner?</p>
+            <a href="/roi-call" class="btn btn--primary btn--lg audit__success-cta">Book a free 30-minute call</a>
+          </div>
         </div>
       </div>
     </section>
@@ -369,3 +385,46 @@ const steps = [
 
   </main>
 </BaseLayout>
+
+<script>
+  (() => {
+    const form = document.querySelector<HTMLFormElement>('form[name="free-audit"]:not([hidden])');
+    if (!form) return;
+    const successEl = document.querySelector<HTMLElement>('.audit__success');
+    const errorEl = form.querySelector<HTMLElement>('.audit__error');
+    const submitBtn = form.querySelector<HTMLButtonElement>('.audit__submit');
+    if (!successEl || !errorEl || !submitBtn) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          form.hidden = true;
+          successEl.hidden = false;
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(() => {
+          errorEl.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send my free audit';
+        });
+    });
+  })();
+</script>
