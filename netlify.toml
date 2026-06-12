@@ -13,16 +13,12 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://assets.calendly.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline' https://assets.calendly.com; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://scripts.clarity.ms https://c.clarity.ms https://c.bing.com https://dc.services.visualstudio.com; frame-src https://calendly.com; form-action 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://assets.calendly.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline' https://assets.calendly.com; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com https://*.clarity.ms https://c.bing.com https://dc.services.visualstudio.com; frame-src https://calendly.com; form-action 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests;"
 
-# Cache static assets aggressively
+# Cache static assets aggressively.
+# /_astro/* is content-hashed by the build, so immutable is always safe.
 [[headers]]
-  for = "/styles.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/script.js"
+  for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
@@ -36,8 +32,15 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Hero/photo JPGs are mutable filenames: cache a week, serve stale while revalidating.
 [[headers]]
-  for = "/fonts/*"
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+# woff2 only: fonts.css is hand-edited and unhashed, so it must stay revalidatable.
+[[headers]]
+  for = "/fonts/*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 

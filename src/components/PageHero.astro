@@ -29,7 +29,7 @@ const hasImage = Boolean(heroImage);
       </div>
       {hasImage && (
         <div class="page-hero__visual fade-up fade-up-delay-1" aria-hidden="true">
-          <img src={heroImage} alt={heroImageAlt || ''} class="page-hero__image" loading="eager" />
+          <img src={heroImage} alt={heroImageAlt || ''} class="page-hero__image" loading="eager" fetchpriority="high" decoding="async" width="972" height="778" />
           <div class="page-hero__visual-overlay"></div>
         </div>
       )}
