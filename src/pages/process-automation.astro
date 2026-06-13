@@ -26,23 +26,19 @@ import ServicePage from '../components/ServicePage.astro';
   faqs={[
     {
       q: 'What tools do you work with?',
-      schemaA: "Primarily n8n, Zapier, and Clay for automation, plus direct integrations into Salesforce, HubSpot, Slack, billing platforms (Stripe, Chargebee), and most common GTM tools. If your stack is unusual, that's fine. We assess integrations as part of scoping.",
       htmlA: "Primarily n8n, Zapier, and Clay for automation, plus direct integrations into Salesforce, HubSpot, Slack, billing platforms (Stripe, Chargebee), and most common GTM tools. If your stack is unusual, that's fine. We assess integrations as part of scoping.",
     },
     {
       q: 'What happens when an automation breaks?',
-      schemaA: "Every automation we build includes error handling, alerting, and documentation. You'll know when something fails, and the runbook tells you exactly what to check. We don't build black boxes.",
       htmlA: "Every automation we build includes error handling, alerting, and documentation. You'll know when something fails, and the runbook tells you exactly what to check. We don't build black boxes.",
     },
     {
       q: 'How long does an automation project take?',
-      schemaA: 'Simple automations (lead routing, CRM field sync) typically take 1-2 weeks. Complex multi-system workflows take 3-5 weeks. Everything is scoped with a clear timeline before work starts.',
       htmlA: 'Simple automations (lead routing, CRM field sync) typically take 1-2 weeks. Complex multi-system workflows take 3-5 weeks. Everything is scoped with a clear timeline before work starts.',
     },
     {
       q: 'How much does workflow automation cost?',
-      schemaA: 'Pricing depends on scope. Discrete automation builds run as fixed-scope projects. Ongoing workflow ownership runs as a retainer. Engagement models and what each looks like are at https://homegrowngrowth.co/pricing, and a precise number gets shared on the free ROI call once we have scope.',
-      htmlA: 'Pricing depends on scope. Discrete automation builds run as fixed-scope projects. Ongoing workflow ownership runs as a retainer. See the <a href="/pricing" style="color: var(--color-teal); font-weight: 600;">engagement models</a>, then book a call so we can share a precise number against your actual scope.',
+      htmlA: 'Pricing depends on scope. Discrete automation builds run as fixed-scope projects. Ongoing workflow ownership runs as a retainer. See the <a href="/pricing" class="link-teal">engagement models</a>, then book a call so we can share a precise number against your actual scope.',
     },
   ]}
   relatedServices={[
@@ -51,6 +47,6 @@ import ServicePage from '../components/ServicePage.astro';
     { slug: 'tech-stack-audit', title: 'Tech Stack Audit', sub: 'Know what you have before automating it' },
   ]}
   ctaHeadline="Ready to talk specifics?"
-  ctaBody="Book a free 30-minute call. No pitch, no proposal. An honest conversation about whether this is the right fit for your situation."
+  ctaBody="Book a free ROI call. No pitch, no proposal. An honest conversation about whether this is the right fit for your situation."
   heroImage="/images/hero-process-automation.jpg"
 />

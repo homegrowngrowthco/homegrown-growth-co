@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const title = 'Growth Operations for Early-Stage SaaS | Homegrown Growth Co.';
-const description = "A fractional growth partner for seed to Series B SaaS teams. GTM strategy, RevOps, demand gen, SEO and GEO, CRM, and automation, owned end-to-end without the full-time ops hire.";
+const description = "A fractional growth partner for seed to Series B SaaS. GTM strategy, RevOps, demand gen, SEO, CRM, and automation without the full-time ops hire.";
 const canonical = 'https://homegrowngrowth.co/for-saas';
 
 const faqs = [
   { q: 'Do I need an embedded senior partner or a full-time hire?', a: "Most teams between $500K-$5M ARR don't need (or can't justify) a full-time growth ops hire. An embedded senior partner gives you the same ownership at 20-30% of the cost, with the ability to scale up or exit cleanly as the company matures." },
-  { q: 'Do I need the whole umbrella, or just one piece?', a: "Most engagements start with one or two capabilities, not all nine. The discovery surfaces which one moves the needle first. CRM rebuild, GTM motion reset, or paid channel restructure are common starting points. The reason the umbrella matters is that one senior partner owns the connections between them, not that every engagement covers all of it." },
+  { q: 'Do I need the whole umbrella, or just one piece?', a: "Most engagements start with one or two capabilities, not all twelve. The discovery surfaces which one moves the needle first. CRM rebuild, GTM motion reset, or paid channel restructure are common starting points. The reason the umbrella matters is that one senior partner owns the connections between them, not that every engagement covers all of it." },
   { q: 'How quickly can work actually start?', a: 'Discovery typically takes 1-2 weeks. Depending on scope, the first deliverables are usually in production within 3-4 weeks of the initial call. No months-long "assessment phase" before anything is built.' },
   { q: 'We already have a CRM. Do we need this?', a: 'Usually. "We already have a CRM" frequently means it was set up for a different motion and nobody wants to say it\'s not working. The discovery is direct about what\'s actually there, not what it was supposed to be.' },
   { q: 'How do you measure success?', a: 'Metrics get agreed on before the engagement starts. Typically: pipeline forecast accuracy, CAC or CPL movement, manual time saved, data accuracy improvement, and adoption. Not activity metrics like "hours logged" or "tasks completed."' },
@@ -61,7 +61,7 @@ const saasServices = [
 ];
 
 const processSteps = [
-  { num: '01', title: 'Free Strategy Call', body: '30 minutes. Honest conversation about where your ops are costing you time and money. No pitch until there\'s a real problem to solve.' },
+  { num: '01', title: 'Free ROI Call', body: '30 minutes. Honest conversation about where your ops are costing you time and money. No pitch until there\'s a real problem to solve.' },
   { num: '02', title: 'Structured Discovery', body: 'We document your current motion, stack, data model, and friction points before anything gets built. This shapes the scope and the sequencing.' },
   { num: '03', title: 'Scoped Proposal', body: 'Clear deliverables, timeline, and pricing, either as a monthly retainer or a fixed-scope project. No open-ended retainers with vague outputs.' },
   { num: '04', title: 'Embedded Execution', body: 'Work happens inside your tools. Async updates, weekly standups, and full documentation so nothing is a black box when the engagement ends.' },
@@ -75,7 +75,7 @@ const stats = [
 ];
 
 const fitGood = [
-  'Seed to Series B SaaS, $500K-$10M ARR',
+  'Seed to Series B SaaS, $500K-$5M ARR',
   'Growing sales team without a dedicated ops owner',
   'Founder or head of sales is doing too much ops themselves',
   'HubSpot or Salesforce is in-place but underleveraged',
@@ -111,7 +111,7 @@ const fitBad = [
 
     <div class="container" style="margin-top: -32px; margin-bottom: 24px;">
       <div class="btn-group fade-up fade-up-delay-3" style="justify-content: center;">
-        <a href="/roi-call" class="btn btn--primary btn--lg">Book a Free Strategy Call</a>
+        <a href="/roi-call" class="btn btn--primary btn--lg">Book a Free ROI Call</a>
         <a href="/services" class="btn btn--outline btn--lg">See what's included</a>
       </div>
     </div>
@@ -132,7 +132,7 @@ const fitBad = [
 
     <section class="section section--bg" aria-labelledby="pain-heading">
       <div class="container">
-        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+        <div class="section-header section-header--center fade-up mb-48">
           <span class="section-eyebrow">Sound familiar?</span>
           <h2 class="display-md section-title" id="pain-heading">Where SaaS growth typically leaks.</h2>
           <p class="section-subtitle mx-auto">These patterns show up across every SaaS company between $500K and $5M ARR, regardless of vertical.</p>
@@ -152,7 +152,7 @@ const fitBad = [
 
     <section class="section section--surface" aria-labelledby="saas-services-heading">
       <div class="container">
-        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+        <div class="section-header section-header--center fade-up mb-48">
           <span class="section-eyebrow">What We Build</span>
           <h2 class="display-md section-title" id="saas-services-heading">The full stack, or just the piece you need.</h2>
           <p class="section-subtitle mx-auto">Every engagement starts with a structured discovery. Nothing gets built until there's a clear picture of your motion and where the friction is.</p>
@@ -177,7 +177,7 @@ const fitBad = [
       <div class="container">
         <div class="section-header fade-up">
           <span class="section-eyebrow section-eyebrow--light">How It Works</span>
-          <h2 class="display-lg section-title" id="process-heading" style="color:#fff;">From first call to live systems in weeks.</h2>
+          <h2 class="display-lg section-title title--on-dark" id="process-heading">From first call to live systems in weeks.</h2>
         </div>
         <p style="color: rgba(255,255,255,0.7); max-width: 640px; margin: -16px 0 40px; font-size: 1.0625rem; line-height: 1.7;" class="fade-up">No discovery that drags on for months. No deliverables that sit in a Google Drive folder.</p>
 
@@ -195,7 +195,7 @@ const fitBad = [
 
     <section class="section section--surface" aria-labelledby="stats-heading">
       <div class="container">
-        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+        <div class="section-header section-header--center fade-up mb-48">
           <span class="section-eyebrow">What This Looks Like</span>
           <h2 class="display-md section-title" id="stats-heading">Outcomes, not activity.</h2>
           <p class="section-subtitle mx-auto">Every engagement ties deliverables to measurable improvements. These are the benchmarks we track.</p>
@@ -214,7 +214,7 @@ const fitBad = [
 
     <section class="section section--bg" aria-labelledby="fit-heading">
       <div class="container container--narrow">
-        <div class="section-header section-header--center fade-up" style="margin-bottom: 48px;">
+        <div class="section-header section-header--center fade-up mb-48">
           <span class="section-eyebrow">Who This Is For</span>
           <h2 class="display-md section-title" id="fit-heading">Good fit vs. not.</h2>
           <p class="section-subtitle mx-auto">This works best in specific conditions. If you're not in that zone, I'll tell you on the first call.</p>
@@ -243,7 +243,7 @@ const fitBad = [
 
     <section class="section section--surface" aria-labelledby="saas-faq-heading">
       <div class="container container--narrow">
-        <div class="section-header fade-up" style="margin-bottom: 40px;">
+        <div class="section-header fade-up mb-40">
           <span class="section-eyebrow">FAQ</span>
           <h2 class="display-md section-title" id="saas-faq-heading">Common questions.</h2>
         </div>
@@ -264,9 +264,9 @@ const fitBad = [
     <section class="cta-section" aria-label="Call to action">
       <div class="container container--narrow text-center">
         <div class="fade-up">
-          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">Ready to own growth operations end-to-end?</h2>
+          <h2 class="display-lg section-title title--on-dark-spaced">Ready to own growth operations end-to-end?</h2>
           <p class="cta-body">A free thirty-minute call to map where your GTM is leaking, what's possible if it's rebuilt, and whether this is a fit. No pitch, no proposal. An honest conversation.</p>
-          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free Strategy Call</a>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
         </div>
       </div>
     </section>

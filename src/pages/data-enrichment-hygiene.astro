@@ -4,7 +4,7 @@ import ServicePage from '../components/ServicePage.astro';
 
 <ServicePage
   slug="data-enrichment-hygiene"
-  title="Data Enrichment & Hygiene: Clean, Deduped, Compliant Data, Automatically"
+  title="Data Enrichment & Hygiene: Clean, Deduped, Compliant Data"
   description="CRM data cleanup, deduplication, enrichment, and compliance so your team stops wasting hours on bad data and your reporting is finally trustworthy."
   serviceName="Data Enrichment & Hygiene"
   serviceTag="Data Enrichment & Hygiene"
@@ -26,23 +26,19 @@ import ServicePage from '../components/ServicePage.astro';
   faqs={[
     {
       q: 'What tools do you use for this?',
-      schemaA: 'It depends on your stack. Enrichment often runs through Clay or native CRM tools; dedup and hygiene through HubSpot or Salesforce operations features plus automation in n8n or Zapier. I work in the tools you already have rather than adding another subscription where I can avoid it.',
       htmlA: 'It depends on your stack. Enrichment often runs through Clay or native CRM tools; dedup and hygiene through HubSpot or Salesforce operations features plus automation in n8n or Zapier. I work in the tools you already have rather than adding another subscription where I can avoid it.',
     },
     {
       q: 'Is this a one-time cleanup or ongoing?',
-      schemaA: 'Usually both. We start with a one-time pass to fix the backlog, then put rules and automation in place so new data stays clean. A one-time scrub without the automation just buys you a few months before the mess returns.',
       htmlA: 'Usually both. We start with a one-time pass to fix the backlog, then put rules and automation in place so new data stays clean. A one-time scrub without the automation just buys you a few months before the mess returns.',
     },
     {
       q: 'Can you help with compliance and consent?',
-      schemaA: 'Yes. Hygiene and compliance go together: suppression lists, consent tracking, and unsubscribe handling are part of keeping the database clean and keeping you out of trouble. I am not a lawyer, but I build the operational side so your data practices match your policy.',
       htmlA: 'Yes. Hygiene and compliance go together: suppression lists, consent tracking, and unsubscribe handling are part of keeping the database clean and keeping you out of trouble. I am not a lawyer, but I build the operational side so your data practices match your policy.',
     },
     {
       q: 'How much does data work cost?',
-      schemaA: 'Pricing depends on scope and the size of the database. A one-time cleanup plus hygiene automation runs as a fixed-scope project. Ongoing data ownership runs as a retainer. Engagement models are at https://homegrowngrowth.co/pricing, and the precise number gets shared on the free call once we have scope.',
-      htmlA: 'Pricing depends on scope and the size of the database. A one-time cleanup plus hygiene automation runs as a fixed-scope project. Ongoing data ownership runs as a retainer. See the <a href="/pricing" style="color: var(--color-teal); font-weight: 600;">engagement models</a>, then book a call so we can share a precise number against your situation.',
+      htmlA: 'Pricing depends on scope and the size of the database. A one-time cleanup plus hygiene automation runs as a fixed-scope project. Ongoing data ownership runs as a retainer. See the <a href="/pricing" class="link-teal">engagement models</a>, then book a call so we can share a precise number against your situation.',
     },
   ]}
   relatedServices={[
@@ -51,6 +47,6 @@ import ServicePage from '../components/ServicePage.astro';
     { slug: 'reporting-analytics', title: 'Reporting & Analytics', sub: 'Reporting you can finally trust' },
   ]}
   ctaHeadline="Ready to trust your data again?"
-  ctaBody="Book a free 30-minute call. No pitch, no proposal. An honest look at the state of your data and what it would take to fix it for good."
+  ctaBody="Book a free ROI call. No pitch, no proposal. An honest look at the state of your data and what it would take to fix it for good."
   heroImage="/images/hero-tech-stack-audit.jpg"
 />

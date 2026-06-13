@@ -3,42 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const title = 'Services | Homegrown Growth Co.';
-const description = 'A fractional growth partner across twelve capabilities, grouped by outcome: more customers (SEO/GEO, demand gen, conversion, GTM), more revenue (CRM, retention, reporting, sales comp), and more time back (automation, data, RevOps, tech audits).';
+const description = 'A fractional growth partner across twelve capabilities in three outcomes: more customers, more revenue, and more time back. Scoped projects to embedded support.';
 const canonical = 'https://homegrowngrowth.co/services';
 
 const provider = { '@type': 'Organization', name: 'Homegrown Growth Co.', url: 'https://homegrowngrowth.co' };
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: title,
-  description: 'Twelve capabilities across three outcomes: More Customers, More Revenue, and More Time Back.',
-  url: canonical,
-  breadcrumb: {
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
-      { '@type': 'ListItem', position: 2, name: 'Services', item: canonical },
-    ],
-  },
-  mainEntity: {
-    '@type': 'ItemList',
-    itemListElement: [
-      { '@type': 'Service', position: 1, name: 'Website SEO & GEO', description: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces buyers use today.', provider },
-      { '@type': 'Service', position: 2, name: 'Demand Generation', description: 'Paid and organic acquisition, lifecycle marketing, and attribution. Demand that compounds because the measurement and motion are connected.', provider },
-      { '@type': 'Service', position: 3, name: 'Conversion & Landing Pages', description: 'Landing pages and conversion optimization that turn existing website and ad traffic into customers, bookings, and qualified leads.', provider },
-      { '@type': 'Service', position: 4, name: 'GTM Strategy', description: 'ICP definition, positioning, channel mix, and sales motion design. The strategy work that has to happen before systems and acquisition can pay off.', provider },
-      { '@type': 'Service', position: 5, name: 'CRM Implementation & Cleanup', description: 'Salesforce or HubSpot built right, or rescued from tech debt. Full audit, structured implementation, data cleaning, migration, and team training.', provider },
-      { '@type': 'Service', position: 6, name: 'Retention & Expansion', description: 'Lifecycle, renewals, churn and health scoring for SaaS; repeat business, reviews, and reactivation for local. Grow revenue from customers you already have.', provider },
-      { '@type': 'Service', position: 7, name: 'Reporting & Analytics', description: 'Pipeline analytics, revenue attribution, forecast modeling, and exec-ready dashboards in Salesforce, HubSpot, or your BI tool of choice.', provider },
-      { '@type': 'Service', position: 8, name: 'Sales Comp & Enablement', description: 'Comp plan design, commission modeling, scenario analysis, sales onboarding frameworks, and ramp structure, with documentation for ongoing administration.', provider },
-      { '@type': 'Service', position: 9, name: 'Workflows & Automation', description: 'End-to-end automation design using n8n, Zapier, and Clay. Lead routing, cross-tool data sync, error handling, and documentation included.', provider },
-      { '@type': 'Service', position: 10, name: 'Data Enrichment & Hygiene', description: 'CRM deduplication, enrichment, validation, and compliance, maintained with automated hygiene workflows so records stay clean over time.', provider },
-      { '@type': 'Service', position: 11, name: 'Fractional RevOps', description: 'Dedicated ops roadmap, weekly standup attendance, cross-functional coordination, and ongoing CRM and reporting ownership. Your part-time VP of RevOps.', provider },
-      { '@type': 'Service', position: 12, name: 'Tech Stack Audit', description: 'Complete GTM tool inventory, gap analysis, consolidation recommendations with estimated cost savings, and a prioritized tooling roadmap.', provider },
-    ],
-  },
-};
 
 const pillars = [
   {
@@ -48,6 +16,7 @@ const pillars = [
     services: [
       {
         id: 'website-seo-geo',
+        href: '/website-seo-geo',
         name: 'Website SEO & GEO',
         hook: 'Technical and content SEO, plus Generative Engine Optimization for AI search. Visibility on the surfaces buyers actually use.',
         bullets: [
@@ -64,6 +33,7 @@ const pillars = [
       },
       {
         id: 'demand-generation',
+        href: '/demand-generation',
         name: 'Demand Generation',
         hook: 'Paid and organic acquisition that compounds because the measurement and motion are connected.',
         bullets: [
@@ -80,6 +50,7 @@ const pillars = [
       },
       {
         id: 'conversion-landing-pages',
+        href: '/conversion-landing-pages',
         name: 'Conversion & Landing Pages',
         hook: 'Turn the traffic you already have into customers and bookings, not bounces.',
         bullets: [
@@ -96,6 +67,7 @@ const pillars = [
       },
       {
         id: 'gtm-strategy',
+        href: '/gtm-strategy',
         name: 'GTM Strategy',
         hook: 'ICP, positioning, channel mix, and sales motion design. The thinking that has to happen before the systems and the campaigns.',
         bullets: [
@@ -119,6 +91,7 @@ const pillars = [
     services: [
       {
         id: 'crm-implementation',
+        href: '/crm-implementation',
         name: 'CRM Implementation & Cleanup',
         hook: 'Salesforce or HubSpot built right the first time, or rescued from years of accumulated tech debt.',
         bullets: [
@@ -135,6 +108,7 @@ const pillars = [
       },
       {
         id: 'retention-expansion',
+        href: '/retention-expansion',
         name: 'Retention & Expansion',
         hook: 'The cheapest revenue you will ever earn comes from customers you already have. Keep them and grow them.',
         bullets: [
@@ -151,6 +125,7 @@ const pillars = [
       },
       {
         id: 'reporting-analytics',
+        href: '/reporting-analytics',
         name: 'Reporting & Analytics',
         hook: 'Dashboards that support real decisions, not vanity metrics and pipeline snapshots nobody reads.',
         bullets: [
@@ -167,6 +142,7 @@ const pillars = [
       },
       {
         id: 'sales-comp',
+        href: '/sales-comp-enablement',
         name: 'Sales Comp & Enablement',
         hook: 'Commission plans that drive the right behavior, and onboarding that gets reps productive faster.',
         bullets: [
@@ -190,6 +166,7 @@ const pillars = [
     services: [
       {
         id: 'process-automation',
+        href: '/process-automation',
         name: 'Workflows & Automation',
         hook: 'Replace manual handoffs and tribal knowledge with workflows that run the same way every time.',
         bullets: [
@@ -206,6 +183,7 @@ const pillars = [
       },
       {
         id: 'data-enrichment-hygiene',
+        href: '/data-enrichment-hygiene',
         name: 'Data Enrichment & Hygiene',
         hook: 'Clean, deduped, enriched, compliant data, maintained automatically, so nobody loses hours to manual cleanup.',
         bullets: [
@@ -222,6 +200,7 @@ const pillars = [
       },
       {
         id: 'fractional-revops',
+        href: '/fractional-revops',
         name: 'Fractional RevOps',
         hook: 'Your part-time VP of RevOps. Without the full-time price tag or the six-month hiring process.',
         bullets: [
@@ -238,6 +217,7 @@ const pillars = [
       },
       {
         id: 'tech-stack-audit',
+        href: '/tech-stack-audit',
         name: 'Tech Stack Audit',
         hook: 'A full-system look at what you\'re running, what it\'s costing you, and whether it\'s actually working.',
         bullets: [
@@ -259,6 +239,34 @@ const pillars = [
 // Alternate row backgrounds across the flattened service list
 const allServices = pillars.flatMap((p) => p.services);
 const bgFor = (idx: number) => (idx % 2 === 0 ? 'var(--color-surface)' : 'var(--color-bg)');
+
+// ItemList is built from the same array that renders the rows, so schema
+// names/descriptions/urls can't drift from the visible content.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: 'Twelve capabilities across three outcomes: More Customers, More Revenue, and More Time Back.',
+  url: canonical,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: canonical },
+    ],
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: allServices.map((s, i) => ({
+      '@type': 'Service',
+      position: i + 1,
+      name: s.name,
+      description: s.hook,
+      url: `https://homegrowngrowth.co${s.href}`,
+      provider,
+    })),
+  },
+};
 ---
 
 <BaseLayout
@@ -294,11 +302,12 @@ const bgFor = (idx: number) => (idx % 2 === 0 ? 'var(--color-surface)' : 'var(--
               <div class="container">
                 <div class="service-row fade-up" style={isLastOverall ? 'border-bottom: none;' : undefined}>
                   <div class="service-row__left">
-                    <h3 class="service-row__name">{row.name}</h3>
+                    <h3 class="service-row__name"><a href={row.href} class="service-row__name-link">{row.name}</a></h3>
                     <p class="service-row__hook">{row.hook}</p>
                     <ul class="service-row__bullets" aria-label="What's included">
                       {row.bullets.map((b) => <li class="service-row__bullet">{b}</li>)}
                     </ul>
+                    <a href={row.href} class="link-teal service-row__details">Full details: {row.name} →</a>
                   </div>
                   <div class="service-row__fit">
                     <p class="service-row__fit-title">Good fit if...</p>

@@ -43,3 +43,8 @@ whitespace.jpg
 client_secret*.json
 token.json
 *.gsc.json
+
+# Site-audit working set (2026-06-12): untracked by convention, ignored so a
+# broad git add can never sweep the report or its screenshot evidence in
+AUDIT.md
+_audit-evidence/

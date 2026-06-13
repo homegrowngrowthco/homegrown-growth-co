@@ -8,9 +8,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 interface Faq {
   q: string;
-  /** Plain text used in JSON-LD acceptedAnswer.text */
-  schemaA: string;
-  /** HTML used in the visible FAQ (can include inline <a>) */
+  /** HTML used in the visible FAQ (can include inline <a>). The JSON-LD
+   *  acceptedAnswer.text is derived from this same string (tags stripped),
+   *  so schema can never drift from what the page shows. */
   htmlA: string;
 }
 
@@ -87,7 +87,7 @@ const schema = {
       mainEntity: faqs.map((f) => ({
         '@type': 'Question',
         name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.schemaA },
+        acceptedAnswer: { '@type': 'Answer', text: f.htmlA.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() },
       })),
     },
   ],
@@ -128,7 +128,7 @@ const schema = {
             </div>
           </div>
           <div class="page-hero__visual fade-up fade-up-delay-1" aria-hidden="true">
-            <img src={heroImage} alt="" class="page-hero__image" loading="eager" />
+            <img src={heroImage} alt="" class="page-hero__image" loading="eager" fetchpriority="high" decoding="async" width="972" height="778" />
             <div class="page-hero__visual-overlay"></div>
           </div>
         </div>
@@ -183,7 +183,7 @@ const schema = {
 
     <section class="section section--bg" aria-labelledby="faq-heading">
       <div class="container container--narrow">
-        <div class="section-header fade-up" style="margin-bottom:48px;">
+        <div class="section-header fade-up mb-48">
           <span class="section-eyebrow">Common Questions</span>
           <h2 class="display-md section-title" id="faq-heading">Frequently asked.</h2>
         </div>
@@ -203,7 +203,7 @@ const schema = {
 
     <section class="section section--surface" aria-labelledby="related-heading">
       <div class="container">
-        <div class="section-header section-header--center fade-up" style="margin-bottom:40px;">
+        <div class="section-header section-header--center fade-up mb-40">
           <span class="section-eyebrow">Related Services</span>
           <h2 class="display-md section-title" id="related-heading">Often paired with this.</h2>
         </div>
@@ -221,7 +221,7 @@ const schema = {
     <section class="cta-section" aria-label="Call to action">
       <div class="container container--narrow text-center">
         <div class="fade-up">
-          <h2 class="display-lg section-title" style="color:#fff; margin-bottom: 20px;">{ctaHeadline}</h2>
+          <h2 class="display-lg section-title title--on-dark-spaced">{ctaHeadline}</h2>
           <p class="cta-body">{ctaBody}</p>
           <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
         </div>

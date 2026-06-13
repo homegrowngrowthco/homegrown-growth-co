@@ -68,6 +68,16 @@ declare global {
       dropdownTrigger.setAttribute('aria-expanded', 'false');
     };
 
+    // CSS :hover opens the menu without JS; keep aria-expanded in sync on that path
+    dropdownWrap.addEventListener('mouseenter', () => {
+      dropdownTrigger.setAttribute('aria-expanded', 'true');
+    });
+    dropdownWrap.addEventListener('mouseleave', () => {
+      if (!dropdownWrap.classList.contains('open')) {
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     dropdownTrigger.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
