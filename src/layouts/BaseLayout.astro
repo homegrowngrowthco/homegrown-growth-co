@@ -62,8 +62,9 @@ const {
   )}
   <link rel="stylesheet" href="/fonts/fonts.css" />
 
-  <!-- Analytics: gtag must load first (defines window.gtag for analytics.js to use) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QR1JQK9QL"></script>
+  <!-- Analytics: deferred. analytics.js registers interaction/idle triggers and
+       only then loads gtag.js (~160KB) + Clarity, so they never compete with the
+       mobile critical-render path. CSP already allowlists both hosts. -->
   <script src="/analytics.js" defer></script>
 
   <!-- Canonical -->
