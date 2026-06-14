@@ -48,6 +48,15 @@ export interface CaseStudy {
   heroImage?: string;
 }
 
+// ---------------------------------------------------------------------------
+// IAN, MINIMAL ASK (one study, shortest version): client (real name OR an
+// anonymized descriptor like "B2B SaaS, Series A") + industry + which
+// service(s) + what was broken before + what you did (3 to 5 actions) + 3 to 4
+// result numbers + (optional) one client quote. No invented metrics.
+// PASTE RAW NOTES HERE (bullet dump, any order, rough numbers fine) AND CLAUDE
+// POLISHES INTO THE FIELDS BELOW AND SETS published: true:
+//   -
+// ---------------------------------------------------------------------------
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'sample-case-study',

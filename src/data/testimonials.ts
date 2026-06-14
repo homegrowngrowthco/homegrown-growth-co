@@ -22,6 +22,13 @@ export interface Testimonial {
   avatar?: string;
 }
 
+// ---------------------------------------------------------------------------
+// IAN, MINIMAL ASK (per quote, shortest version): the exact words + first and
+// last name + title + company + a yes that it's OK to publish. That's it.
+// PASTE RAW NOTES HERE (bullet dump, any order, typos fine) AND CLAUDE POLISHES
+// INTO THE FIELDS BELOW, no invented words:
+//   -
+// ---------------------------------------------------------------------------
 export const testimonials: Testimonial[] = [
   {
     quote: 'TODO: Real, word-for-word client quote #1. Get permission before publishing.',

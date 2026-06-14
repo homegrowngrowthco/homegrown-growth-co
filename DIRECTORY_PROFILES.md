@@ -2,7 +2,7 @@
 
 Paste-ready copy for B2B directories, partner listings, and the Calendly intake form. Goal: every remaining distribution task is copy-paste, no rewriting. Style rule: no em/en dashes (see the no-dashes voice rule).
 
-_Last updated: 2026-06-11 (Session 16)._
+_Last updated: 2026-06-14 (Session 23). Adds paste-ready HubSpot + G2 profile copy at the bottom._
 
 ---
 
@@ -85,3 +85,53 @@ Add these 2 to 3 qualifiers to filter tire-kickers:
 
 - Ian is Treasurer of the Salute to Soldiers Foundation (community involvement line, if a directory has one).
 - Author of The Automations Guide (https://theautomationsguide.com), a RevOps and GTM automation publication.
+
+---
+
+## HubSpot Solutions Directory profile (paste-ready)
+
+_Drafted 2026-06-14 (Session 23). Fill each of HubSpot's form fields from the matching block below. Lead with the certification. Map the focus areas to HubSpot's own menu (see category suggestions above). No em/en dashes._
+
+**Company name:** Homegrown Growth Co.
+
+**Headline / tagline:** Growth operations, owned end-to-end.
+
+**About / overview (paste):**
+> Homegrown Growth Co. is a fractional growth operations practice led by Ian Chamberland, HubSpot Revenue Operations Certified with eight years inside high-growth GTM teams. You get one senior partner to own the operational layer behind your revenue, not a junior team and not a hand-off. We build and clean up HubSpot so the CRM tells the truth, the reporting is trustworthy, and the busywork runs itself: implementation and migration, sales and marketing automation, RevOps process, and reporting that leaders actually use. Work spans three outcomes, More Customers, More Revenue, and More Time Back, and every engagement is built to prove it pays for itself in 90 days. We serve B2B and SaaS plus local and multi-location service businesses (home services, medical and wellness, auto, restaurants).
+
+**Focus areas / services (map to HubSpot's menu):** CRM Implementation & Migration, Sales Enablement, Marketing & RevOps, Reporting & Analytics, Automation / Operations.
+
+**HubSpot products worked with:** Sales Hub, Marketing Hub, Operations Hub, Service Hub, Content Hub (CMS).
+
+**Industries served:** B2B and SaaS; Home Services; Medical and Wellness; Auto; Restaurants and other multi-location service businesses.
+
+**Regions served:** United States (remote, US-wide). Based in Massachusetts.
+
+**Certifications:** HubSpot Revenue Operations Certified.
+
+**Engagement models:** Retainer, Project-Based, Outcome-Based, Assessment. Pricing shared on a discovery call.
+
+**Links:** Website https://homegrowngrowth.co | Company LinkedIn https://linkedin.com/company/homegrown-growth-co | Founder LinkedIn https://linkedin.com/in/ianchamberland
+
+---
+
+## G2 services profile (paste-ready)
+
+_Drafted 2026-06-14 (Session 23). G2 lists this as a services / agency provider. Categories: Marketing Services, RevOps Consulting, CRM Consulting (see suggestions above). No em/en dashes._
+
+**Provider name:** Homegrown Growth Co.
+
+**Tagline:** Growth operations, owned end-to-end.
+
+**Provider description (paste):**
+> Most growing companies don't lose to bigger competitors. They lose to half-true CRMs, gut-feel forecasts, and manual work that owns the week. Homegrown Growth Co. is a fractional growth operations practice led by Ian Chamberland (HubSpot Revenue Operations Certified, eight years inside high-growth GTM teams). You get one senior partner to own growth operations end-to-end across twelve capabilities in three outcomes: More Customers (SEO and GEO, demand generation, conversion), More Revenue (CRM, reporting, retention), and More Time Back (workflows, data hygiene, fractional RevOps). Senior expertise at fractional cost, with the work built to prove it pays for itself in 90 days. We serve B2B and SaaS plus local and multi-location service businesses (home services, medical and wellness, auto, restaurants).
+
+**Services offered (checklist):** RevOps Consulting, CRM Implementation and Cleanup, Reporting and Analytics, Marketing and Demand Generation, SEO and GEO, Conversion and Landing Pages, GTM Strategy, Retention and Expansion, Sales Comp and Enablement, Workflows and Automation, Data Enrichment and Hygiene, Tech Stack Audit.
+
+**Industries:** B2B and SaaS; Home Services; Medical and Wellness; Auto; Restaurants and multi-location service businesses.
+
+**Pricing model:** Retainer, Project-Based, Outcome-Based, and Assessment engagements; pricing shared on a discovery call.
+
+**Region:** United States (remote, US-wide). Based in Massachusetts.
+
+**Links:** Website https://homegrowngrowth.co | Company LinkedIn https://linkedin.com/company/homegrown-growth-co | Founder LinkedIn https://linkedin.com/in/ianchamberland
