@@ -1,10 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { caseStudies } from '../data/caseStudies';
 
+// STAGING: noindex (unchanged) + excluded from the sitemap until a real case
+// study is published. This page IS linked in nav/footer (as it always has been)
+// and shows the "in progress" state until caseStudies.ts has a published entry.
 const title = 'Case Studies | Homegrown Growth Co.';
 const description = 'Real growth ops work with measurable results. CRM migrations, automation builds, reporting overhauls, and more. Case studies coming soon.';
 const canonical = 'https://homegrowngrowth.co/case-studies';
+
+const published = caseStudies.filter((s) => s.published);
 ---
 
 <BaseLayout
@@ -18,31 +25,52 @@ const canonical = 'https://homegrowngrowth.co/case-studies';
     <PageHero
       tag="Case Studies"
       headline="Real work. Measurable results."
-      subtitle="Case studies coming soon. In the meantime, book a call to hear specific examples relevant to your situation."
+      subtitle="A look at growth ops engagements and what changed. Book a call to hear examples relevant to your situation."
     />
 
-    <section class="section section--surface" aria-label="Case study placeholders">
+    <section class="section section--surface" aria-label="Case studies">
       <div class="container">
 
-        <div class="placeholder-grid">
-          <article class="placeholder-card fade-up fade-up-delay-1" aria-label="Case study coming soon: CRM Migration">
-            <span class="placeholder-card__tag">CRM Migration</span>
-            <h2 class="placeholder-card__title">Case study in progress...</h2>
-            <p class="placeholder-card__body">Results being documented. Check back soon.</p>
-          </article>
-
-          <article class="placeholder-card fade-up fade-up-delay-2" aria-label="Case study coming soon: Automation Build">
-            <span class="placeholder-card__tag">Automation Build</span>
-            <h2 class="placeholder-card__title">Case study in progress...</h2>
-            <p class="placeholder-card__body">Results being documented. Check back soon.</p>
-          </article>
-
-          <article class="placeholder-card fade-up fade-up-delay-3" aria-label="Case study coming soon: Reporting Overhaul">
-            <span class="placeholder-card__tag">Reporting Overhaul</span>
-            <h2 class="placeholder-card__title">Case study in progress...</h2>
-            <p class="placeholder-card__body">Results being documented. Check back soon.</p>
-          </article>
-        </div>
+        {published.length > 0 ? (
+          <div class="case-study-grid">
+            {published.map((s, i) => (
+              <a href={`/case-studies/${s.slug}`} class:list={['case-study-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+                <span class="case-study-card__tag">{s.industry}</span>
+                <h2 class="case-study-card__title">{s.client}</h2>
+                <p class="case-study-card__summary">{s.summary}</p>
+                {s.results.length > 0 && (
+                  <ul class="case-study-card__metrics" aria-label="Headline results">
+                    {s.results.slice(0, 3).map((r) => (
+                      <li class="case-study-card__metric">
+                        <span class="case-study-card__metric-num">{r.metric}</span>
+                        <span class="case-study-card__metric-label">{r.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <span class="case-study-card__readmore">Read the case study &rarr;</span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="placeholder-grid">
+            <article class="placeholder-card fade-up fade-up-delay-1" aria-label="Case study coming soon: CRM Migration">
+              <span class="placeholder-card__tag">CRM Migration</span>
+              <h2 class="placeholder-card__title">Case study in progress...</h2>
+              <p class="placeholder-card__body">Results being documented. Check back soon.</p>
+            </article>
+            <article class="placeholder-card fade-up fade-up-delay-2" aria-label="Case study coming soon: Automation Build">
+              <span class="placeholder-card__tag">Automation Build</span>
+              <h2 class="placeholder-card__title">Case study in progress...</h2>
+              <p class="placeholder-card__body">Results being documented. Check back soon.</p>
+            </article>
+            <article class="placeholder-card fade-up fade-up-delay-3" aria-label="Case study coming soon: Reporting Overhaul">
+              <span class="placeholder-card__tag">Reporting Overhaul</span>
+              <h2 class="placeholder-card__title">Case study in progress...</h2>
+              <p class="placeholder-card__body">Results being documented. Check back soon.</p>
+            </article>
+          </div>
+        )}
 
         <div class="fade-up inline-cta">
           <span class="section-eyebrow eyebrow--block">In the meantime</span>
@@ -53,6 +81,8 @@ const canonical = 'https://homegrowngrowth.co/case-studies';
 
       </div>
     </section>
+
+    <Testimonials />
 
     <section class="cta-section" aria-label="Call to action">
       <div class="container container--narrow text-center">

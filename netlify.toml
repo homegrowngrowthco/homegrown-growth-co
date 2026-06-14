@@ -47,22 +47,12 @@
 # Clean URLs are served natively by Astro's file-format output
 # (dist/<slug>.html via build.format: 'file'), so no per-page
 # rewrites are needed and no trailing-slash 301s. Netlify serves
-# /services from dist/services.html directly. The /resources
-# retirement redirect and the trailing 404 fallback below are
-# the only redirects this site needs.
-
-# /resources — page retired; permanent redirect to homepage
-[[redirects]]
-  from = "/resources"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/resources.html"
-  to = "/"
-  status = 301
-  force = true
+# /services from dist/services.html directly. The trailing 404
+# fallback below is the only redirect this site needs.
+#
+# (The old /resources + /resources.html 301-to-/ retirement
+# redirects were removed when the Resources section was rebuilt as
+# a real page. force=true would otherwise hijack the live route.)
 
 # 404 — must be last
 [[redirects]]

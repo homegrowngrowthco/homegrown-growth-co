@@ -1,0 +1,62 @@
+---
+// Reusable testimonials section. Drop <Testimonials /> onto any page once real,
+// permission-cleared quotes are in src/data/testimonials.ts. Until then it is
+// rendered only on the noindex /case-studies staging page.
+import { testimonials as defaultTestimonials, type Testimonial } from '../data/testimonials';
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  testimonials?: Testimonial[];
+}
+
+const {
+  eyebrow = 'In their words',
+  heading = 'What clients say.',
+  testimonials = defaultTestimonials,
+} = Astro.props;
+
+// Hide any unfilled placeholder entries (quote still starts with "TODO:").
+// The whole section renders nothing until at least one real, permission-cleared
+// quote exists, so placeholder text is never visible on a live page.
+const visible = testimonials.filter((t) => !/^\s*TODO:/i.test(t.quote));
+
+const initials = (name: string) =>
+  name
+    .replace(/^TODO:\s*/i, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('') || '?';
+---
+
+{visible.length > 0 && (
+  <section class="section section--bg testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section-header section-header--center fade-up mb-40">
+        <span class="section-eyebrow">{eyebrow}</span>
+        <h2 class="display-md section-title" id="testimonials-heading">{heading}</h2>
+      </div>
+      <div class="testimonials-grid">
+        {visible.map((t, i) => (
+          <figure class:list={['testimonial-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial__quote">{t.quote}</blockquote>
+            <figcaption class="testimonial__author">
+              {t.avatar ? (
+                <img src={t.avatar} alt="" class="testimonial__avatar" width="48" height="48" loading="lazy" decoding="async" />
+              ) : (
+                <span class="testimonial__avatar testimonial__avatar--initials" aria-hidden="true">{initials(t.name)}</span>
+              )}
+              <span class="testimonial__byline">
+                <span class="testimonial__name">{t.name}</span>
+                <span class="testimonial__role">{t.role}, {t.company}</span>
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

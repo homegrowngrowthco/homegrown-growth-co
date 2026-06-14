@@ -1,0 +1,21 @@
+---
+import CaseStudy from '../../components/CaseStudy.astro';
+import { caseStudies } from '../../data/caseStudies';
+
+// Only published studies generate a detail page. The placeholder entry in
+// caseStudies.ts stays published:false, so no live TODO page is built until
+// Ian fills in real facts and flips the flag. See the go-live checklist in
+// SITE_STATUS.md.
+export function getStaticPaths() {
+  return caseStudies
+    .filter((s) => s.published)
+    .map((study) => ({
+      params: { slug: study.slug },
+      props: { study },
+    }));
+}
+
+const { study } = Astro.props;
+---
+
+<CaseStudy study={study} />
