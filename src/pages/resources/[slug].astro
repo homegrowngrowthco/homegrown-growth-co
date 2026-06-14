@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+// STAGING: noindex + excluded from the sitemap until launch. Only non-draft
+// posts generate a route. See the go-live checklist in SITE_STATUS.md.
+export async function getStaticPaths() {
+  const posts = await getCollection('resources', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const canonical = `https://homegrowngrowth.co/resources/${post.id}`;
+const title = `${post.data.title} | Homegrown Growth Co.`;
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description: post.data.description,
+      url: canonical,
+      datePublished: post.data.publishDate.toISOString(),
+      author: { '@type': 'Person', name: post.data.author },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Homegrown Growth Co.',
+        url: 'https://homegrowngrowth.co',
+      },
+      ...(post.data.heroImage ? { image: `https://homegrowngrowth.co${post.data.heroImage}` } : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+        { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://homegrowngrowth.co/resources' },
+        { '@type': 'ListItem', position: 3, name: post.data.title, item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={post.data.description}
+  canonical={canonical}
+  ogType="article"
+  noindex={true}
+  schema={schema}
+>
+  <main id="main" class="page-content">
+
+    <article class="post">
+      <div class="container container--narrow">
+
+        <nav class="breadcrumb fade-up" aria-label="Breadcrumb">
+          <a href="/" class="breadcrumb__link">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="/resources" class="breadcrumb__link">Resources</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="breadcrumb__current">{post.data.title}</span>
+        </nav>
+
+        <header class="post__header fade-up">
+          {post.data.tags.length > 0 && (
+            <span class="post__tag">{post.data.tags[0]}</span>
+          )}
+          <h1 class="post__title">{post.data.title}</h1>
+          <p class="post__meta">
+            By {post.data.author}
+            <span class="post__meta-sep" aria-hidden="true">&middot;</span>
+            <time datetime={post.data.publishDate.toISOString()}>{dateFmt.format(post.data.publishDate)}</time>
+          </p>
+        </header>
+
+        {post.data.heroImage && (
+          <img src={post.data.heroImage} alt={post.data.heroImageAlt || ''} class="post__hero fade-up" width="972" height="546" loading="eager" decoding="async" />
+        )}
+
+        <div class="post__body legal-prose fade-up">
+          <Content />
+        </div>
+
+        <div class="post__back fade-up">
+          <a href="/resources" class="link-teal">&larr; All resources</a>
+        </div>
+
+      </div>
+    </article>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title title--on-dark-spaced">Ready to put this to work?</h2>
+          <p class="cta-body">Book a free ROI call. We diagnose where revenue is leaking and what would actually move the needle.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

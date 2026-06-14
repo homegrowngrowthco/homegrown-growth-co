@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { getCollection } from 'astro:content';
+
+// STAGING: this section is noindex + unlinked from nav/footer + excluded from the
+// sitemap until real content lands. See the go-live checklist in SITE_STATUS.md.
+const title = 'Resources | Homegrown Growth Co.';
+const description = 'Practical notes on growth operations, RevOps, demand generation, and the systems that make revenue compound.';
+const canonical = 'https://homegrowngrowth.co/resources';
+
+const posts = (await getCollection('resources', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  noindex={true}
+>
+  <main id="main" class="page-content">
+
+    <PageHero
+      tag="Resources"
+      headline="Notes on building revenue engines."
+      subtitle="Practical writing on growth operations, RevOps, demand generation, and the systems that make revenue compound."
+      headlineMaxWidth="820px"
+    />
+
+    <section class="section section--surface" aria-label="Articles">
+      <div class="container">
+
+        {posts.length > 0 ? (
+          <div class="resource-grid">
+            {posts.map((post, i) => (
+              <a href={`/resources/${post.id}`} class:list={['resource-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
+                {post.data.tags.length > 0 && (
+                  <span class="resource-card__tag">{post.data.tags[0]}</span>
+                )}
+                <h2 class="resource-card__title">{post.data.title}</h2>
+                <p class="resource-card__excerpt">{post.data.excerpt}</p>
+                <span class="resource-card__meta">
+                  <time datetime={post.data.publishDate.toISOString()}>{dateFmt.format(post.data.publishDate)}</time>
+                  <span class="resource-card__readmore">Read &rarr;</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="placeholder-grid">
+            <article class="placeholder-card fade-up fade-up-delay-1">
+              <span class="placeholder-card__tag">Coming soon</span>
+              <h2 class="placeholder-card__title">First article in progress...</h2>
+              <p class="placeholder-card__body">Practical growth ops writing is on the way. Check back soon.</p>
+            </article>
+            <article class="placeholder-card fade-up fade-up-delay-2">
+              <span class="placeholder-card__tag">Coming soon</span>
+              <h2 class="placeholder-card__title">First article in progress...</h2>
+              <p class="placeholder-card__body">Practical growth ops writing is on the way. Check back soon.</p>
+            </article>
+            <article class="placeholder-card fade-up fade-up-delay-3">
+              <span class="placeholder-card__tag">Coming soon</span>
+              <h2 class="placeholder-card__title">First article in progress...</h2>
+              <p class="placeholder-card__body">Practical growth ops writing is on the way. Check back soon.</p>
+            </article>
+          </div>
+        )}
+
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title title--on-dark-spaced">Want the short version,<br />tailored to you?</h2>
+          <p class="cta-body">Book a free ROI call. We diagnose where revenue is leaking and what would actually move the needle, no pitch required.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

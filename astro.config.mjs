@@ -15,11 +15,19 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) =>
-        !page.endsWith('/404') &&
-        !page.endsWith('/404/') &&
-        !page.endsWith('/case-studies') &&
-        !page.endsWith('/case-studies/'),
+      // Exclude /404 and the staging subtrees (/case-studies/* and
+      // /resources/*) by pathname prefix. The case-study + resources
+      // sections are noindex + unlinked until real content lands; drop the
+      // matching prefix here at go-live (see SITE_STATUS.md go-live checklist).
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return (
+          path !== '/404' &&
+          path !== '/404/' &&
+          !path.startsWith('/case-studies') &&
+          !path.startsWith('/resources')
+        );
+      },
     }),
   ],
 });
