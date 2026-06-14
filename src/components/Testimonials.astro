@@ -16,6 +16,11 @@ const {
   testimonials = defaultTestimonials,
 } = Astro.props;
 
+// Hide any unfilled placeholder entries (quote still starts with "TODO:").
+// The whole section renders nothing until at least one real, permission-cleared
+// quote exists, so placeholder text is never visible on a live page.
+const visible = testimonials.filter((t) => !/^\s*TODO:/i.test(t.quote));
+
 const initials = (name: string) =>
   name
     .replace(/^TODO:\s*/i, '')
@@ -26,7 +31,7 @@ const initials = (name: string) =>
     .join('') || '?';
 ---
 
-{testimonials.length > 0 && (
+{visible.length > 0 && (
   <section class="section section--bg testimonials" aria-labelledby="testimonials-heading">
     <div class="container">
       <div class="section-header section-header--center fade-up mb-40">
@@ -34,7 +39,7 @@ const initials = (name: string) =>
         <h2 class="display-md section-title" id="testimonials-heading">{heading}</h2>
       </div>
       <div class="testimonials-grid">
-        {testimonials.map((t, i) => (
+        {visible.map((t, i) => (
           <figure class:list={['testimonial-card', 'fade-up', `fade-up-delay-${(i % 3) + 1}`]}>
             <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
             <blockquote class="testimonial__quote">{t.quote}</blockquote>

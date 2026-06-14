@@ -8,8 +8,10 @@
 //   3. Drop <Testimonials /> onto index.astro (and optionally for-saas.astro /
 //      for-local-businesses.astro). See the go-live checklist in SITE_STATUS.md.
 //
-// Until then these placeholders render only on the noindex /case-studies page
-// as a staging preview of the layout.
+// The Testimonials component auto-hides any entry whose quote still starts with
+// "TODO:", and renders nothing if none are real, so these placeholders are NOT
+// visible on the live /case-studies page. Replace a quote with a real one and
+// the section appears automatically.
 
 export interface Testimonial {
   quote: string;

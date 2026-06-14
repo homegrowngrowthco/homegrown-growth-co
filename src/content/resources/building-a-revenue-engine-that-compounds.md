@@ -5,7 +5,7 @@ publishDate: 2026-06-14
 author: "Ian Chamberland"
 excerpt: "SAMPLE POST (template). This is placeholder copy that demonstrates the Resources layout, typography, and post schema. It contains no client facts. Replace it with a real article, or delete it."
 tags: ["RevOps", "Sample"]
-draft: false
+draft: true
 ---
 
 > SAMPLE / TEMPLATE POST. This file exists so the Resources section renders end to end (index card, post page, and BlogPosting schema). It contains no real client data. Replace it with a real post or delete it before launch. See the go-live checklist in SITE_STATUS.md.
