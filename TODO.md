@@ -4,12 +4,13 @@ Tracked by todo-sync (see ../todo-sync/CONVENTION.md). Open tasks below, most im
 
 ## TODO
 
-- [ ] Review + merge audit-fix [PR #5](https://github.com/homegrowngrowthco/homegrown-growth-co/pull/5) @high — IAN: all Claude-side audit items shipped (waves 1+2, `cd8c91f` + `c7ba031`) and verified on the Netlify preview (CSP console clean + y.clarity.ms uploads flowing, /_astro immutable + /images 1-week cache headers live, free-audit branded success card works on a real submit); merge deploys to prod
+- [x] Review + merge audit-fix [PR #5](https://github.com/homegrowngrowthco/homegrown-growth-co/pull/5) @high — DONE: merged to prod 2026-06-13 (merge `3f3da7c`), waves 1-3 live
+- [x] Defer gtag + Clarity to first interaction/idle for mobile speed @high — DONE: [PR #6](https://github.com/homegrowngrowthco/homegrown-growth-co/pull/6) merged 2026-06-14 (`8c470a3`); prod mobile perf 0.71-0.75 → 0.83-0.97, LCP ~6.5s → ~2.5s. Tradeoff accepted: visitors who bounce in <~3s without interacting aren't counted
 - [x] Decide + apply the Phase-2 judgment calls @high — DONE (wave 3, `9fc47c4`, on PR #5): M-4 teal contrast (buttons + teal text to teal-700, decorative stays teal-500; browser contrast scan clean across 10 pages), M-10 copy fixes (one "ROI call" name, twelve-capability count, /about audit CTA to /#free-audit, /roi-call de-RevOps-ed, claim reconciliations), L-3 meta title/description trims. All Ian-approved 2026-06-13
 - [ ] Create HubSpot Solutions Directory profile @high — highest-value distribution lever: relevant backlink + Solutions Partner on-ramp; paste-ready copy in [DIRECTORY_PROFILES.md](DIRECTORY_PROFILES.md)
 - [ ] Add 1 to 3 testimonials (biggest conversion gap) @high [SITE_STATUS.md](SITE_STATUS.md)
 - [ ] Delete the 3 TEST form submissions from the 2026-06-12 audit work @med — IAN, 2 min: Netlify dashboard > Forms > free-audit (2: "TEST - Claude site audit" + "TEST - Claude audit-fix preview check") + sms-opt-in (1: "TEST - Claude site audit"), all marked safe to delete
-- [ ] Re-run /audit-seo + re-baseline Lighthouse after the audit-fix branch merges @med — mobile perf was 0.65-0.73 vs 0.79 budget pre-fix; expect recovery from image/cache/font fixes, update _baseline/ if green
+- [x] Re-run /audit-seo + re-baseline Lighthouse after the audit-fix branch merges @med — DONE 2026-06-14: prod re-audited post-defer; a11y 0.96→1.00, BP 0.73→0.77, SEO 1.00, mobile perf 0.83-0.97 (all clear floor). New baseline at `_baseline/lighthouse-2026-06-14/`, /audit-seo repointed; old 2026-05-14 baseline kept for history only
 - [ ] Create G2 services profile @med [DIRECTORY_PROFILES.md](DIRECTORY_PROFILES.md)
 - [ ] Add 2 to 3 qualifying questions to Calendly ROI-call intake @med — wording in [DIRECTORY_PROFILES.md](DIRECTORY_PROFILES.md); set in the Calendly UI on [roi-call.astro](src/pages/roi-call.astro)'s event
 - [ ] Add a Netlify form-notification email for the free-audit form @med — one-time, same step as sms-opt-in; form registered in [NetlifyFormStubs.astro](src/components/NetlifyFormStubs.astro); audit M-1 fixes the visitor-facing side, this fixes the owner-facing side
