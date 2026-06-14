@@ -1,0 +1,182 @@
+---
+// Data-driven case-study detail template (same spirit as ServicePage.astro).
+// Renders hero + at-a-glance results + challenge + approach + results + pull
+// quote + CTA, and builds Article + BreadcrumbList JSON-LD from the same data
+// so schema can't drift. Stays noindex while the section is staging.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { CaseStudy } from '../data/caseStudies';
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+const canonical = `https://homegrowngrowth.co/case-studies/${study.slug}`;
+const title = `${study.client} Case Study | Homegrown Growth Co.`;
+
+// Slug -> display name for the "services used" cross-links.
+const serviceTitles: Record<string, string> = {
+  'website-seo-geo': 'Website SEO & GEO',
+  'demand-generation': 'Demand Generation',
+  'conversion-landing-pages': 'Conversion & Landing Pages',
+  'gtm-strategy': 'GTM Strategy',
+  'crm-implementation': 'CRM Implementation',
+  'reporting-analytics': 'Reporting & Analytics',
+  'retention-expansion': 'Retention & Expansion',
+  'sales-comp-enablement': 'Sales Comp & Enablement',
+  'process-automation': 'Workflows & Automation',
+  'data-enrichment-hygiene': 'Data Enrichment & Hygiene',
+  'fractional-revops': 'Fractional RevOps',
+  'tech-stack-audit': 'Tech Stack Audit',
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: `${study.client} Case Study`,
+      description: study.summary,
+      url: canonical,
+      author: {
+        '@type': 'Organization',
+        name: 'Homegrown Growth Co.',
+        url: 'https://homegrowngrowth.co',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+        { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://homegrowngrowth.co/case-studies' },
+        { '@type': 'ListItem', position: 3, name: study.client, item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={study.summary}
+  canonical={canonical}
+  noindex={true}
+  schema={schema}
+>
+  <main id="main" class="page-content">
+
+    <section class="page-hero page-hero--compact page-hero--split">
+      <div class="container">
+        <nav class="breadcrumb fade-up" aria-label="Breadcrumb">
+          <a href="/" class="breadcrumb__link">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="/case-studies" class="breadcrumb__link">Case Studies</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="breadcrumb__current">{study.client}</span>
+        </nav>
+        <div class="page-hero__inner page-hero__inner--split">
+          <div class="page-hero__content">
+            <span class="page-hero__tag fade-up">{study.industry}</span>
+            <h1 class="page-hero__headline fade-up fade-up-delay-1">{study.client}</h1>
+            <p class="page-hero__sub fade-up fade-up-delay-2">{study.summary}</p>
+            <p class="case-study__engagement fade-up fade-up-delay-2"><strong>Engagement:</strong> {study.engagement}</p>
+            <div class="btn-group fade-up fade-up-delay-3">
+              <a href="/roi-call" class="btn btn--primary btn--lg">Book Your Free ROI Call</a>
+              <a href="/case-studies" class="btn btn--outline btn--lg">All Case Studies</a>
+            </div>
+          </div>
+          {study.heroImage && (
+            <div class="page-hero__visual fade-up fade-up-delay-1" aria-hidden="true">
+              <img src={study.heroImage} alt="" class="page-hero__image" loading="eager" fetchpriority="high" decoding="async" width="972" height="778" />
+              <div class="page-hero__visual-overlay"></div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    {study.results.length > 0 && (
+      <section class="section section--surface" aria-label="Results at a glance">
+        <div class="container">
+          <div class="case-study-results fade-up">
+            {study.results.map((r) => (
+              <div class="case-study-metric">
+                <div class="case-study-metric__number">{r.metric}</div>
+                <div class="case-study-metric__label">{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="section section--bg" aria-label="The challenge">
+      <div class="container container--narrow">
+        <div class="case-study-section fade-up">
+          <span class="section-eyebrow eyebrow--block">The challenge</span>
+          <p class="legal-prose">{study.challenge}</p>
+        </div>
+
+        <div class="case-study-section fade-up">
+          <span class="section-eyebrow eyebrow--block">The approach</span>
+          <div class="included-stack" aria-label="What we did">
+            {study.approach.map((item, i) => (
+              <div class="included-card included-card--full">
+                <span class="included-card__num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="included-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="included-card__body">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {study.resultsNarrative && (
+          <div class="case-study-section fade-up">
+            <span class="section-eyebrow eyebrow--block">The results</span>
+            <p class="legal-prose">{study.resultsNarrative}</p>
+          </div>
+        )}
+
+        {study.servicesUsed.length > 0 && (
+          <div class="case-study-section fade-up">
+            <span class="section-eyebrow eyebrow--block">Services used</span>
+            <div class="related-grid">
+              {study.servicesUsed.map((slug) => (
+                <a href={`/${slug}`} class="related-card">
+                  <p class="related-card__title">{serviceTitles[slug] ?? slug}</p>
+                  <p class="related-card__sub">View service &rarr;</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    {study.pullQuote && (
+      <section class="section section--surface" aria-label="Client quote">
+        <div class="container container--narrow">
+          <blockquote class="case-study-quote fade-up">
+            <p class="case-study-quote__text">&ldquo;{study.pullQuote}&rdquo;</p>
+            {study.quoteAttribution && (
+              <footer class="case-study-quote__attr">{study.quoteAttribution}</footer>
+            )}
+          </blockquote>
+        </div>
+      </section>
+    )}
+
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container container--narrow text-center">
+        <div class="fade-up">
+          <h2 class="display-lg section-title title--on-dark-spaced">Want results like this?</h2>
+          <p class="cta-body">Book a free ROI call. We diagnose where revenue is leaking and what would actually move the needle.</p>
+          <a href="/roi-call" class="btn btn--white btn--lg">Book Your Free ROI Call</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
