@@ -88,9 +88,11 @@ Add these 2 to 3 qualifiers to filter tire-kickers:
 
 ---
 
-## HubSpot Solutions Directory profile (paste-ready)
+## HubSpot Solutions Directory profile (paste-ready, but DEFERRED)
 
-_Drafted 2026-06-14 (Session 23). Fill each of HubSpot's form fields from the matching block below. Lead with the certification. Map the focus areas to HubSpot's own menu (see category suggestions above). No em/en dashes._
+> **⚠️ Not currently actionable (verified 2026-06-15).** There is no self-serve "submit your listing" form. A Solutions Directory listing is a *benefit* of the **paid HubSpot Solutions Partner Program**: $400/mo (waived only if net HubSpot software spend is already $400+/mo), gated behind a Partner Specialist sales call + signed HSPPA. The old free Solutions Provider on-ramp is closed to new joiners (sunset 2026-08-15). Deferred for HGC (solo practice, not paying HubSpot $400+/mo). The copy below stays parked for if/when HGC becomes a Pro/Enterprise HubSpot customer; Ian's RevOps cert already meets the 1-cert publish requirement. Enrollment path if it ever flips to "worth it": the "Talk to a Partner Specialist" form at https://www.hubspot.com/partners/solutions.
+
+_Drafted 2026-06-14 (Session 23). When/if eligible, fill each of HubSpot's form fields from the matching block below. Lead with the certification. Map the focus areas to HubSpot's own menu (see category suggestions above). No em/en dashes._
 
 **Company name:** Homegrown Growth Co.
 

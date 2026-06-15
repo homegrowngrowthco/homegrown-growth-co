@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { getCollection } from 'astro:content';
 
-// STAGING: this section is noindex + unlinked from nav/footer + excluded from the
-// sitemap until real content lands. See the go-live checklist in SITE_STATUS.md.
+// LIVE (2026-06-15): indexable, linked in nav/footer, and in the sitemap.
+// Went live with the first three posts. See SITE_STATUS.md.
 const title = 'Resources | Homegrown Growth Co.';
 const description = 'Practical notes on growth operations, RevOps, demand generation, and the systems that make revenue compound.';
 const canonical = 'https://homegrowngrowth.co/resources';
@@ -20,7 +20,6 @@ const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
   title={title}
   description={description}
   canonical={canonical}
-  noindex={true}
 >
   <main id="main" class="page-content">
 

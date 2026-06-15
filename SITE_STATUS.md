@@ -106,16 +106,12 @@ _Session 10 shipped **Phase C: `/for-saas` content refresh** to align the SaaS v
 
 ## Shipped to prod, hidden until content (Session 22 — PR #7)
 
-All three sections are LIVE on prod but invisible: noindex + sitemap-excluded + unlinked, with placeholder
-text suppressed (sample post is `draft:true`; testimonials auto-hide TODO entries). They surface to
-visitors only when real content is added. Per-section go-live steps:
+Of the three originally-hidden sections, **Resources / blog is now LIVE (Session 24, 2026-06-15)**. Case
+studies + testimonials remain LIVE on prod but invisible: noindex + sitemap-excluded + unlinked, with
+placeholder text suppressed (testimonials auto-hide TODO entries). They surface to visitors only when real
+content is added. Per-section go-live steps:
 
-**Resources / blog** — content collection is live; a post appears the moment a non-draft file exists.
-1. Write real post(s): add `src/content/resources/<slug>.md` (frontmatter: title, description, publishDate, excerpt, tags, optional heroImage). Either drop `draft:true` from the sample `building-a-revenue-engine-that-compounds.md` (it is a usable template) or delete it.
-2. Drop `noindex` from [resources.astro](src/pages/resources.astro) + [resources/[slug].astro](src/pages/resources/[slug].astro).
-3. Remove the `/resources` exclusion from the sitemap filter in [astro.config.mjs](astro.config.mjs).
-4. Add a "Resources" link to [Nav.astro](src/components/Nav.astro) + [Footer.astro](src/components/Footer.astro).
-5. Add the URL(s) to the IndexNow list in [deploy.yml](.github/workflows/deploy.yml) + the curl list in [link-check.yml](.github/workflows/link-check.yml).
+**Resources / blog** — ✅ LIVE (Session 24, 2026-06-15). Three posts published (`geo-getting-found-on-ai-search`, `the-90-day-payback-test`, `what-a-crm-cleanup-actually-finds`), section is indexable, linked in nav + footer, in the sitemap, IndexNow-pinged. Posts support an optional `faqs:[{q,a}]` frontmatter field → renders a visible accordion + emits FAQPage schema from the same source. To publish another post: drop a non-draft `.md` in `src/content/resources/` and add its URL to the IndexNow list in [deploy.yml](.github/workflows/deploy.yml) + the 200-list in [link-check.yml](.github/workflows/link-check.yml). The sample `building-a-revenue-engine-that-compounds.md` remains `draft:true` as a template (0 routes).
 
 **Case study** — _needs Ian:_ per study, the real facts in [caseStudies.ts](src/data/caseStudies.ts): client name (or anonymized e.g. "B2B SaaS, Series A"), industry, engagement (which service[s]), one-line summary, the challenge (2-4 sentences), what you did (3-5 bullets), **3-4 headline result metrics + labels** (e.g. "+38%" / "win rate"), one pull-quote + attribution (name, title, company), permission to name the client. Then set `published: true`, remove the `/case-studies` exclusion from the sitemap filter, drop `noindex` from [case-studies.astro](src/pages/case-studies.astro) + [CaseStudy.astro](src/components/CaseStudy.astro), and add the detail URL to IndexNow + link-check.
 

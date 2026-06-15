@@ -2,8 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 
-// STAGING: noindex + excluded from the sitemap until launch. Only non-draft
-// posts generate a route. See the go-live checklist in SITE_STATUS.md.
+// LIVE (2026-06-15): indexable + in the sitemap. Only non-draft posts generate
+// a route, so draft:true is still the staging switch for an individual post.
 export async function getStaticPaths() {
   const posts = await getCollection('resources', ({ data }) => !data.draft);
   return posts.map((post) => ({
@@ -19,32 +19,48 @@ const canonical = `https://homegrowngrowth.co/resources/${post.id}`;
 const title = `${post.data.title} | Homegrown Growth Co.`;
 const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    url: canonical,
+    datePublished: post.data.publishDate.toISOString(),
+    author: { '@type': 'Person', name: post.data.author },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Homegrown Growth Co.',
+      url: 'https://homegrowngrowth.co',
+    },
+    ...(post.data.heroImage ? { image: `https://homegrowngrowth.co${post.data.heroImage}` } : {}),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
+      { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://homegrowngrowth.co/resources' },
+      { '@type': 'ListItem', position: 3, name: post.data.title, item: canonical },
+    ],
+  },
+];
+
+// FAQPage schema derived from the same `faqs` array that renders the visible
+// accordion below, so the two can't drift. Strip any inline HTML from answers
+// for the structured-data text.
+if (post.data.faqs && post.data.faqs.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    mainEntity: post.data.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/<[^>]+>/g, '') },
+    })),
+  });
+}
+
 const schema = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'BlogPosting',
-      headline: post.data.title,
-      description: post.data.description,
-      url: canonical,
-      datePublished: post.data.publishDate.toISOString(),
-      author: { '@type': 'Person', name: post.data.author },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Homegrown Growth Co.',
-        url: 'https://homegrowngrowth.co',
-      },
-      ...(post.data.heroImage ? { image: `https://homegrowngrowth.co${post.data.heroImage}` } : {}),
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
-        { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://homegrowngrowth.co/resources' },
-        { '@type': 'ListItem', position: 3, name: post.data.title, item: canonical },
-      ],
-    },
-  ],
+  '@graph': graph,
 };
 ---
 
@@ -53,7 +69,6 @@ const schema = {
   description={post.data.description}
   canonical={canonical}
   ogType="article"
-  noindex={true}
   schema={schema}
 >
   <main id="main" class="page-content">
@@ -88,6 +103,23 @@ const schema = {
         <div class="post__body legal-prose fade-up">
           <Content />
         </div>
+
+        {post.data.faqs && post.data.faqs.length > 0 && (
+          <section class="post-faq fade-up" aria-labelledby="post-faq-heading">
+            <h2 class="post-faq__heading" id="post-faq-heading">Frequently asked</h2>
+            <div class="faq-stack">
+              {post.data.faqs.map((f) => (
+                <details class="faq-item">
+                  <summary class="faq-item__q">
+                    <span>{f.q}</span>
+                    <svg class="faq-item__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </summary>
+                  <p class="faq-item__a" set:html={f.a}></p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div class="post__back fade-up">
           <a href="/resources" class="link-teal">&larr; All resources</a>

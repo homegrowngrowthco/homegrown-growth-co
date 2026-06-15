@@ -62,6 +62,10 @@ jobs:
                 "https://homegrowngrowth.co/roi-call",
                 "https://homegrowngrowth.co/privacy-policy",
                 "https://homegrowngrowth.co/terms",
-                "https://homegrowngrowth.co/sms-opt-in"
+                "https://homegrowngrowth.co/sms-opt-in",
+                "https://homegrowngrowth.co/resources",
+                "https://homegrowngrowth.co/resources/geo-getting-found-on-ai-search",
+                "https://homegrowngrowth.co/resources/the-90-day-payback-test",
+                "https://homegrowngrowth.co/resources/what-a-crm-cleanup-actually-finds"
               ]
             }'

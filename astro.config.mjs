@@ -15,17 +15,15 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // Exclude /404 and the staging subtrees (/case-studies/* and
-      // /resources/*) by pathname prefix. The case-study + resources
-      // sections are noindex + unlinked until real content lands; drop the
-      // matching prefix here at go-live (see SITE_STATUS.md go-live checklist).
+      // Exclude /404 and the still-staging /case-studies/* subtree by pathname
+      // prefix. /resources went live 2026-06-15 and is now indexed. Drop the
+      // /case-studies prefix here when that section goes live too.
       filter: (page) => {
         const path = new URL(page).pathname;
         return (
           path !== '/404' &&
           path !== '/404/' &&
-          !path.startsWith('/case-studies') &&
-          !path.startsWith('/resources')
+          !path.startsWith('/case-studies')
         );
       },
     }),

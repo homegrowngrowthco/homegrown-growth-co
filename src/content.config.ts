@@ -18,6 +18,11 @@ const resources = defineCollection({
     tags: z.array(z.string()).default([]),
     heroImage: z.string().optional(),
     heroImageAlt: z.string().optional(),
+    // Optional FAQ block. Rendered as a visible accordion AND used to emit
+    // FAQPage schema from the same source (see src/pages/resources/[slug].astro),
+    // so the structured data can never drift from the visible Q&A. Answers may
+    // contain simple inline HTML (e.g. <a> links).
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
     draft: z.boolean().default(false),
   }),
 });

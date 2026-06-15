@@ -2203,6 +2203,53 @@ h1, h2, h3, h4, h5, h6 {
   margin: 40px 0;
 }
 
+/* Article tables (before/after, comparison, checklist visuals in post body). */
+.post__body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 0.9375rem;
+}
+
+.post__body th,
+.post__body td {
+  text-align: left;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.post__body thead th {
+  background: var(--color-surface);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.post__body tbody td {
+  color: var(--color-muted);
+}
+
+.post__body tbody td:first-child {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Per-post FAQ block (renders from frontmatter `faqs`; also emits FAQPage schema). */
+.post-faq {
+  margin-top: 56px;
+}
+
+.post-faq__heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
 .post__back {
   margin-top: 48px;
 }
