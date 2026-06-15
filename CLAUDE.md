@@ -494,7 +494,7 @@ Ian approved all three Phase-2 judgment calls (M-4 "yes move", M-10 "make adjust
 - **Revert:** instant Netlify rollback, or `git revert -m 1 94416a4` (the whole PR #7 merge).
 
 ### Session 23 — 2026-06-14 (content prep: directory profiles + content-stub asks + draft blog posts, no deploy)
-**Prepped everything so Ian's remaining manual work is minimal. Single revertable commit `e29278c` on `main`, NOT pushed (no deploy, Ian's call).** Plan-mode (Explore×3 + AskUserQuestion×3 + ExitPlanMode). All deliverable content is em/en-dash-free; trackers keep house style.
+**Prepped everything so Ian's remaining manual work is minimal, then shipped to prod with NO visitor-facing change.** Two commits (`e29278c` content + `d075c76` this CLAUDE.md log) pushed; GHA deploy `27511437026` green (~1m). The deploy is effectively a no-op for visitors (draft posts build 0 routes, data-file edits are comments), so it just syncs the repo. Plan-mode (Explore×3 + AskUserQuestion×3 + ExitPlanMode). All deliverable content is em/en-dash-free; trackers keep house style.
 
 - **DIRECTORY_PROFILES.md — paste-ready HubSpot + G2 profile copy appended.** The file previously had only a category mapping for both (no prose). Added `## HubSpot Solutions Directory profile (paste-ready)` (company overview leading with the RevOps cert, focus areas mapped to HubSpot's menu, products, industries, regions, engagement models) and `## G2 services profile (paste-ready)` (provider description, 12-service checklist, industries, pricing model), both reusing the canonical brand block so voice is identical. Submission still needs Ian (~15 min each).
 - **testimonials.ts + caseStudies.ts — shortest-possible asks added.** A one-line "MINIMAL ASK" + a "PASTE RAW NOTES HERE and Claude polishes into the fields" prompt at the top of each `export const` array. Comments only: placeholders, types, and build output all untouched/byte-identical.
@@ -502,4 +502,4 @@ Ian approved all three Phase-2 judgment calls (M-4 "yes move", M-10 "make adjust
 - **Trackers:** SITE_STATUS.md Session 23 logged; TODO.md open tasks re-ranked most-important-first (HubSpot/G2 now "copy drafted, submit"; Resources promoted from "draft" to "review + OK").
 - **QA:** `astro build` clean (25 pages); no `dist/resources/<slug>` pages built (draft posts = 0 routes); deliverable files grep-verified 0 em/en dashes.
 - **NEEDS IAN (irreducible checklist, ~70 min total):** submit HubSpot + G2 (paste); supply testimonial quotes + one case study's facts via the new raw-notes prompts; review/OK the 3 drafts; delete 3 TEST Netlify submissions; add Calendly intake Qs; add free-audit form-notify email; GSC Request-Indexing for the 3 new service pages.
-- **Revert:** `git revert e29278c` (single commit; nothing deployed).
+- **Revert:** `git revert e29278c` (the content commit) then push, or instant Netlify rollback.
