@@ -123,7 +123,7 @@ content is added. Per-section go-live steps:
 
 **Open tasks and their priority live in [`TODO.md`](TODO.md)** — the single source of truth, ranked most-important-first and synced to Notion via todo-sync. This file no longer duplicates the open list (that duplication is exactly what caused the Clutch/Twilio status drift). Paste-ready copy for the directory listings is in [`DIRECTORY_PROFILES.md`](DIRECTORY_PROFILES.md).
 
-_Awaiting external review (no action needed): **Twilio TFV** resubmitted 2026-06-09 for +18663694940 (consent unbundled per reviewer), approval pending._
+_**Twilio TFV** was REJECTED 2026-06-16 (Entity Misclassification + marketing-consent). Website fixed this session; needs Ian to correct two Twilio form fields and resubmit. Action item lives in [`TODO.md`](TODO.md)._
 
 ## Tech debt — all resolved or explicitly declined (2026-05-16)
 | Task | Status | Notes |

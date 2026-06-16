@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SmsOptInForm from '../components/SmsOptInForm.astro';
 
-const title = 'SMS Updates | Homegrown Growth Co.';
-const description = 'Opt in to SMS updates from Homegrown Growth Co.: scheduling, appointment reminders, project status, and service messages. Reply STOP to opt out, HELP for help.';
+const title = 'SMS Notifications | Homegrown Growth Co.';
+const description = 'Opt in to transactional SMS from Homegrown Growth Co.: scheduling, appointment reminders, project status, and service-related messages. No marketing. Reply STOP to opt out, HELP for help.';
 const canonical = 'https://homegrowngrowth.co/sms-opt-in';
 
 const schema = {
@@ -12,7 +12,7 @@ const schema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homegrowngrowth.co/' },
-    { '@type': 'ListItem', position: 2, name: 'SMS Updates', item: canonical },
+    { '@type': 'ListItem', position: 2, name: 'SMS Notifications', item: canonical },
   ],
 };
 ---
@@ -26,9 +26,9 @@ const schema = {
   <main id="main" class="page-content">
 
     <PageHero
-      tag="SMS Updates"
-      headline="Get SMS updates from Homegrown Growth Co."
-      subtitle="Opt in below to receive scheduling, project, and service-related text messages. We use SMS only for our work together, never for marketing lists or third parties."
+      tag="SMS Notifications"
+      headline="Get service notifications from Homegrown Growth Co."
+      subtitle="Opt in below to receive scheduling, project, and service-related text messages tied to our work together. These are transactional messages only. We never use SMS for marketing, promotions, lists, or third parties."
       headlineMaxWidth="820px"
     />
 
@@ -36,7 +36,7 @@ const schema = {
       <div class="container container--narrow">
         <div class="fade-up">
           <h2 id="sms-form-heading" class="display-md section-title">Opt in to SMS</h2>
-          <p style="color: var(--color-muted); margin-bottom: 32px;">Enter your details and check the consent box. We'll send a confirmation text shortly after. Reply <strong>STOP</strong> at any time to opt out.</p>
+          <p style="color: var(--color-muted); margin-bottom: 32px;">Enter your details and check the consent box. We'll send a confirmation text shortly after. These are transactional, service-related messages only, never marketing. Reply <strong>STOP</strong> at any time to opt out.</p>
 
           <SmsOptInForm />
         </div>
@@ -48,7 +48,8 @@ const schema = {
         <div class="fade-up legal-prose">
           <h2 id="sms-expect-heading" class="display-md section-title mb-16">What to expect</h2>
           <p><strong>Sender.</strong> Messages are sent from +1 (866) 369-4940.</p>
-          <p><strong>Message types.</strong> Appointment confirmations and reminders, scheduling updates, project status, follow-ups on services you've requested, and other conversational and transactional messages tied to our work together.</p>
+          <p><strong>Consent.</strong> By submitting the form above you give express consent to receive the transactional text messages described here. Consent is not a condition of any purchase. You can withdraw it at any time by replying STOP.</p>
+          <p><strong>Message types.</strong> Transactional and conversational messages only: appointment confirmations and reminders, scheduling updates, project status, and follow-ups on services you've requested, tied to our work together. We do not send marketing or promotional text messages.</p>
           <p><strong>Frequency.</strong> Varies based on your engagement with us.</p>
           <p><strong>Cost.</strong> Message and data rates may apply, depending on your mobile carrier and plan.</p>
           <p><strong>Opt-out.</strong> Reply <strong>STOP</strong> to any message we send. We'll send one confirmation and then stop sending non-essential SMS to that number.</p>
