@@ -106,6 +106,10 @@
           form.hidden = true;
           successEl.hidden = false;
           successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Conversion tracking: GA4 key event + Clarity custom event (best-effort).
+          const w = window as unknown as { gtag?: (...a: unknown[]) => void; clarity?: (...a: unknown[]) => void };
+          w.gtag?.('event', 'sms_opt_in', { method: 'web_form' });
+          w.clarity?.('event', 'sms_opt_in');
         })
         .catch(() => {
           errorEl.hidden = false;

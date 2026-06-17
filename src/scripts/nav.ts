@@ -168,6 +168,17 @@ declare global {
     };
     if (window.Calendly) initCalendly();
     else window.addEventListener('load', initCalendly);
+
+    // Conversion tracking: fire a GA4 key event + Clarity custom event when a
+    // visitor completes a Calendly booking (the highest-value conversion).
+    window.addEventListener('message', (e) => {
+      if (e.origin !== 'https://calendly.com') return;
+      const data = e.data as { event?: string } | null;
+      if (data?.event !== 'calendly.event_scheduled') return;
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void; clarity?: (...a: unknown[]) => void };
+      w.gtag?.('event', 'book_roi_call', { method: 'calendly' });
+      w.clarity?.('event', 'book_roi_call');
+    });
   }
 })();
 
