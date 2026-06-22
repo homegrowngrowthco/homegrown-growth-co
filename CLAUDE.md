@@ -538,3 +538,8 @@ Ian approved all three Phase-2 judgment calls (M-4 "yes move", M-10 "make adjust
 - **Shipped:** commit `372f290` (instrumentation) + `732335c` (NEW [ANALYTICS.md](ANALYTICS.md) — event map + GA4 key-event/report + Clarity funnel/segment runbook). Both deploys green. **Verified live:** `generate_lead` in homepage HTML, `sms_opt_in` in /sms-opt-in HTML, `book_roi_call` in /roi-call inlined nav script.
 - **NEEDS IAN (console, ~15 min, steps in ANALYTICS.md):** GA4 → mark the 3 events as Key Events + build a Conversions report/Exploration; Clarity → custom-event recording filter + a /roi-call→book_roi_call funnel. Lighthouse audit deferred per Ian.
 - **Revert:** `git revert 372f290` (+ `732335c` for the doc) then push — additive tracking only, no behavior change.
+
+### Session 27 — 2026-06-18 (brand-anchor the TAG footer link, for TAG's SEO)
+**One-line footer change in service of theautomationsguide.com's brand-term ranking** (TAG doesn't yet rank for its own name; diagnosed in TAG Session 41). The sitewide HGC footer already linked to TAG but with anchor text "Writing", which gives Google no brand signal.
+- [Footer.astro](src/components/Footer.astro): Company-column link `>Writing<` → `>The Automations Guide<` (href + `rel="noopener"` + `target="_blank"` unchanged). Now a brand-anchored backlink that strengthens TAG's entity/brand-term ranking. Commit `9ac2fd9` pushed to `main`; build clean (28 pages); GHA auto-deploy. Verified anchor text in built footer.
+- **Revert:** `git revert 9ac2fd9 && git push origin main` (restores the "Writing" label).
