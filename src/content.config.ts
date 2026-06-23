@@ -1,5 +1,7 @@
 import { glob } from 'astro/loaders';
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+// Astro 6: zod is no longer re-exported from astro:content; import from astro/zod.
+import { z } from 'astro/zod';
 
 // Resources / blog collection (Astro 5 Content Layer).
 // Drop a Markdown file in src/content/resources/ and rebuild: it becomes a post.
