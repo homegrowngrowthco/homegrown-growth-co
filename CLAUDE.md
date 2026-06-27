@@ -556,6 +556,14 @@ Ian approved all three Phase-2 judgment calls (M-4 "yes move", M-10 "make adjust
 - **Revert:** `git revert 6512eda && git push origin main` (copy-only; no schema/behavior change).
 - Memory `reference_twilio_tfv_registration_gotchas` updated with the third-round consent-bundling reason + "official records = the individual" framing.
 
+### Session 30 — 2026-06-27 (GSC audit: 26/26 indexed; gsc-index-status.py updated to match TAG pattern)
+
+**Updated `scripts/gsc-index-status.py` to match the TAG script pattern — added NEEDS INDEXING section, dynamic `HOST`/`BARE`/`SITEMAP` from argv, and generic `resolve_site_url`. Ran audit: all 26 sitemap URLs are Submitted and indexed. Commit `fa68374`.**
+
+- **Script changes:** Added positional `host` argument (defaults to `https://homegrowngrowth.co`); `BARE` and `SITEMAP` derived from `HOST` so the script works for any GSC property with the same shared OAuth token. `resolve_site_url` now generic (uses `BARE` instead of hardcoded domain). Added `INDEXED_STATES` constant + `needs_index` list + the "NEEDS INDEXING" footer block matching TAG's output format. Column widths widened to match TAG (46/9/36).
+- **GSC audit result:** 26 URLs checked against `sc-domain:homegrowngrowth.co`. All 26 = "Submitted and indexed". NEEDS INDEXING: 0.
+- **No code or content changes to the site.**
+
 ### Session 29 — 2026-06-24 (Twilio: TFV resubmitted + A2P 10DLC sole-proprietor brand/campaign registered)
 **Both Twilio messaging registrations are now submitted, for separate use cases. (1) Resubmitted the toll-free verification (TFV) for +1 (866) 369-4940 with the S28 fixes — Legal name `Ian Chamberland`, Use Case Description rewritten to standalone-consent-only (dropped the "intake form/contract" bundling), under-500-char field copy, post-deploy /sms-opt-in proof screenshot. (2) Registered a separate A2P 10DLC Sole Proprietor brand + campaign via the Console/TCR for a non-toll-free local long code. Both awaiting carrier/TCR review. No code change this session — guidance only; the live §7 consent fix from S28 (`6512eda`) backs both.**
 - **A2P 10DLC = 3-step Console flow** (Starter Profile → Sole Proprietor Brand → Campaign), registered through The Campaign Registry, separate from TFV. Sole-prop path: **no EIN required** (eligibility is exactly "US/Canada business without a Tax ID"); brand verified by a **one-time SMS OTP** to Ian's US mobile (usable max 3× across sole-prop brands); contact email + address usable max 10× across TCR. Constraints: **1 campaign, 1 phone number, low daily cap, no T-Mobile vetting**; one-time brand fee + monthly campaign fee + per-message carrier pass-through; VERIFIED in ~a few days.
