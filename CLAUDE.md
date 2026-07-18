@@ -12,7 +12,7 @@ Static marketing site for Homegrown Growth Co., Ian's fractional growth-operatio
 - GA4 + Microsoft Clarity, lazily loaded on first interaction or idle (PR #6); conversion events documented in `ANALYTICS.md`
 - IndexNow auto-ping on every prod deploy; weekly curl-based link-check workflow
 
-## Live site
+## Live site / current state (2026-07-17)
 - Production: https://homegrowngrowth.co
 - GitHub: https://github.com/homegrowngrowthco/homegrown-growth-co (default branch `main`)
 - Netlify Site ID: `35530ce7-21f4-4734-92ae-12758607e79e`
