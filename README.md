@@ -29,13 +29,13 @@ Or invoke the Claude Code slash commands defined in `.claude/commands/`:
 - `/preview` — runs `npm run dev` in the background
 - `/build-check` — runs build + preview + curl smoke test
 - `/add-page <slug>` — scaffolds a new `src/pages/<slug>.astro` from a template and appends the URL to the IndexNow list in `deploy.yml`
-- `/audit-seo <url>` — re-runs Lighthouse against the URL and diffs against the pre-migration baseline at `_baseline/lighthouse-2026-05-14/`
+- `/audit-seo <url>` — re-runs Lighthouse against the URL and diffs against the current baseline at `_baseline/lighthouse-2026-06-14/`
 
 ## Deploy flow
 
 Every push to `main` triggers `.github/workflows/deploy.yml`:
 
-1. `actions/setup-node@v4` with `node-version: 24` (matches the `NODE_VERSION` pin in `netlify.toml`).
+1. `actions/setup-node@v5` with `node-version: 24` (matches the `NODE_VERSION` pin in `netlify.toml`).
 2. `npm ci` — lockfile-reproducible install (never `npm install` in CI).
 3. `npm run build` — Astro produces `dist/`.
 4. `netlify deploy --dir=dist --prod` (via the official `netlify-cli@22` install).
@@ -52,25 +52,27 @@ PRs targeting `main` run the same workflow but deploy a Netlify branch preview (
 Two workflows in `.github/workflows/`:
 
 - **`deploy.yml`** — fires on every push to `main` (deploys to prod) and on PRs targeting `main` (deploys to a branch preview).
-- **`link-check.yml`** — fires weekly (Mondays 09:00 UTC) and on-demand. Curl loop that confirms each canonical URL returns 200 and `/resources` still 301s. Runs in ~11s.
+- **`link-check.yml`** — fires weekly (Mondays 09:00 UTC) and on-demand. Curl loop that confirms each canonical URL (including `/resources` and the blog posts) returns 200. Runs in ~11s.
 
 ## Project structure
 
 ```
 homegrown-growthco/
 ├── src/
-│   ├── pages/             ← 16 .astro routes + for-saas.html (static, embedded design system)
+│   ├── pages/             ← 25 static .astro routes + 2 dynamic ([slug] under case-studies/ and resources/)
 │   ├── layouts/           ← BaseLayout.astro (head, nav, footer, analytics)
-│   ├── components/        ← Nav, Footer, JsonLd, PageHero, SmsOptInForm, NetlifyFormStubs, ServicePage
+│   ├── components/        ← Nav, Footer, JsonLd, PageHero, SmsOptInForm, NetlifyFormStubs, ServicePage, CaseStudy, Testimonials
+│   ├── content/           ← resources blog posts (Content Layer collection, content.config.ts)
+│   ├── data/              ← caseStudies.ts + testimonials.ts (typed content arrays)
 │   ├── styles/global.css  ← single shared stylesheet, Vite-bundled to /_astro/*.css
 │   └── scripts/nav.ts     ← typed nav/dropdown/scroll/Calendly client logic
 ├── public/                ← served at site root as-is: analytics.js, fonts/, favicons, og-image.png, robots.txt, IndexNow key
-├── _baseline/             ← pre-migration Lighthouse JSONs (performance budget reference; not deployed)
+├── _baseline/             ← Lighthouse baseline JSONs (lighthouse-2026-06-14; performance budget reference, not deployed)
 ├── _assets/               ← source brand assets (logos, pricing.jpg)
 ├── .github/workflows/     ← deploy.yml + link-check.yml
 ├── .claude/               ← settings.json (committed shared allowlist), settings.local.json (per-machine, gitignored), commands/
 ├── astro.config.mjs       ← site URL, output: 'static', build.format: 'file', sitemap filter
-├── netlify.toml           ← security headers, NODE_VERSION="24", /resources 301, 404 fallback
+├── netlify.toml           ← security headers, NODE_VERSION="24", cache rules, 404 fallback
 ├── tsconfig.json, package.json, package-lock.json
 ├── CLAUDE.md              ← project context for Claude Code (authoritative)
 ├── SITE_STATUS.md         ← running punch list (authoritative)
@@ -81,24 +83,26 @@ homegrown-growthco/
 
 ## Pages
 
-Live + indexed: `/`, `/services`, `/pricing`, `/about`, `/for-saas`, `/roi-call`, `/sms-opt-in`, `/privacy-policy`, `/terms`, plus 6 service pages (`/fractional-revops`, `/crm-implementation`, `/process-automation`, `/reporting-analytics`, `/tech-stack-audit`, `/sales-comp-enablement`).
+Live + indexed: `/`, `/services`, `/pricing`, `/about`, `/for-saas`, `/for-local-businesses`, `/roi-call`, `/sms-opt-in`, `/privacy-policy`, `/terms`, plus 12 service pages (`/fractional-revops`, `/crm-implementation`, `/process-automation`, `/reporting-analytics`, `/tech-stack-audit`, `/sales-comp-enablement`, `/gtm-strategy`, `/demand-generation`, `/website-seo-geo`, `/conversion-landing-pages`, `/retention-expansion`, `/data-enrichment-hygiene`).
 
-Live but `noindex`: `/case-studies` (placeholder until real content lands).
+Live + indexed blog: `/resources` + `/resources/<slug>` (Astro content collection; 3 posts published Session 24).
+
+Live but `noindex`: `/case-studies` (placeholder until real content lands; `/case-studies/[slug]` builds 0 pages until a study is `published:true`).
 
 Custom 404 at `/404`.
 
-Retired: `/resources` → 301 to `/`.
-
 ## Things to know
 
-- **`/for-saas` uses its own embedded design system.** Lives as a static `.html` in `src/pages/for-saas.html` (Astro serves it as-is, not as an `.astro` page). Site-wide nav or design changes via Nav.astro and Footer.astro do NOT propagate there automatically. When the visual identity for `/for-saas` is next revisited, swap it to a `.astro` page using BaseLayout + global.css.
+- **`/for-saas` is on the shared design system.** It is `src/pages/for-saas.astro` on BaseLayout + Nav + Footer + global.css (unified from the old standalone `.html` in Session 6), so sitewide nav and design changes propagate to it automatically.
 - **CSP retains `'unsafe-inline'` in `script-src`** for the inline JSON-LD blocks and Astro's bundled `<script>` tags. Tightening path (when prioritized): nonce-based CSP via an Astro integration that stamps a per-build nonce on inline scripts — NOT SHA-256-hashing every JSON-LD block (that's brittle).
-- **Analytics:** GA4 ID `G-4QR1JQK9QL`, Microsoft Clarity ID `wgqsqcvysb`. Both bootstrap from `public/analytics.js` (loaded with `defer` after the GTM script tag, in that order).
+- **Analytics:** GA4 ID `G-4QR1JQK9QL`, Microsoft Clarity ID `wgqsqcvysb`. Both bootstrap from `public/analytics.js`, which loads them lazily on the first user interaction or browser idle (PR #6, 2026-06-14); there is no eager gtag tag in the head. Conversion events are documented in `ANALYTICS.md`.
 - **`robots.txt`** is wide-open (allows everything, points to the autogenerated sitemap at `/sitemap-index.xml`). `case-studies.astro` uses `<meta name="robots" content="noindex,follow">` via BaseLayout's `noindex` prop instead of a Disallow rule.
 - **Netlify Forms** detected the `sms-opt-in` form at build time. The `<NetlifyFormStubs />` component in BaseLayout renders a hidden duplicate form on every page so detection works regardless of which attributes Astro preserves on the visible form. Submissions land in the Netlify dashboard.
 
 ## Where else context lives
 
-- `CLAUDE.md` — Tech Stack, Key Files & Folders, Deployment, Open Questions / TODO, Session Log
-- `SITE_STATUS.md` — running checklist of what's done / what's left
+- `CLAUDE.md` — evergreen brief: Tech Stack, Key Files & Folders, Deployment, conventions, gotchas
+- `TODO.md` — open tasks (single source of truth, synced to Notion)
+- `docs/SESSION_LOG.md` — session-by-session history (newest first)
+- `SITE_STATUS.md` — completed inventory / live-state
 - Repo issues / Netlify dashboard / GH Actions tab — deploy logs, build history

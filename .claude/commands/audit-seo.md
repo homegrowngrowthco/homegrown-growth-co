@@ -1,9 +1,9 @@
 ---
-description: Re-run Lighthouse against a given URL (desktop + mobile) and diff against the pre-migration baseline
+description: Re-run Lighthouse against a given URL (desktop + mobile) and diff against the current baseline
 argument-hint: <url> (full URL, e.g. https://homegrowngrowth.co/pricing)
 ---
 
-Re-run Lighthouse on `$ARGUMENTS` and compare against the current baseline at `_baseline/lighthouse-2026-06-14/` (the post-rebrand, analytics-deferred snapshot). The older `_baseline/lighthouse-2026-05-14/` is the obsolete pre-Astro/pre-rebrand site, kept only for history — do not diff against it.
+Re-run Lighthouse on `$ARGUMENTS` and compare against the current baseline at `_baseline/lighthouse-2026-06-14/` (the post-rebrand, analytics-deferred snapshot). This is the only baseline in the repo (the obsolete pre-Astro 2026-05-14 set was deleted 2026-07-18; it survives in git history if ever needed).
 
 ## Steps
 

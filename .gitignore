@@ -45,6 +45,8 @@ token.json
 *.gsc.json
 
 # Site-audit working set (2026-06-12): untracked by convention, ignored so a
-# broad git add can never sweep the report or its screenshot evidence in
+# broad git add can never sweep the report or its screenshot evidence in.
+# Resolved 2026-07-18: both now live under the local-only _archive/ folder.
 AUDIT.md
 _audit-evidence/
+_archive/
