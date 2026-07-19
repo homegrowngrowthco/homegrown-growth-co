@@ -8,6 +8,12 @@ Archived text below is preserved as originally written.
 
 ---
 
+### Session 31 — 2026-07-18 (docs overhaul: CLAUDE.md split, TODO purge, orphan deletions; portfolio cleanup arc)
+
+`37b4d5f`: CLAUDE.md 122KB->9.7KB (S1-S30 log moved here, re-sorted strictly newest-first fixing the S30-above-S29 defect), TODO purged of 26 done items (2 rescued: Twilio TFV/A2P verdict tracking + the deferred HubSpot Solutions Directory), `services.html` (pre-Astro orphan) + `_baseline/lighthouse-2026-05-14/` (5.6MB superseded) deleted, AUDIT.md + evidence -> local `_archive/`, README fact-fixed (12 service pages, for-saas.astro, live /resources blog, setup-node@v5, 27 routes, Geist fonts), SITE_STATUS preamble blob -> 2 lines. `78a35f3`: stale-current-state check in scripts/lint-docs.mjs. Deploy ran green post-commit (docs-only). Verify: `npm run qa:docs` green. Revert: `git revert 37b4d5f` / `78a35f3`.
+
+---
+
 ### Session 30 — 2026-06-27 (GSC audit: 26/26 indexed; gsc-index-status.py updated to match TAG pattern)
 
 **Updated `scripts/gsc-index-status.py` to match the TAG script pattern — added NEEDS INDEXING section, dynamic `HOST`/`BARE`/`SITEMAP` from argv, and generic `resolve_site_url`. Ran audit: all 26 sitemap URLs are Submitted and indexed. Commit `fa68374`.**
