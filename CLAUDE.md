@@ -87,3 +87,7 @@ Deliberately kept as-is, with rationale:
 
 ## Recovery note
 Survived the 2026-05-04 machine wipe: full git history on GitHub, live site untouched, Actions secrets intact. All post-recovery follow-ups (push verified, `NETLIFY_AUTH_TOKEN` rotated, GA4/Clarity verified) closed by Session 11.
+
+## Decision queue (cross-project, since 2026-10-15, op #1297)
+
+Anything that needs Ian (a decision, a click, a secret) is a GitHub issue on `homegrowngrowthco/claude-projects-ops` labelled `needs-ian` plus `project:hgc`; never a "NEEDS FROM IAN" block in a prompt file, never a Slack DM, never an `@ian` TODO tag (convert any you meet into an issue and drop the tag). A new issue rings Ian once in Slack `#claude-inbox`; every session start prints the open list. A session acts only on its own project's issues plus `[ops]`; Ian may answer on GitHub (comment, issue left open), then the next session for this project does the follow-up and closes it with a `[claude op #N] done:` comment. Rules and the gh commands: workspace root `CLAUDE.md`, section "The decision queue". Cloud routines for this project, if any, report the same way.
