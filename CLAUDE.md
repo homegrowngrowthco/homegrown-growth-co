@@ -1,5 +1,8 @@
 # Homegrown Growth Co. — Website
 
+This file is an index: state, a pointer, no history, no counts. Detail is on demand and leaves with its task.
+Narrative goes to the session log (`docs/SESSION_LOG.md`), never here. (Tier rule from the markdown hygiene audit, op #1357, 2026-10-21.)
+
 ## Purpose
 Static marketing site for Homegrown Growth Co., Ian's fractional growth-operations consulting practice. Heavy SEO/structured-data focus: every page has JSON-LD (Service / FAQPage / BreadcrumbList / Person / Organization). Completed inventory and live-state are in `SITE_STATUS.md`; open tasks in `TODO.md`; dated history in `docs/SESSION_LOG.md`.
 
