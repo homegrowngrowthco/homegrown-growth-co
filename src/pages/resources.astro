@@ -9,8 +9,12 @@ const title = 'Resources | Homegrown Growth Co.';
 const description = 'Practical notes on growth operations, RevOps, demand generation, and the systems that make revenue compound.';
 const canonical = 'https://homegrowngrowth.co/resources';
 
+// Newest first. Same-date posts fall back to id (slug) ascending, so their order
+// is stable between builds instead of following the content store's load order.
 const posts = (await getCollection('resources', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  (a, b) =>
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf() ||
+    (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
 );
 
 const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
