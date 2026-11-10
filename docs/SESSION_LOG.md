@@ -8,6 +8,12 @@ Archived text below is preserved as originally written.
 
 ---
 
+### Op #1581, 2026-11-10 (CLAUDE.md to the Astro 7 state, stable /resources order)
+
+Earlier ops: #1549 upgraded Astro 5 to 7 (PR #8, merge `d0095ef`); #1581 dropped the repo copies of the session hooks (PR #9, merge `6c6e050`). This entry: CLAUDE.md current state dated 2026-11-10, Astro 7 and `build.format: 'preserve'` with pointers to `package.json` and `astro.config.mjs`, route counts replaced by pointers, Smart App Control build gotcha added. `src/pages/resources.astro` sort gets a slug tie-breaker (all live posts share 2026-06-14, and PR #8 saw their order change). Verify: `npm run qa:docs`; CI build and preview `/resources` order on two builds. Revert: `git revert -m 1 <merge commit>` (merge SHA in the PR).
+
+---
+
 ### Session 31 — 2026-07-18 (docs overhaul: CLAUDE.md split, TODO purge, orphan deletions; portfolio cleanup arc)
 
 `37b4d5f`: CLAUDE.md 122KB->9.7KB (S1-S30 log moved here, re-sorted strictly newest-first fixing the S30-above-S29 defect), TODO purged of 26 done items (2 rescued: Twilio TFV/A2P verdict tracking + the deferred HubSpot Solutions Directory), `services.html` (pre-Astro orphan) + `_baseline/lighthouse-2026-05-14/` (5.6MB superseded) deleted, AUDIT.md + evidence -> local `_archive/`, README fact-fixed (12 service pages, for-saas.astro, live /resources blog, setup-node@v5, 27 routes, Geist fonts), SITE_STATUS preamble blob -> 2 lines. `78a35f3`: stale-current-state check in scripts/lint-docs.mjs. Deploy ran green post-commit (docs-only). Verify: `npm run qa:docs` green. Revert: `git revert 37b4d5f` / `78a35f3`.

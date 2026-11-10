@@ -7,21 +7,21 @@ Narrative goes to the session log (`docs/SESSION_LOG.md`), never here. (Tier rul
 Static marketing site for Homegrown Growth Co., Ian's fractional growth-operations consulting practice. Heavy SEO/structured-data focus: every page has JSON-LD (Service / FAQPage / BreadcrumbList / Person / Organization). Completed inventory and live-state are in `SITE_STATUS.md`; open tasks in `TODO.md`; dated history in `docs/SESSION_LOG.md`.
 
 ## Tech Stack
-- **Astro 5** + **TypeScript strict** + **vanilla CSS** (no Tailwind; the design system in `src/styles/global.css` is the canonical source)
-- `output: 'static'` + `build.format: 'file'` (flat `dist/<slug>.html`, served at `/<slug>` natively by Netlify without trailing-slash 301s)
+- **Astro 7** (exact versions in `package.json`; upgraded from Astro 5 on 2026-11-08, PR #8, op #1549) + **TypeScript strict** + **vanilla CSS** (no Tailwind; the design system in `src/styles/global.css` is the canonical source)
+- `output: 'static'` + flat `dist/<slug>.html` output, served at `/<slug>` natively by Netlify without trailing-slash 301s. `astro.config.mjs` holds the settings and the reasons in its comments (`build.format: 'preserve'` since Astro 7, `compressHTML: true` pinned)
 - `@astrojs/sitemap` autogenerates the sitemap at build time (filters out `/404` and `/case-studies*`)
 - Self-hosted webfonts: **Geist Sans + Geist Mono** in `public/fonts/` (Session 13 rebrand; Inter/DM Mono removed)
 - Netlify hosting + GitHub Actions deploy (`npm ci && npm run build && netlify deploy --dir=dist`); `NODE_VERSION="24"` pinned in `netlify.toml`
 - GA4 + Microsoft Clarity, lazily loaded on first interaction or idle (PR #6); conversion events documented in `ANALYTICS.md`
 - IndexNow auto-ping on every prod deploy; weekly curl-based link-check workflow
 
-## Live site / current state (2026-07-17)
+## Live site / current state (2026-11-10)
 - Production: https://homegrowngrowth.co
 - GitHub: https://github.com/homegrowngrowthco/homegrown-growth-co (default branch `main`)
 - Netlify Site ID: `35530ce7-21f4-4734-92ae-12758607e79e`
 
 ## Key Files & Folders
-- `src/pages/` contains 25 static `.astro` routes + 2 dynamic (`case-studies/[slug]`, `resources/[slug]`), 1:1 to URLs. 12 are thin data-only `ServicePage` wrappers.
+- `src/pages/`: one `.astro` file per URL plus 2 dynamic routes (`case-studies/[slug]`, `resources/[slug]`). The service pages are thin data-only `ServicePage` wrappers. `resources.astro` lists non-draft posts newest first, same-date posts by slug.
 - `src/layouts/BaseLayout.astro` renders the full `<head>` (meta, fonts, analytics, canonical, OG/Twitter, optional JSON-LD via `JsonLd`) and body (skip-link, Nav, slot, Footer, NetlifyFormStubs, bundled `nav.ts`). Props: `title`, `description`, `canonical`, `ogType?`, `ogImage?`, `noindex?`, `schema?`, `bareNav?`, `bareFooter?`.
 - `src/components/`: `Nav`, `Footer`, `JsonLd` (with `</script>` XSS-escape), `PageHero`, `SmsOptInForm`, `NetlifyFormStubs` (hidden duplicate forms so Netlify detects them regardless of attribute stripping), `ServicePage` (shared template for the 12 service pages; schema derived from the same data as the visible content so it can't drift), `CaseStudy`, `Testimonials`.
 - `src/content/` + `src/content.config.ts`: Content Layer; the `resources` collection powers the live `/resources` blog. Drop a non-draft `.md` in `src/content/resources/` and rebuild to publish.
@@ -72,8 +72,9 @@ Open tasks live in [`TODO.md`](TODO.md), the single source of truth, ranked and 
 - **IndexNow pings Bing/Yandex only and link-check is CI-only.** Neither affects Google indexing. GSC's Pages report lags the live index by days; trust the URL Inspection API (`/gsc-status`).
 - **Keep schema single-sourced from visible content** (ServicePage FAQ text derives from `htmlA`; `/services` ItemList builds from the rendered array). Never reintroduce a parallel schema field.
 - **Twilio SMS compliance:** sole-prop legal name = `Ian Chamberland` (DBA Homegrown Growth Co.); SMS consent must be standalone (never bundled with terms/intake/contract wording anywhere, including Twilio free-text fields); site copy is strictly transactional, "no marketing" stated.
+- **Local `npm run build` fails on Ian's laptop since Astro 7** (seen 2026-11-10): Windows Smart App Control blocks rolldown's native binding (`An Application Control policy has blocked this file`). Never work around the policy; build in CI (the PR's Deploy workflow and its Netlify preview).
 - **Stale `.astro` content-store cache** can throw phantom "duplicate id" glob-loader warnings; delete `.astro/` + `dist/` and rebuild.
-- **`build.format: 'file'` is load-bearing.** The directory format reintroduces trailing-slash 301 chains.
+- **Flat output is load-bearing.** The directory format reintroduces trailing-slash 301 chains. Under Astro 7 the setting is `build.format: 'preserve'` (`'file'` breaks the homepage font preload); with it, add a page as `src/pages/<slug>.astro`, never `<dir>/index.astro` (see `astro.config.mjs`).
 - Resources posts support an optional `faqs:[{q,a}]` frontmatter field that renders a visible accordion AND emits FAQPage schema from the same array.
 
 ## Resolved long-term tech debt (2026-05-16 to 2026-06-14)
